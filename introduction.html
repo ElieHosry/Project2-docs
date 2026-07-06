@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>introduction</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">introduction</h1>
+</header>
+<p><a href="index.html">← Back to index</a></p>
+<h1 id="project-module--introduction">Project Module — Introduction</h1>
+<h2 id="overview">Overview</h2>
+<p>A project module for second-year Computer Science students. Students form teams and build a project in a category of their choice. The project spans <strong>two trimesters</strong>; current planning focuses on the <strong>first trimester</strong>.</p>
+<h2 id="target-platforms">Target Platforms</h2>
+<ul>
+<li>Web browser on mobile (Android and iPhone devices)</li>
+<li>Native mobile (Android — reference device: <strong>Google Pixel 8a / 9a</strong>; emulator available during development)</li>
+<li>Web front-end (HTML, JS, CSS, WASM)</li>
+<li>Server platform (Linux OS) — <em>maybe in second trimester</em></li>
+<li>Database, Authentication, Analytics (Firebase)</li>
+</ul>
+<p><strong>Native PC (Windows) is the development, debugging and first-testing platform</strong> for every team — it is not a shipping target. Each project&#39;s final output runs on Native mobile and/or Web browser on mobile; PC may ship only as the operator/authoring side of a role split (see Appendix F in the linked doc set).</p>
+<h2 id="core-tech-requirements">Core Tech Requirements</h2>
+<ul>
+<li>External database (Firebase encouraged)</li>
+<li>Authentication — <em>maybe in second trimester</em></li>
+<li>Analytics — <em>maybe in second trimester</em></li>
+<li>C++ performant service</li>
+<li>Real-time high-frequency application: C++ simulation loop</li>
+<li>Application communication</li>
+<li>Continuous Integration</li>
+<li>Data-driven architecture</li>
+<li>Front-end + local backend (server backend maybe in second trimester)</li>
+<li>Custom tools development for the product (e.g., scene editor if the project needs it)</li>
+<li>Product does not need to be full-stack if tools are already full-stack (practicing full-stack is the point)</li>
+<li>Graphical output mostly 2D; 3D optional and limited to strong students</li>
+<li>Networking system allowed if the project needs it (e.g., multiplayer games)</li>
+</ul>
+<h2 id="library-usage">Library Usage</h2>
+<ul>
+<li><strong>Allowed:</strong> low-level libraries — OpenGL, SDL2, FMOD, OpenAL, ImGui, FreeType, etc.</li>
+<li><strong>Not allowed:</strong> high-end libraries or game engines</li>
+</ul>
+<h2 id="project-categories">Project Categories</h2>
+<ul>
+<li>Games</li>
+<li>Education + Training</li>
+<li>Simulator</li>
+<li>Fintech</li>
+<li>GovTech</li>
+<li>Social Media</li>
+<li>CMS</li>
+<li>Immersive Experience</li>
+<li>Creative Tools &amp; Media Production</li>
+</ul>
+<h2 id="first-trimester-timeline">First Trimester Timeline</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>3</td>
+<td>Teams formed</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Project idea proposed; <strong>foundation sprint</strong> starts (head start on G1 shell/loop and CI — project-agnostic work)</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td>Project approved and confirmed for kick-off; remaining goals finalized</td>
+</tr>
+<tr class="even">
+<td>9</td>
+<td>Milestone 1 (Core technology base phase)</td>
+</tr>
+<tr class="odd">
+<td>13</td>
+<td>Milestone 2 (Core technology showcase phase)</td>
+</tr>
+</tbody>
+</table>
+<p>Milestone 1 sits at week 9 (rather than 10) to balance the workload: with the week-4 foundation head start, both milestone phases carry roughly equal weekly effort (~10 h/week per 40-hour goal). See the Appendices for the full rationale.</p>
+<h2 id="milestones--goals">Milestones &amp; Goals</h2>
+<ul>
+<li>Each milestone has <strong>goals</strong> a team must work on (e.g., each member owns a goal).</li>
+<li>A goal can be a high-level system (e.g., &quot;Physics System&quot;) that a student breaks down into multiple tasks (~40 hours per milestone) (~10 hours per week, which include ~4 lab-hours).</li>
+<li><strong>Fairness:</strong> all teams get the same number of well-distributed goals per milestone, regardless of project category.</li>
+<li><strong>Team due diligence:</strong> instructors follow up with each team on a weekly basis (goal progress, blockers, integration health).</li>
+</ul>
+<h3 id="goal-structure">Goal Structure</h3>
+<ul>
+<li><strong>Common goals</strong> (G1–G3 of each milestone): shared across all project categories.</li>
+<li><strong>Customizable goals</strong> (remaining 3): based on the team&#39;s chosen project category.
+<ul>
+<li>Teams within the same category may choose different customizable goals (instructor approval required).</li>
+<li>Instructors maintain an initial pool of possible goals per project category (see <em>Milestone Goals Pool per Category</em>).</li>
+<li>Teams may propose new goals for new project ideas.</li>
+</ul></li>
+</ul>
+</body>
+</html>

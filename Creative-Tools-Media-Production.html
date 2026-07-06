@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Creative-Tools-Media-Production</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Creative-Tools-Media-Production</h1>
+</header>
+<p><a href="project-examples-per-category.html">← Back to overview</a></p>
+<h2 id="creative-tools--media-production">Creative Tools &amp; Media Production</h2>
+<h3 id="scope">Scope</h3>
+<p>Professional creation tools — paint and animation editors, audio editors, trackers, VFX authoring. The tool IS the product and its users are creators; editing engines, live preview and non-destructive workflows are the signature engineering.</p>
+<h3 id="examples">Examples</h3>
+<ol>
+<li><strong>Pixel-art &amp; animation editor</strong> — layered canvas painting, palette tools, onion-skin animation, sprite-sheet/GIF export; the tool IS the product. <em>References:</em>
+<ul>
+<li><a href="https://www.aseprite.org/">Aseprite (official)</a></li>
+<li><a href="https://www.aseprite.org/docs/">Aseprite docs — layers, animation, export</a></li>
+</ul></li>
+<li><strong>Audio editor / mini-DAW</strong> — waveform display and editing, multitrack mixing, real-time effect processing; the DSP callback is a true high-frequency loop. <em>References:</em>
+<ul>
+<li><a href="https://www.audacityteam.org/">Audacity (official)</a></li>
+<li><a href="https://www.ocenaudio.com/">ocenaudio (official)</a></li>
+</ul></li>
+<li><strong>Music tracker / chiptune studio</strong> — pattern-based sequencer driving a real-time synthesizer engine (square/wave/noise channels), instrument editor, module export. <em>References:</em>
+<ul>
+<li><a href="http://famitracker.com/">FamiTracker (official)</a></li>
+<li><a href="https://www.littlesounddj.com/lsd/index.php">Little Sound Dj (official)</a></li>
+</ul></li>
+<li><strong>Collaborative diagram &amp; vector editor</strong> — shapes, bézier paths, snapping and alignment, live multi-user collaboration; SVG import/export. <em>References:</em>
+<ul>
+<li><a href="https://excalidraw.com/">Excalidraw (official)</a></li>
+<li><a href="https://inkscape.org/">Inkscape (official)</a></li>
+</ul></li>
+<li><strong>Particle &amp; VFX editor</strong> — author particle systems with live GPU preview; bake flipbooks/sprite sheets and export JSON assets consumable by other teams&#39; projects. <em>References:</em>
+<ul>
+<li><a href="https://jangafx.com/software/embergen">EmberGen (JangaFX)</a></li>
+<li><a href="https://docs.jangafx.com/embergen/">EmberGen documentation</a></li>
+</ul></li>
+</ol>
+<h3 id="core-tech-requirements-per-creative-tools-example">Core Tech Requirements per Creative Tools Example</h3>
+<p>Legend: ✅ Applies directly | 🔶 Applies with domain adaptation | 🔵 Optional | ❌ Not needed | ⏭️ Second trimester</p>
+<table>
+<thead>
+<tr class="header">
+<th>Core Tech Requirement</th>
+<th>1. Pixel-Art Editor</th>
+<th>2. Audio Editor</th>
+<th>3. Music Tracker</th>
+<th>4. Diagram Editor</th>
+<th>5. VFX Editor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>External Database (Firebase)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Authentication ⏭️</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>✅</td>
+<td>🔵</td>
+</tr>
+<tr class="odd">
+<td>Analytics ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>C++ Performant Service</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Real-time C++ Simulation Loop</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>🔶</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Application Communication</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Continuous Integration</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Data-Driven Architecture</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Front-end + Local Backend</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Custom Tools Development</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>2D Graphical Output</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>3D (strong students only)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>🔵</td>
+</tr>
+<tr class="odd">
+<td>Networking System</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td><span style="color:#8E44AD"><strong>Non-destructive Edit History</strong> — command graph, branching history, autosave &amp; crash recovery (new)</span></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-each-requirement-applies">How each requirement applies</h3>
+<p><em>Common to all five:</em> Custom Tools ✅ (the tool IS the product, satisfying the &quot;tools already full-stack&quot; clause) · C++ Performant Service (the editing/preview engine itself) · Data-Driven Architecture ✅ (documents, brushes, instruments, emitters as data) · Application Communication (UI ↔︎ C++ engine messaging) · Continuous Integration · Front-end + Local Backend.</p>
+<p><strong>1. Pixel-art &amp; animation editor</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — touch pixel-art painting on the reference phone (Pixel 8a/9a) (zoomed-grid workflow); the PC build is the development/iteration vehicle.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Canvas renderer (OpenGL), layer &amp; frame timeline UI, palette and tool panels. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Document engine (layers, blend modes, command graph), exporters (PNG/GIF/sprite sheet), Firebase palette/asset sharing. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop:</em> real-time canvas compositing and animation preview — layers, blend modes and onion skin re-composited every frame.</li>
+<li><em>Data-driven:</em> documents, palettes, brushes and export presets fully described as data.</li>
+<li><em>Custom tool:</em> the editor IS the product. <em>2D:</em> pixel-perfect canvas rendering, blend modes, grid/tiled preview.</li>
+<li><em>External DB:</em> shared palette/asset library. <em>Auth ⏭️:</em> optional accounts. <em>Analytics ⏭️:</em> feature-usage stats.</li>
+<li><em>Networking / 3D:</em> not needed — effort goes into tool quality.</li>
+<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> command graph with unlimited undo, history panel and crash recovery (Aseprite-style data recovery).</li>
+</ul>
+<p><strong>2. Audio editor / mini-DAW</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — simplified touch UI (waveform, transport, mixer) on the reference phone (Pixel 8a/9a); AAudio provides the low-latency path. PC build for development and heavy-file tests.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Waveform/spectrogram renderer, multitrack timeline, mixer &amp; effect-rack UI. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> DSP engine (mixing, effects, resampling), codec import/export, project persistence, Firebase project sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop:</em> the real-time audio callback — mixing and effect chains processed at audio rate, the tightest timing budget in the catalog.</li>
+<li><em>2D:</em> waveform and spectrogram rendering with smooth zoom from hours down to single samples.</li>
+<li><em>Data-driven:</em> projects, tracks, effect chains and presets as data. <em>Custom tool:</em> the editor IS the product.</li>
+<li><em>External DB:</em> cloud project/preset sync. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> effect-usage stats.</li>
+<li><em>Networking / 3D:</em> not needed.</li>
+<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> edits stored as a command list over immutable source audio — the professional editing pattern; full session recovery.</li>
+</ul>
+<p><strong>3. Music tracker / chiptune studio</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Native PC (authoring)</b> — playback and live performance on the phone; keyboard-driven pattern authoring on the PC side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Pattern-grid editor (custom widgets), instrument editor, oscilloscope/VU views. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Synthesizer engine (channels, envelopes, arpeggios), sample-accurate sequencer clock, module serialization, Firebase song library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop:</em> sample-accurate sequencer driving a real-time synth engine — audio-rate DSP with musical timing precision.</li>
+<li><em>Data-driven:</em> instruments, patterns and songs as pure data; module format designed by the team.</li>
+<li><em>Custom tool:</em> the tracker IS the product. <em>2D:</em> pattern grid, oscilloscopes and spectrum views.</li>
+<li><em>External DB:</em> shared song/instrument library. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> most-used instruments/effects.</li>
+<li><em>Networking / 3D:</em> not needed.</li>
+<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> per-pattern edit history with named checkpoints and autosave/session recovery.</li>
+</ul>
+<p><strong>4. Collaborative diagram &amp; vector editor</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — collaboration is web-first (WASM build); the PC build is used for development and precision-editing tests.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Vector canvas renderer (bézier tessellation, snapping, selection), shape/connector tools. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Document/scene-graph model, operation-log sync service for live collaboration, SVG import/export, Firebase documents &amp; sharing. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> interactive render loop — tessellation, snapping and live remote cursors updated every frame.</li>
+<li><em>Networking:</em> core requirement — real-time collaborative editing over WebSockets with operation sync and conflict resolution.</li>
+<li><em>Auth:</em> applies directly — documents, owners and share links. <em>External DB:</em> document storage. <em>Analytics ⏭️:</em> collaboration stats.</li>
+<li><em>Data-driven:</em> the document is a pure operation log / scene graph. <em>Custom tool:</em> the editor IS the product.</li>
+<li><em>2D:</em> bézier rasterization, hit-testing, snapping guides. <em>3D:</em> not needed.</li>
+<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> the history doubles as the collaboration operation log — undo/redo that works correctly with multiple simultaneous editors.</li>
+</ul>
+<p><strong>5. Particle &amp; VFX editor</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — authoring with simplified panels and live GPU preview on the reference phone (Pixel 8a/9a); PC build for development and heavy bakes.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Live preview viewport (OpenGL instancing), emitter/curve editors, preset browser. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Particle simulation core, flipbook/sprite-sheet baker, JSON asset exporter, Firebase preset library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> the particle simulation IS the loop — thousands of particles with forces, collisions and emission curves per frame.</li>
+<li><em>Data-driven:</em> emitters, forces and curves as JSON — the exported assets are consumable by other teams&#39; projects (a natural cross-team showcase).</li>
+<li><em>Custom tool:</em> the editor IS the product. <em>2D:</em> instanced rendering, additive blending, flipbook baking. <em>3D:</em> optional 2.5D particles for strong students.</li>
+<li><em>External DB:</em> shared preset library. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> preset popularity.</li>
+<li><em>Networking:</em> not needed.</li>
+<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> preset history with branching — author variants of an effect and compare them side by side.</li>
+</ul>
+<h3 id="goals-per-example">Goals per Example</h3>
+<p>G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the Creative Tools &amp; Media Production pool in <code>milestone-goals-pool-per-category.md</code> (# = pool number).</p>
+<details><summary><b style="color:#0969DA">1. Pixel-art &amp; animation editor</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with mouse/touch/keyboard input and a fixed-timestep loop driving canvas compositing and animation preview; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #4 rendering and M1 #5 tools run inside its frame loop.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Document model — layers, cels, frames, palettes, brushes — fully described in JSON (nlohmann/json) with hot-reload of palettes/brush packs.</li><li><b>Prerequisites:</b> G1 (loop &amp; update hooks).</li><li><b>Feeds into:</b> M1 #5 (brushes as data), M1 #8 (frame/timeline data), M2 G2 and M2 #10 (history operates on this model).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for composite/redraw timings, Tracy profiling, Catch2 stress tests on huge multi-layer documents, GitHub Actions Windows+Linux matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); the redraw benchmarks that M2 #4 filters must respect.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics — Canvas &amp; Viewport Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL canvas renderer — layer compositing, blend modes, pixel-perfect zoom/pan, grid and tiled preview; GLSL, stb_image, FreeType.</li><li><b>Prerequisites:</b> G1 (loop &amp; window).</li><li><b>Feeds into:</b> M1 #5 (brush strokes render through it), M1 #8 (animation preview), M2 #4 (GPU filters).</li></ul></details>
+</li>
+<li><strong>#5 Brush &amp; Tool System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tool abstraction (pencil, fill, shapes, selection) with brush engines, input smoothing and pixel-perfect stroke correction; brushes defined as data.</li><li><b>Prerequisites:</b> G1 (input), G2 (brush data model), M1 #4 (canvas to draw on).</li><li><b>Feeds into:</b> Every editing interaction; M2 #10 records tool commands into the history graph.</li></ul></details>
+</li>
+<li><strong>#8 Timeline, Frames &amp; Animation Playback</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Frame/cel timeline with onion skin, tags, playback modes (loop, ping-pong) and a playback clock decoupled from the editor loop.</li><li><b>Prerequisites:</b> G2 (frame/cel data), M1 #4 (rendering).</li><li><b>Feeds into:</b> M2 #15 (playback on phone), sprite-sheet export; the showcase animation demos.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of composite/stroke latency, ASan on MSVC, dirty-region redraw, memory pools for cels; PC + phone build validation.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 editor codebase).</li><li><b>Feeds into:</b> M2 #4 (filter frame budget), M2 #15 (phone performance).</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The canvas editor core matured — layer/frame management, tool options, export presets — with JSON round-trip and a solid undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui (panels) + custom canvas UI, nlohmann/json, stb_image/stb_image_write (import/export)</li><li><b>Prerequisites:</b> M1 G2 (document model), M1 #5 (tools).</li><li><b>Feeds into:</b> M2 #10 (history graph builds on the command stack); every workflow of the showcase.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, CPack packaging of the Windows build, GitHub Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal, including the M2 #15 phone package.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics — Advanced (GPU Filters &amp; Compositing)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL filter pipeline (outline, dithering, palette-swap, blur), GPU compositing of many layers, texture-atlas export path.</li><li><b>Prerequisites:</b> M1 #4 (base renderer), M2 G1 (frame budget).</li><li><b>Feeds into:</b> Showcase visuals; live filter preview inside M2 G2.</li></ul></details>
+</li>
+<li><strong>#10 Non-destructive Edit History — Branching &amp; Recovery</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Command graph with branching history tree, named checkpoints, history panel UI, autosave journal and crash recovery.</li><li><b>Prerequisites:</b> M2 G2 (command stack), M1 G2 (document model).</li><li><b>Feeds into:</b> The category&#39;s signature showcase feature — recover a crashed session live in the demo.</li></ul></details>
+</li>
+<li><strong>#15 Mobile Platform Port</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Touch input mapping (pressure, palm rejection basics), on-device frame budgeting, Android NDK build packaged in CI.</li><li><b>Prerequisites:</b> M2 G1 (optimization &amp; platform validation).</li><li><b>Feeds into:</b> The phone deliverable named in the platform fit.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">2. Audio editor / mini-DAW</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window/input plus a real-time audio callback (FMOD/OpenAL device I/O) with a lock-free command queue between UI and DSP threads; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #6 DSP runs inside the callback this goal establishes.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Project model — tracks, clips, effect chains, presets — as JSON (nlohmann/json); effect parameters hot-reloadable for rapid tuning.</li><li><b>Prerequisites:</b> G1 (threads &amp; queue).</li><li><b>Feeds into:</b> M1 #13 (codec import fills this model), M2 G2 (timeline edits it), M2 #10 (edit list refers to it).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui meters for callback load and xruns, Tracy profiling of DSP hot paths, Catch2 stress tests on many-track projects, GitHub Actions Windows+Linux matrix.</li><li><b>Prerequisites:</b> G1 (callback to instrument).</li><li><b>Feeds into:</b> M2 G3; the latency budget M2 #9 effects must respect.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics — Canvas &amp; Viewport Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Waveform renderer with multi-resolution peak caches for smooth zoom from hours to samples; spectrogram view; OpenGL/GLSL, FreeType rulers.</li><li><b>Prerequisites:</b> G1 (loop &amp; window).</li><li><b>Feeds into:</b> M2 G2 (timeline editing draws through it); every visible part of the demo.</li></ul></details>
+</li>
+<li><strong>#6 Audio System &amp; DSP Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Mixing graph (tracks → buses → master), gain/pan/fade DSP, resampling; FMOD/OpenAL output, dr_wav/stb_vorbis decoding.</li><li><b>Prerequisites:</b> G1 (audio callback), G2 (track/chain model).</li><li><b>Feeds into:</b> M2 #9 (advanced DSP), M2 #11 (offline render uses the same graph).</li></ul></details>
+</li>
+<li><strong>#13 Import / Export Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> WAV/OGG/FLAC import, WAV/OGG export with dithering options, metadata handling; streaming I/O for large files; CLI batch conversion mode.</li><li><b>Prerequisites:</b> G2 (project model), M1 #6 (sample pipeline).</li><li><b>Feeds into:</b> M2 #11 (headless render jobs); interoperability shown at the demo.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on DSP and drawing paths, ASan on MSVC, lock-free ring buffers hardened, SIMD in hot DSP loops; validation on PC (+ WASM feasibility check).</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 #9 (headroom for effect racks), M2 #11 (fast offline render).</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The multitrack timeline editor core — cut/trim/move/fade clips across tracks with snapping, audition playback, JSON round-trip and undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, FMOD/OpenAL (audition playback), dr_wav</li><li><b>Prerequisites:</b> M1 G2 (project model), M1 #4 (waveform view), M1 #6 (playback).</li><li><b>Feeds into:</b> M2 #10 (edit list is recorded from these commands); the core editing demo.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, CPack packaging, GitHub Actions matrix with audio-render smoke tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release builds; M2 #11 job runner reuses the CI render harness.</li></ul></details>
+</li>
+<li><strong>#9 Audio — Advanced DSP &amp; Mixing</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Effect racks (EQ, compressor, reverb, delay), FFT spectral view, automation curves, latency compensation across the mixing graph.</li><li><b>Prerequisites:</b> M1 #6 (mixing graph), M2 G1 (performance headroom).</li><li><b>Feeds into:</b> Showcase audio polish; automation data feeds M2 #10 history.</li></ul></details>
+</li>
+<li><strong>#10 Non-destructive Edit History — Branching &amp; Recovery</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Edit list over immutable source audio (no sample destruction), branching history with checkpoints, autosave journal and crash recovery.</li><li><b>Prerequisites:</b> M2 G2 (command stack), M1 #13 (source-file references).</li><li><b>Feeds into:</b> The category&#39;s signature feature — &quot;undo anything, recover anything&quot; in the demo.</li></ul></details>
+</li>
+<li><strong>#11 Headless Batch Export &amp; Render Jobs</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Offline (faster-than-real-time) render of the mixing graph, CLI job runner with progress reporting, batch format conversion; runs in CI.</li><li><b>Prerequisites:</b> M1 #6 + M1 #13 (graph and codecs), M2 G1 (optimized DSP).</li><li><b>Feeds into:</b> Deliverable exports; server-side render jobs if promoted in T2.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">3. Music tracker / chiptune studio</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with keyboard-first input and a real-time audio callback driving a sample-accurate sequencer clock; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #14 synth renders inside this callback.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Song model — patterns, rows, instruments, envelopes, arpeggios — as a team-designed JSON module format (nlohmann/json) with hot-reload of instruments.</li><li><b>Prerequisites:</b> G1 (clock &amp; hooks).</li><li><b>Feeds into:</b> M1 #14 (synth reads instruments), M2 G2 (pattern editor edits it), M2 #16 (shared songs use this format).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui channel scopes and callback-load meters, Tracy, Catch2 tests rendering reference songs to buffers and diffing them, GitHub Actions Windows+Linux matrix.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the audio-diff regression tests guard every synth change.</li></ul></details>
+</li>
+<li><strong>#6 Audio System &amp; DSP Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Output device handling, master mixing and per-channel gain; FMOD/OpenAL output, dr_wav for sample import (drum channel).</li><li><b>Prerequisites:</b> G1 (audio callback).</li><li><b>Feeds into:</b> M1 #14 (synth voices mix through it), M2 #9 (effects), WAV export.</li></ul></details>
+</li>
+<li><strong>#10 UI / Panel System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pattern-grid widget (custom, keyboard-navigable), instrument list, oscilloscope/VU panels; FreeType text, input routing, layout rules.</li><li><b>Prerequisites:</b> G1 (input), 2D rendering from the shell.</li><li><b>Feeds into:</b> M2 G2 (editor lives in these panels), M2 #5 (skinned GUI matures them).</li></ul></details>
+</li>
+<li><strong>#14 Synthesizer &amp; Sequencer Engine Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Chip-style voices (pulse, wave, noise), envelopes, arpeggio/vibrato effects, sample-accurate row scheduling — all custom C++ DSP.</li><li><b>Prerequisites:</b> G1 (clock), G2 (instrument data), M1 #6 (mixing).</li><li><b>Feeds into:</b> Everything audible; M2 #9 extends it; WAV/module export renders through it.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on voice rendering, ASan on MSVC, denormal/underrun hardening, and Android build validation for the mobile playback mode.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 #15-style mobile mode in the platform fit; stable live-performance playback.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The pattern/instrument editor core — row editing with keyboard shortcuts, instrument envelope editing with audition, JSON round-trip and undo/redo command stack.</li><li><b>Libraries/Software:</b> Custom pattern-grid widgets + Dear ImGui, nlohmann/json, FMOD/OpenAL (audition playback)</li><li><b>Prerequisites:</b> M1 G2 (song model), M1 #10 (pattern grid), M1 #14 (audition).</li><li><b>Feeds into:</b> M2 #16 (published songs authored here); the core composing demo.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, CPack packaging of PC build and APK, GitHub Actions matrix with audio-diff regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release/showcase builds including the mobile playback build.</li></ul></details>
+</li>
+<li><strong>#5 Custom In-Product GUI System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> A skinned, keyboard-first widget system (FreeType text, theming, input routing) giving the tracker its characteristic look — beyond stock ImGui.</li><li><b>Prerequisites:</b> M1 #10 (panel foundation).</li><li><b>Feeds into:</b> Every user-facing screen; M2 G2 hosts the editors inside it.</li></ul></details>
+</li>
+<li><strong>#9 Audio — Advanced DSP &amp; Mixing</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-channel effect sends (echo, chorus, bit-crush), mixing buses, master limiter, and stereo widening — custom C++ DSP over the M1 #14 engine.</li><li><b>Prerequisites:</b> M1 #14 (synth), M1 #6 (mixing).</li><li><b>Feeds into:</b> Showcase sound quality; rendered WAV exports.</li></ul></details>
+</li>
+<li><strong>#16 Community Sharing &amp; Asset Marketplace</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Publish/browse/download songs and instrument packs via Firebase (Firestore + Storage), ratings and play counts, in-app preview player.</li><li><b>Prerequisites:</b> M1 #12-style Firebase basics or G2 model + Firebase SDK/REST, M2 G2 (content to publish).</li><li><b>Feeds into:</b> The community showcase story; Analytics ⏭️ hooks in T2.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">4. Collaborative diagram &amp; vector editor</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window (PC) and Emscripten/WASM shell (web) sharing one C++ core; interactive render loop with mouse/touch input; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #7 geometry and M1 #11 networking hook into its frame and event loop.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Scene graph of shapes/connectors/text plus a document format designed as an operation log (JSON, nlohmann/json) — the data model that later makes collaboration and undo natural.</li><li><b>Prerequisites:</b> G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1 #7 (geometry of the shapes), M1 #11 → M2 #7 (ops are what gets synced), M2 #10 (history = the op log).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for tessellation/hit-test counts, Tracy, Catch2 stress tests on 10k-shape documents, GitHub Actions Windows+Linux matrix plus an Emscripten build job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the WASM build job keeps the web target honest from week one.</li></ul></details>
+</li>
+<li><strong>#7 Vector Geometry &amp; Path Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Bézier math (GLM), path tessellation to GPU triangles, hit-testing, snapping and alignment guides, boolean-lite operations (merge/subtract on simple shapes).</li><li><b>Prerequisites:</b> G1 (render loop), G2 (shape model).</li><li><b>Feeds into:</b> M1 #15 (selection/transform), SVG import/export, everything visible on the canvas.</li></ul></details>
+</li>
+<li><strong>#11 Networking Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> WebSockets (web) / ENet or SDL_net (PC) with a serialized operation protocol, session join and presence; local echo server for development.</li><li><b>Prerequisites:</b> G1 (event loop), G2 (operations to send).</li><li><b>Feeds into:</b> M2 #7 (real-time collaboration builds directly on it).</li></ul></details>
+</li>
+<li><strong>#15 Selection, Transform &amp; Clipboard</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Marquee/lasso selection, transform gizmos (move/scale/rotate) with snapping, copy/paste of subtrees within and across documents.</li><li><b>Prerequisites:</b> M1 #7 (hit-testing &amp; geometry).</li><li><b>Feeds into:</b> M2 G2 (core editing interactions); transform ops recorded for M2 #10.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on tessellation/redraw, ASan on MSVC, culling and batching for large documents; validation of the Emscripten/WASM build on mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> Smooth collaboration demo on phones; frame budget for M2 #7 remote cursors.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The canvas editor core matured — shape/connector/text editing with snapping and alignment, style inspector, JSON round-trip and undo/redo command stack over the op log.</li><li><b>Libraries/Software:</b> HTML/JS/CSS shell + Emscripten (WASM core), Dear ImGui (PC build), nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (op-log model), M1 #7 (geometry), M1 #15 (selection).</li><li><b>Feeds into:</b> M2 #7 (collaborative editing of the same ops), M2 #10 (history).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, GitHub Actions matrix producing Windows build + WASM bundle, static hosting deploy of the web build.</li><li><b>Prerequisites:</b> M1 G3 (incl. Emscripten job).</li><li><b>Feeds into:</b> The shareable web demo URL — the strongest showcase artifact.</li></ul></details>
+</li>
+<li><strong>#7 Networking — Real-time Collaboration</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Operation sync with server-ordered op log, conflict resolution, presence cursors and selections, join/catch-up replay; Firebase bridge in T1, real server T2.</li><li><b>Prerequisites:</b> M1 #11 (protocol), M1 G2 (ops).</li><li><b>Feeds into:</b> The headline demo — two phones and a PC editing one diagram live.</li></ul></details>
+</li>
+<li><strong>#8 Firebase — Accounts, Asset Library &amp; Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth (accounts, share links), Firestore document storage and listing, Analytics events; JS SDK on web, REST from C++.</li><li><b>Prerequisites:</b> M1 G2 (document model).</li><li><b>Feeds into:</b> Multi-user document workflows; the Auth ✅ requirement of this example.</li></ul></details>
+</li>
+<li><strong>#10 Non-destructive Edit History — Branching &amp; Recovery</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> History as the operation log itself — per-user undo that is correct under concurrency, named checkpoints, session recovery from the journal.</li><li><b>Prerequisites:</b> M2 G2 (command stack), M2 #7 (concurrent ops).</li><li><b>Feeds into:</b> The technically deepest feature of the example — multiplayer undo done right.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">5. Particle &amp; VFX editor</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with a fixed-timestep loop stepping the particle simulation and a free-running render loop for the preview; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #9 simulation and M1 #4 viewport run inside it.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Emitters, forces, curves and presets fully described in JSON (nlohmann/json) with hot-reload — the same JSON schema that gets exported for other teams&#39; engines.</li><li><b>Prerequisites:</b> G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1 #13 (export of this schema), M2 G2 (preset editor), M2 #12 (curves).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for particle counts and sim/render ms, Tracy profiling, Catch2 stress tests at 100k+ particles, GitHub Actions Windows+Linux matrix.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the perf baselines M2 G1 optimizes against.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics — Canvas &amp; Viewport Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL instanced particle rendering with additive/alpha blend modes, camera pan/zoom, background/reference image display (stb_image), FreeType HUD.</li><li><b>Prerequisites:</b> G1 (loop &amp; window).</li><li><b>Feeds into:</b> The live preview at the heart of the tool; M2 #4 shader effects.</li></ul></details>
+</li>
+<li><strong>#9 Particle &amp; Effects Engine Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Emitter/force/collider simulation with object pooling, curve-driven parameters over particle lifetime, deterministic seeding for reproducible effects (GLM math).</li><li><b>Prerequisites:</b> G1 (fixed timestep), G2 (emitter data).</li><li><b>Feeds into:</b> Everything the tool previews and bakes; M2 #11 renders it headless.</li></ul></details>
+</li>
+<li><strong>#13 Import / Export Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Flipbook/sprite-sheet baker (render-to-texture → atlas via stb_image_write), JSON asset export with schema versioning, import of reference images.</li><li><b>Prerequisites:</b> M1 #4 (rendering), G2 (schema).</li><li><b>Feeds into:</b> The cross-team story — assets consumed by Games-category projects; M2 #11 batches it.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy-guided optimization of sim and instancing paths, SIMD particle updates, memory pools, ASan on MSVC; PC validation at 100k+ particles.</li><li><b>Prerequisites:</b> All M1 goals (esp. M1 #9).</li><li><b>Feeds into:</b> M2 #4 (GPU budget), M2 #11 (fast batch bakes).</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The emitter/preset editor core — parameter inspectors, curve editing, preset browser with live preview, JSON round-trip and undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s OpenGL preview viewport</li><li><b>Prerequisites:</b> M1 G2 (emitter model), M1 #4 + #9 (live preview).</li><li><b>Feeds into:</b> M2 #12 (curve editor deepens it); every authoring workflow of the demo.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, CPack packaging, GitHub Actions matrix including a headless bake smoke test.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release builds; the bake regression tests guard M2 #11.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics — Advanced (GPU Filters &amp; Compositing)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL effects for the preview and bakes — glow/bloom, distortion, color grading; framebuffer post-FX chain; texture atlases for baked output.</li><li><b>Prerequisites:</b> M1 #4 (renderer), M2 G1 (GPU budget).</li><li><b>Feeds into:</b> Showcase visuals and higher-quality baked flipbooks.</li></ul></details>
+</li>
+<li><strong>#11 Headless Batch Export &amp; Render Jobs</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI batch baking of preset libraries (no window, offscreen GL context), job queue with progress reporting, deterministic re-bakes in CI.</li><li><b>Prerequisites:</b> M1 #9 + #13 (sim and baker), M2 G1 (speed).</li><li><b>Feeds into:</b> Asset-pack deliverables; a server-side bake service if promoted in T2.</li></ul></details>
+</li>
+<li><strong>#12 Animation — Curves, Easing &amp; Motion</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Full curve editor (bézier handles, presets, easing functions) for emitter parameters over time, motion paths for emitters, timeline scrubbing.</li><li><b>Prerequisites:</b> M2 G2 (editor core), M1 #9 (curve-driven sim).</li><li><b>Feeds into:</b> Expressive effects for the showcase; curves ship inside the exported JSON assets.</li></ul></details>
+</li>
+</ul>
+</details>
+</body>
+</html>

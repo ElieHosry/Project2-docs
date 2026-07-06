@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>GovTech</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">GovTech</h1>
+</header>
+<p><a href="project-examples-per-category.html">← Back to overview</a></p>
+<h2 id="govtech">GovTech</h2>
+<h3 id="scope">Scope</h3>
+<p>Institutional service platforms — for the <strong>public sector and private institutions alike</strong> (city services, universities, hospitals, companies). The shape that matters: a citizen/customer/member-facing side plus a staff/operations side, connected by service workflows, live data feeds and dashboards, with accountability (roles and audit trails) as the signature requirement. A campus attendance system belongs here as much as a city permit office.</p>
+<h3 id="examples">Examples</h3>
+<ol>
+<li><p><strong>Queue management for public services</strong> — simulates and tracks citizen queues (license office, clinic); real-time dashboard; service-flow editor. <em>References:</em></p>
+<ul>
+<li><a href="https://www.qminder.com/industries/healthcare/">Qminder for healthcare</a></li>
+<li><a href="https://www.youtube.com/watch?v=ESRXkPKaItY">Qmatic queue system demo (YouTube)</a></li>
+</ul></li>
+<li><p><strong>City resource dashboard</strong> — real-time simulated feeds (water, power, waste) processed in C++; map-based 2D visualization; sensor/zone configuration tool. <em>References:</em></p>
+<ul>
+<li><a href="https://www.snap4city.org/drupal/node/525">Snap4City control room dashboards</a></li>
+<li><a href="https://www.youtube.com/watch?v=axxkLU6wyko">Snap4City dashboard demo (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Digital form &amp; permit workflow</strong> — citizens submit applications, officers process them; data-driven form builder as the custom tool; Firebase auth for roles. <em>References:</em></p>
+<ul>
+<li><a href="https://cloudpermit.com/products/building-permitting">Cloudpermit building permitting</a></li>
+<li><a href="https://www.typeform.com/forms">Typeform form builder</a></li>
+</ul></li>
+<li><p><strong>Public transport tracker</strong> — simulated bus/train positions processed in a C++ feed engine; live 2D map with arrival predictions; route/timetable editor. <em>References:</em></p>
+<ul>
+<li><a href="https://transitapp.com/">Transit app</a></li>
+<li><a href="https://www.youtube.com/watch?v=FbTQ3Yh4Q-s">Citymapper overview (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Citizen issue reporting (311-style)</strong> — citizens photo-report potholes and broken lights; staff triage dashboard; category workflows; public transparency stats. <em>References:</em></p>
+<ul>
+<li><a href="https://seeclickfix.com/">SeeClickFix</a></li>
+<li><a href="https://www.youtube.com/watch?v=NYKo5koU_jI">Reporting an issue on SeeClickFix (YouTube)</a></li>
+<li><a href="https://www.fixmystreet.com/">FixMyStreet</a></li>
+</ul></li>
+</ol>
+<h3 id="core-tech-requirements-per-govtech-example">Core Tech Requirements per GovTech Example</h3>
+<p>Legend: ✅ Applies directly | 🔶 Applies with domain adaptation | ❌ Not needed | ⏭️ Second trimester</p>
+<table>
+<thead>
+<tr class="header">
+<th>Core Tech Requirement</th>
+<th>1. Queue Management</th>
+<th>2. City Dashboard</th>
+<th>3. Permit Workflow</th>
+<th>4. Transport Tracker</th>
+<th>5. Issue Reporting</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>External Database (Firebase)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Authentication ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Analytics ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>C++ Performant Service</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Real-time C++ Simulation Loop</td>
+<td>✅</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>✅</td>
+<td>🔶</td>
+</tr>
+<tr class="even">
+<td>Application Communication</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Continuous Integration</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Data-Driven Architecture</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Front-end + Local Backend</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Custom Tools Development</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>✅</td>
+<td>🔶</td>
+<td>🔶</td>
+</tr>
+<tr class="odd">
+<td>2D Graphical Output</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+</tr>
+<tr class="even">
+<td>3D (strong students only)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Networking System</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td><span style="color:#8E44AD"><strong>Role-Based Access Control &amp; Audit Logging</strong> (new)</span></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-each-requirement-applies">How each requirement applies</h3>
+<p><em>Common to all five:</em> C++ Performant Service (feed/queue/workflow engine) · Application Communication (UI ↔︎ engine) · Continuous Integration · Front-end + Local Backend · Data-Driven Architecture (services, forms, routes as data) · Authentication ✅ (citizen/staff roles are central).</p>
+<p><strong>1. Queue management</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (staff ops)</b> — web browser on mobile for citizens (take a ticket), PC dashboard on the staff side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen ticket page (web), staff queue dashboard. <b>Languages:</b> HTML/JS/CSS (citizen); C++ + ImGui (staff).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Queue dynamics simulation, wait-time statistics, notifications, Firebase records. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> simulates citizen arrivals, service times, and queue dynamics in real time — a true simulation.</li>
+<li><em>Custom tool (adapted):</em> service-flow editor (counters, services, priorities). <em>2D (adapted):</em> live queue dashboard rendering.</li>
+<li><em>External DB / Analytics ⏭️:</em> tickets, wait-time statistics; auth for staff vs. citizen roles.</li>
+<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> counter staff vs. supervisor permissions; every ticket action logged.</li>
+</ul>
+<p><strong>2. City resource dashboard</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (control-room ops)</b> — citizens and officials view the live dashboard on phones; the control-room display stays on the PC side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Map layers, live dashboard panels, alert displays. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Sensor feed engine, aggregation &amp; statistics, zone configuration, Firebase history. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> C++ engine generates and processes simulated sensor feeds (water, power, waste).</li>
+<li><em>2D (adapted):</em> map-based visualization with live layers. <em>Custom tool (adapted):</em> sensor/zone configuration tool.</li>
+<li><em>External DB / Analytics ⏭️:</em> historical feed data, alert statistics.</li>
+<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> operator vs. admin zones; configuration changes audited.</li>
+</ul>
+<p><strong>3. Digital form &amp; permit workflow</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> (citizens apply) + <b>Native PC (officer ops)</b> (officers review) — a natural two-front-end split.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen forms rendered from JSON schemas, officer review UI. <b>Languages:</b> HTML/JS/CSS (citizen); C++ + ImGui or web (officer).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Workflow/state machine engine, validation engine, RBAC &amp; audit, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> weakest fit — real-time workflow/validation engine; teams should scope this consciously.</li>
+<li><em>Custom tool:</em> the data-driven form builder applies directly and is the strongest deliverable here.</li>
+<li><em>External DB / Analytics ⏭️:</em> applications, statuses, processing-time metrics; auth central (citizen/officer roles).</li>
+<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> the defining requirement here — who approved which permit, full decision trail.</li>
+</ul>
+<p><strong>4. Public transport tracker</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — commuters check arrivals on the phone.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Live transit map, arrival boards, route views. <b>Languages:</b> HTML/JS/CSS + WASM map renderer (or native C++).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Vehicle movement simulation, arrival prediction, timetable services, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> simulates vehicle movement along routes and computes arrival predictions — a true simulation.</li>
+<li><em>2D (adapted):</em> live map rendering with vehicle positions. <em>Custom tool (adapted):</em> route/timetable editor.</li>
+<li><em>External DB / Analytics ⏭️:</em> routes, timetables, ridership stats.</li>
+<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> operators edit routes/timetables under role permissions with change history.</li>
+</ul>
+<p><strong>5. Citizen issue reporting (311-style)</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Native PC (staff ops)</b> — <b>Native mobile</b> for citizens (photo + location), PC on the staff-triage side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen report flow (camera, map pin), staff triage board. <b>Languages:</b> C++ (native mobile) or HTML/JS/CSS; C++ + ImGui (staff).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Report feed processing, deduplication &amp; priority scoring, RBAC &amp; audit log, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> real-time report feed processing, deduplication, priority scoring.</li>
+<li><em>Data-driven:</em> issue categories and triage workflows as data. <em>Custom tool (adapted):</em> staff dashboard + category editor.</li>
+<li><em>2D (adapted):</em> map rendering with issue pins and heat layers.</li>
+<li><em>Validation / notifications:</em> photo and location validation; status-change notifications to reporters.</li>
+<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> citizen vs. staff vs. supervisor roles; every triage decision logged.</li>
+</ul>
+<h3 id="goals-per-example">Goals per Example</h3>
+<p>G1–G3 ⭐ are the common goals; the other 3 come from the GovTech pool (# = pool number).</p>
+<details><summary><b style="color:#0969DA">1. Queue management for public services</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/ImGui shell, fixed-timestep loop simulating citizen arrivals and service times; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #4 (queue engine runs on its tick); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Counters, services, priorities, and ticket types defined as JSON entities (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell and loop to host the entity system).</li><li><b>Feeds into:</b> M1 #4 (engine consumes service definitions); M2 G2 (service-flow editor edits this data).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlay of live queue state, Tracy profiling, Catch2 stress tests flooding the queue with thousands of simulated citizens, GitHub Actions Windows/Linux builds.</li><li><b>Prerequisites:</b> G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); validates M1 #4 under load.</li></ul></details>
+</li>
+<li><strong>#4 Real-time Feed / Queue Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ producer/consumer threads generating ticket events (issue, call, serve, no-show) through a lock-free ring buffer, with CSV replay of past office days.</li><li><b>Prerequisites:</b> G1 (simulation tick); G2 (service and counter definitions).</li><li><b>Feeds into:</b> M1 #11 (event stream for statistics), M1 #12 (ticket-called triggers), M2 #4 and M2 #10.</li></ul></details>
+</li>
+<li><strong>#11 Statistics &amp; Wait-Time Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-service/per-counter wait and service-time aggregation in C++, custom SDL2/OpenGL charts (no chart libs), history persisted to Firestore.</li><li><b>Prerequisites:</b> M1 #4 (ticket event stream); G2 (event data model).</li><li><b>Feeds into:</b> M2 #10 (historical calibration for predictions); M2 #4 (dashboard heatmaps and history).</li></ul></details>
+</li>
+<li><strong>#12 Notification System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Cloud Messaging push for &quot;your ticket is called&quot;, in-app event bus for the staff dashboard, service worker on the citizen web ticket page.</li><li><b>Prerequisites:</b> M1 #4 (queue events to notify on); Firebase project with citizen/staff Auth.</li><li><b>Feeds into:</b> Citizen ticket experience at showcase; M2 #10 (pushing predicted wait times).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the queue engine under thousands of concurrent tickets, ASan/UBSan, memory pools and threading tuning, Emscripten validation of the citizen web page.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 queue codebase).</li><li><b>Feeds into:</b> M2 #4 (dashboard frame budget) and M2 #10 (prediction throughput).</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Service-flow editor in C++/ImGui — configure counters, services, and priority rules with JSON round-trip and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (service/counter data model it edits).</li><li><b>Feeds into:</b> M1 #4 (engine runs edited flows live); M2 #4 (dashboard reflects reconfigured offices).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy gates, CPack packaging of the staff dashboard plus Emscripten citizen web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
+</li>
+<li><strong>#4 Dashboard — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Supervisor dashboard with live queue layers per counter, wait-time heatmaps, and scrubbing through the day&#39;s queue history (SDL2/OpenGL + ImGui).</li><li><b>Prerequisites:</b> M1 #4 (live events) and M1 #11 (aggregates/history); M2 G1 (rendering budget).</li><li><b>Feeds into:</b> Staff-side showcase; M2 #7 gates its supervisor-only views.</li></ul></details>
+</li>
+<li><strong>#7 RBAC &amp; Audit Logging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth custom claims for counter staff vs. supervisor, permission checks in the C++ service, append-only audit log of every ticket action (call, skip, transfer, close).</li><li><b>Prerequisites:</b> M1 #4 (ticket actions to log); M1 #11/#12 (Firebase records and identity in place).</li><li><b>Feeds into:</b> M2 #4 (role-gated dashboard panels); trust story of the whole product.</li></ul></details>
+</li>
+<li><strong>#10 Prediction Engine (wait times)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Exponential smoothing / simple Kalman filtering over queue lengths and service rates, calibrated per service against M1 wait-time history.</li><li><b>Prerequisites:</b> M1 #4 (live queue state) and M1 #11 (historical statistics).</li><li><b>Feeds into:</b> Citizen ticket page ETAs, M1 #12 (predicted-wait notifications), M2 #4 (forecast panel).</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">2. City resource dashboard</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL control-room shell with a fixed-timestep loop driving simulated water/power/waste sensor ticks; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #4 (feed engine runs on its tick); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensors, zones, utility types, and alert thresholds as JSON entities with hot-reload for live reconfiguration.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #4 (sensor definitions), M1 #5 (zone/layer data), M2 G2 (zone configuration editor).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui feed-inspector overlays, Tracy, Catch2 stress tests pushing thousands of sensor updates per second, GitHub Actions Windows/Linux matrix.</li><li><b>Prerequisites:</b> G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); baseline profiles for M2 #9 scaling work.</li></ul></details>
+</li>
+<li><strong>#4 Real-time Feed Engine (sensors)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ producer/consumer threads generating simulated water, power, and waste readings through a lock-free ring buffer, with CSV replay of historical feed data.</li><li><b>Prerequisites:</b> G1 (simulation tick); G2 (sensor/zone definitions).</li><li><b>Feeds into:</b> M1 #5 (live map layers), M1 #11 (aggregation), M2 #4 and M2 #9.</li></ul></details>
+</li>
+<li><strong>#5 2D Map / Dashboard Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL city-map renderer with pan/zoom, per-utility live layers, FreeType labels, and alert badges on zones.</li><li><b>Prerequisites:</b> G1 (render loop); G2 (zone geometry as data).</li><li><b>Feeds into:</b> M2 #4 (heatmaps and scrubbing build on it); M2 G2 (editor draws on the same map).</li></ul></details>
+</li>
+<li><strong>#11 Statistics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-zone/per-utility aggregation (rolling averages, peaks, threshold breaches) in C++, custom chart rendering, feed history persisted to Firestore.</li><li><b>Prerequisites:</b> M1 #4 (sensor stream); G2 (zone model).</li><li><b>Feeds into:</b> M2 #4 (history scrubbing and heatmap data); operator alert statistics.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling under city-scale feed volume, ASan/UBSan, threading and memory pools, Emscripten validation of the optional web companion view.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 feed/map codebase).</li><li><b>Feeds into:</b> M2 #9 (scale work starts from these profiles); M2 #4 frame budget.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensor/zone configuration tool in C++/ImGui — place sensors on the map, define zones and thresholds, JSON round-trip with undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (map/zone view)</li><li><b>Prerequisites:</b> M1 G2 (sensor/zone data model); M1 #5 (map to edit on).</li><li><b>Feeds into:</b> M1 #4 and #5 consume edited configs live; M2 #7 audits its configuration changes.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy, CPack packaging of the control-room build plus web companion in the Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
+</li>
+<li><strong>#4 Dashboard — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Live utility layers with heatmaps (OpenGL shaders), time scrubbing through recorded feed history, and alert timelines for the control room.</li><li><b>Prerequisites:</b> M1 #5 (map renderer) and M1 #11 (aggregates/history); M2 G1 (performance headroom).</li><li><b>Feeds into:</b> Control-room showcase; M2 #7 gates its admin panels.</li></ul></details>
+</li>
+<li><strong>#7 RBAC &amp; Audit Logging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth custom claims for operator vs. admin (per zone), permission checks in the C++ service, append-only audit log of threshold and zone changes.</li><li><b>Prerequisites:</b> M1 #11 (Firebase records in place); M2 G2 (config actions to audit).</li><li><b>Feeds into:</b> M2 G2 (role-gated editing) and M2 #4 (admin-only views).</li></ul></details>
+</li>
+<li><strong>#9 Engine II — City-Scale Data</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SIMD, std::thread pools, and cache-friendly layouts to process city-wide sensor counts while the map holds 60 fps.</li><li><b>Prerequisites:</b> M1 #4 (feed engine to scale); M2 G1 and M1 G3 (profiling data).</li><li><b>Feeds into:</b> The city-scale showcase demo; keeps M2 #4 smooth under full load.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">3. Digital form &amp; permit workflow</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/ImGui officer-app shell with a real-time loop ticking application queues, deadline timers, and validation passes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #6 (workflow engine runs on its tick); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Permit types, form schemas, workflow states, and role definitions as JSON entities with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #6 (state definitions), M1 #7 (form schemas), M1 #13 (builder edits this data).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui workflow-state inspector, Tracy, Catch2 stress tests submitting thousands of simulated applications, GitHub Actions Windows/Linux matrix.</li><li><b>Prerequisites:</b> G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); validates M1 #6 transition logic under load.</li></ul></details>
+</li>
+<li><strong>#6 Workflow / State Machine Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ FSM driving application statuses (submitted → in review → approved/rejected) from JSON-defined states and transitions, with validation hooks per transition.</li><li><b>Prerequisites:</b> G1 (tick for timers); G2 (state/transition definitions).</li><li><b>Feeds into:</b> M2 #13 (escalation/SLA extends it); M2 #7 (its transitions form the decision trail).</li></ul></details>
+</li>
+<li><strong>#7 Data-Driven Form Definitions</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> JSON-schema permit forms rendered on the citizen web page (HTML/JS/CSS), with field-level validation rules shared with the C++ service.</li><li><b>Prerequisites:</b> G2 (schema format lives in the entity system).</li><li><b>Feeds into:</b> M1 #13 (builder authors these schemas); M1 #6 (submissions enter the workflow).</li></ul></details>
+</li>
+<li><strong>#13 Form Builder — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> First cut of the form builder — compose fields and validation rules, save/load JSON schemas, ImGui or web UI.</li><li><b>Prerequisites:</b> G2 (data-driven definitions); M1 #7 (schema format it authors).</li><li><b>Feeds into:</b> M2 G2 (grows into the editor core) and M2 #6 (advanced builder).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of workflow/validation throughput, ASan/UBSan on the FSM, Emscripten validation of the citizen form front-end on mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 workflow codebase).</li><li><b>Feeds into:</b> M2 #6 (responsive builder) and M2 #13 (SLA timers at scale).</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The form builder matured into the project&#39;s core editor — schema editing with undo/redo command stack, JSON round-trip, and live form preview.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, FreeType (live form preview)</li><li><b>Prerequisites:</b> M1 #13 (builder foundation); M1 G2 (data model).</li><li><b>Feeds into:</b> M2 #6 (advanced features layer on top); M1 #7 (published schemas go live to citizens).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy, CPack packaging of the officer app plus the citizen web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
+</li>
+<li><strong>#6 Form / Flow Builder — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Drag-drop field composition, conditional show/hide logic, multi-step flows, and live preview binding against the citizen renderer.</li><li><b>Prerequisites:</b> M2 G2 (editor core).</li><li><b>Feeds into:</b> The strongest showcase deliverable — new permit types authored live; M1 #7 renders the results.</li></ul></details>
+</li>
+<li><strong>#7 RBAC &amp; Audit Logging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth custom claims for citizen/officer/supervisor, permission checks in the C++ service, and an append-only trail of who approved which permit and why.</li><li><b>Prerequisites:</b> M1 #6 (status transitions to record); Firebase identity for both fronts.</li><li><b>Feeds into:</b> M2 #13 (role-gated escalation); the defining trust requirement of this example.</li></ul></details>
+</li>
+<li><strong>#13 Workflow II (escalation, SLA)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SLA timers, escalation rules, and appeal states layered on the M1 FSM, all JSON-defined and driven by the real-time loop.</li><li><b>Prerequisites:</b> M1 #6 (workflow engine); M2 #7 (roles that escalations route to).</li><li><b>Feeds into:</b> Officer tooling showcase — overdue queues, escalations, and appeal handling.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">4. Public transport tracker</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL shell with a fixed-timestep loop advancing simulated bus/train positions along routes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #14 (vehicle simulation runs on its tick); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Routes, stops, timetables, and vehicle types as JSON entities with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #14 (simulates over this data), M1 #5 (map draws it), M2 G2 (editor edits it), M2 #15 (import/export round-trips it).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui vehicle-state overlays, Tracy, Catch2 stress tests running a full network of simultaneous vehicles, GitHub Actions Windows/Linux matrix.</li><li><b>Prerequisites:</b> G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); frame budget baselines for M2 #14.</li></ul></details>
+</li>
+<li><strong>#5 2D Map Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL live transit map — route polylines, stops, moving vehicle markers, pan/zoom camera, FreeType labels.</li><li><b>Prerequisites:</b> G1 (render loop); G2 (route/stop geometry as data).</li><li><b>Feeds into:</b> Arrival boards and route views; M2 #14 ports this renderer to the citizen app.</li></ul></details>
+</li>
+<li><strong>#10 Firebase — Records &amp; Roles</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth (commuter vs. operator roles), Firestore for routes, timetables, and ridership stats — REST from C++, JS SDK on the web front-end.</li><li><b>Prerequisites:</b> G2 (route/timetable data model to sync).</li><li><b>Feeds into:</b> M2 #10 (historical data for calibration); role-permissioned route edits with change history.</li></ul></details>
+</li>
+<li><strong>#14 Domain Simulation Core (vehicle movement)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Fixed-timestep C++ kinematics moving vehicles along route polylines with GLM, dwell times at stops, and validation against timetable expectations.</li><li><b>Prerequisites:</b> G1 (simulation tick); G2 (routes/timetables as data).</li><li><b>Feeds into:</b> M1 #5 (positions to draw); M2 #10 (position history for arrival predictions).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the network-wide simulation, ASan/UBSan, threading and memory pools, early Emscripten/mobile validation ahead of the citizen port.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 simulation codebase).</li><li><b>Feeds into:</b> M2 #14 (the port depends on this validation); M2 #10 throughput.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Route/timetable editor in C++/ImGui — draw routes on the map, place stops, edit departure times, JSON round-trip with undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (route map view)</li><li><b>Prerequisites:</b> M1 G2 (route data model); M1 #5 (map to edit on).</li><li><b>Feeds into:</b> M1 #14 (simulation runs edited routes live); M2 #15 (edited data imports/exports).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy, CPack packaging of the native build plus the Emscripten citizen web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal, including the M2 #14 app deliverable.</li></ul></details>
+</li>
+<li><strong>#10 Prediction Engine (arrivals)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Exponential smoothing / simple Kalman filtering over simulated vehicle progress and timetable history to compute per-stop ETAs.</li><li><b>Prerequisites:</b> M1 #14 (live positions); M1 #10 (historical records for calibration).</li><li><b>Feeds into:</b> Arrival boards on M1 #5 and the M2 #14 citizen app.</li></ul></details>
+</li>
+<li><strong>#14 Mobile Citizen App Port</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Emscripten → WASM (or Android NDK) port of the live map and arrival boards, touch input mapping, mobile frame-budget profiling.</li><li><b>Prerequisites:</b> M2 G1 (platform validation); M1 #5 (renderer being ported).</li><li><b>Feeds into:</b> The final commuter-facing deliverable shown at the showcase.</li></ul></details>
+</li>
+<li><strong>#15 Data Import / Export &amp; Interop</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GTFS-like timetable import/export with CSV/JSON parsers and schema mapping into the project&#39;s route/timetable model.</li><li><b>Prerequisites:</b> M1 G2 (data model to map into); M2 G2 (editor to review imported data).</li><li><b>Feeds into:</b> Real-city data demos; M1 #14 simulates imported networks.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">5. Citizen issue reporting (311-style)</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/ImGui shell with a real-time loop processing a simulated incoming report feed — deduplication and priority scoring each tick; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #9 (triage board consumes the processed feed); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Issue categories, triage workflows, priority weights, and status definitions as JSON entities with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #8 (category picker), M1 #9 (routing rules), M2 G2 (category/triage editor edits this data).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui feed-inspector overlays, Tracy, Catch2 stress tests flooding the pipeline with simulated report storms, GitHub Actions Windows/Linux matrix.</li><li><b>Prerequisites:</b> G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); test infrastructure that M1 #15 builds on.</li></ul></details>
+</li>
+<li><strong>#8 Citizen UI / UX</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Citizen report flow — photo attach, map-pin location, category picker, and status view — as an accessible mobile-first front-end (HTML/JS/CSS or native C++).</li><li><b>Prerequisites:</b> G1 (app shell); G2 (category definitions to present).</li><li><b>Feeds into:</b> M1 #15 (submissions it produces get validated); M2 #16 (accessibility pass polishes it).</li></ul></details>
+</li>
+<li><strong>#9 Staff / Officer Dashboard — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++/ImGui triage board — incoming report queue, duplicate clusters, priority ordering, and map pins for staff.</li><li><b>Prerequisites:</b> G1 (processed report feed); G2 (triage workflow definitions).</li><li><b>Feeds into:</b> M2 #11 (triage outcomes feed public stats); M2 #12 (status changes trigger notifications).</li></ul></details>
+</li>
+<li><strong>#15 Document / Data Validation Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Validation of photos, locations, and report payloads in C++ with property-based tests, fuzzing basics, and sanitizers (ASan on MSVC).</li><li><b>Prerequisites:</b> M1 G3 (test infrastructure); M1 #8 (submission format to validate).</li><li><b>Feeds into:</b> M1 #9 (only clean reports reach triage); trustworthy records for M2 #11.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of dedup/priority scoring under high report volume, ASan/UBSan, threading, and Emscripten/mobile validation of the citizen flow.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 report pipeline).</li><li><b>Feeds into:</b> M2 #11 (aggregation throughput) and the mobile-quality citizen experience.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Category/triage editor in C++/ImGui — define issue categories, routing rules, and priority weights with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (category/workflow data model it edits).</li><li><b>Feeds into:</b> M1 #8 and #9 consume edited categories/workflows live; M2 #11 groups stats by them.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy, CPack packaging of the staff dashboard plus the citizen mobile/web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
+</li>
+<li><strong>#11 Reports &amp; Transparency Dashboards</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Public statistics — resolution times, issues per category and neighborhood — aggregated from Firestore with custom C++/OpenGL chart rendering (no chart libs).</li><li><b>Prerequisites:</b> M1 #9 (triage outcomes synced to Firebase); M1 G2 (event/data model).</li><li><b>Feeds into:</b> The public transparency showcase; accountability layer over the whole pipeline.</li></ul></details>
+</li>
+<li><strong>#12 Notification II</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Cloud Messaging status-change pushes to reporters, subscriptions by area or category, and digest scheduling.</li><li><b>Prerequisites:</b> M1 #9 (status changes to notify on); Firebase Auth identifying reporters.</li><li><b>Feeds into:</b> Citizen engagement at showcase — reporters follow their issue to resolution.</li></ul></details>
+</li>
+<li><strong>#16 Accessibility &amp; Localization Pass</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> UTF-8 string tables (JSON), FreeType glyph coverage, contrast and UI-scaling options, hot-reload language packs across citizen and staff UIs.</li><li><b>Prerequisites:</b> M1 #8 (citizen flow to make accessible); M1 G2 (data-driven content).</li><li><b>Feeds into:</b> An inclusive final citizen app — the closing polish on M1 #8 and M1 #9.</li></ul></details>
+</li>
+</ul>
+</details>
+</body>
+</html>

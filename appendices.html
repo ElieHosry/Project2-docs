@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>appendices</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">appendices</h1>
+</header>
+<p><a href="index.html">← Back to index</a></p>
+<h1 id="appendices">Appendices</h1>
+<h2 id="a-backend-scope-levels">A. Backend Scope Levels</h2>
+<p>Every example&#39;s <strong>Back end</strong> box states one of three backend scopes. Note that Firebase is remote <em>backend-as-a-service</em> and does not count as a student-built server; the levels below refer to a <strong>custom server backend</strong> — the team&#39;s own C++ service running on the Linux server platform (planned for the second trimester).</p>
+<p><strong>Local only</strong> — the project works completely and correctly with only a local backend. Nothing about the product demands a custom server; a remote server would add little beyond what Firebase already provides. Example: the typing trainer or the museum installation.</p>
+<p><strong>Local now, server-ready (T2)</strong> — the project works fully in trimester 1 with a local backend, but the architecture has a clean seam where the team <em>could</em> lift its C++ service onto the Linux server in trimester 2 for full-stack practice. Moving it is a choice made for learning value, not because the product breaks without it. Example: the traffic simulator — the simulation engine could run server-side with the browser as a thin viewer.</p>
+<p><strong>Server-indicated (T2)</strong> — the product&#39;s core promise inherently involves multiple users sharing live state, and a local backend is only a stopgap. In trimester 1 the team can bridge with Firebase, but the real product genuinely requires an authoritative server process. Teams choosing these projects are implicitly committing to server work in trimester 2. Example: the pixel canvas — hundreds of users painting one shared canvas with rate limiting needs a central server.</p>
+<p>Put simply: <em>server-ready</em> = &quot;the door is open if you want it&quot;; <em>server-indicated</em> = &quot;the design is knocking on that door.&quot;</p>
+<h2 id="b-colored-box-legend">B. Colored Box Legend</h2>
+<ul>
+<li><span style="color:#0969DA"><strong>Blue — Platform fit:</strong></span> the recommended target platform(s) for the example (see Appendix F for the three platform options).</li>
+<li><span style="color:#2E7D32"><strong>Green — Front end:</strong></span> the front-end components and their programming languages.</li>
+<li><span style="color:#E65100"><strong>Amber — Back end:</strong></span> the back-end components, their programming languages, and the backend scope (see Appendix A).</li>
+<li><span style="color:#8E44AD"><strong>Purple text:</strong></span> the newly suggested core tech requirement for the category (last row of each matrix).</li>
+</ul>
+<h2 id="c-goal-sizing--schedule-guidance">C. Goal Sizing &amp; Schedule Guidance</h2>
+<p><strong>Sizing.</strong> A goal is a heavy component sized at ~40 hours per student per milestone. With Milestone 1 at week 9 and Milestone 2 at week 13, both phases carry a uniform ~10 hours/week (of which ~4 are lab-hours). Within a pool, goals are not perfectly equal in weight — at approval time, instructors should push back on teams cherry-picking three light customizable goals.</p>
+<p><strong>Foundation sprint (weeks 4–5).</strong> After the week-4 proposal, teams start project-agnostic work immediately, before formal approval: the G1 owner builds the application skeleton (window, fixed-timestep loop, input, CMake), the G3 owner sets up the repository, CI, and test harness, the G2 owner drafts provisional data schemas, and the remaining members run small spikes on their candidate goals (render a sprite, play a sound, open a socket). Almost none of this work is wasted if the proposal is modified at approval. Week-5 approval remains a real gate: the project direction is still pending until confirmed.</p>
+<p><strong>G1 skeleton first.</strong> Nearly every goal depends on the application shell and loop. The G1 owner must deliver an interface-first skeleton within the first week of the foundation sprint so the other five members never start against a blank repository.</p>
+<p><strong>Integration is part of every goal.</strong> Six parallel components produce six islands unless integration is explicit. &quot;Integrated into the main build and demoed inside the team&#39;s application&quot; is part of every goal&#39;s definition of done; budget roughly 20% of each goal&#39;s hours for it. The weekly follow-up around week 7 doubles as an integration checkpoint (ungraded — the build runs and everyone&#39;s component is in it), preventing integration debt from hiding until Milestone 1.</p>
+<p><strong>Team due diligence.</strong> Instructors follow up with each team on a weekly basis: progress against each member&#39;s goal, blockers, and integration health. Weekly visibility surfaces pacing and bus-factor problems within days instead of at milestone demos, and gives the foundation sprint and definition-of-done rules teeth without extra graded gates.</p>
+<p><strong>Bus factor.</strong> One goal per owner means one struggling student can silently remove a subsystem. Use cross-review pairs: each student reviews one neighbor&#39;s goal, keeping at least two people minimally fluent in every component.</p>
+<h2 id="d-category-suitability-ranking">D. Category Suitability Ranking</h2>
+<p>Ranking of the 9 categories from most to least suitable for this module, judged against the core requirements (real-time C++ simulation loop, 2D graphics, custom tools, low-level libraries, data-driven architecture) and against second-year team realities (skill level, motivation, demo-ability). This is an instructor-facing assessment, not a rule — a strong team can succeed in any category.</p>
+<p><strong>1. Games</strong> — every core requirement applies directly with zero reinterpretation; the milestone example was written for it; motivation and reference material are unmatched. The risk is scope creep, which the fixed goal structure already contains.</p>
+<p><strong>2. Immersive Experience</strong> — technically a near-twin of Games (loop, 2D, audio, scene editors all direct) with more artistic freedom and less genre pressure. Slightly narrower product scope, and installation-style projects may depend on specific hardware for the final demo.</p>
+<p><strong>3. Creative Tools &amp; Media Production</strong> — the tool IS the product, satisfying the tools-are-full-stack clause with zero reinterpretation; real-time canvas/audio/particle loops and heavy custom 2D rendering rival Games for requirement fit, and the non-destructive edit history teaches serious architecture. Risks: professional tools have bottomless feature scope (contained by the fixed goal structure), and UX polish can compete with engineering time.</p>
+<p><strong>4. Simulator</strong> — the simulation loop is not just satisfied but <em>is</em> the deliverable; headless batch mode as its core (purple) requirement adds scientific rigor to every project. Visuals are less flashy, so team motivation varies; networking is rarely exercised.</p>
+<p><strong>5. Fintech</strong> — a sleeper fit: high-frequency feeds map cleanly onto the loop in the feed-driven examples (✅ in 2 of 5, 🔶 adapted elsewhere), custom chart rendering forces real 2D work, and the ledger teaches engineering rigor. Costs: 2D and tools need domain adaptation (🔶), and the domain can feel dry to some students.</p>
+<p><strong>6. Education + Training</strong> — solid fit with natural auth/analytics use, and two examples (circuit lab, driving theory) are true simulations. But the loop is adapted in the others, and content authoring competes with engineering time — teams can sink hours into lesson content that teaches them little engineering.</p>
+<p><strong>7. Social Media</strong> — networking practice is excellent and unique to this category, but the high-frequency C++ loop is a stretch everywhere except the pixel canvas; Firebase can quietly swallow the backend, undermining the C++ requirement; and the products are hard to demo convincingly without a real user base. Moderation/safety adds overhead that isn&#39;t core engineering.</p>
+<p><strong>8. GovTech</strong> — the simulation-heavy examples (queue management, transport tracker) fit well, but the categories&#39; flagship-sounding workflows (permits, forms) satisfy the loop only weakly, and the graphical output is mostly dashboards and forms. Domain access and student motivation are practical limits — though the category&#39;s scope explicitly includes <strong>private institutional/enterprise services</strong> (universities, hospitals, companies), which puts familiar domains like campus workflows within easy reach.</p>
+<p><strong>9. CMS</strong> — the weakest alignment with the raw requirements: the simulation loop must be reinterpreted as a preview renderer (or indexing service) in every example, graphics means layout/typography rather than real-time rendering, and the honest version of that (a C++/WASM live preview engine) is genuinely hard — likely beyond an average second-year team — while the dishonest version collapses into ordinary web development, which this module is explicitly not about.</p>
+<h3 id="suggestions">Suggestions</h3>
+<ul>
+<li><strong>CMS — remove or restrict.</strong> Either drop it, or keep it as a strong-teams-only category (the C++/WASM preview renderer is the only version that meets the module&#39;s intent, and it is advanced). If dropped, its best ideas survive: the wiki&#39;s versioning/collaboration lives on in other categories&#39; goals.</li>
+<li><strong>GovTech — keep, but steer.</strong> Guide teams toward the simulation-heavy examples (queue management, transport tracker, city dashboard) and treat the permit workflow as approval-with-caution, since its loop fit is the weakest in the catalog.</li>
+<li><strong>Social Media — keep with a guard-rail.</strong> Require the C++ service to be demonstrably load-bearing (e.g., the pixel canvas state engine or a real ranking engine benchmarked in CI), so Firebase does not become the de-facto backend.</li>
+<li><strong>Creative Tools &amp; Media Production — adopted as the 9th category</strong> (originally proposed here as a CMS replacement; added without removing CMS). Paint/animation tools, audio editors, music trackers, VFX editors. It fits the module almost as well as Games — and remains the natural home for the &quot;strong CMS team&quot; profile without the web-dev gravity. See its category page and pool.</li>
+<li><strong>Second candidate: Robotics &amp; Embedded Simulation</strong> — virtual robot arenas, line-followers, drone/rover simulators. Physics-loop-first like Simulator, with strong industry appeal; needs no hardware since everything is simulated.</li>
+</ul>
+<h2 id="e-windows-development-environment-notes">E. Windows Development Environment Notes</h2>
+<p>Development happens on <strong>Windows machines using Visual Studio or VS Code</strong>. The module&#39;s stack is deliberately cross-platform — SDL2, OpenGL, FMOD/OpenAL, FreeType, ImGui, CMake, and Git are all first-class on Windows, and CMake generates Visual Studio solutions natively — so no goals or categories change. The following notes prevent Windows-specific surprises:</p>
+<ul>
+<li><strong>CI builds on Windows <em>and</em> Linux from day one.</strong> The trimester-2 server targets Linux; a dual-OS GitHub Actions matrix (<code>windows-latest</code> + <code>ubuntu-latest</code>) catches MSVC-only code while it is still cheap to fix. &quot;Builds green on both platforms&quot; is part of the G3/CI goal&#39;s definition of done.</li>
+<li><strong>Sanitizers:</strong> MSVC supports <strong>AddressSanitizer only</strong>; UndefinedBehaviorSanitizer requires clang-cl or WSL. Goal entries mentioning sanitizers assume ASan on MSVC as the default.</li>
+<li><strong>Sockets:</strong> on Windows, raw sockets mean <strong>Winsock2</strong>, not BSD sockets. Teams using ENet or SDL_net get this abstracted away — recommended for networking goals.</li>
+<li><strong>Emscripten/WASM builds:</strong> fully supported on Windows via <strong>emsdk</strong>, but pair better with <strong>VS Code + CMake/Ninja</strong> than with the Visual Studio IDE. Teams targeting web builds should adopt that workflow early.</li>
+<li><strong>Android:</strong> the NDK, emulator, and device deployment all work normally on Windows hosts.</li>
+<li><strong>WSL (optional):</strong> a convenient escape hatch for Linux-only tooling (UBSan, server smoke tests) without leaving the Windows machine; not required in trimester 1.</li>
+</ul>
+<h2 id="f-platform-fit-options">F. Platform Fit Options</h2>
+<p>Every example&#39;s blue <span style="color:#0969DA"><strong>Platform fit</strong></span> box names the platform(s) the finished product ships on. <strong>Policy: Native PC is the development, debugging and first-testing vehicle for every team — it is not a shipping target on its own.</strong> Every project&#39;s showcase deliverable must run on at least one mobile output: <strong>Native mobile</strong> (reference device: <strong>Google Pixel 8a / 9a</strong>) and/or <strong>Web browser on mobile</strong>. Native PC may appear in a platform fit only as the operator/authoring side of a role split (marked &quot;(ops)&quot; or &quot;(authoring)&quot;). All targets share the same C++ codebase — the platform choice affects the build toolchain, input model, and demo story, not the architecture.</p>
+<p><strong>1. Native PC (Windows) — the development vehicle.</strong> Visual Studio / VS Code, CMake, the fastest build-run-debug loop, and full tooling support (ImGui overlays, Tracy, ASan — see Appendix E). Every team lives here day-to-day regardless of target. As a <em>shipping</em> platform it appears only in role splits: the staff dashboard, control-room display, or content-authoring desk of a product whose public side ships on mobile.</p>
+<p><strong>2. Native mobile (Android — reference device Google Pixel 8a / 9a).</strong> Built with the Android NDK; the emulator serves during development and the reference phone is the measurement target — frame budgets, memory ceilings and audio latency are validated on it, and acceptance criteria may cite it by name (&quot;60 FPS on the reference device&quot;). Implies touch-first input design and APK packaging in CI. AAudio gives a credible low-latency path for audio-centric products. On-device validation belongs to M2 G1 (Platform Validation).</p>
+<p><strong>3. Web browser on mobile.</strong> The C++ core compiled to WASM via Emscripten, wrapped in an HTML/JS/CSS shell. Distribution is a URL — nothing to install, ideal for reaching many users instantly (shared canvases, citizen-facing services, published content, dashboards). Trade-offs: lower performance headroom than native, browser sandbox restrictions (WebSockets instead of raw sockets), and a VS Code + CMake/Ninja workflow on Windows (Appendix E).</p>
+<p><strong>Combinations.</strong> Two patterns occur: <em>same app on multiple mobile targets</em> (e.g. &quot;Native mobile + Web browser on mobile&quot; — the cross-platform stack makes this cheap, and M2 G1 is where the secondary target is proven), and <em>role splits</em> (e.g. &quot;Web browser on mobile + Native PC (ops)&quot; — the public side ships on mobile, the operator/authoring side runs on PC). When in doubt, teams should pick the mobile target by input model and demo story — and remember the PC build remains their iteration platform throughout, shipping or not.</p>
+<p><strong>Enforcement hooks.</strong> The mobile/WASM build job belongs in the G3 CI matrix from week one, so the mobile target never becomes a late surprise; &quot;the showcase runs on the mobile target&quot; is part of M2 G1&#39;s definition of done.</p>
+</body>
+</html>

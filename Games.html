@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Games</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Games</h1>
+</header>
+<p><a href="project-examples-per-category.html">← Back to overview</a></p>
+<h2 id="games">Games</h2>
+<h3 id="scope">Scope</h3>
+<p>Interactive entertainment — any product whose core is a real-time game loop: action, puzzle, strategy, tower defense, rhythm and beyond, single- or multiplayer. If the fun comes from systems running at frame rate, it belongs here.</p>
+<h3 id="examples">Examples</h3>
+<ol>
+<li><p><strong>Top-down dungeon crawler</strong> — procedurally generated levels, entity system, physics &amp; collision, level editor as the custom tool. <em>References:</em></p>
+<ul>
+<li><a href="https://store.steampowered.com/app/250900/The_Binding_of_Isaac_Rebirth/">The Binding of Isaac: Rebirth (Steam)</a></li>
+<li><a href="https://www.youtube.com/watch?v=J3kPMRA_JYE">Enter the Gungeon — trailer (YouTube)</a></li>
+</ul></li>
+<li><p><strong>2D physics puzzle game</strong> (Angry Birds / Cut the Rope style) — physics simulation is the core loop; puzzle editor for content creation. <em>References:</em></p>
+<ul>
+<li><a href="https://www.cuttherope.net/">Cut the Rope (official)</a></li>
+<li><a href="https://www.youtube.com/watch?v=y1bmYzXxW0o">Angry Birds Classic — gameplay (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Real-time multiplayer arena game</strong> — small networked matches (2–4 players), authoritative C++ server logic, matchmaking via Firebase. <em>References:</em></p>
+<ul>
+<li><a href="https://apps.apple.com/us/app/astro-party/id904693943">Astro Party (App Store)</a></li>
+<li><a href="https://www.youtube.com/watch?v=yWppAlI0GY0">Astro Party — trailer (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Tower defense game</strong> — wave simulation, pathfinding, and enemy AI in the C++ loop; map/wave editor as the custom tool; online leaderboards. <em>References:</em></p>
+<ul>
+<li><a href="https://www.kingdomrush.com/">Kingdom Rush (official)</a></li>
+<li><a href="https://www.youtube.com/watch?v=vnS6HewDDxk">Kingdom Rush — gameplay (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Rhythm action game</strong> — beat-synced note timing, deterministic input capture, animation-heavy feedback; beatmap editor as the custom tool. <em>References:</em></p>
+<ul>
+<li><a href="https://osu.ppy.sh/">osu! (official)</a></li>
+<li><a href="https://osu.ppy.sh/wiki/en/Client/Beatmap_editor">osu! beatmap editor (wiki)</a></li>
+<li><a href="https://www.youtube.com/watch?v=ZVeH0975dg4">Muse Dash — gameplay (YouTube)</a></li>
+</ul></li>
+</ol>
+<h3 id="core-tech-requirements-per-game-example">Core Tech Requirements per Game Example</h3>
+<p>Legend: ✅ Applies directly | 🔵 Optional — only if the design needs it | ❌ Not needed | ⏭️ Second trimester</p>
+<table>
+<thead>
+<tr class="header">
+<th>Core Tech Requirement</th>
+<th>1. Dungeon Crawler</th>
+<th>2. Physics Puzzle</th>
+<th>3. Multiplayer Arena</th>
+<th>4. Tower Defense</th>
+<th>5. Rhythm Game</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>External Database (Firebase)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Authentication ⏭️</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>✅</td>
+<td>🔵</td>
+<td>🔵</td>
+</tr>
+<tr class="odd">
+<td>Analytics ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>C++ Performant Service</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Real-time C++ Simulation Loop</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Application Communication</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Continuous Integration</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Data-Driven Architecture</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Front-end + Local Backend</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Custom Tools Development</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>2D Graphical Output</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>3D (strong students only)</td>
+<td>🔵</td>
+<td>❌</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Networking System</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>🔵</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td><span style="color:#8E44AD"><strong>Replay System</strong> — record &amp; playback of game sessions (new)</span></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-each-requirement-applies">How each requirement applies</h3>
+<p><em>Common to all five:</em> C++ Performant Service (the game engine itself) · Application Communication (UI ↔︎ C++ engine messaging) · Continuous Integration (CMake, tests, build packaging) · Front-end + Local Backend (game front-end over the local C++ engine).</p>
+<p><strong>1. Top-down dungeon crawler</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — twin-stick touch controls on the reference phone (Pixel 8a/9a); the Native PC build is the development/iteration vehicle.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> HUD &amp; menus, sprite/tile renderer (SDL2/OpenGL), input &amp; camera. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Engine core (simulation loop, entity system, physics, AI, procedural generation), save/persistence, Firebase sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop:</em> game loop driving entity updates, physics &amp; collision, enemy AI.</li>
+<li><em>Data-driven:</em> rooms, items, enemies, and generation rules defined in data files.</li>
+<li><em>Custom tool:</em> room/level editor feeding the procedural generator.</li>
+<li><em>External DB:</em> cloud saves, leaderboards. <em>Auth ⏭️:</em> optional accounts. <em>Analytics ⏭️:</em> run statistics, death heatmaps.</li>
+<li><em>2D:</em> sprite/tile renderer with lighting. <em>3D:</em> optional 2.5D. <em>Networking:</em> not needed (single-player).</li>
+<li><span style="color:#8E44AD"><em>Replay System:</em></span> deterministic loop enables run recording/playback — great for bug repro and share-a-run.</li>
+</ul>
+<p><strong>2. 2D physics puzzle game</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — touch-first slingshot/drag interactions.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Touch UI, level renderer, particles; web build shell. <b>Languages:</b> C++, GLSL; HTML/JS/CSS (web shell via WASM).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Physics engine, level logic, progress &amp; level-sharing services. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop:</em> the physics engine (rigid bodies, constraints, collisions) IS the core loop.</li>
+<li><em>Data-driven:</em> puzzle levels fully described in data; no hard-coded levels.</li>
+<li><em>Custom tool:</em> puzzle editor with live physics preview.</li>
+<li><em>External DB:</em> level sharing, progress sync. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> per-level completion/star rates.</li>
+<li><em>2D:</em> physics-object rendering, particles. <em>Networking / 3D:</em> not needed — effort goes into physics quality.</li>
+<li><span style="color:#8E44AD"><em>Replay System:</em></span> solution replays per level — validates determinism of the physics engine.</li>
+</ul>
+<p><strong>3. Real-time multiplayer arena game</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — single-device party play and networked matches on phones; the PC build is used for development and network testing.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Arena renderer, lobby &amp; match UI, prediction display. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Authoritative simulation server, netcode (sockets/ENet), matchmaking via Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> authoritative C++ game state simulation at fixed tick rate.</li>
+<li><em>Networking:</em> core requirement — client prediction, state sync, 2–4 player matches.</li>
+<li><em>External DB:</em> matchmaking, match history. <em>Auth:</em> applies directly (player accounts). <em>Analytics ⏭️:</em> match/balance stats.</li>
+<li><em>Custom tool:</em> arena/map editor. <em>Data-driven:</em> ships/weapons/arenas as data assets.</li>
+<li><em>2D:</em> fast arena renderer. <em>3D:</em> optional.</li>
+<li><span style="color:#8E44AD"><em>Replay System:</em></span> match replays from the network input stream — doubles as a desync debugging tool.</li>
+</ul>
+<p><strong>4. Tower defense game</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — tap-to-place is ideal on touch.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Map/tower placement UI, HUD, wave feedback; web build shell. <b>Languages:</b> C++, GLSL; HTML/JS/CSS (web shell via WASM).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Wave simulation, pathfinding, balancing data services, leaderboards. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> wave spawning, pathfinding, projectile and damage simulation.</li>
+<li><em>Data-driven:</em> towers, enemies, waves, and maps defined in data — ideal balancing case.</li>
+<li><em>Custom tool:</em> map + wave editor as the primary tool deliverable.</li>
+<li><em>External DB:</em> leaderboards. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> level-difficulty funnels.</li>
+<li><em>2D:</em> map/tower/projectile rendering. <em>Networking:</em> optional (co-op mode). <em>3D:</em> optional.</li>
+<li><span style="color:#8E44AD"><em>Replay System:</em></span> replay of best runs attached to leaderboard entries.</li>
+</ul>
+<p><strong>5. Rhythm action game</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — touch taps on the reference phone (Pixel 8a/9a); the PC build is used for development and audio-latency tuning.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Note-highway renderer, hit feedback, custom GUI. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Audio-clock engine, input timing capture, replay system, score services. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop:</em> fixed-timestep loop synced to the audio clock — timing precision IS the game.</li>
+<li><em>Data-driven:</em> beatmaps (notes, timing windows) fully authored as data. <em>Custom tool:</em> beatmap editor.</li>
+<li><em>External DB:</em> scores, shared beatmaps. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> per-song accuracy stats.</li>
+<li><em>2D:</em> note highway and hit-feedback animation. <em>Networking / 3D:</em> not needed.</li>
+<li><span style="color:#8E44AD"><em>Replay System:</em></span> input-accurate replays verify scores and showcase perfect runs.</li>
+</ul>
+<h3 id="goals-per-example">Goals per Example</h3>
+<p>G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the Games pool in <code>milestone-goals-pool-per-category.md</code> (# = pool number).</p>
+<details><summary><b style="color:#0969DA">1. Top-down dungeon crawler</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with twin-stick/keyboard input and a fixed-timestep loop driving dungeon entity updates; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #5 Physics and M1 #7 Proc-Gen consume its tick and entity hooks directly.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Entity/component registry in C++ with rooms, items, enemies and generation rules defined in JSON (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> G1 (loop &amp; entity update hooks).</li><li><b>Feeds into:</b> M1 #7 (generation rules and room templates as data), M2 G2 (level editor edits this data), M2 #10 (enemy archetypes).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for entity/collision counts, Tracy profiling, Catch2 stress tests spawning hundreds of enemies, GitHub Actions Windows+Linux matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); determinism checks that M2 #12 Replay depends on.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sprite/tile renderer for dungeon rooms (SDL2/OpenGL, GLSL, stb_image), camera follow, basic dungeon lighting, FreeType HUD text.</li><li><b>Prerequisites:</b> G1 (loop &amp; window).</li><li><b>Feeds into:</b> M2 #4 (advanced lighting/shaders); every visible feature of the demo.</li></ul></details>
+</li>
+<li><strong>#5 Physics &amp; Collision</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom integrator with GLM math and uniform-grid broadphase resolving player/enemy/projectile collisions in crowded rooms.</li><li><b>Prerequisites:</b> G1 (fixed timestep), G2 (colliders as entity components).</li><li><b>Feeds into:</b> M2 #10 (agents move and collide via this system), M2 #12 (deterministic physics makes runs replayable).</li></ul></details>
+</li>
+<li><strong>#7 Procedural Level Generation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Seeded RNG with BSP or drunkard&#39;s-walk room-and-corridor generation, plus automated connectivity/validation tests for generated dungeons.</li><li><b>Prerequisites:</b> G2 (room, tile and enemy-placement data model).</li><li><b>Feeds into:</b> M2 G2 (editor authors room templates the generator consumes), M2 #12 (level seed is part of the replay record).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of generation and physics spikes, ASan on MSVC, memory pools for entities, and PC + mobile build validation of the crawler.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 dungeon codebase).</li><li><b>Feeds into:</b> M2 #4 (frame budget for lighting/shaders) and the packaged showcase build.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui room/level editor that authors room templates and item/enemy placements feeding the procedural generator, with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (live room preview)</li><li><b>Prerequisites:</b> M1 G2 (data-driven rooms/items/enemies), M1 #7 (generator that consumes the templates).</li><li><b>Feeds into:</b> Dungeon content variety for the showcase; live preview uses M2 #4 rendering.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, CPack packaging of the Windows demo, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every crawler goal.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL dynamic lighting and shadows for torch-lit dungeons, framebuffer post-FX, texture atlases for sprite batching.</li><li><b>Prerequisites:</b> M1 #4 (base renderer), M2 G1 (frame budget from optimization).</li><li><b>Feeds into:</b> Showcase visuals and the live view inside the M2 G2 level editor.</li></ul></details>
+</li>
+<li><strong>#10 AI — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Behavior trees, pack/squad coordination and boss patterns for dungeon enemies, with difficulty tiers per floor (custom C++).</li><li><b>Prerequisites:</b> M1 G2 (enemy archetypes as data), M1 #5 (agent movement &amp; collision).</li><li><b>Feeds into:</b> Showcase encounters; seeded decisions keep M2 #12 replays reproducible.</li></ul></details>
+</li>
+<li><strong>#12 Replay System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Input/state serialization on the fixed-timestep loop so level seed + input log reproduces a full run, with playback controls for share-a-run.</li><li><b>Prerequisites:</b> M1 G1 (deterministic loop), M1 #7 (seeded generation), M1 G3 (debug hooks).</li><li><b>Feeds into:</b> Bug reproduction during development and the share-a-run showcase feature.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">2. 2D physics puzzle game</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with touch/mouse drag-and-slingshot input and a fixed-timestep loop stepping the physics simulation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #5 Physics runs inside its fixed timestep as the core loop.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Puzzle levels fully described in JSON (bodies, ropes, goals, star thresholds) with hot-reload for rapid tuning; no hard-coded levels.</li><li><b>Prerequisites:</b> G1 (loop &amp; object update hooks).</li><li><b>Feeds into:</b> M1 #5 (body definitions), M2 G2 and M2 #6 (puzzle editor authors this format).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui physics debug draw (contacts, AABBs, joints), Tracy profiling, Catch2 stress tests with hundreds of bodies, GitHub Actions Windows+Linux matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); determinism validation that M2 #12 solution replays rely on.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Renderer for physics objects (crates, ropes, projectiles) with camera and parallax backgrounds; SDL2/OpenGL, GLSL, stb_image.</li><li><b>Prerequisites:</b> G1 (loop &amp; window).</li><li><b>Feeds into:</b> M1 #13 (particles draw through it), M2 #6 (live physics preview in the editor).</li></ul></details>
+</li>
+<li><strong>#5 Physics &amp; Collision</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The core deliverable — rigid bodies, custom integrator, quadtree/grid broadphase, restitution and friction tuned for slingshot puzzles (GLM math).</li><li><b>Prerequisites:</b> G1 (fixed timestep), G2 (bodies and constraints as level data).</li><li><b>Feeds into:</b> M2 #11 (constraints and optimization extend it), M2 #12 (its determinism makes solution replays valid).</li></ul></details>
+</li>
+<li><strong>#13 Particle &amp; VFX System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pooled CPU/GPU emitters (OpenGL instancing) for destruction debris, dust puffs and star-rating celebrations, with emitter configs as data.</li><li><b>Prerequisites:</b> M1 #4 (2D renderer).</li><li><b>Feeds into:</b> Showcase juice on every solved puzzle; preview inside the M2 #6 editor.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of solver hot spots, sanitizers, body/particle memory pooling, and Emscripten WASM build validation for the mobile-web target.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 physics codebase).</li><li><b>Feeds into:</b> The web/mobile deliverable and the stable frame rate M2 #11 needs.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui puzzle editor placing bodies, ropes and goal zones with JSON round-trip serialization and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (live level preview)</li><li><b>Prerequisites:</b> M1 G2 (puzzle level data format).</li><li><b>Feeds into:</b> M2 #6 (advanced editor features build directly on it).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, packaging of both the native build and the Emscripten web build artifact.</li><li><b>Prerequisites:</b> M1 G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every puzzle-game goal.</li></ul></details>
+</li>
+<li><strong>#6 Content Editor — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Live physics preview inside the editor, drag-drop object placement and deep undo/redo so designers test puzzles without leaving the tool.</li><li><b>Prerequisites:</b> M2 G2 (editor core), M1 #5 (physics engine to run the preview).</li><li><b>Feeds into:</b> The content-creation showcase and community level sharing via Firebase.</li></ul></details>
+</li>
+<li><strong>#11 Physics — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Constraint/joint solvers for ropes and hinges, continuous collision for fast projectiles, and solver optimization (GLM math).</li><li><b>Prerequisites:</b> M1 #5 (base physics &amp; collision).</li><li><b>Feeds into:</b> Richer puzzle mechanics at showcase; M2 #12 replays must stay deterministic through it.</li></ul></details>
+</li>
+<li><strong>#12 Replay System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-level solution replays recorded as input log + seed, with playback controls — doubles as a determinism test of the physics engine.</li><li><b>Prerequisites:</b> M1 G1 (fixed timestep), M1 #5 (deterministic physics), M1 G3 (debug hooks).</li><li><b>Feeds into:</b> Shared solution replays and physics regression testing.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">3. Real-time multiplayer arena game</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with an authoritative fixed-tick simulation designed to also run headless on the server; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #11 transmits this tick&#39;s state and M2 #7 predicts it.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Ships, weapons and arenas defined as JSON data assets (nlohmann/json) with hot-reload, shared by client and server builds.</li><li><b>Prerequisites:</b> G1 (loop &amp; entity update hooks).</li><li><b>Feeds into:</b> M1 #11 (entity serialization over the wire), M2 G2 (arena editor edits this data).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui net/sim debug overlays (tick rate, RTT, packet loss), Tracy profiling, Catch2 stress tests simulating 4 concurrent clients, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); desync detection tooling that M2 #7 and M2 #12 depend on.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Fast arena renderer (ships, projectiles, pickups) with interpolation of remote entities; SDL2/OpenGL, GLSL, FreeType for lobby/match text.</li><li><b>Prerequisites:</b> G1 (loop &amp; window).</li><li><b>Feeds into:</b> M2 #7 (prediction display and smoothing), all lobby and match UI.</li></ul></details>
+</li>
+<li><strong>#5 Physics &amp; Collision</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Deterministic ship movement and projectile collision (GLM, custom integrator, grid broadphase) so client and server compute identical results.</li><li><b>Prerequisites:</b> G1 (fixed tick), G2 (ship/projectile definitions).</li><li><b>Feeds into:</b> M2 #7 (prediction and rollback re-run this sim), M2 #12 (deterministic replays).</li></ul></details>
+</li>
+<li><strong>#11 Networking Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ENet/Winsock2 UDP transport with a custom protocol, entity serialization, and a lobby flow for 2–4 player matches.</li><li><b>Prerequisites:</b> G1 (tick to synchronize), G2 (serializable entity data).</li><li><b>Feeds into:</b> M2 #7 (snapshots &amp; prediction), M2 #8 (matchmaking hands players into this lobby).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of tick and serialization costs, sanitizers, a dedicated network thread beside the sim thread, and PC + mobile build validation.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 client/server codebase).</li><li><b>Feeds into:</b> The stable tick rate M2 #7 requires and the showcase builds.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui arena/map editor authoring arena layouts, obstacles and spawn points as JSON, with undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (arena preview)</li><li><b>Prerequisites:</b> M1 G2 (arena data format).</li><li><b>Feeds into:</b> Arena variety for showcase matches; arenas load on both client and server.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, and packaging of both the client and the dedicated-server build via GitHub Actions.</li><li><b>Prerequisites:</b> M1 G3 (CI and test foundation).</li><li><b>Feeds into:</b> Deployable server + client showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#7 Networking — Match Sync &amp; Prediction</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> UDP snapshots with delta compression over the M1 transport, client-side prediction with rollback, and lag compensation for hit registration.</li><li><b>Prerequisites:</b> M1 #11 (transport &amp; protocol), M1 #5 (deterministic sim to predict), M2 G1 (optimized tick).</li><li><b>Feeds into:</b> Playable 2–4 player showcase matches; its input stream is the source for M2 #12.</li></ul></details>
+</li>
+<li><strong>#8 Firebase — Accounts, Leaderboards &amp; Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth player accounts, Firestore matchmaking queue and match history, and Analytics for match/balance stats — REST API from C++.</li><li><b>Prerequisites:</b> M1 G2 (player/match data model), M1 #11 (lobby the matchmaker hands off to).</li><li><b>Feeds into:</b> Matchmaking into live matches, ranked leaderboards, and balance analysis.</li></ul></details>
+</li>
+<li><strong>#12 Replay System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Match replays recorded from the network input stream and re-simulated through the deterministic tick — doubles as a desync debugging tool.</li><li><b>Prerequisites:</b> M2 #7 (input/snapshot stream), M1 G1 (deterministic loop), M1 G3 (debug hooks).</li><li><b>Feeds into:</b> Desync diagnosis during development and match replays at showcase.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">4. Tower defense game</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with tap-to-place input and a fixed-timestep loop running wave spawning, projectile and damage simulation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #8 pathfinding and the wave sim run on its tick.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Towers, enemies, waves and maps defined in JSON (nlohmann/json) with hot-reload — the backbone of the balancing workflow.</li><li><b>Prerequisites:</b> G1 (loop &amp; entity update hooks).</li><li><b>Feeds into:</b> M1 #8 (enemy stats &amp; map grids), M2 G2 (map/wave editor), M2 #16 (rebalancing writes back here).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for path debug and wave stats, Tracy profiling, Catch2 stress tests with hundreds of simultaneous enemies, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening) and the performance budget M2 G1 validates for web/mobile.</li></ul></details>
+</li>
+<li><strong>#4 2D Graphics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Map, tower and projectile sprite rendering with range indicators and wave feedback effects; SDL2/OpenGL, GLSL, stb_image.</li><li><b>Prerequisites:</b> G1 (loop &amp; window).</li><li><b>Feeds into:</b> M1 #10 (HUD draws over it), M2 G2 and M2 #6 (editor map preview).</li></ul></details>
+</li>
+<li><strong>#8 Enemy AI &amp; Pathfinding</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> A* or flow fields over the map grid, steering along paths, and state machines for spawn/march/attack behavior (custom C++).</li><li><b>Prerequisites:</b> G1 (tick), G2 (maps and enemy definitions as data).</li><li><b>Feeds into:</b> The wave simulation&#39;s depth; leak/path statistics that M2 #16 captures for balancing.</li></ul></details>
+</li>
+<li><strong>#10 UI / HUD System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tower placement and upgrade menus plus HUD (lives, gold, wave counter) built on custom widgets or Dear ImGui with FreeType and input routing.</li><li><b>Prerequisites:</b> M1 #4 (2D rendering).</li><li><b>Feeds into:</b> Every user-facing screen; M2 G2 reuses its widget layer for the editor.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of pathfinding/wave hot spots, memory pools for enemies and projectiles, sanitizers, and Emscripten WASM validation for the mobile-web target.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 tower-defense codebase).</li><li><b>Feeds into:</b> The web/mobile deliverable and headroom for large late-game waves.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The map + wave editor (the project&#39;s primary tool) — paint paths and build slots, define wave timelines, JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (map view)</li><li><b>Prerequisites:</b> M1 G2 (tower/enemy/wave/map data), M1 #10 (UI widget layer).</li><li><b>Feeds into:</b> M2 #6 (advanced tool features), M2 #16 (balancing edits applied through it).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, packaging of native and Emscripten web builds via GitHub Actions.</li><li><b>Prerequisites:</b> M1 G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every tower-defense goal.</li></ul></details>
+</li>
+<li><strong>#6 Content Editor — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Drag-drop tower/wave editing, live wave-preview binding that runs the sim inside the editor, and deep undo/redo.</li><li><b>Prerequisites:</b> M2 G2 (editor core), M1 #8 (wave sim used for previews).</li><li><b>Feeds into:</b> The content-creation showcase and the M2 #16 tuning loop.</li></ul></details>
+</li>
+<li><strong>#8 Firebase — Accounts, Leaderboards &amp; Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firestore leaderboards, optional Firebase Auth accounts, and Analytics events for level-difficulty funnels — REST API from C++.</li><li><b>Prerequisites:</b> M1 G2 (score/run data model).</li><li><b>Feeds into:</b> M2 #16 (its telemetry is the balancing input) and competitive showcase leaderboards.</li></ul></details>
+</li>
+<li><strong>#16 Telemetry-Driven Balancing Tools</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Gameplay event capture (leaks, tower DPS, gold curves) stored via Firebase, an ImGui tuning dashboard, and data-driven rebalancing of wave/tower values.</li><li><b>Prerequisites:</b> M2 #8 (analytics pipeline), M2 G2 (editor to apply changes), M1 G2 (balance values as data).</li><li><b>Feeds into:</b> Design iteration during the showcase phase — tuned difficulty across all maps.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">5. Rhythm action game</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep loop slaved to the audio clock and low-latency input capture — timing precision is the game; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 #6 supplies the clock it syncs to and M1 #15 records its ticks.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Beatmaps (notes, lanes, timing windows) fully authored as JSON data with hot-reload for tuning difficulty.</li><li><b>Prerequisites:</b> G1 (loop &amp; timing hooks).</li><li><b>Feeds into:</b> M1 #15 (replays reference beatmap + inputs), M2 G2 (beatmap editor authors this format).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui hit-offset histograms and latency overlays, Tracy profiling, Catch2 stress tests on dense note streams, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); the latency budget M2 #9 and M2 #15 must respect.</li></ul></details>
+</li>
+<li><strong>#6 Audio System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> FMOD or OpenAL playback exposing a sample-accurate audio clock, stb_vorbis song decoding, and event-triggered hit/miss cues.</li><li><b>Prerequisites:</b> G1 (loop that syncs to its clock).</li><li><b>Feeds into:</b> All note-timing judgment, M2 G2 (editor scrubbing/playback), M2 #9 (advanced audio).</li></ul></details>
+</li>
+<li><strong>#9 Animation System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Note-highway scroll, hit-feedback and combo animations via sprite animation with blending and a state graph, driven from JSON data.</li><li><b>Prerequisites:</b> G1 (render loop &amp; timing).</li><li><b>Feeds into:</b> The animation-heavy feedback the design centers on; M2 #5 (animated GUI transitions).</li></ul></details>
+</li>
+<li><strong>#15 Deterministic Input &amp; Replay Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Timestamped input capture on the fixed timestep with input/state serialization and playback — input-accurate replays that verify scores.</li><li><b>Prerequisites:</b> G1 (deterministic audio-synced loop), G3 (debug hooks).</li><li><b>Feeds into:</b> Score validation and perfect-run showcases; latency debugging for M2 #15.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Input-to-audio latency profiling (Tracy), sanitizers, allocation-free hot paths in the judgment loop, and early PC + mobile build validation.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 timing codebase).</li><li><b>Feeds into:</b> M2 #15 (the port depends on this latency headroom) and showcase stability.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The beatmap editor — place notes on a timeline against song playback and waveform display, with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, FMOD/OpenAL (song playback &amp; waveform data)</li><li><b>Prerequisites:</b> M1 G2 (beatmap format), M1 #6 (audio playback for scrubbing).</li><li><b>Feeds into:</b> Authored songs for the showcase; M2 #5 provides its GUI chrome.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, and packaging of PC and mobile builds via GitHub Actions.</li><li><b>Prerequisites:</b> M1 G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every rhythm-game goal, including the M2 #15 port.</li></ul></details>
+</li>
+<li><strong>#5 Custom In-Product GUI System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> A custom skinned widget system (FreeType text, input routing, layout rules) for song select, results screens and editor chrome — beyond stock ImGui.</li><li><b>Prerequisites:</b> M1 G1 (render loop), M1 #9 (animated transitions and feedback).</li><li><b>Feeds into:</b> Every user-facing screen; M2 G2 hosts the beatmap editor inside it.</li></ul></details>
+</li>
+<li><strong>#9 Audio — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> FMOD/OpenAL mixing buses and DSP effects, performance-reactive music layers, and an audio-latency calibration/offset flow.</li><li><b>Prerequisites:</b> M1 #6 (audio system &amp; clock).</li><li><b>Feeds into:</b> Showcase audio polish; calibration is essential for M2 #15 on mobile hardware.</li></ul></details>
+</li>
+<li><strong>#15 Mobile Platform Port</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Touch-tap input mapping for the note highway, on-device frame and audio-latency budgeting, Android NDK or Emscripten build.</li><li><b>Prerequisites:</b> M2 G1 (optimization &amp; platform validation), M2 #9 (latency calibration).</li><li><b>Feeds into:</b> The final native-mobile deliverable named in the platform fit.</li></ul></details>
+</li>
+</ul>
+</details>
+</body>
+</html>

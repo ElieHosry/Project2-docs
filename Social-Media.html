@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Social-Media</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Social-Media</h1>
+</header>
+<p><a href="project-examples-per-category.html">← Back to overview</a></p>
+<h2 id="social-media">Social Media</h2>
+<h3 id="scope">Scope</h3>
+<p>Multi-user social products — feeds, sharing, chat, communities, collaborative spaces. Real-time networking is the natural core, and a load-bearing C++ service (ranking, matching, shared state) is the guard-rail requirement: Firebase alone must never be the backend.</p>
+<h3 id="examples">Examples</h3>
+<ol>
+<li><p><strong>Campus micro-blogging app</strong> — real-time feed and presence, C++ feed-ranking service, moderation dashboard as the custom tool. <em>References:</em></p>
+<ul>
+<li><a href="https://fizz.social/">Fizz</a></li>
+<li><a href="https://www.youtube.com/watch?v=TQpXKbI4dSY">Yik Yak app overview (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Interest-based event meetup app</strong> — live chat per event, recommendation engine in C++, event-creation and moderation tools. <em>References:</em></p>
+<ul>
+<li><a href="https://www.meetup.com/">Meetup</a></li>
+<li><a href="https://www.youtube.com/watch?v=JffgrXrPeVk">Meetup tutorial (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Collaborative pixel-art canvas</strong> (r/place style) — shared real-time canvas, high-frequency update loop, rate-limiting service, admin/replay tool. <em>References:</em></p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/R/place">r/place (Wikipedia)</a></li>
+<li><a href="https://www.youtube.com/watch?v=K5O3UgLG2Jw">r/place 2022 timelapse (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Study-group matching &amp; rooms app</strong> — students match by course/schedule, join live study rooms with shared timers and chat; C++ matching engine; moderation tools. <em>References:</em></p>
+<ul>
+<li><a href="https://www.studystream.live/focus-room">StudyStream focus room</a></li>
+<li><a href="https://www.youtube.com/watch?v=U_tUIZM9yWc">Focusmate demo (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Campus photo sharing app</strong> — daily photo feed and galleries with a C++ media pipeline; moderation-first design. <em>References:</em></p>
+<ul>
+<li><a href="https://bereal.com/">BeReal (official)</a></li>
+<li><a href="https://www.youtube.com/watch?v=-IEj_11S9Rs">How to use BeReal (YouTube)</a></li>
+<li><a href="https://apps.apple.com/us/app/bereal-photos-friends-daily/id1459645446">BeReal (App Store)</a></li>
+</ul></li>
+</ol>
+<h3 id="core-tech-requirements-per-social-media-example">Core Tech Requirements per Social Media Example</h3>
+<p>Legend: ✅ Applies directly | 🔶 Applies with domain adaptation | ❌ Not needed | ⏭️ Second trimester</p>
+<table>
+<thead>
+<tr class="header">
+<th>Core Tech Requirement</th>
+<th>1. Campus Micro-blog</th>
+<th>2. Event Meetup</th>
+<th>3. Pixel Canvas</th>
+<th>4. Study Rooms</th>
+<th>5. Photo Sharing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>External Database (Firebase)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Authentication ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Analytics ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>C++ Performant Service</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Real-time C++ Simulation Loop</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>✅</td>
+<td>🔶</td>
+<td>🔶</td>
+</tr>
+<tr class="even">
+<td>Application Communication</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Continuous Integration</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Data-Driven Architecture</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Front-end + Local Backend</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Custom Tools Development</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+</tr>
+<tr class="odd">
+<td>2D Graphical Output</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>✅</td>
+<td>🔶</td>
+<td>🔶</td>
+</tr>
+<tr class="even">
+<td>3D (strong students only)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Networking System</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td><span style="color:#8E44AD"><strong>Content Moderation Pipeline</strong> — filters, report queue, action tools (new)</span></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-each-requirement-applies">How each requirement applies</h3>
+<p><em>Common to all five:</em> Networking ✅ (real-time communication is the category&#39;s defining requirement) · C++ Performant Service (feed/matching/canvas engine) · Application Communication · Continuous Integration · Front-end + Local Backend · Data-Driven Architecture (feed rules, event types, room configs as data) · Authentication ✅ (identity is central).</p>
+<p><strong>1. Campus micro-blogging</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — feed apps live on the phone.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Feed UI, post composer, profile screens. <b>Languages:</b> C++ (custom UI) or HTML/JS/CSS.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Feed-ranking service, social graph, moderation queue, Firebase identity &amp; data. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> C++ feed-ranking service scoring posts in real time.</li>
+<li><em>2D (adapted):</em> custom feed UI rendering. <em>Custom tool (adapted):</em> moderation dashboard.</li>
+<li><em>External DB / Analytics ⏭️:</em> posts, follows, engagement metrics.</li>
+<li><span style="color:#8E44AD"><em>Moderation pipeline:</em></span> word filters + report queue feeding the moderation dashboard — essential for a campus deployment.</li>
+</ul>
+<p><strong>2. Event meetup</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — event links must open in the browser.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Event pages, per-event chat UI, discovery screens. <b>Languages:</b> HTML/JS/CSS (+ WASM).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Recommendation engine, chat backend (WebSockets), moderation, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> recommendation engine matching users to events.</li>
+<li><em>Networking:</em> live per-event chat. <em>Custom tool (adapted):</em> event creation + moderation tools.</li>
+<li><em>External DB / Analytics ⏭️:</em> events, RSVPs, attendance stats.</li>
+<li><span style="color:#8E44AD"><em>Moderation pipeline:</em></span> event/report review before promotion; chat message filtering.</li>
+</ul>
+<p><strong>3. Collaborative pixel canvas</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native mobile</b> — the shared canvas should be reachable from any phone; web-first. The PC build is used for development.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Shared canvas renderer, palette &amp; zoom UI. <b>Languages:</b> HTML/JS/CSS + C++ canvas renderer via WASM, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Canvas state engine (high-frequency ticks), rate limiter, sync server, history storage. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> genuinely high-frequency shared canvas state with rate limiting — the closest social match to the raw requirement.</li>
+<li><em>2D:</em> canvas rendering applies directly. <em>Custom tool (adapted):</em> admin/replay (timelapse) tool.</li>
+<li><em>External DB / Analytics ⏭️:</em> canvas history, placement stats.</li>
+<li><span style="color:#8E44AD"><em>Moderation pipeline:</em></span> automated pattern detection + admin rollback of vandalized regions.</li>
+</ul>
+<p><strong>4. Study-group matching &amp; rooms</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — join and run study sessions from the phone; the PC build is used for development.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Study room UI, shared timers, presence indicators. <b>Languages:</b> HTML/JS/CSS.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Matching engine, room/timer synchronization, chat backend, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> matching engine (course/schedule) + synchronized room timers.</li>
+<li><em>Networking:</em> live rooms, presence, chat. <em>Custom tool (adapted):</em> moderation and room management.</li>
+<li><em>External DB / Analytics ⏭️:</em> courses, matches, session/focus statistics.</li>
+<li><span style="color:#8E44AD"><em>Moderation pipeline:</em></span> room reports, user blocking, and chat filtering keep rooms safe.</li>
+</ul>
+<p><strong>5. Campus photo sharing app</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — a camera-first experience.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Camera capture flow, gallery/feed rendering. <b>Languages:</b> C++ (native mobile UI), GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Media pipeline (resize, filters, thumbnails), feed assembly, moderation queue, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> feed assembly plus C++ image-processing pipeline (resize, filters, thumbnails).</li>
+<li><em>Networking:</em> real-time feed updates and presence.</li>
+<li><em>Data-driven:</em> post/gallery models as data. <em>Custom tool (adapted):</em> moderation dashboard.</li>
+<li><em>2D (adapted):</em> custom gallery/feed rendering. <em>External DB / Analytics ⏭️:</em> media metadata, engagement events.</li>
+<li><span style="color:#8E44AD"><em>Moderation pipeline:</em></span> image report queue and reviewer actions — the design center of this example.</li>
+</ul>
+<h3 id="goals-per-example">Goals per Example</h3>
+<p>G1–G3 ⭐ are the common goals; the other 3 come from the Social Media pool (# = pool number).</p>
+<details><summary><b style="color:#0969DA">1. Campus micro-blogging app</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep C++17/20 loop driving feed refresh, presence updates and the post composer&#39;s input handling; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #4 (networking runs on its tick) and M1 #9 (ranking passes scheduled by the loop); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Posts, users and feed-ranking rules as hot-reloadable JSON models (nlohmann/json), so ranking weights and post types are tunable data.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #9 and #14 consume the post/user model; M2 G2 and #6 edit and moderate it.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays showing live rank scores and socket traffic, Tracy profiling of ranking passes, Catch2 tests, stress runs with thousands of synthetic posts, GitHub Actions (Windows + Linux).</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the safety net proving M1 #4 and #9 hold under load.</li></ul></details>
+</li>
+<li><strong>#4 Real-time Networking Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Winsock2/ENet client-server layer (native-mobile fit) with a custom serialized protocol for post publish/subscribe and presence heartbeats.</li><li><b>Prerequisites:</b> G1 (runs on its tick).</li><li><b>Feeds into:</b> M1 #14 (live follow/profile updates); M2 #6 (report submission) and real-time feed delivery.</li></ul></details>
+</li>
+<li><strong>#9 Ranking Engine — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The C++ feed-ranking service — weighted scoring of recency and engagement with priority queues and incremental re-ranking each tick.</li><li><b>Prerequisites:</b> G1 (tick) and G2 (post/user model).</li><li><b>Feeds into:</b> M2 #8 (recommendation layer); the ranked feed every user sees.</li></ul></details>
+</li>
+<li><strong>#14 Profile &amp; Social Graph</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Follows and profiles as Firestore adjacency lists with denormalized follower counts, surfaced in the custom C++ profile screens.</li><li><b>Prerequisites:</b> G2 (user model); M1 #4 for live follow updates.</li><li><b>Feeds into:</b> M1 #9 (follow graph as ranking input); M2 #7 attaches full Auth identity.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy/ASan pass over the ranking service and socket layer, feed scoring moved to worker threads, validation of the native-mobile target (Android emulator / Emscripten check).</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #8 (performance headroom for recommendations); packaged builds via G3.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Admin tooling core in Dear ImGui — browse, edit and remove posts and users with JSON round-trip and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (data-driven post/user model).</li><li><b>Feeds into:</b> M2 #6 — the moderation dashboard is built directly on this core.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, CPack packaging of the mobile/desktop clients, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#6 Moderation Dashboard &amp; Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ wordlist/pattern filters on incoming posts plus a Firestore report queue surfaced in the G2 admin tool — essential for a campus deployment.</li><li><b>Prerequisites:</b> M2 G2 (tool core), M1 G2 (content model), M2 #7 (identity behind reports).</li><li><b>Feeds into:</b> Safe launch of the showcase feed.</li></ul></details>
+</li>
+<li><strong>#7 Firebase — Auth, Push &amp; Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth with campus email, FCM push for mentions and replies, Analytics on engagement events — REST API from C++.</li><li><b>Prerequisites:</b> M1 G2 (data model to sync) and M1 #14 (graph already in Firestore).</li><li><b>Feeds into:</b> M2 #6 (verified reporters) and M2 #8 (engagement signals).</li></ul></details>
+</li>
+<li><strong>#8 Ranking Engine II</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Recommendation layer over the M1 ranker — weighted features and cosine similarity across the follow graph and engagement history, with candidate generation and evaluation metrics.</li><li><b>Prerequisites:</b> M1 #9 and #14; M2 G1 (optimization headroom).</li><li><b>Feeds into:</b> The showcase &quot;for you&quot; feed and discovery quality.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">2. Interest-based event meetup app</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep C++17/20 loop hosting the recommendation engine and chat backend that the HTML/JS front end talks to; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #10 (chat backend runs on its tick); M2 #8 (the recommendation loop matures here); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Users, interests, events and RSVPs as hot-reloadable JSON entity models (nlohmann/json).</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #7 (event schemas extend it) and #8 (data to sync); M2 G2 editing.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for chat traffic and recommendation scores, Tracy profiling, Catch2 tests, stress runs with synthetic events and users, GitHub Actions (Windows + Linux).</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; keeps M1 #10 honest under many concurrent chatters.</li></ul></details>
+</li>
+<li><strong>#7 Data-Driven Content Models (events)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event types, categories and RSVP rules as versioned, validated JSON schemas with hot reload — new event kinds ship without code changes.</li><li><b>Prerequisites:</b> M1 G2 (data-driven architecture).</li><li><b>Feeds into:</b> M2 G2 (event-creation editor) and M2 #11 (the corpus it indexes).</li></ul></details>
+</li>
+<li><strong>#8 Firebase — Identity &amp; Data</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth plus Firestore for users, events and RSVPs — JS SDK on the web front end, REST API from the C++ backend.</li><li><b>Prerequisites:</b> M1 G2 (model to sync).</li><li><b>Feeds into:</b> M1 #10 (chat identity); M2 #6 (report queue storage).</li></ul></details>
+</li>
+<li><strong>#10 Chat System — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-event chat over WebSockets (browser-friendly, since event links open on the web) with presence heartbeats and a message schema.</li><li><b>Prerequisites:</b> G1 (loop); M1 #8 (identity).</li><li><b>Feeds into:</b> M2 #6 (message filtering); the live-event experience at showcase.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Profiling and hardening of the recommendation and chat backends (Tracy, sanitizers, threading), plus Emscripten validation of the mobile-web build.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #8 (headroom for scoring many events); packaged builds via G3.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event-creation and management tooling core (web UI or Dear ImGui) with JSON round-trip and undo/redo over the M1 #7 schemas.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (web UI) or Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 and #7 (event content models).</li><li><b>Feeds into:</b> M2 #6 — moderation actions live in the same tool.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the native app plus the WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#6 Moderation Dashboard &amp; Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Review queue for reported events and chat messages, C++ word filters, and a promotion gate before events go public — dashboard built on the G2 core.</li><li><b>Prerequisites:</b> M2 G2 (tool core); M1 #8 (identity) and #10 (chat to filter).</li><li><b>Feeds into:</b> Safe public event listings at showcase.</li></ul></details>
+</li>
+<li><strong>#8 Matching Engine II (recommendations)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ recommendation engine scoring users against events — weighted features and cosine similarity over interests and RSVP history, with evaluation metrics.</li><li><b>Prerequisites:</b> M1 G1 (recommendation loop) and G2/#7 (event and interest data).</li><li><b>Feeds into:</b> M2 #11 (personalized discovery); the suggestion feed at showcase.</li></ul></details>
+</li>
+<li><strong>#11 Search &amp; Discovery</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Incremental inverted index over event titles and tags with TF-IDF ranking and a custom C++ query parser.</li><li><b>Prerequisites:</b> M1 #7 (content models to index).</li><li><b>Feeds into:</b> The discovery screens, blended with M2 #8 recommendations.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">3. Collaborative pixel-art canvas</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a genuinely high-frequency fixed-timestep loop processing pixel placements — the raw requirement, unadapted — building natively and via Emscripten; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #5 (the state engine ticks inside it); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong> &lt;parameter <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Canvas dimensions, palettes, cooldown rules and region metadata as hot-reloadable JSON data.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #5 and #15 read their configuration from it; M2 G2 edits it.</li></ul></details></li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Stress tests at thousands of placements per second, Tracy on the tick, ImGui dirty-region overlays, Catch2 tests, GitHub Actions (Windows + Linux).</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; proves M1 #5 and #15 survive swarm load.</li></ul></details>
+</li>
+<li><strong>#5 Canvas State Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The shared C++ pixel grid — dirty-region tracking, high-frequency tick processing and an append-only placement history.</li><li><b>Prerequisites:</b> G1 (loop) and G2 (canvas configuration).</li><li><b>Feeds into:</b> M1 #6 (render source) and #15 (write guard); M2 #4 (sync) and #10 (replay).</li></ul></details>
+</li>
+<li><strong>#6 Custom 2D Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL ES/GLSL canvas renderer with zoom/pan and palette UI, compiled to WASM so the web front end shares the C++ renderer.</li><li><b>Prerequisites:</b> G1 (shell); renders M1 #5 state.</li><li><b>Feeds into:</b> M2 #10 (replay view) and every user-facing screen.</li></ul></details>
+</li>
+<li><strong>#15 Rate Limiting &amp; Anti-Abuse</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Token-bucket cooldowns per user/IP in C++ guarding placement writes, backed by Firebase security rules.</li><li><b>Prerequisites:</b> M1 #5 (the writes it guards).</li><li><b>Feeds into:</b> M2 #6 (abuse signals feed pattern detection); a stable shared canvas.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Optimization of tick and renderer at swarm scale (memory pools, threading, Tracy, sanitizers), validating native desktop, mobile and Emscripten/WASM targets — all three platforms.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #4 (scale work needs this headroom); G3 builds.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Admin tool core in Dear ImGui — inspect canvas regions, edit palettes and cooldown configuration, JSON round-trip with undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (canvas region view)</li><li><b>Prerequisites:</b> M1 G2 (canvas configuration model).</li><li><b>Feeds into:</b> M2 #10 (replay tool) and #6 (rollback actions) are built on it.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of native builds and the WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Showcase deployment on every platform.</li></ul></details>
+</li>
+<li><strong>#4 Networking II — Scale</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Delta-compressed canvas snapshots with client prediction — ENet/UDP for native clients, WebSockets for the browser — serving many simultaneous placers.</li><li><b>Prerequisites:</b> M1 #5 (state and dirty regions to sync); M2 G1 (optimization).</li><li><b>Feeds into:</b> The live multi-user showcase; M2 #10 can replay from the sync stream.</li></ul></details>
+</li>
+<li><strong>#6 Moderation Dashboard &amp; Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Automated vandalism pattern detection over placement history plus admin rollback of damaged regions, surfaced in the G2 tool.</li><li><b>Prerequisites:</b> M2 G2 (tool core); M1 #5 (history) and #15 (abuse signals).</li><li><b>Feeds into:</b> A defensible public canvas at showcase.</li></ul></details>
+</li>
+<li><strong>#10 Content Tools — Advanced (replay/timelapse)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Timelapse/replay tool scrubbing the M1 #5 placement history with export of snapshot images.</li><li><b>Prerequisites:</b> M2 G2 (tool core); M1 #5 (append-only history).</li><li><b>Feeds into:</b> The showcase timelapse; M2 #6 (evidence view for rollbacks).</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">4. Study-group matching &amp; rooms app</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (native PC client) with a fixed-timestep loop driving the matching engine and keeping shared room timers in sync; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #9 (matching runs on the loop) and #10 (presence/timer ticks); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Courses, schedules, availability and room configurations as hot-reloadable JSON entity models.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #9 (match inputs) and #12 (event model); M2 G2 room templates.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for match scores and timer drift, Tracy profiling, Catch2 tests, stress runs with synthetic student pools, GitHub Actions (Windows + Linux).</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; validates M1 #9 fairness and speed under load.</li></ul></details>
+</li>
+<li><strong>#9 Matching Engine — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The C++ matcher scoring students by course overlap and schedule fit — weighted scoring, priority queues, incremental re-matching as availability changes.</li><li><b>Prerequisites:</b> G1 (loop) and G2 (course/schedule model).</li><li><b>Feeds into:</b> Room formation consumed by M2 #9; M2 #16 filters its candidates through block lists.</li></ul></details>
+</li>
+<li><strong>#10 Chat System — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Room chat over WebSockets (fits the mobile-browser front end) with presence heartbeats and a message schema.</li><li><b>Prerequisites:</b> G1 (loop and presence tick).</li><li><b>Feeds into:</b> M2 #9 (rooms/presence upgrade) and #16 (chat filtering).</li></ul></details>
+</li>
+<li><strong>#12 Notification System — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> In-app event bus plus FCM/service-worker groundwork for &quot;match found&quot; and session-start alerts.</li><li><b>Prerequisites:</b> G1 (event bus on the loop) and G2 (event model).</li><li><b>Feeds into:</b> M2 #7 completes push delivery; session reminders at showcase.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Hardening of matching and timer synchronization (threading, Tracy, sanitizers), validating both targets — native PC build and the Emscripten web build for mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #9 room scale; G3 packaging.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Room-management and moderation tooling core — configure rooms, timers and course lists in Dear ImGui with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (room/course data model).</li><li><b>Feeds into:</b> M2 #16 — block and report actions live in this tool.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaged native PC build plus WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#7 Firebase — Auth, Push &amp; Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth for student identity, FCM push completing the M1 #12 pipeline, Analytics capturing session and focus statistics.</li><li><b>Prerequisites:</b> M1 G2 (model to sync) and #12 (notification groundwork).</li><li><b>Feeds into:</b> M2 #16 (identity-based blocking); focus-stats reporting at showcase.</li></ul></details>
+</li>
+<li><strong>#9 Chat II (rooms, presence)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rooms, presence, typing indicators and Firebase-stored message history layered on the M1 chat backend.</li><li><b>Prerequisites:</b> M1 #10 (chat foundation); M2 #7 (identity and history storage).</li><li><b>Feeds into:</b> The live study-room showcase; M2 #16 keeps those rooms safe.</li></ul></details>
+</li>
+<li><strong>#16 Privacy &amp; Safety Controls</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Block lists, room visibility rules and report flows enforced through Firebase security rules.</li><li><b>Prerequisites:</b> M2 #7 (identity); M1 #10 / M2 #9 (the rooms and chat it protects).</li><li><b>Feeds into:</b> A safe, deployable campus release.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">5. Campus photo sharing app</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep loop driving feed assembly, the camera-capture flow&#39;s input handling and scheduling of image-pipeline jobs; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #11 (pipeline jobs scheduled on the loop); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Posts, galleries and media metadata (captions, capture time, moderation state) as hot-reloadable JSON models.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 #11, #13 and #16 all consume this model; M2 G2 tooling edits it.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the image pipeline, stress tests on large photo batches, ImGui overlays for job-queue depth, Catch2 tests, GitHub Actions (Windows + Linux).</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; keeps M1 #11 inside its frame budget.</li></ul></details>
+</li>
+<li><strong>#11 Media Handling</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The C++ media pipeline — stb_image/libjpeg-turbo decode, resize, filters and thumbnail generation on background worker threads.</li><li><b>Prerequisites:</b> G1 (job scheduling) and G2 (metadata model).</li><li><b>Feeds into:</b> M2 #14 (galleries); the feed renders its thumbnails.</li></ul></details>
+</li>
+<li><strong>#13 Moderation Data Model &amp; Report Flow — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Image report queue and reviewer-state schema in Firestore with C++ pre-filters — moderation-first is this example&#39;s design center.</li><li><b>Prerequisites:</b> G2 (content model).</li><li><b>Feeds into:</b> M2 G2 — the reviewer dashboard is built on this flow.</li></ul></details>
+</li>
+<li><strong>#16 Activity Analytics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Engagement event pipeline (posts, views, reactions) into Firebase Analytics/DB with C++ aggregation.</li><li><b>Prerequisites:</b> G2 (event/data model).</li><li><b>Feeds into:</b> M2 #13 (dashboards) and #12 (digest and prompt triggers).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Optimization of the media pipeline and gallery rendering — memory pools for image buffers, threading, Tracy, sanitizers — with native-mobile validation (Android emulator / Emscripten check).</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #14 throughput; packaged builds via G3.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Moderation dashboard core — a Dear ImGui reviewer queue over the M1 #13 report flow with approve/remove/ban actions and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (content model) and #13 (report flow).</li><li><b>Feeds into:</b> Safe operation of the daily feed; reviewer actions are logged for M2 #13.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, CPack packaging of the mobile client, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#12 Notification II</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> FCM push for the daily &quot;post now&quot; prompt (BeReal-style), mention/reaction alerts and digest scheduling with subscription preferences.</li><li><b>Prerequisites:</b> M1 #16 (the events that trigger it) and G2 (user model in Firebase).</li><li><b>Feeds into:</b> The daily engagement loop at showcase; M2 #13 measures its effect.</li></ul></details>
+</li>
+<li><strong>#13 Engagement Analytics Dashboards</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom-rendered charts (SDL2/OpenGL + FreeType, no chart libraries) over M1 #16 aggregates — posting streaks, reaction rates, moderation load.</li><li><b>Prerequisites:</b> M1 #16 (analytics engine).</li><li><b>Feeds into:</b> Showcase reporting; prioritizing the M2 G2 review queue.</li></ul></details>
+</li>
+<li><strong>#14 Media II</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Extended pipeline — worker-thread job queue building galleries, GLSL filter effects and progressive thumbnail sets.</li><li><b>Prerequisites:</b> M1 #11 (media pipeline); M2 G1 (performance headroom).</li><li><b>Feeds into:</b> The gallery showcase; G3 packages the results.</li></ul></details>
+</li>
+</ul>
+</details>
+</body>
+</html>

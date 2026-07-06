@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Simulator</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Simulator</h1>
+</header>
+<p><a href="project-examples-per-category.html">← Back to overview</a></p>
+<h2 id="simulator">Simulator</h2>
+<h3 id="scope">Scope</h3>
+<p>Products whose deliverable IS the simulation — modeling a real-world system (traffic, ecosystems, crowds, epidemics, economics) to observe, analyze and experiment. Scientific rigor is the signature: seeded reproducibility, statistics, batch experiments.</p>
+<h3 id="examples">Examples</h3>
+<ol>
+<li><p><strong>Traffic intersection simulator</strong> — vehicles, lights, and pedestrians simulated in C++; scenario editor to design road layouts; statistics dashboard. <em>References:</em></p>
+<ul>
+<li><a href="https://play.google.com/store/apps/details?id=se.shadowtree.software.trafficbuilder&amp;hl=en_US">Intersection Controller (Google Play)</a></li>
+<li><a href="https://www.youtube.com/watch?v=RHX0CfcgOas">Mini Motorways — trailer (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Ecosystem / predator-prey simulator</strong> — agent-based simulation with tunable parameters, real-time 2D visualization, experiment configuration tool. <em>References:</em></p>
+<ul>
+<li><a href="https://ccl.northwestern.edu/netlogo/models/WolfSheepPredation">NetLogo Wolf Sheep Predation</a></li>
+<li><a href="https://www.youtube.com/watch?v=r_It_X7v-1E">Sebastian Lague — Simulating an Ecosystem (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Elevator system simulator</strong> — multi-elevator scheduling in a busy building; algorithm comparison mode; building/traffic-pattern editor. <em>References:</em></p>
+<ul>
+<li><a href="https://play.elevatorsaga.com/">Elevator Saga (playable)</a></li>
+<li><a href="https://www.youtube.com/watch?v=CbG3ha3VGpU">Elevator simulator visualization in C++/SDL (YouTube)</a></li>
+</ul></li>
+<li><p><strong>Crowd evacuation simulator</strong> — agent-based crowd flow through a floor plan (panic, bottlenecks, exits); floor-plan editor; run statistics to Firebase. <em>References:</em></p>
+<ul>
+<li><a href="https://www.thunderheadeng.com/pathfinder/">Pathfinder by Thunderhead</a></li>
+<li><a href="https://www.youtube.com/playlist?list=PL7C1672032E8B26C2">Pathfinder demos (YouTube playlist)</a></li>
+</ul></li>
+<li><p><strong>Epidemic spread simulator</strong> — agent-based SIR infection model with tunable scenarios (distancing, quarantine, travel); alert thresholds; batch policy experiments. <em>References:</em></p>
+<ul>
+<li><a href="https://www.washingtonpost.com/graphics/2020/world/corona-simulator/">Washington Post — &quot;simulitis&quot; corona simulator</a></li>
+<li><a href="https://www.youtube.com/watch?v=gxAaO2rsdIs">3Blue1Brown — Simulating an epidemic (YouTube)</a></li>
+<li><a href="https://ccl.northwestern.edu/netlogo/models/epiDEMTravelandControl">NetLogo epiDEM Travel and Control</a></li>
+</ul></li>
+</ol>
+<h3 id="core-tech-requirements-per-simulator-example">Core Tech Requirements per Simulator Example</h3>
+<p>Legend: ✅ Applies directly | 🔵 Optional | ❌ Not needed | ⏭️ Second trimester</p>
+<table>
+<thead>
+<tr class="header">
+<th>Core Tech Requirement</th>
+<th>1. Traffic</th>
+<th>2. Ecosystem</th>
+<th>3. Elevator</th>
+<th>4. Crowd Evacuation</th>
+<th>5. Epidemic Sim</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>External Database (Firebase)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Authentication ⏭️</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>🔵</td>
+</tr>
+<tr class="odd">
+<td>Analytics ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>C++ Performant Service</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Real-time C++ Simulation Loop</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Application Communication</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Continuous Integration</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Data-Driven Architecture</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Front-end + Local Backend</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Custom Tools Development</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>2D Graphical Output</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>3D (strong students only)</td>
+<td>🔵</td>
+<td>❌</td>
+<td>❌</td>
+<td>🔵</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Networking System</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td><span style="color:#8E44AD"><strong>Headless Batch Mode</strong> — run N simulations without rendering + statistical reports (new)</span></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-each-requirement-applies">How each requirement applies</h3>
+<p><em>Common to all five:</em> the Simulation Loop is the core deliverable (true real-time agent simulation) · C++ Performant Service (the simulation engine) · Application Communication (UI ↔︎ engine) · Continuous Integration · Front-end + Local Backend · Data-Driven Architecture (scenarios and parameters as data) · Auth 🔵 optional (saved experiments per user).</p>
+<p><strong>1. Traffic intersection</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — running/viewing on the phone; scenario authoring on the PC side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Top-down world view, run controls (ImGui), live charts. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Agent simulation core (vehicles, lights, pedestrians), statistics engine, Firebase run storage. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> vehicle/pedestrian agents, traffic-light logic. <em>2D:</em> top-down road rendering.</li>
+<li><em>Custom tool:</em> road-layout scenario editor. <em>External DB / Analytics ⏭️:</em> run statistics, scenario sharing.</li>
+<li><em>3D:</em> optional isometric view.</li>
+<li><span style="color:#8E44AD"><em>Headless batch mode:</em></span> sweep light-timing parameters over hundreds of runs; report throughput/wait-time stats.</li>
+</ul>
+<p><strong>2. Ecosystem / predator-prey</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — WASM build to configure and watch runs on the phone; large batch experiments run on the PC development build.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> World/population rendering, parameter sliders, live charts. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Agent behavior simulation, reproducible seeded runs, experiment results storage. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> agent behaviors (hunger, reproduction, sensing) with tunable parameters. <em>2D:</em> world/population rendering with live charts.</li>
+<li><em>Custom tool:</em> experiment configuration + parameter editor. <em>External DB / Analytics ⏭️:</em> experiment results for comparison.</li>
+<li><span style="color:#8E44AD"><em>Headless batch mode:</em></span> the natural fit — population-stability studies across seeds and parameters.</li>
+</ul>
+<p><strong>3. Elevator system</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — lightweight visualization is web-first; the PC build is used for development.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Shaft/floor/queue visualization, run controls; web viewer shell. <b>Languages:</b> C++, GLSL; HTML/JS/CSS (viewer via WASM).</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Elevator scheduling simulation, discrete-event queue, algorithm benchmarks. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> multi-elevator scheduling under generated passenger traffic; algorithm A/B comparison mode.</li>
+<li><em>Custom tool:</em> building/traffic-pattern editor. <em>2D:</em> shaft/floor/queue visualization.</li>
+<li><em>External DB / Analytics ⏭️:</em> algorithm benchmark results.</li>
+<li><span style="color:#8E44AD"><em>Headless batch mode:</em></span> compare scheduling algorithms statistically (avg/max wait) without animation.</li>
+</ul>
+<p><strong>4. Crowd evacuation</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — watch evacuations on the phone; floor-plan authoring on the PC side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Floor-plan view, density/heatmap overlays, editor UI (ImGui). <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Crowd-flow agent simulation, panic models, run statistics. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> agent flow, bottlenecks, exit choice under panic parameters. <em>2D:</em> floor-plan + agent/density rendering.</li>
+<li><em>Custom tool:</em> floor-plan editor. <em>External DB / Analytics ⏭️:</em> run statistics. <em>3D:</em> optional isometric view.</li>
+<li><span style="color:#8E44AD"><em>Headless batch mode:</em></span> evacuation-time distributions across layouts — the safety-analysis use case.</li>
+</ul>
+<p><strong>5. Epidemic spread simulator</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — WASM build for scenario setup and viewing; heavy batch sweeps run on the PC development build.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Dot-agent world, live SIR curves, parameter controls (ImGui). <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> SIR infection simulation, alert thresholds, headless batch runner, Firebase results. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> agent movement, transmission probability, SIR state transitions per tick.</li>
+<li><em>Data-driven:</em> scenarios (infection rates, policies) as data. <em>Custom tool:</em> scenario/parameter editor.</li>
+<li><em>2D:</em> dot-agent world plus live SIR curves. <em>Alerts:</em> threshold warnings (e.g., hospital capacity).</li>
+<li><em>External DB / Analytics ⏭️:</em> run results and scenario sharing.</li>
+<li><span style="color:#8E44AD"><em>Headless batch mode:</em></span> policy comparisons across hundreds of seeded runs — the showcase result.</li>
+</ul>
+<h3 id="goals-per-example">Goals per Example</h3>
+<p>G1–G3 ⭐ are the common goals; the other 3 come from the Simulator pool (# = pool number).</p>
+<details><summary><b style="color:#0969DA">1. Traffic intersection simulator</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window/input, fixed-timestep loop ticking vehicles, lights, and pedestrians; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #5 (agents run on its tick); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Vehicle, pedestrian, and traffic-light entity definitions plus light-timing parameters as JSON (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #15 (road layouts as data), M1 #5 (agent definitions), M2 G2/#6 (editor edits this data).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays for queue lengths and light phases, Tracy profiling of rush-hour agent counts, Catch2 tests, GitHub Actions Windows + Linux builds.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M2 G3 (CI advanced); M2 #7 (stress-test hooks reused for batch runs).</li></ul></details>
+</li>
+<li><strong>#5 Agent Behavior System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Finite-state machines for vehicles (approach/queue/turn) and pedestrians, traffic-light controller logic, lane-following steering in custom C++.</li><li><b>Prerequisites:</b> G1 (tick) and G2 (agent definitions).</li><li><b>Feeds into:</b> M1 #8 (produces throughput/wait metrics); M2 #7 (behavior exercised in batch runs).</li></ul></details>
+</li>
+<li><strong>#8 Statistics &amp; Live Charts</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom line charts of intersection throughput and average wait time rendered with SDL2/OpenGL and FreeType labels, incremental redraw per tick.</li><li><b>Prerequisites:</b> G1 (loop); M1 #5 supplying the metrics.</li><li><b>Feeds into:</b> M2 #4 (advanced visual layers); M2 #7 (same statistics power batch reports).</li></ul></details>
+</li>
+<li><strong>#15 Map / Environment System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Road network (lanes, intersections, crosswalks) as tiled JSON data with pan/zoom camera and spatial indexing for agent lookups.</li><li><b>Prerequisites:</b> G2 (data model) plus the top-down rendering in G1&#39;s shell.</li><li><b>Feeds into:</b> M1 #5 (agents navigate it); M2 G2/#6 (editor authors these layouts).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of high vehicle counts, memory pools for agents, std::thread; Emscripten web build validated for the mobile run/view target.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #4 (rendering budget) and M2 #7 (fast headless runs).</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui road-layout scenario editor — place roads, lanes, lights, and spawn rates — with JSON round-trip and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (road-layout view)</li><li><b>Prerequisites:</b> M1 G2 (data model) and M1 #15 (map format it edits).</li><li><b>Feeds into:</b> M2 #6 (advanced editor features); scenarios consumed by M2 #7.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the native app and Emscripten web viewer via GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#4 Visualization — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL congestion heat/density overlays on the road network, time scrubbing of a run, optional isometric view.</li><li><b>Prerequisites:</b> M1 #15 (world rendering) and M1 #8 (metric data); M2 G1 (optimization).</li><li><b>Feeds into:</b> Showcase visuals; live preview inside M2 #6.</li></ul></details>
+</li>
+<li><strong>#6 Scenario Editor — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Drag-drop road pieces, live simulation preview bound to the editor, deep undo/redo, and layout validation in ImGui.</li><li><b>Prerequisites:</b> M2 G2 (editor core).</li><li><b>Feeds into:</b> Content-creation showcase; scenario files fed to M2 #7 sweeps.</li></ul></details>
+</li>
+<li><strong>#7 Headless Batch Mode &amp; Reports</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI-driven std::thread run farm sweeping light-timing parameters over hundreds of seeded runs, CSV/JSON throughput and wait-time reports, results stored to Firebase.</li><li><b>Prerequisites:</b> M1 G1 (sim core decoupled from rendering) and M1 G3 (stress hooks); statistics from M1 #8.</li><li><b>Feeds into:</b> The statistical showcase result; data behind M2 #4 overlays.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">2. Ecosystem / predator-prey simulator</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window/input, fixed-timestep loop ticking predator and prey agents in the 2D world; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #5 (behaviors run on its tick); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Species definitions (speed, hunger, reproduction, sensing radius) and world parameters as JSON with hot-reload for live tuning via sliders.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #5 (behaviors read species data); M2 G2 (experiment editor edits these files).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays of population counts and per-agent state, Tracy profiling with thousands of agents, Catch2 tests, GitHub Actions Windows + Linux builds.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M2 G3 (CI advanced); M2 #9 (profiling baseline for the scale push).</li></ul></details>
+</li>
+<li><strong>#5 Agent Behavior System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Hunger/reproduction/sensing state machines with wander, chase, and flee steering behaviors in custom C++.</li><li><b>Prerequisites:</b> G1 (tick) and G2 (species parameters).</li><li><b>Feeds into:</b> M1 #8 (population dynamics it produces); M2 #9 (the system being scaled).</li></ul></details>
+</li>
+<li><strong>#8 Statistics &amp; Live Charts</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Live predator/prey population curves (oscillation plots) drawn with custom SDL2/OpenGL line rendering and FreeType axis labels.</li><li><b>Prerequisites:</b> G1 (loop); M1 #5 supplying population data.</li><li><b>Feeds into:</b> M2 #11 (aggregated dashboards); M2 #7 (per-run statistics for reports).</li></ul></details>
+</li>
+<li><strong>#11 Randomization &amp; Reproducibility</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> std::mt19937 seeded engines, run manifests recording seed + parameters, golden-run regression tests so experiments repeat exactly.</li><li><b>Prerequisites:</b> G1 (deterministic loop).</li><li><b>Feeds into:</b> M2 #7 (seeded batch studies); credible comparisons in M2 #11.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling, cache-friendly agent data layouts, memory pools, std::thread; validation of the native PC target under large agent counts.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #9 directly (scale work builds on it); faster M2 #7 batches.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui experiment-configuration editor — species parameters, world setup, initial populations — with JSON serialization and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (data-driven species/world model).</li><li><b>Feeds into:</b> Experiment configs queued by M2 #7 and compared in M2 #11.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, CPack packaging of the native PC build via GitHub Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#7 Headless Batch Mode &amp; Reports</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI-driven std::thread run farm running population-stability studies across seeds and parameter sweeps, CSV/JSON statistical reports.</li><li><b>Prerequisites:</b> M1 G1 (render-decoupled core), M1 #11 (seeded runs), M1 G3 (stress hooks).</li><li><b>Feeds into:</b> M2 #11 (dashboards aggregate its results) — the natural showcase for this project.</li></ul></details>
+</li>
+<li><strong>#9 Simulation Core II — Scale</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SIMD, threading, spatial partitioning, and memory pools to run thousands of predator/prey agents at 60 fps.</li><li><b>Prerequisites:</b> M2 G1 (optimization) and M1 G3 (profiling data); M1 #5 (the behavior system being scaled).</li><li><b>Feeds into:</b> High-agent-count showcase demo; larger M2 #7 batch experiments.</li></ul></details>
+</li>
+<li><strong>#11 Analytics Dashboards</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Experiment results stored in Firebase (REST from C++), aggregation queries, custom chart rendering of cross-run population comparisons.</li><li><b>Prerequisites:</b> M1 #8 (chart rendering) and M1 G2 (serializable run data); results from M2 #7.</li><li><b>Feeds into:</b> Showcase experiment conclusions and comparisons.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">3. Elevator system simulator</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window/input, fixed-timestep loop driving elevator cars and generated passenger traffic; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #12 (event queue runs against its clock); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Elevator cars, passengers, and traffic-pattern parameters (arrival-rate curves per floor) defined in JSON with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #15 (building as data); M2 G2 (editor edits these definitions).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays of per-floor queues and car states, profiling of busy-building loads, Catch2 tests for scheduler logic, GitHub Actions Windows + Linux builds.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M2 G3 (CI advanced); M2 #12 (debug hooks for replay inspection).</li></ul></details>
+</li>
+<li><strong>#9 Run Controls UI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui run/pause/speed controls plus inspection panels for individual cars and waiting passengers over the shaft/floor view.</li><li><b>Prerequisites:</b> G1 (input and loop) and the shaft/floor rendering it controls.</li><li><b>Feeds into:</b> Demo driving of M2 #8 comparisons; playback controls reused by M2 #12.</li></ul></details>
+</li>
+<li><strong>#12 Event &amp; Scheduling System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Discrete-event queue (std::priority_queue) with a simulation clock for hall calls, arrivals, and door timings, plus pluggable scheduling algorithms (e.g., SCAN vs. collective control).</li><li><b>Prerequisites:</b> G1 (loop/clock) and G2 (traffic-pattern data).</li><li><b>Feeds into:</b> M2 #8 (algorithms it hosts are A/B compared); M2 #7 (batch statistics).</li></ul></details>
+</li>
+<li><strong>#15 Map / Environment System (building)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Building as data — floors, shafts, car capacities — in a JSON format rendered as the pan/zoom shaft/floor/queue view.</li><li><b>Prerequisites:</b> G2 (data model).</li><li><b>Feeds into:</b> M1 #12 (events reference floors/shafts); M2 G2 (building editor).</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Profiling event-queue throughput (Tracy), memory pools, std::thread; Emscripten → WASM validation of the lightweight web viewer target.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #7 (fast headless batches); the web-viewer deliverable.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui building/traffic-pattern editor — floor count, elevator count and capacity, arrival-rate curves — with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (data model) and M1 #15 (building format).</li><li><b>Feeds into:</b> Scenarios consumed by M2 #7 and M2 #8.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the native app plus the Emscripten web viewer in GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#7 Headless Batch Mode &amp; Reports</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI-driven std::thread run farm executing hundreds of seeded traffic patterns without animation, producing avg/max wait CSV/JSON reports.</li><li><b>Prerequisites:</b> M1 G1 + #12 (event-driven core decoupled from rendering); M1 G3 (stress hooks).</li><li><b>Feeds into:</b> M2 #8 (supplies the statistical run data for comparisons).</li></ul></details>
+</li>
+<li><strong>#8 Algorithm Comparison Framework</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Benchmark harness for seeded A/B runs of the scheduling algorithms, mean/percentile wait statistics, CSV export, benchmark results stored to Firebase.</li><li><b>Prerequisites:</b> M1 #12 (pluggable schedulers) and M2 #7 (batch runner).</li><li><b>Feeds into:</b> The showcase conclusion — which scheduler wins under which traffic pattern.</li></ul></details>
+</li>
+<li><strong>#12 Replay &amp; Time-Travel Debugging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Deterministic recording of the event log and seeds, with scrub/step-back playback to inspect individual scheduler decisions.</li><li><b>Prerequisites:</b> M1 G1 (deterministic loop) and M1 G3 (debug hooks); driven through M1 #9 controls.</li><li><b>Feeds into:</b> Debugging anomalies found by M2 #8; step-through demos at showcase.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">4. Crowd evacuation simulator</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window/input, fixed-timestep loop ticking crowd agents through the floor plan; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #5 and #7 (agents move on its tick); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Agent profiles (speed, panic susceptibility) plus floor-plan elements (walls, exits, spawn zones) as JSON with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #10 (the format the floor-plan editor writes); M2 #13 (panic parameters).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays of agent states and bottleneck counters, Tracy profiling of dense crowds, Catch2 tests, GitHub Actions Windows + Linux builds.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M2 G3 (CI advanced); M2 G1 (profiling baseline) and M2 #7 (stress hooks).</li></ul></details>
+</li>
+<li><strong>#5 Agent Behavior System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Exit-choice decision rules and calm/hurried/panicked state machines with A*/flow-field pathfinding toward exits, in custom C++.</li><li><b>Prerequisites:</b> G1 (tick) and G2 (agent/floor-plan data); pairs with M1 #7 for actual movement.</li><li><b>Feeds into:</b> M2 #13 (panic models extend these FSMs); evacuation-time statistics.</li></ul></details>
+</li>
+<li><strong>#7 Movement &amp; Collision-Avoidance Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Kinematic integration with local collision avoidance (steering + uniform-grid broadphase, GLM math) so agents jam realistically at bottlenecks.</li><li><b>Prerequisites:</b> G1 (fixed-timestep loop).</li><li><b>Feeds into:</b> M1 #5 (agents move through it); density data for M2 #4 heatmaps.</li></ul></details>
+</li>
+<li><strong>#10 Scenario Editor — Foundation (floor plans)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui floor-plan editor placing walls, exits, and spawn zones, with JSON round-trip serialization and file dialogs.</li><li><b>Prerequisites:</b> G2 (floor-plan data model).</li><li><b>Feeds into:</b> M2 G2 (editor core builds directly on it); layouts tested by M2 #7.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of dense-crowd updates, cache-friendly agent layouts, memory pools, std::thread; validation of the native PC target.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #4 (heatmap frame budget); faster M2 #7 batch runs.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Hardened floor-plan/scenario editor with an undo/redo command stack and scenario metadata (agent counts, exit widths, panic settings) in ImGui + JSON.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (floor-plan view)</li><li><b>Prerequisites:</b> M1 #10 (editor foundation) and M1 G2 (data model).</li><li><b>Feeds into:</b> Layout variants consumed by M2 #7 safety studies.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, CPack packaging of the native PC build via GitHub Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#4 Visualization — Advanced (heatmaps)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL density heatmaps and congestion overlays on the floor plan, with time scrubbing through an evacuation run.</li><li><b>Prerequisites:</b> M1 #7 (position/density data) and the M1 floor-plan rendering; M2 G1 (optimization).</li><li><b>Feeds into:</b> The safety-analysis showcase; live preview inside M2 G2.</li></ul></details>
+</li>
+<li><strong>#7 Headless Batch Mode &amp; Reports</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI-driven std::thread run farm producing evacuation-time distributions across layouts and seeds, CSV/JSON reports, run statistics pushed to Firebase.</li><li><b>Prerequisites:</b> M1 G1 (render-decoupled core) and M1 G3 (stress hooks); layouts from M2 G2.</li><li><b>Feeds into:</b> The safety-analysis showcase result.</li></ul></details>
+</li>
+<li><strong>#13 Behavior II (panic models)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Panic propagation, herding, and adaptive exit re-selection layered onto the M1 state machines, tuned via data parameters.</li><li><b>Prerequisites:</b> M1 #5 (behavior FSMs) and M1 #7 (movement they drive).</li><li><b>Feeds into:</b> Richer outcomes in M2 #7 distributions; dramatic M2 #4 heatmap footage.</li></ul></details>
+</li>
+</ul>
+</details>
+
+<details><summary><b style="color:#0969DA">5. Epidemic spread simulator</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window/input, fixed-timestep loop moving dot agents and applying per-tick transmission checks and SIR state transitions; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #4 (renders its world) and #14 (watches its counts); every other goal.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Agent and disease model definitions (S/I/R states, transmission probability, recovery time, movement patterns) as JSON with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #6 (scenarios extend this model); M2 G2 (editor edits it).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays of SIR counts and infection events, Tracy profiling of dense populations, Catch2 tests of state transitions, GitHub Actions Windows + Linux builds.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M2 G3 (CI advanced); M2 #16 (stress hooks reused by the campaign runner).</li></ul></details>
+</li>
+<li><strong>#4 2D Visualization of the Simulated World</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Dot-agent world colored by SIR state plus live SIR curves, rendered with SDL2/OpenGL and FreeType labels.</li><li><b>Prerequisites:</b> G1 (loop and agent positions).</li><li><b>Feeds into:</b> M1 #14 (visual alarms overlay it); M2 #15 (chart snapshots for reports).</li></ul></details>
+</li>
+<li><strong>#6 Scenario &amp; Parameter System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Distancing, quarantine, and travel policies as validated, versioned JSON scenario schemas with hot-reload.</li><li><b>Prerequisites:</b> G2 (data-driven disease/agent model).</li><li><b>Feeds into:</b> M2 G2 (editor authors these scenarios); M2 #16 (campaigns queue them); M2 #10 (scenarios shared via Firebase).</li></ul></details>
+</li>
+<li><strong>#14 Alert &amp; Feedback System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Threshold rules (e.g., hospital-capacity breach) firing visual alarms via SDL2/ImGui and audio cues via OpenAL during a run.</li><li><b>Prerequisites:</b> G1 (live SIR counts from the loop); overlays on M1 #4.</li><li><b>Feeds into:</b> Showcase demo impact; alert events logged for M2 #15 reports.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of dense agent populations, memory pools, std::thread; Emscripten web-viewer build validated as the stretch platform target.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2 #16 (fast headless campaigns); the stretch web viewer.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui scenario/parameter editor — infection rates, policy toggles (distancing, quarantine, travel), population setup — with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1 G2 (data model) and M1 #6 (scenario format it edits).</li><li><b>Feeds into:</b> Scenarios queued by M2 #16 and shared through M2 #10.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, CPack packaging of the native app (plus optional Emscripten viewer) via GitHub Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+</li>
+<li><strong>#10 Firebase — Experiment Sharing &amp; Comparison</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Run results and scenario files pushed to Firestore via REST from C++, with Firebase Auth for per-user experiments and side-by-side comparison views.</li><li><b>Prerequisites:</b> M1 G2 (serializable run/scenario data) and M1 #6 (scenario files to share).</li><li><b>Feeds into:</b> M2 #15 (reports pull shared results); team-wide policy comparisons at showcase.</li></ul></details>
+</li>
+<li><strong>#15 Report Generation &amp; Export Tools</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> HTML/CSV policy-comparison reports with SIR-curve chart snapshots, alert summaries, and aggregation over batches of runs.</li><li><b>Prerequisites:</b> M1 #4 (curves to snapshot) and M1 #14 (alert logs); data from M2 #16 and #10.</li><li><b>Feeds into:</b> The stakeholder-facing showcase deliverable.</li></ul></details>
+</li>
+<li><strong>#16 Multi-Scenario Campaign Runner</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI-driven std::thread run farm queueing hundreds of seeded, headless policy runs (distancing vs. quarantine vs. travel limits) with CSV/JSON output.</li><li><b>Prerequisites:</b> M1 G1 (render-decoupled core), M1 G3 (stress hooks), and M1 #6 (scenario files).</li><li><b>Feeds into:</b> M2 #10 (uploads results) and M2 #15 (reports) — the showcase result.</li></ul></details>
+</li>
+</ul>
+</details>
+</body>
+</html>

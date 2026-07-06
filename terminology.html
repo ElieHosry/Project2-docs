@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>terminology</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">terminology</h1>
+</header>
+<p><a href="index.html">← Back to index</a></p>
+<h1 id="terminology-guide">Terminology Guide</h1>
+<p>Unified terms and symbols used across all module documents. When writing new material, use these exact abbreviations.</p>
+<h2 id="module-terms">Module Terms</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>T1, T2</strong></td>
+<td>Trimester 1, Trimester 2</td>
+</tr>
+<tr class="even">
+<td><strong>M1</strong></td>
+<td>Milestone 1 — week 9, <em>Core technology base phase</em></td>
+</tr>
+<tr class="odd">
+<td><strong>M2</strong></td>
+<td>Milestone 2 — week 13, <em>Core technology showcase phase</em></td>
+</tr>
+<tr class="even">
+<td><strong>G1…G6</strong></td>
+<td>The 6 goals of a milestone, one per student</td>
+</tr>
+<tr class="odd">
+<td><strong>G1–G3 ⭐</strong></td>
+<td>The <strong>common goals</strong>, identical across all project categories, always selected</td>
+</tr>
+<tr class="even">
+<td><strong>G4–G6</strong></td>
+<td>The <strong>customizable goals</strong>, chosen from the category&#39;s pool (instructor approval)</td>
+</tr>
+<tr class="odd">
+<td><strong>Goal</strong></td>
+<td>A heavy component owned by one student, broken into sub-tasks, ~40 hours per milestone</td>
+</tr>
+<tr class="even">
+<td><strong>Goal pool / #N</strong></td>
+<td>The candidate goals per milestone per category (16 at minimum — pools grow as approved proposals add goals at the end); <strong>#N</strong> refers to a goal&#39;s number in that pool</td>
+</tr>
+<tr class="odd">
+<td><strong>Foundation sprint</strong></td>
+<td>Weeks 4–5: project-agnostic head start (G1 skeleton, CI setup, schema drafts, spikes) before week-5 approval</td>
+</tr>
+<tr class="even">
+<td><strong>Team due diligence</strong></td>
+<td>Weekly instructor follow-up per team: goal progress, blockers, integration health</td>
+</tr>
+<tr class="odd">
+<td><strong>Backend scope</strong></td>
+<td>How far a project&#39;s backend goes — see levels below and Appendix A</td>
+</tr>
+<tr class="even">
+<td><strong>Local only</strong></td>
+<td>Local backend suffices; a custom server adds little</td>
+</tr>
+<tr class="odd">
+<td><strong>Server-ready (T2)</strong></td>
+<td>Works locally in T1; clean seam to lift the C++ service onto the Linux server in T2</td>
+</tr>
+<tr class="even">
+<td><strong>Server-indicated (T2)</strong></td>
+<td>The design inherently needs a shared server; local/Firebase is a T1 stopgap</td>
+</tr>
+<tr class="odd">
+<td><strong>Purple requirement</strong></td>
+<td>The newly suggested core tech requirement added per category (last matrix row, purple text)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="symbols">Symbols</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>✅</td>
+<td>Requirement applies directly</td>
+</tr>
+<tr class="even">
+<td>🔶</td>
+<td>Applies with domain adaptation (reinterpreted meaning)</td>
+</tr>
+<tr class="odd">
+<td>🔵</td>
+<td>Optional — only if the project design needs it</td>
+</tr>
+<tr class="even">
+<td>❌</td>
+<td>Not needed / rarely applicable</td>
+</tr>
+<tr class="odd">
+<td>⏭️</td>
+<td>Deferred to second trimester per module plan</td>
+</tr>
+<tr class="even">
+<td>⭐</td>
+<td>Common goal (fixed for all categories)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="colored-boxes">Colored Boxes</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Box</th>
+<th>Content</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color:#0969DA"><strong>Blue</strong></span></td>
+<td>Platform fit — recommended target platform(s)</td>
+</tr>
+<tr class="even">
+<td><span style="color:#2E7D32"><strong>Green</strong></span></td>
+<td>Front end — components + programming languages</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#E65100"><strong>Amber</strong></span></td>
+<td>Back end — components + languages + backend scope</td>
+</tr>
+</tbody>
+</table>
+<h2 id="technical-acronyms">Technical Acronyms</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Acronym</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>BaaS</strong></td>
+<td>Backend-as-a-Service (Firebase) — remote, but not a student-built server</td>
+</tr>
+<tr class="even">
+<td><strong>CI</strong></td>
+<td>Continuous Integration — automated build, test, packaging pipeline</td>
+</tr>
+<tr class="odd">
+<td><strong>DoD</strong></td>
+<td>Definition of Done — completion criteria of a goal (includes integration into the main build)</td>
+</tr>
+<tr class="even">
+<td><strong>FE / BE</strong></td>
+<td>Front end / Back end</td>
+</tr>
+<tr class="odd">
+<td><strong>WASM</strong></td>
+<td>WebAssembly — C++ compiled for the browser via Emscripten (emsdk)</td>
+</tr>
+<tr class="even">
+<td><strong>GLSL</strong></td>
+<td>OpenGL Shading Language</td>
+</tr>
+<tr class="odd">
+<td><strong>ECS</strong></td>
+<td>Entity Component System — the data-driven object architecture of G2</td>
+</tr>
+<tr class="even">
+<td><strong>FSM</strong></td>
+<td>Finite-State Machine</td>
+</tr>
+<tr class="odd">
+<td><strong>RBAC</strong></td>
+<td>Role-Based Access Control</td>
+</tr>
+<tr class="even">
+<td><strong>DSP / FFT</strong></td>
+<td>Digital Signal Processing / Fast Fourier Transform (audio analysis)</td>
+</tr>
+<tr class="odd">
+<td><strong>SIR</strong></td>
+<td>Susceptible–Infected–Recovered epidemic model</td>
+</tr>
+<tr class="even">
+<td><strong>CRDT / OT</strong></td>
+<td>Conflict-free Replicated Data Type / Operational Transform (collaborative editing)</td>
+</tr>
+<tr class="odd">
+<td><strong>SLA</strong></td>
+<td>Service-Level Agreement (workflow deadlines)</td>
+</tr>
+<tr class="even">
+<td><strong>MSVC</strong></td>
+<td>Microsoft Visual C++ compiler (Visual Studio)</td>
+</tr>
+<tr class="odd">
+<td><strong>ASan / UBSan</strong></td>
+<td>Address / Undefined-Behavior Sanitizer (ASan only on MSVC; UBSan via clang-cl or WSL)</td>
+</tr>
+<tr class="even">
+<td><strong>WSL</strong></td>
+<td>Windows Subsystem for Linux</td>
+</tr>
+<tr class="odd">
+<td><strong>NDK</strong></td>
+<td>Android Native Development Kit (C++ on Android)</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

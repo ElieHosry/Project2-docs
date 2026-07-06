@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>proposal-assessor-guide</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">proposal-assessor-guide</h1>
+</header>
+<p><a href="index.html">← Back to index</a></p>
+<h1 id="using-the-project-proposal-assessor">Using the Project Proposal Assessor</h1>
+<p>A guide for instructors. The assessor is a Claude <strong>Cowork skill</strong> (<code>Project-Proposal-Assessor.skill</code>, stored in the project root) that evaluates a student project proposal against this module&#39;s 9 categories and produces the full assessment package automatically. It is <strong>advisory</strong> — the instructor remains the approval gate at week 5.</p>
+<h2 id="what-you-need">What you need</h2>
+<ul>
+<li>The <strong>Claude desktop app</strong> (Cowork mode). The skill does not work on claude.ai in the browser.</li>
+<li>Ideally, this project folder connected in Cowork — the skill then reads the <em>live</em> category pages, goal pools and matrix, and saves its outputs into <code>Student Projects/</code>. Without the folder it still works from bundled snapshots (see <em>Standalone use</em> below).</li>
+</ul>
+<h2 id="installing">Installing</h2>
+<ol>
+<li>Get the file <code>Project-Proposal-Assessor.skill</code> from the project root (or from a colleague).</li>
+<li>Drop it into a Cowork chat — it appears as a card with a <strong>Save skill</strong> button.</li>
+<li>Click <strong>Save skill</strong>. Manage or remove it later under <em>Settings → Capabilities</em>.</li>
+</ol>
+<p>To update to a newer version: remove the installed skill, then save the newer file the same way.</p>
+<h2 id="assessing-a-proposal">Assessing a proposal</h2>
+<p>Connect the project folder, then type:</p>
+<blockquote>
+<p><em>assess this proposal: &lt;the student&#39;s few lines describing the idea&gt;</em></p>
+</blockquote>
+<p>Give a project name if you have one; otherwise the assessor will ask. It then:</p>
+<ol>
+<li>Checks <strong>module fit</strong> — can a real-time C++ loop be load-bearing? real 2D work? a meaningful custom tool? no Firebase-swallows-everything?</li>
+<li>Applies the <strong>category gate</strong> — the idea must fit one of the 9 categories; new categories are never invented.</li>
+<li>Issues a <strong>three-tier verdict</strong>: ✅ Fit · 🔶 Fit with adjustments (listed, and to be treated as approval conditions) · ❌ Reject — distinguishing &quot;fails the module&quot; from &quot;fits the module but no category&quot;, the latter with a reshaping hint for resubmission.</li>
+<li><strong>Web-verifies 3 references</strong> to comparable real products (never invented links).</li>
+<li>Suggests <strong>M1/M2 goals</strong>: G1–G3 ⭐ fixed plus 3 picks from the matched category&#39;s pool, each with a Tech &amp; dependencies block tailored to the proposal.</li>
+</ol>
+<h2 id="what-it-produces">What it produces</h2>
+<p>For accepted (✅/🔶) proposals, under <code>Student Projects/&lt;Category&gt;/</code>:</p>
+<ul>
+<li><code>&lt;project-name&gt;.md</code> — the assessment page: verdict banner, proposal, adjustments, references, one-column Core Tech Requirements table (with the category&#39;s purple requirement), platform/front-end/back-end boxes with backend scope, and the suggested goals.</li>
+<li><code>&lt;project-name&gt;-goals/</code> — the two milestone goal workbooks (<code>M1_…​.xlsx</code>, <code>M2_…​.xlsx</code>), derived from the category templates in <code>Sample Templates/Goals/</code>, with tailored acceptance criteria (2–5 bullets per goal), Team Info prefilled, and the Owner column left blank for the team.</li>
+<li>Rebuilt <code>Student Projects/index.md</code> and the self-contained HTML set in <code>Student Projects/html/</code>.</li>
+</ul>
+<p>Rejected proposals are logged in <code>Student Projects/rejected-log.md</code> (reason, rejection type, nearest category, resubmission hint) — no assessment file is created.</p>
+<h2 id="standalone-use-colleagues-without-this-folder">Standalone use (colleagues without this folder)</h2>
+<p>The skill carries snapshots of the grounding material (category rubric, goal-pool digest, requirements matrix, appendices, stylesheet, template workbooks), so it can assess proposals with no folder connected — outputs are offered as downloadable files instead. Two limitations: back-links into this doc set&#39;s HTML will be dead, and the snapshots reflect the doc set as of the last packaging.</p>
+<h2 id="using-it-outside-claude-other-ai-agents">Using it outside Claude (other AI agents)</h2>
+<p>The skill follows the open <strong>SKILL.md convention</strong> (YAML frontmatter + markdown instructions + <code>scripts/</code> and <code>reference/</code> directories), which as of 2026 is also supported by OpenAI&#39;s Codex CLI, Google&#39;s Gemini CLI, GitHub Copilot&#39;s agent mode, Cursor, and community tools such as Cline and Windsurf. This skill uses only the core format, so it works across those tools without modification. Practical notes:</p>
+<ul>
+<li><strong>Packaging:</strong> the one-click Save-skill install is a Claude-apps feature. For other tools, unzip the <code>.skill</code> file (it is an ordinary zip) and place the <code>project-proposal-assessor/</code> folder in that tool&#39;s skills directory.</li>
+<li><strong>Capabilities assumed:</strong> web search/fetch (reference verification), a shell with Python (openpyxl) and pandoc (workbooks and HTML), and write access to the project folder. The instructions tell the agent to skip and report any step its harness cannot perform.</li>
+<li><strong>Phrasing:</strong> a few instructions are worded for Claude&#39;s desktop app (&quot;connected folder&quot;, &quot;offer the file for download&quot;); capable agents interpret these loosely.</li>
+<li><strong>Quality travels with the model, not the file.</strong> The mechanics port cleanly, but the judgment calls — category gate, three-tier verdict, tailored goals — are only as good as the model running the skill. Spot-check assessments produced by other agents before trusting them.</li>
+</ul>
+<p>Reference: the <a href="https://agentskills.io/specification">Agent Skills specification</a>.</p>
+<h2 id="maintenance">Maintenance</h2>
+<ul>
+<li><strong>After major doc changes</strong> (goal pools, categories, appendices, or the goal templates), ask Claude to re-package the skill so the bundled snapshots stay current — then re-save it and redistribute to colleagues.</li>
+<li><strong>If the skill errors about a truncated or corrupted script:</strong> the installed copy got damaged during caching. Remove the skill and re-save it from a fresh copy of the file. (The skill also carries self-healing instructions and will usually reconstruct the script on its own.)</li>
+<li>The <code>.skill</code> file is an ordinary zip — safe to email or share however you like.</li>
+</ul>
+</body>
+</html>
