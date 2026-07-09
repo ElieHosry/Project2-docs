@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>team-formation</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }th { background: #f6f8fa; font-weight: 600; }tr:nth-child(even) td { background: #f6f8fa; }code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }li { margin: 3px 0; }</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">team-formation</h1>
+</header>
+<p><a href="index.html">← Back to index</a></p>
+<h1 id="team-formation-guide">Team Formation Guide</h1>
+<p><strong>Status: approved (July 2026).</strong> Companion to the <a href="design-goals-pool.html">Design Goals Pool</a> and the future Art goals pool. This page is the single source of truth for team composition rules — other documents link here rather than restating them.</p>
+<h2 id="hard-rules">Hard rules</h2>
+<ul>
+<li>Every team has <strong>6 CS students</strong> (fixed).</li>
+<li>Every team adds <strong>1–2 Design students</strong> — at least 1 Design student is <strong>mandated</strong>.</li>
+<li>Every team may add <strong>0–2 Art students</strong>.</li>
+<li><strong>Maximum team size: 9.</strong> So Design + Art ≤ 3: picking 1 Designer allows up to 2 Artists; picking 2 Designers allows up to 1 Artist.</li>
+<li>Additions depend on the <strong>nature of the chosen project</strong> and require <strong>instructor approval</strong> (the Art headcount is confirmed at team formation, subject to justification of project complexity/type).</li>
+<li>The instructors of each track (CS, Design, Art) remain the approval gates for their students&#39; goals.</li>
+</ul>
+<h2 id="composition-patterns-and-trade-offs">Composition patterns and trade-offs</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Composition (team size)</th>
+<th>Best for</th>
+<th>Trade-offs to weigh</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>1D + 1A</strong> (8)</td>
+<td>The balanced default for most game projects.</td>
+<td>One person per discipline — no redundancy; Design covers UX + game design alone.</td>
+</tr>
+<tr class="even">
+<td><strong>1D + 2A</strong> (9)</td>
+<td>Art-heavy games: rich environments, character animation, heavy VFX.</td>
+<td>Strong visuals, but a solo designer carries GDD, prototype and validation; art direction must be agreed between 2 artists.</td>
+</tr>
+<tr class="odd">
+<td><strong>2D + 1A</strong> (9)</td>
+<td>Systems- and content-heavy games: deep UX, complex economies, lots of levels/missions.</td>
+<td>Full Design coverage (4 goals/milestone) with dedicated art; art breadth is limited to what 1 artist can produce.</td>
+</tr>
+<tr class="even">
+<td><strong>2D + 0A</strong> (8)</td>
+<td>UX-heavy products with lean visual needs; teams confident in a strong visual-design skillset within Design.</td>
+<td>No dedicated artist: the <em>(conditional)</em> Art POC / Art Implementation goals become mandatory Design picks — cleanly covered with 2 designers.</td>
+</tr>
+<tr class="odd">
+<td><strong>1D + 0A</strong> (7)</td>
+<td>Visually lean projects only (minimal art surface).</td>
+<td>Riskiest mix: the solo designer&#39;s picks are forced to the conditional Art goals, and the M1 prototype drops to a core-loop sketch inside D1 ⭐ (see the conditional rule in the Design Goals Pool). Requires explicit instructor sign-off.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Rule of thumb:</strong> count the project&#39;s <em>art surface</em> (characters, environments, animation, VFX) and <em>design surface</em> (systems depth, UX breadth, content volume) at pitch time — the bigger surface gets the second slot.</p>
+<h2 id="goal-load-per-track-per-milestone">Goal load per track (per milestone)</h2>
+<ul>
+<li><strong>CS:</strong> 6 goals — one ~40 h goal per student (G1–G3 ⭐ common + 3 pool picks).</li>
+<li><strong>Design:</strong> 2 goals per Design student — D1 ⭐ + picks, deliverable-sized with quality ladders (two Design goals ≈ one CS goal in effort).</li>
+<li><strong>Art:</strong> to be defined (Art goals pool pending).</li>
+<li><strong>TEAM goals</strong> (Audio / UI, cross-disciplinary): to be defined — graded across members, with Audio and UI instructors involved where taken goals touch their topics.</li>
+</ul>
+<h2 id="formation-timeline">Formation timeline</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Week</th>
+<th>What happens</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Profiling quiz (aspirations, interests, competencies). Job-listing &quot;shapes&quot; given; every student submits the listing they apply for.</td>
+</tr>
+<tr class="even">
+<td>1–2</td>
+<td>CS: specialization prototype (bootcamp). Design/Art: portfolio updated for the chosen listing.</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td><strong>Teams formed.</strong> Art headcount confirmed (0–2, justified by project complexity/type). Design: user research starts.</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td><strong>Product pitch</strong> (conversational, per team — not a big presentation). Proposal assessed against the 9 categories.</td>
+</tr>
+<tr class="odd">
+<td>5</td>
+<td><strong>Milestone goals confirmed</strong> per track; project kickoff.</td>
+</tr>
+</tbody>
+</table>
+<p>Goals are graded per milestone as <strong>Done / Partially Done / Missing</strong> by the owning track&#39;s instructor — the same scale for all tracks (CS, Design, Art, and future TEAM goals).</p>
+<h2 id="scaling-note">Scaling note</h2>
+<p>This guide is currently <strong>Games-scoped</strong> where it talks about surfaces and examples. When the Design and Art pools scale to the other 8 categories, this page gains per-category composition guidance (e.g., typical Art surface of a Fintech dashboard vs. an Immersive Experience) and the proposal assessor will recommend a Design/Art headcount per assessed proposal.</p>
+<hr />
+<p><em>Sources: module composition decisions (July 2026), <code>New Module Design/New Preliminary Design.docx</code> timeline.</em></p>
+</body>
+</html>

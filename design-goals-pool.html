@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>design-goals-pool</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }th { background: #f6f8fa; font-weight: 600; }tr:nth-child(even) td { background: #f6f8fa; }code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }li { margin: 3px 0; }</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">design-goals-pool</h1>
+</header>
+<p><a href="index.html">← Back to index</a></p>
+<h1 id="design-goals-pool--games-category">Design Goals Pool — Games Category</h1>
+<p><strong>Status: approved by the Design instructor (July 2026) — Games-scoped.</strong> Distilled from the previous module&#39;s Designers-Rubrics (M1–M3) and the New Preliminary Design timeline. Scaling to the other 8 categories is pending.</p>
+<h2 id="how-design-goals-work">How Design goals work</h2>
+<p>Each team has <strong>1–2 Design students</strong> (minimum 1, mandated). Unlike the CS track (one 40 h goal per student per milestone), Design goals are lighter, deliverable-sized units: <strong>each Design student takes 2 goals per milestone</strong> (two Design goals ≈ one CS goal in effort). The mandated designer owns the common goal <strong>D1 ⭐</strong> plus 1 pool pick; a second designer takes 2 more picks (all picks with instructor approval).</p>
+<p><strong>Default picks:</strong> the mandated designer&#39;s M1 pick is normally <strong>#2 Core-Loop Interactive Prototype</strong> — this preserves the old module&#39;s compulsory GDD + prototype pair on every team.</p>
+<p><strong>Conditional rule:</strong> pool goals marked <em>(conditional)</em> are mandatory picks for teams with <strong>no Art student</strong>. Since this consumes a pick, teams with 0 artists are strongly advised to carry 2 designers; a solo-designer/0-artist team must ask the instructor which conditional bends (in that case only, D1 ⭐ absorbs a minimal core-loop sketch in place of #2).</p>
+<p><strong>Sizing:</strong> Design goals are sized by <strong>deliverable + quality tier</strong>, not by a strict 40-hour estimate. Every goal carries a <em>Quality ladder</em> (Base → Good → Exceptional) distilled from the old rubric tiers (Simple/Moderate → Good/Advanced → Exceptional). The Base rung is what &quot;Done&quot; means; upper rungs raise the grade, they don&#39;t extend the deadline.</p>
+<p><strong>Numbering:</strong> D1 ⭐ = common; #2, #3, … = pool picks. Pools are extensible like the CS pools — instructor-approved goals from new proposals are appended at the end.</p>
+<p><strong>Cross-track dependencies:</strong> several goals reference CS goals (G1–G3 ⭐, #N) from the Games pools — Design deliverables feed the CS data-driven architecture and editors, and consume the CS prototype builds.</p>
+<p><em>Not in this pool:</em> Audio production and cross-disciplinary UI implementation rubrics are earmarked for the future <strong>TEAM goals</strong> bucket (Audio/UI instructors) and only appear here as design-direction work.</p>
+<div style="background:#EEF0FA;border-left:6px solid #3F51B5;padding:8px 14px;border-radius:4px;margin-top:32px"><h2 style="margin:0;border:none">Design — Games</h2></div>
+
+<h3 id="milestone-1-core-technology-base-phase">Milestone 1 (Core technology base phase)</h3>
+<ol>
+<li>⭐ <strong>Game Design Document, Problem Statement &amp; Feasibility</strong> — the design backbone: concept, core loop, mechanics, USP, scope sign-off.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> 6–8 page GDD (core mechanics, objective, theme, genre, core game loop, control mapping incl. touch, level/progression overview, references) + the team&#39;s problem statement + a feasibility check against the CS engine feature plan, signed off by all members + a trimester planning timeline. (Solo-designer/0-artist teams only: may absorb a minimal core-loop sketch in place of #2 — see the conditional rule above.)</li><li><b>Prerequisites:</b> None — foundation of the design track.</li><li><b>Feeds into:</b> Every goal in both tracks; the wk4 product pitch; CS M1 G2 (what the core objects ARE); M2 D1 ⭐.</li><li><b>Quality ladder:</b> Base = complete, clear, feasible. Good = systems interlock with no purposeless mechanics, depth over volume, clean visuals-supported writing. Exceptional = genuinely unique USP that moves the genre forward.</li></ul></details>
+</li>
+<li><strong>Core-Loop Interactive Prototype</strong> — playable proof of the core mechanics in Figma or a commercial engine; the design risk killer.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Playable prototype without critical crashes; title/help screen listing controls; readme (controls, how to play, feature list); touch controls follow industry standards.</li><li><b>Prerequisites:</b> D1 ⭐ (core loop defined).</li><li><b>Feeds into:</b> M1 #10 playtests; the wk9 prototype checkpoint; CS team&#39;s target reference for M2.</li><li><b>Quality ladder:</b> Base = core mechanics and player interaction are evident. Good = industry-standard minimal controls with audio-visual feedback that explains the moment. Exceptional = the USP is already felt in play, not just described.</li></ul></details>
+</li>
+<li><strong>User Research, Personas &amp; Competitive Analysis</strong> — know the player and the genre before betting a trimester on them.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Competitor/genre teardown (3+ titles), target-player personas, research questions with method and findings; implications written back into the GDD.</li><li><b>Prerequisites:</b> None — runs from wk3 alongside team formation.</li><li><b>Feeds into:</b> D1 ⭐ (audience-fit decisions), M1 #4 (journey-driven flows), M2 #5 (recruiting playtesters that match personas).</li><li><b>Quality ladder:</b> Base = personas + teardown exist and are referenced. Good = findings visibly changed design decisions (documented before/after). Exceptional = original research (surveys/interviews) with actionable insight beyond genre convention.</li></ul></details>
+</li>
+<li><strong>UX Flows &amp; Wireframes — Menus → HUD</strong> — the screen map of the whole product before pixels get expensive.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Complete screen inventory and navigation map (boot → menus → gameplay → fail/success loops), wireframes for all critical screens, HUD information hierarchy, user journeys per persona.</li><li><b>Prerequisites:</b> D1 ⭐ (what screens the game needs).</li><li><b>Feeds into:</b> M2 D1 ⭐ (polished UI), M2 #3 (motion design), CS M2 #5 (custom GUI system scope).</li><li><b>Quality ladder:</b> Base = all critical screens wireframed and connected. Good = information hierarchy justified; journeys traceable per persona. Exceptional = wireframes usability-tested and iterated before M1 ends.</li></ul></details>
+</li>
+<li><strong>Control Mapping &amp; Game Feel Specification</strong> — touch-first input design and the feel rules that make it responsive.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Input schemes for the mobile target (touch zones, gestures) plus keyboard/controller dev fallbacks; game-feel spec (buffering, acceleration curves, forgiveness mechanics) as tunable parameters.</li><li><b>Prerequisites:</b> D1 ⭐ (mechanics to map).</li><li><b>Feeds into:</b> CS M1 G1 ⭐ (input system requirements), M2 #8 (juice pass), M2 #11 (ergonomics).</li><li><b>Quality ladder:</b> Base = complete, standards-compliant mapping. Good = feel parameters specified as data the CS team can tune. Exceptional = feel validated in the prototype with test evidence.</li></ul></details>
+</li>
+<li><strong>Level &amp; Progression Design</strong> — the difficulty curve and the levels that teach the game without a manual.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Level design document: paper maps/greyboxes, difficulty and pacing curve, teach-test-twist beat structure, progression rules; authored to fit the CS level-editor data format.</li><li><b>Prerequisites:</b> D1 ⭐ (mechanics and progression frame).</li><li><b>Feeds into:</b> M2 #6 (the built level), CS M2 G2 ⭐ (editor content requirements).</li><li><b>Quality ladder:</b> Base = coherent maps + curve. Good = levels teach mechanics without text. Exceptional = paper-playtested with documented iterations.</li></ul></details>
+</li>
+<li><strong>Game Economy &amp; Systems Balance Model</strong> — every resource has a source, a sink and a reason to exist.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> System diagram of all resources/mechanics and their interlocks; spreadsheet balance model with tunable variables; &quot;no purposeless system&quot; audit of the GDD.</li><li><b>Prerequisites:</b> D1 ⭐ (systems defined).</li><li><b>Feeds into:</b> M2 #7 (tuning), CS M1 G2 ⭐ (which values are data-driven).</li><li><b>Quality ladder:</b> Base = model covers all systems. Good = interlocks explicit; model answers &quot;what if&quot; questions. Exceptional = model predictions checked against prototype play data.</li></ul></details>
+</li>
+<li><strong>Narrative, Theme &amp; World Concept</strong> — who am I, where am I, what must I do — answered with craft.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Theme and tone definition, world/character bible (concise), narrative beats for the vertical slice, plan for in-game delivery (ambient, dialogue, cutscene).</li><li><b>Prerequisites:</b> D1 ⭐ (theme/genre frame).</li><li><b>Feeds into:</b> M2 #9 (cutscene presentation), Art track&#39;s art direction (or M1 #12 for no-Art teams).</li><li><b>Quality ladder:</b> Base = coherent theme + beats. Good = narrative reinforces mechanics (ludonarrative fit). Exceptional = distinctive voice/world that strengthens the USP.</li></ul></details>
+</li>
+<li><strong>Audio Direction Concept</strong> — the game&#39;s sound identity on paper before anyone records a note. <em>(May migrate to the future TEAM goals bucket.)</em>
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Audio concept document: theme and direction, full BGM/SFX needs list, at least 4 audio/video references, priority order for M2 integration.</li><li><b>Prerequisites:</b> D1 ⭐ (theme).</li><li><b>Feeds into:</b> M2 #10 (integration), CS audio system goals.</li><li><b>Quality ladder:</b> Base = complete list + references. Good = direction is specific enough to brief a composer. Exceptional = includes produced concept audio or an interactive audio sketch.</li></ul></details>
+</li>
+<li><strong>Playtest Plan &amp; First Playtests</strong> — structured observation, not &quot;my friends liked it&quot;.
+<details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Playtest protocol (goals, tasks, observation sheet, consent), at least 3 sessions run on the M1 prototype, findings log with severity ratings and design responses.</li><li><b>Prerequisites:</b> M1 #2 (something playable) or D1 ⭐&#39;s core-loop sketch.</li><li><b>Feeds into:</b> M2 #5 (the full program), M2 D1 ⭐ (validation evidence).</li><li><b>Quality ladder:</b> Base = protocol + 3 documented sessions. Good = findings triaged and visibly acted on. Exceptional = quantitative + qualitative methods combined.</li></ul></details>
+</li>
+<li><strong>Accessibility &amp; Readability Foundations</strong> — legible fonts, sane contrast, touch targets that fit thumbs.
+<details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Accessibility guideline set for the project (type sizes, contrast ratios, colorblind-safe palette rules, touch-target minimums, input alternatives) applied to the M1 wireframes.</li><li><b>Prerequisites:</b> M1 #4 (wireframes to apply it to).</li><li><b>Feeds into:</b> M2 D1 ⭐ (polished UI must comply), M2 #11 (mobile ergonomics).</li><li><b>Quality ladder:</b> Base = guidelines exist and wireframes comply. Good = verified with tools (contrast checkers, device tests). Exceptional = tested with users having relevant needs.</li></ul></details>
+</li>
+<li><strong>Art Proof of Concept</strong> <em>(conditional — mandatory pick for teams with NO Art student)</em> — the design-owned substitute for the Art track&#39;s M1.
+<details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Max-5-page Art POC (PDF): art references/concept art for characters or key objects, environments, menus/HUD; an art style guide covering ALL game elements; a UI style guide (fonts, themes, palettes, mood board). AI use for ideation allowed but every AI image annotated with the tool; AI assets may NOT ship in the product.</li><li><b>Prerequisites:</b> D1 ⭐ (theme/genre), M1 #8 if picked.</li><li><b>Feeds into:</b> M2 #12 (implementation quality), CS art pipeline goals.</li><li><b>Quality ladder:</b> Base = complete POC with consistent references. Good = style guides give clear direction for all elements. Exceptional = original team-made mockups near industry quality.</li></ul></details>
+</li>
+</ol>
+<h3 id="milestone-2-core-technology-showcase-phase">Milestone 2 (Core technology showcase phase)</h3>
+<ol>
+<li>⭐ <strong>UX Validation &amp; Final Polished UI</strong> — tested with real users, polished to the &quot;A&quot; standard, running in the team&#39;s engine on the mobile target.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Iterative UX testing across M2 with documented changes; complete menu functionality in the showcase build (start, pause, resume — exact labels, quit with confirmation, how-to-play); final polished UI implemented with the CS team — modern, animated, alive (not static screens); UI complies with the M1 accessibility guidelines; runs on the mobile target.</li><li><b>Prerequisites:</b> M1 D1 ⭐, M1 #4 (flows/wireframes); CS M2 #5 or the CS GUI capability.</li><li><b>Feeds into:</b> The trimester showcase; sets the visual/UX standard the T2 product must match.</li><li><b>Quality ladder:</b> Base = all menus function correctly with standard labels/flows. Good = coherent, branded, animated UI; test-driven iterations documented. Exceptional = &quot;2025-style&quot; motion UI (Persona 5 reference) fully in-engine.</li></ul></details>
+</li>
+<li><strong>Visual Branding &amp; Style Guide</strong> — logo, typography, palette: one identity across game, UI and store presence.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Logo/wordmark, typography system (max 3 fonts: headings, in-game, small text — policy-compliant), color palette, applied consistently across menus/HUD/marketing shots; style guide document.</li><li><b>Prerequisites:</b> M1 D1 ⭐ (theme); M1 #12 or Art track (art direction).</li><li><b>Feeds into:</b> M2 D1 ⭐ (polished UI uses it), the showcase presentation.</li><li><b>Quality ladder:</b> Base = complete, consistent guide. Good = identity distinctive and applied everywhere. Exceptional = professional-grade brand system.</li></ul></details>
+</li>
+<li><strong>Menu &amp; HUD Motion Design</strong> — menus that build, respond and breathe; HUD states that animate meaningfully.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Motion spec (build-on animations, hover/press states, transitions, HUD state changes like health-bar reactions) plus implementation with the CS team in the engine.</li><li><b>Prerequisites:</b> M1 #4 (flows), M2 #2 (visual language); CS GUI/graphics goals.</li><li><b>Feeds into:</b> M2 D1 ⭐ (its Exceptional rung lives here).</li><li><b>Quality ladder:</b> Base = specified states for all interactive elements. Good = implemented animated feedback on menus and HUD. Exceptional = cohesive motion identity across the whole product.</li></ul></details>
+</li>
+<li><strong>Onboarding &amp; Tutorial Design</strong> — the first five minutes: teach without a wall of text.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> First-time-user experience design: contextual teaching moments, how-to-play screen content, safe failure spaces; validated with players who never saw the game.</li><li><b>Prerequisites:</b> M1 #6 (teaching beats) or D1 ⭐; a playable M2 build.</li><li><b>Feeds into:</b> M2 D1 ⭐ (how-to-play requirement), showcase demo readiness.</li><li><b>Quality ladder:</b> Base = complete FTUE plan + how-to-play. Good = new players succeed unaided in tests. Exceptional = tutorial invisible — taught entirely through play.</li></ul></details>
+</li>
+<li><strong>Playtesting &amp; Iteration Program</strong> — the M2 engine of quality: test, triage, change, re-test.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> At least 1 structured session in M2 with persona-matched testers, metrics (task success, time, subjective ratings), a triaged findings backlog, and documented before/after changes.</li><li><b>Prerequisites:</b> M1 #10 (protocol) or equivalent; M2 builds.</li><li><b>Feeds into:</b> M2 D1 ⭐ (validation evidence), M2 #7 (tuning data).</li><li><b>Quality ladder:</b> Base = 1 session, findings logged. Good = changes traceable to findings. Exceptional = multiple sessions with measurable improvement across iterations.</li></ul></details>
+</li>
+<li><strong>Complete Basic Level &amp; Vertical Slice Design</strong> — one level, whole experience: win, lose, retry.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> A complete basic level authored in the team&#39;s editor, with success and failure conditions and easy retry/continue; the vertical-slice experience arc (or an approved waiver for endless/no-fail designs).</li><li><b>Prerequisites:</b> M1 #6 (level design) or D1 ⭐; CS M2 G2 ⭐ (editor).</li><li><b>Feeds into:</b> The showcase demo; T2 full-level production.</li><li><b>Quality ladder:</b> Base = playable complete level with win/lose. Good = paced, teaching, polished. Exceptional = a true vertical slice — all mechanics represented with intended experience quality.</li></ul></details>
+</li>
+<li><strong>Systems Balance &amp; Tuning — Data-Driven</strong> — turning the M1 model into a tuned game via the team&#39;s own data files.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Tuning passes on the real build using the CS data-driven architecture (no code changes), tuning journal (what/why/result), final balance state for the showcase.</li><li><b>Prerequisites:</b> M1 #7 (model); CS M1 G2 ⭐ (data files to tune).</li><li><b>Feeds into:</b> Showcase play quality; M2 #5 feeds it data.</li><li><b>Quality ladder:</b> Base = documented tuning to a stable state. Good = playtest-informed decisions. Exceptional = telemetry-assisted tuning.</li></ul></details>
+</li>
+<li><strong>Game Feel &amp; Feedback Pass (&quot;Juice&quot;)</strong> — every action answers the player: visually, audibly, immediately.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Feedback spec + implementation with CS: hit reactions, particles, screen effects, audio cues on meaningful interactions (objects, NPCs, items) serving the core mechanics.</li><li><b>Prerequisites:</b> M1 #5 (feel spec); CS graphics/animation goals.</li><li><b>Feeds into:</b> M2 D1 ⭐ and the showcase&#39;s perceived quality.</li><li><b>Quality ladder:</b> Base = feedback on all core interactions. Good = cues are meaningful and legible, not noise. Exceptional = the game feels professional — feedback is a signature.</li></ul></details>
+</li>
+<li><strong>Narrative Presentation &amp; Cutscenes</strong> — context delivered with motion: scrolling, parallax, zoom — never static walls of text.
+ <details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Primitive narrative cutscenes or ambient storytelling answering &quot;who am I / where am I / what must I do&quot;, using dynamic presentation; integrated in the build.</li><li><b>Prerequisites:</b> M1 #8 (beats); art assets from Art track or M1 #12.</li><li><b>Feeds into:</b> Showcase storytelling; T2 full narrative.</li><li><b>Quality ladder:</b> Base = context delivered in-game. Good = dynamic presentation (parallax/zoom/scroll). Exceptional = presentation quality that elevates the whole product.</li></ul></details>
+</li>
+<li><strong>Audio Integration &amp; Feedback Design</strong> — at least 1 BGM and 6 distinct SFX types, themed and mixed into play. <em>(May migrate to the future TEAM goals bucket.)</em>
+<details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Sourced/produced audio set (≥1 BGM, ≥6 SFX types — different sounds, not variations), integrated via the CS audio system, matching the M1 direction; clean loops, no cutoffs.</li><li><b>Prerequisites:</b> M1 #9 (direction); CS audio goals.</li><li><b>Feeds into:</b> M2 #8 (audio side of juice), showcase recording quality.</li><li><b>Quality ladder:</b> Base = required set integrated and working. Good = smooth loops, clean edits, fitting theme. Exceptional = original tailor-made BGM/SFX by the team.</li></ul></details>
+</li>
+<li><strong>Mobile UX Adaptation &amp; Ergonomics</strong> — designed for thumbs, sessions and interruptions, on the reference device.
+<details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> Mobile ergonomics pass: thumb-zone layout, safe areas, session-length fit, interruption handling UX (calls/backgrounding), device testing on Pixel 8a/9a and/or mobile web.</li><li><b>Prerequisites:</b> M1 #5, M1 #11; CS M2 G1 ⭐ (mobile build).</li><li><b>Feeds into:</b> M2 D1 ⭐ (the polished UI must survive real hands on the real device).</li><li><b>Quality ladder:</b> Base = layouts adapted and device-tested. Good = interruption/resume UX handled gracefully. Exceptional = one-handed play validated with users.</li></ul></details>
+</li>
+<li><strong>Art Implementation Quality</strong> <em>(conditional — mandatory pick for teams with NO Art student)</em> — the design-owned substitute for the Art track&#39;s M2.
+<details><summary>Details &amp; dependencies</summary><ul><li><b>Deliverable:</b> All implemented art aligned with the Art POC (no placeholders): readable environments, critical sprites/animations for key actions, consistent scaling (matching pixel sizes, no distortion), UI states implemented; all shipped art team-made.</li><li><b>Prerequisites:</b> M1 #12 (Art POC); CS art pipeline goals.</li><li><b>Feeds into:</b> Showcase visual quality; T2 art production plan.</li><li><b>Quality ladder:</b> Base = critical art implemented, readable, consistent. Good = environment alive (layering, ambient animation). Exceptional = near-industry quality throughout.</li></ul></details>
+</li>
+</ol>
+<h2 id="rubric-coverage-map-old--new">Rubric coverage map (old → new)</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Old Designers-Rubrics</th>
+<th>Distilled into</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>M1 2101–2108 (Game Design Document)</td>
+<td>M1 D1 ⭐</td>
+</tr>
+<tr class="even">
+<td>M1 2201–2204 (Game Prototype)</td>
+<td>M1 #2 (+ D1 ⭐ minimal sketch)</td>
+</tr>
+<tr class="odd">
+<td>M1/M2 5101–5108 (Art POC — no-Art teams)</td>
+<td>M1 #12 <em>(conditional)</em></td>
+</tr>
+<tr class="even">
+<td>M2 2101–2103 (GDD revision/USP)</td>
+<td>folded into M1 D1 ⭐ quality ladder + M2 D1 ⭐ iteration evidence</td>
+</tr>
+<tr class="odd">
+<td>M2 2104 (Audio concept doc)</td>
+<td>M1 #9</td>
+</tr>
+<tr class="even">
+<td>M2 2201–2206 (M2 Prototype, win/lose, controls, feedback-driven improvement)</td>
+<td>M2 #6, M2 #5, M1 #5</td>
+</tr>
+<tr class="odd">
+<td>M2 2207 (concept-art integration)</td>
+<td>M2 #12 <em>(conditional)</em> / Art track</td>
+</tr>
+<tr class="even">
+<td>M2 2208 (visuals &amp; feedback)</td>
+<td>M2 #8</td>
+</tr>
+<tr class="odd">
+<td>M2 2209 (cutscenes/story)</td>
+<td>M1 #8, M2 #9</td>
+</tr>
+<tr class="even">
+<td>M2 2210–2211 (audio integration, rhythm sync)</td>
+<td>M2 #10 (rhythm-specific clause to be a per-project AC)</td>
+</tr>
+<tr class="odd">
+<td>M2 2212–2213 (vertical slice, custom-engine integration)</td>
+<td>M2 #6; custom-engine integration is now the default (CS showcase build)</td>
+</tr>
+<tr class="even">
+<td>M3 2001–2005 (menu functionality)</td>
+<td>M2 D1 ⭐</td>
+</tr>
+<tr class="odd">
+<td>M3 2201–2207 (custom-engine prototype)</td>
+<td>absorbed by CS M2 goals + M2 #6/#8</td>
+</tr>
+<tr class="even">
+<td>M3 2301–2305 (audio)</td>
+<td>M2 #10 <em>(candidate for TEAM goals)</em></td>
+</tr>
+<tr class="odd">
+<td>M3 5101–5304 (visual quality/animation/UI — no-Art teams)</td>
+<td>M2 #12 <em>(conditional)</em>, M2 D1 ⭐ (UI)</td>
+</tr>
+<tr class="even">
+<td>6107/6110 (submission)</td>
+<td>submission mechanics, not goals — handled by milestone process</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Deliberately dropped:</strong> M3 as a milestone (module is now 2 milestones); commercial-engine final prototypes (the showcase build is the team&#39;s own engine per module policy — commercial engines/Figma remain legitimate <em>prototyping</em> tools in M1); PC-only menu conventions (ESC-key wording generalized — mobile target uses touch equivalents).</p>
+<hr />
+<p><em>Approved by the Design instructor, July 2026 · sources: <code>Previous Module Design/DESIGN Rubrics/</code> (M1–M3), <code>New Module Design/New Preliminary Design.docx</code>.</em></p>
+</body>
+</html>
