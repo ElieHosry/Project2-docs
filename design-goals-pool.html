@@ -117,7 +117,7 @@ li { margin: 3px 0; }
 </li>
 </ol>
 <h2 id="category-adaptations">Category adaptations</h2>
-<p><strong>Draft — pending Design instructor approval.</strong> The pool above is canonical and Games-flavored; most picks are universal design disciplines and apply to every category as-is (user research #3, UX flows #4, playtests #9, accessibility #10; branding M2 #2, motion M2 #3, onboarding M2 #4, playtesting program M2 #5, mobile ergonomics M2 #10, and both conditionals). The subsections below give only the <strong>category readings</strong> for D1 ⭐ and the picks whose meaning shifts. Unlisted picks apply unchanged.</p>
+<p><strong>Pattern approved by the Design instructor (Education, July 2026); the subsections follow the approved model.</strong> The pool above is canonical and Games-flavored; most picks are universal design disciplines and apply to every category as-is (user research #3, UX flows #4, playtests #9, accessibility #10; branding M2 #2, motion M2 #3, onboarding M2 #4, playtesting program M2 #5, mobile ergonomics M2 #10, and both conditionals). The subsections below give only the <strong>category readings</strong> for D1 ⭐ and the picks whose meaning shifts. Unlisted picks apply unchanged.</p>
 <h3 id="education--training">Education + Training</h3>
 <ul>
 <li><strong>D1 ⭐ (M1)</strong> reads as a <strong>Learning Product Design Document</strong>: learning objectives and target learners replace genre/audience; the problem statement is the skill gap the product closes; feasibility unchanged. <strong>D1 ⭐ (M2)</strong>: UX validation with real learners where possible; final polished UI unchanged.</li>
@@ -131,7 +131,94 @@ li { margin: 3px 0; }
 <li><strong>M2 #8 Game Feel &amp; Feedback Pass</strong> → <strong>feedback &amp; celebration pass</strong>: correct/incorrect/progress moments feel rewarding without distracting from learning.</li>
 <li><strong>M2 #9 Narrative Presentation &amp; Cutscenes</strong> → <strong>guided sequences &amp; worked examples</strong>: intro sequences, demonstration replays, tutor walk-throughs.</li>
 </ul>
-<p><em>(Other categories: pending — this section grows as the scaling is approved category by category.)</em></p>
+<h3 id="simulator">Simulator</h3>
+<ul>
+<li><strong>D1 ⭐ (M1)</strong> reads as a <strong>Simulation Product Design Document</strong>: the modeled system, who consumes the insights and for what decisions, fidelity-vs-usability trade-offs, feasibility. <strong>D1 ⭐ (M2)</strong>: UX validation with users interpreting results; final polished UI unchanged.</li>
+<li><strong>M1 #2 Prototype</strong> → the <strong>configure → run → read-results loop</strong>, interactive end to end.</li>
+<li><strong>M1 #5 Control Mapping &amp; Game Feel</strong> → <strong>Run-Control &amp; Visualization Spec</strong>: play/pause/speed/step controls, camera &amp; inspection interactions, live-view readability rules.</li>
+<li><strong>M1 #6 Level &amp; Progression</strong> → <strong>Scenario Set Design</strong>: authored scenarios from baseline to stress and edge cases, ordered for demos.</li>
+<li><strong>M1 #7 Economy &amp; Balance</strong> → <strong>Parameter Model Design</strong>: parameter ranges, defaults and plausibility bounds, designed with the CS team.</li>
+<li><strong>M1 #8 Narrative/Theme</strong> → <strong>Case-Study Framing</strong>: the real-world story each scenario tells (a city, an ecosystem), naming and visual metaphor.</li>
+<li><strong>M2 #6 Vertical Slice</strong> → one <strong>polished experiment end to end</strong> (configure → run → batch → report).</li>
+<li><strong>M2 #7 Balance &amp; Tuning</strong> → parameter tuning against reference data or documented expectations.</li>
+<li><strong>M2 #8 Feedback Pass</strong> → <strong>legibility pass on the live view</strong>: transitions, highlights, alerts that make the simulation satisfying to watch.</li>
+<li><strong>M2 #9 Cutscenes</strong> → <strong>guided tours / annotated replays</strong> of notable runs.</li>
+</ul>
+<h3 id="fintech">Fintech</h3>
+<ul>
+<li><strong>D1 ⭐ (M1)</strong> reads as a <strong>Financial Product Design Document</strong>: user goals (learn / monitor / decide), trust and clarity requirements, virtual-money disclaimers, feasibility. <strong>D1 ⭐ (M2)</strong> unchanged.</li>
+<li><strong>M1 #2 Prototype</strong> → the <strong>core financial loop</strong> (observe → decide → act → review outcome).</li>
+<li><strong>M1 #5 Control Mapping &amp; Game Feel</strong> → <strong>Interaction &amp; Data-Density Spec</strong>: chart interactions, order/entry ergonomics, error prevention for money-like actions.</li>
+<li><strong>M1 #6 Level &amp; Progression</strong> → <strong>User Journey &amp; Scenario Design</strong>: onboarding to first action; scripted market scenarios (calm, volatile, crash).</li>
+<li><strong>M1 #7 Economy &amp; Balance</strong> → <strong>Economy &amp; Risk Model Design</strong>: virtual portfolio rules, fees, limits — with the CS simulation.</li>
+<li><strong>M1 #8 Narrative/Theme</strong> → <strong>Product Voice &amp; Scenario Theming</strong>: sober vs playful tone, market narratives for demos.</li>
+<li><strong>M2 #6 Vertical Slice</strong> → one <strong>complete workflow polished</strong> (e.g. fund → trade → report).</li>
+<li><strong>M2 #7 Balance &amp; Tuning</strong> → tuning fees/volatility/difficulty from playtests.</li>
+<li><strong>M2 #8 Feedback Pass</strong> → <strong>clarity pass</strong>: confirmations, alerts, P&amp;L moments — no dark patterns.</li>
+<li><strong>M2 #9 Cutscenes</strong> → <strong>guided walkthroughs / annotated market replays</strong>.</li>
+</ul>
+<h3 id="govtech">GovTech</h3>
+<ul>
+<li><strong>D1 ⭐ (M1)</strong> reads as a <strong>Service Design Document</strong>: the service blueprint across the citizen/customer side and the staff/ops side, stakeholders, accessibility mandate, feasibility. <strong>D1 ⭐ (M2)</strong> unchanged.</li>
+<li><strong>M1 #2 Prototype</strong> → the <strong>service flow</strong> (submit → track → resolve), both roles clickable.</li>
+<li><strong>M1 #5 Control Mapping &amp; Game Feel</strong> → <strong>Form &amp; Status Ergonomics Spec</strong>: form patterns, validation behaviour, status feedback conventions.</li>
+<li><strong>M1 #6 Level &amp; Progression</strong> → <strong>Service Journey Design</strong>: end-to-end citizen journeys incl. rejection/appeal paths; staff workload paths.</li>
+<li><strong>M1 #7 Economy &amp; Balance</strong> → <strong>Rules &amp; Priority Model Design</strong>: queue priorities, SLA thresholds, escalation rules — with the CS engine.</li>
+<li><strong>M1 #8 Narrative/Theme</strong> → <strong>Civic Identity &amp; Plain Language</strong>: trust cues, multilingual tone, content standards.</li>
+<li><strong>M2 #6 Vertical Slice</strong> → one <strong>service polished end to end</strong> (citizen submits → staff resolves → citizen notified).</li>
+<li><strong>M2 #7 Balance &amp; Tuning</strong> → threshold/priority tuning under simulated load.</li>
+<li><strong>M2 #8 Feedback Pass</strong> → <strong>status &amp; notification pass</strong>: clarity and reassurance at every state change.</li>
+<li><strong>M2 #9 Cutscenes</strong> → <strong>role onboarding walkthroughs</strong> and the showcase demo storyline.</li>
+</ul>
+<h3 id="social-media">Social Media</h3>
+<ul>
+<li><strong>D1 ⭐ (M1)</strong> reads as a <strong>Community Product Design Document</strong>: the target community, interaction norms, safety-by-design, feasibility. <strong>D1 ⭐ (M2)</strong> unchanged.</li>
+<li><strong>M1 #2 Prototype</strong> → the <strong>core social loop</strong> (post → react → notify → return).</li>
+<li><strong>M1 #5 Control Mapping &amp; Game Feel</strong> → <strong>Feed &amp; Composer Ergonomics Spec</strong>: gestures, composer flow, notification behaviour.</li>
+<li><strong>M1 #6 Level &amp; Progression</strong> → <strong>Community Journey Design</strong>: new-user journey, empty states, seeding strategy for believable demos.</li>
+<li><strong>M1 #7 Economy &amp; Balance</strong> → <strong>Engagement &amp; Reputation Model</strong>: points/karma/limits balanced against abuse — with the moderation pipeline.</li>
+<li><strong>M1 #8 Narrative/Theme</strong> → <strong>Community Identity &amp; Tone</strong>: naming, voice, presentation of guidelines.</li>
+<li><strong>M2 #6 Vertical Slice</strong> → one <strong>community flow polished</strong> (e.g. create event → invite → attend → recap).</li>
+<li><strong>M2 #7 Balance &amp; Tuning</strong> → ranking/limit tuning from usage tests.</li>
+<li><strong>M2 #8 Feedback Pass</strong> → reactions, streaks and presence moments that reward participation.</li>
+<li><strong>M2 #9 Cutscenes</strong> → <strong>onboarding stories</strong> over seeded community content.</li>
+</ul>
+<h3 id="cms">CMS</h3>
+<ul>
+<li><strong>D1 ⭐ (M1)</strong> reads as an <strong>Authoring Product Design Document</strong>: author and audience personas, content-model concepts, WYSIWYG expectations, feasibility. <strong>D1 ⭐ (M2)</strong> unchanged.</li>
+<li><strong>M1 #2 Prototype</strong> → the <strong>authoring loop</strong> (create → edit → preview → publish).</li>
+<li><strong>M1 #5 Control Mapping &amp; Game Feel</strong> → <strong>Editor Interaction Spec</strong>: selection, drag-drop, inline editing conventions, undo expectations.</li>
+<li><strong>M1 #6 Level &amp; Progression</strong> → <strong>Template &amp; Content Structure Design</strong>: page archetypes, block taxonomy, starter templates.</li>
+<li><strong>M1 #7 Economy &amp; Balance</strong> → <strong>Publishing Workflow Design</strong>: draft/review/publish states, roles, versioning UX.</li>
+<li><strong>M1 #8 Narrative/Theme</strong> → <strong>Theme &amp; Demo Content Strategy</strong>: the demo site&#39;s content story, theme direction.</li>
+<li><strong>M2 #6 Vertical Slice</strong> → one <strong>authoring-to-published-site journey polished</strong> with real content.</li>
+<li><strong>M2 #7 Balance &amp; Tuning</strong> → workflow tuning from author tests (friction points, defaults).</li>
+<li><strong>M2 #8 Feedback Pass</strong> → <strong>editor feel pass</strong>: micro-feedback, drag ghosting, save states.</li>
+<li><strong>M2 #9 Cutscenes</strong> → <strong>guided editor tours</strong> and template showcase sequences.</li>
+</ul>
+<h3 id="immersive-experience">Immersive Experience</h3>
+<p>Closest to Games — most picks apply nearly as written; only these readings shift:</p>
+<ul>
+<li><strong>D1 ⭐ (M1)</strong> reads as an <strong>Experience Design Document</strong>: theme, emotional arc, context/space of use, feasibility. <strong>D1 ⭐ (M2)</strong> unchanged.</li>
+<li><strong>M1 #2 Prototype</strong> → one <strong>interactive scene/moment</strong> working end to end.</li>
+<li><strong>M1 #6 Level &amp; Progression</strong> → <strong>Experience Flow &amp; Pacing</strong>: scene sequence, dwell-time design, transitions.</li>
+<li><strong>M1 #7 Economy &amp; Balance</strong> → <strong>Reactivity Model</strong>: mapping inputs (audio, motion, touch) to response intensities.</li>
+<li><strong>M2 #6 Vertical Slice</strong> → one <strong>complete scene/chapter polished</strong>.</li>
+<li><strong>M2 #7 Balance &amp; Tuning</strong> → reactivity tuning (thresholds, easing) from observing visitors.</li>
+</ul>
+<h3 id="creative-tools--media-production">Creative Tools &amp; Media Production</h3>
+<ul>
+<li><strong>D1 ⭐ (M1)</strong> reads as a <strong>Tool Design Document</strong>: target creators, core workflows, competitive tool analysis, feasibility. <strong>D1 ⭐ (M2)</strong>: UX validation with real creators; final polished UI unchanged.</li>
+<li><strong>M1 #2 Prototype</strong> → the <strong>core creation workflow</strong> (create → edit → export happy path).</li>
+<li><strong>M1 #5 Control Mapping &amp; Game Feel</strong> → <strong>Tool Interaction Spec</strong>: shortcuts, modes, direct-manipulation conventions, touch adaptation.</li>
+<li><strong>M1 #6 Level &amp; Progression</strong> → <strong>Workflow &amp; Learning-Curve Design</strong>: novice→power-user progression, defaults, preset ladder.</li>
+<li><strong>M1 #7 Economy &amp; Balance</strong> → <strong>Preset &amp; Constraint Model</strong>: sensible parameter ranges, starter content balance.</li>
+<li><strong>M1 #8 Narrative/Theme</strong> → <strong>Product Identity &amp; Showcase Content Plan</strong>: the tool&#39;s voice and what gets made with it for the demo.</li>
+<li><strong>M2 #6 Vertical Slice</strong> → one <strong>real artifact produced end to end in the tool</strong>, polished.</li>
+<li><strong>M2 #7 Balance &amp; Tuning</strong> → ergonomics tuning from creator tests (click counts, friction).</li>
+<li><strong>M2 #8 Feedback Pass</strong> → <strong>tool feel pass</strong>: snapping, ghosting, micro-animations, satisfying manipulation.</li>
+<li><strong>M2 #9 Cutscenes</strong> → <strong>tutorial sequences</strong> and made-with-it showcase reels.</li>
+</ul>
 <h2 id="rubric-coverage-map-old--new">Rubric coverage map (old → new)</h2>
 <table>
 <thead>
