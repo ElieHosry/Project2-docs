@@ -304,6 +304,8 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI-driven std::thread run farm sweeping light-timing parameters over hundreds of seeded runs, CSV/JSON throughput and wait-time reports, results stored to Firebase.</li><li><b>Prerequisites:</b> M1 G1 (sim core decoupled from rendering) and M1 G3 (stress hooks); statistics from M1 #8.</li><li><b>Feeds into:</b> The statistical showcase result; data behind M2 #4 overlays.</li></ul></details>
 </li>
 </ul>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b> D1 ⭐ (Simulation DD: who reads the results, fidelity vs. usability) · #2 Prototype (configure → run → read loop) · #6 Scenario Set design (baseline → rush hour → edge cases)</li><li><b>Design M2:</b> D1 ⭐ (validated with users interpreting results) · #6 Polished experiment end to end · #8 Legibility pass on the live view</li><li><b>Art:</b> 0 artists common (Design conditionals apply); 1 justified for a stylized, watchable sim — then A1 ⭐ (mockups: live view + report) · M1 #2 vehicle/agent sprites, #3 world tiles &amp; zone styling · M2 #3 living-world ambience, #5 state-change VFX</li><li><b>TEAM:</b> TA ⭐ Simulator floor (BGM optional; ≥5 event cues, control-room legible) · TU ⭐ Simulator screens (scenario select, run view with pause/speed, report)</li></ul></div>
+
 </details>
 
 <details><summary><b style="color:#0969DA">2. Ecosystem / predator-prey simulator</b></summary>
@@ -350,6 +352,8 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Experiment results stored in Firebase (REST from C++), aggregation queries, custom chart rendering of cross-run population comparisons.</li><li><b>Prerequisites:</b> M1 #8 (chart rendering) and M1 G2 (serializable run data); results from M2 #7.</li><li><b>Feeds into:</b> Showcase experiment conclusions and comparisons.</li></ul></details>
 </li>
 </ul>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b> D1 ⭐ · #2 Prototype (configure → run → read) · #7 Parameter Model design (ranges, defaults, plausibility bounds)</li><li><b>Design M2:</b> D1 ⭐ · #6 Polished experiment (population study end to end) · #8 Legibility pass (population events readable)</li><li><b>Art:</b> 0 artists common (Design conditionals); 1 justified — A1 ⭐ · M1 #2 creature sprites, #3 biome tiles · M2 #3 living-world ambience, #5 event VFX</li><li><b>TEAM:</b> TA ⭐ Simulator floor · TU ⭐ Simulator screens</li></ul></div>
+
 </details>
 
 <details><summary><b style="color:#0969DA">3. Elevator system simulator</b></summary>
@@ -396,6 +400,8 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Deterministic recording of the event log and seeds, with scrub/step-back playback to inspect individual scheduler decisions.</li><li><b>Prerequisites:</b> M1 G1 (deterministic loop) and M1 G3 (debug hooks); driven through M1 #9 controls.</li><li><b>Feeds into:</b> Debugging anomalies found by M2 #8; step-through demos at showcase.</li></ul></details>
 </li>
 </ul>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b> D1 ⭐ · #2 Prototype (configure → run → read) · #8 Case-Study framing (a real building&#39;s morning rush)</li><li><b>Design M2:</b> D1 ⭐ · #6 Polished experiment (algorithm A/B demo end to end) · #8 Legibility pass (shaft/queue view)</li><li><b>Art:</b> 0 artists typical — the Design conditionals (M1 #11 Art POC / M2 #11 Art Implementation Quality) cover the art surface.</li><li><b>TEAM:</b> TA ⭐ Simulator floor · TU ⭐ Simulator screens</li></ul></div>
+
 </details>
 
 <details><summary><b style="color:#0969DA">4. Crowd evacuation simulator</b></summary>
@@ -442,6 +448,8 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Panic propagation, herding, and adaptive exit re-selection layered onto the M1 state machines, tuned via data parameters.</li><li><b>Prerequisites:</b> M1 #5 (behavior FSMs) and M1 #7 (movement they drive).</li><li><b>Feeds into:</b> Richer outcomes in M2 #7 distributions; dramatic M2 #4 heatmap footage.</li></ul></details>
 </li>
 </ul>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b> D1 ⭐ · #6 Scenario Set design (floor plans from baseline to bottleneck stress) · #2 Prototype</li><li><b>Design M2:</b> D1 ⭐ · #6 Polished experiment (an evacuation study end to end) · #8 Legibility pass (density/heatmap readability)</li><li><b>Art:</b> 0–1 artists; if 1 — A1 ⭐ · M1 #3 floor-plan/zone styling, #2 agent sprites · M2 #3 ambience, #5 alarm/event VFX</li><li><b>TEAM:</b> TA ⭐ Simulator floor (the alarm cue is central) · TU ⭐ Simulator screens</li></ul></div>
+
 </details>
 
 <details><summary><b style="color:#0969DA">5. Epidemic spread simulator</b></summary>
@@ -488,6 +496,8 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI-driven std::thread run farm queueing hundreds of seeded, headless policy runs (distancing vs. quarantine vs. travel limits) with CSV/JSON output.</li><li><b>Prerequisites:</b> M1 G1 (render-decoupled core), M1 G3 (stress hooks), and M1 #6 (scenario files).</li><li><b>Feeds into:</b> M2 #10 (uploads results) and M2 #15 (reports) — the showcase result.</li></ul></details>
 </li>
 </ul>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b> D1 ⭐ · #7 Parameter Model design (infection rates, policy toggles) · #8 Case-Study framing (a city outbreak story)</li><li><b>Design M2:</b> D1 ⭐ · #6 Polished experiment (policy comparison end to end) · #9 Guided tours / annotated replays of notable runs</li><li><b>Art:</b> 0 artists typical — the Design conditionals (M1 #11 Art POC / M2 #11 Art Implementation Quality) cover the art surface.</li><li><b>TEAM:</b> TA ⭐ Simulator floor (threshold-alert cue) · TU ⭐ Simulator screens</li></ul></div>
+
 </details>
 </body>
 </html>
