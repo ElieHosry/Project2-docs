@@ -258,52 +258,52 @@ li { margin: 3px 0; }
 <li><span style="color:#8E44AD"><em>Content versioning:</em></span> page history and diffs — the most natural versioning showcase of all five examples.</li>
 </ul>
 <h3 id="goals-per-example">Goals per Example</h3>
-<p>The detailed goals below are the <strong>CS track</strong>: G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the CMS pool in the CS Goals Pool (<code>milestone-goals-pool-per-category.md</code>; # = pool number). At the end of each example, the violet <strong>Track goals</strong> box suggests the Design and Art picks and the TEAM notes for that project — deliverables and quality ladders live in the Design, Art and TEAM pool documents.</p>
+<p>The detailed goals below are the <strong>CS track</strong>: G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the CMS pool in the CS Goals Pool (<code>milestone-goals-pool-per-category.md</code>; G1–G3 ⭐ common, G4+ picks). At the end of each example, the violet <strong>Track goals</strong> box suggests the Design and Art picks and the TEAM notes for that project — deliverables and quality ladders live in the Design, Art and TEAM pool documents.</p>
 <details><summary><b style="color:#0969DA">1. Portfolio site builder</b></summary>
 
 <p><em>M1:</em></p>
 <ul>
 <li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ layout core compiled to WASM (Emscripten), edit-loop re-rendering on change; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #4 (preview engine is its main consumer); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ layout core compiled to WASM (Emscripten), edit-loop re-rendering on change; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 G4 (preview engine is its main consumer); every other goal.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sites, pages, sections and blocks modeled as JSON entities (nlohmann/json) with hot-reload, so a portfolio is pure data interpreted by the renderer.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #4 and #12 render this model; M2 G2 editor and M2 #7 versioning operate on it.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sites, pages, sections and blocks modeled as JSON entities (nlohmann/json) with hot-reload, so a portfolio is pure data interpreted by the renderer.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 G4 and G12 render this model; M2 G2 editor and M2 G7 versioning operate on it.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of re-render times, Catch2 layout unit tests, stress tests with large multi-section portfolios, GitHub Actions Windows + Linux matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI advanced); keeps M1 #4/#5 render performance honest.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of re-render times, Catch2 layout unit tests, stress tests with large multi-section portfolios, GitHub Actions Windows + Linux matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI advanced); keeps M1 G4/G5 render performance honest.</li></ul></details>
 </li>
-<li><strong>#4 Live Preview Rendering Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ layout engine in WASM with dirty-region re-render so the portfolio page updates on every edit, FreeType text metrics.</li><li><b>Prerequisites:</b> G1 (edit loop) + G2 (page/block model).</li><li><b>Feeds into:</b> M2 G2 editor binds to it; M2 #12 runtime reuses the same renderer for published sites.</li></ul></details>
+<li><strong>G4 Live Preview Rendering Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ layout engine in WASM with dirty-region re-render so the portfolio page updates on every edit, FreeType text metrics.</li><li><b>Prerequisites:</b> G1 (edit loop) + G2 (page/block model).</li><li><b>Feeds into:</b> M2 G2 editor binds to it; M2 G12 runtime reuses the same renderer for published sites.</li></ul></details>
 </li>
-<li><strong>#5 2D Layout &amp; Typography Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom text layout and typography via FreeType plus stb_image for photo/gallery rendering — the visual-quality layer of portfolio pages.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #4 draws through it; M2 #12 published pages inherit its fidelity.</li></ul></details>
+<li><strong>G5 2D Layout &amp; Typography Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom text layout and typography via FreeType plus stb_image for photo/gallery rendering — the visual-quality layer of portfolio pages.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 G4 draws through it; M2 G12 published pages inherit its fidelity.</li></ul></details>
 </li>
-<li><strong>#12 Theming System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Themes (palettes, font sets, spacing scales) as hot-reloadable, schema-validated JSON applied at render time.</li><li><b>Prerequisites:</b> G2 (data-driven architecture).</li><li><b>Feeds into:</b> M1 #4/#5 restyle instantly on theme switch; M2 #12 ships the theme with the published site.</li></ul></details>
+<li><strong>G12 Theming System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Themes (palettes, font sets, spacing scales) as hot-reloadable, schema-validated JSON applied at render time.</li><li><b>Prerequisites:</b> G2 (data-driven architecture).</li><li><b>Feeds into:</b> M1 G4/G5 restyle instantly on theme switch; M2 G12 ships the theme with the published site.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
 <li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the WASM preview, ASan on MSVC, memory pools for layout nodes; Emscripten builds validated in desktop and mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 renderer and data model).</li><li><b>Feeds into:</b> M2 #12 runtime performance; M2 #6 editor responsiveness.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the WASM preview, ASan on MSVC, memory pools for layout nodes; Emscripten builds validated in desktop and mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 renderer and data model).</li><li><b>Feeds into:</b> M2 G12 runtime performance; M2 G6 editor responsiveness.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> WYSIWYG site-editor core — web front-end (HTML/JS/CSS) over the WASM renderer, JSON serialization, undo/redo command stack.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 (data model) + M1 #4 (live preview to bind to).</li><li><b>Feeds into:</b> M2 #6 advanced tool features; M2 #7 hooks revisions into its edit stack.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> WYSIWYG site-editor core — web front-end (HTML/JS/CSS) over the WASM renderer, JSON serialization, undo/redo command stack.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 (data model) + M1 G4 (live preview to bind to).</li><li><b>Feeds into:</b> M2 G6 advanced tool features; M2 G7 hooks revisions into its edit stack.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaged builder plus CI deploy of generated portfolio sites to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; M2 #12 deploy path.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaged builder plus CI deploy of generated portfolio sites to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; M2 G12 deploy path.</li></ul></details>
 </li>
-<li><strong>#6 Editor — Advanced Tool Features</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Drag-drop section reordering, inline text editing and alignment/snapping guides bound to the live WASM preview.</li><li><b>Prerequisites:</b> M2 G2 (editor core) + M1 #4 (preview binding).</li><li><b>Feeds into:</b> Content-creation showcase; exercises M2 #7 undo/rollback history.</li></ul></details>
+<li><strong>G6 Editor — Advanced Tool Features</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Drag-drop section reordering, inline text editing and alignment/snapping guides bound to the live WASM preview.</li><li><b>Prerequisites:</b> M2 G2 (editor core) + M1 G4 (preview binding).</li><li><b>Feeds into:</b> Content-creation showcase; exercises M2 G7 undo/rollback history.</li></ul></details>
 </li>
-<li><strong>#7 Content Versioning</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Site snapshots with Myers diff and JSON revision metadata — named revisions of a portfolio plus visual diff between versions.</li><li><b>Prerequisites:</b> M1 G2 (site/page data model to snapshot).</li><li><b>Feeds into:</b> M2 G2/#6 undo history and rollback; safe re-publishing via M2 #12.</li></ul></details>
+<li><strong>G7 Content Versioning</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Site snapshots with Myers diff and JSON revision metadata — named revisions of a portfolio plus visual diff between versions.</li><li><b>Prerequisites:</b> M1 G2 (site/page data model to snapshot).</li><li><b>Feeds into:</b> M2 G2/G6 undo history and rollback; safe re-publishing via M2 G12.</li></ul></details>
 </li>
-<li><strong>#12 Published-Site Runtime</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static generation reusing the WASM layout renderer, sitemap/meta generation, Firebase Hosting — fast portfolio pages on mobile browsers.</li><li><b>Prerequisites:</b> M1 #4 (renderer) + M1 #12 (themes) + M2 G1 (optimization).</li><li><b>Feeds into:</b> The visitor-facing deliverable; endpoint of M2 #7 staged publishing.</li></ul></details>
+<li><strong>G12 Published-Site Runtime</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static generation reusing the WASM layout renderer, sitemap/meta generation, Firebase Hosting — fast portfolio pages on mobile browsers.</li><li><b>Prerequisites:</b> M1 G4 (renderer) + M1 G12 (themes) + M2 G1 (optimization).</li><li><b>Feeds into:</b> The visitor-facing deliverable; endpoint of M2 G7 staged publishing.</li></ul></details>
 </li>
 </ul>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (Authoring DD: author + audience personas)</li><li>#2 Prototype (create → edit → preview → publish)</li><li>#6 Template &amp; Content Structure (page archetypes)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>#6 Authoring-to-published journey polished</li><li>#8 Editor feel pass (micro-feedback, drag ghosting, save states)</li></ul></li><li><b>Art:</b><ul><li>0–1 artists (theme-led surface); if 1 — A1 ⭐ (mockups: editor + published page)</li><li>M1 #3 theme art &amp; backgrounds</li></ul></li><li><b>TEAM M1:</b><ul><li>TA ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design #4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA ⭐ Audio Integration &amp; Quality — CMS floor (≥5 subtle editor cues; published sites silent by default)</li><li>TU ⭐ Functional UI &amp; Usability — CMS screens</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (Authoring DD: author + audience personas)</li><li>D2 Prototype (create → edit → preview → publish)</li><li>D6 Template &amp; Content Structure (page archetypes)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Authoring-to-published journey polished</li><li>D8 Editor feel pass (micro-feedback, drag ghosting, save states)</li></ul></li><li><b>Art:</b><ul><li>0–1 artists (theme-led surface); if 1 — A1 ⭐ (mockups: editor + published page)</li><li>M1 A3 theme art &amp; backgrounds</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU1 ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design D4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Audio Integration &amp; Quality — CMS floor (≥5 subtle editor cues; published sites silent by default)</li><li>TU1 ⭐ Functional UI &amp; Usability — CMS screens</li></ul></li></ul></div>
 
 </details>
 
@@ -312,46 +312,46 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ core compiled to WASM (Emscripten) whose edit loop re-renders the menu/theme preview, with worker threads reserved for media jobs; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #4 (preview) and #9 (media workers); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ core compiled to WASM (Emscripten) whose edit loop re-renders the menu/theme preview, with worker threads reserved for media jobs; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 G4 (preview) and G9 (media workers); every other goal.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Menus, dishes, prices, categories and themes as hot-reloadable JSON entities (nlohmann/json) — the whole restaurant site is data.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #4 renders it, #14 ordering blocks extend it, M2 #7 snapshots it.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Menus, dishes, prices, categories and themes as hot-reloadable JSON entities (nlohmann/json) — the whole restaurant site is data.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 G4 renders it, G14 ordering blocks extend it, M2 G7 snapshots it.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of preview re-render and media jobs, Catch2 tests, stress tests with 500-item menus and photo batches, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (loop and workers to instrument).</li><li><b>Feeds into:</b> M2 G3; keeps M1 #4 latency and #9 throughput honest.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of preview re-render and media jobs, Catch2 tests, stress tests with 500-item menus and photo batches, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (loop and workers to instrument).</li><li><b>Feeds into:</b> M2 G3; keeps M1 G4 latency and G9 throughput honest.</li></ul></details>
 </li>
-<li><strong>#4 Live Preview Rendering Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++/WASM dirty-region renderer showing the owner&#39;s menu and theme exactly as customers will see them, on every edit.</li><li><b>Prerequisites:</b> G1 (edit loop) + G2 (menu/theme model).</li><li><b>Feeds into:</b> M2 G2 editor binds to it; M2 #12 reuses the renderer for the customer site.</li></ul></details>
+<li><strong>G4 Live Preview Rendering Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++/WASM dirty-region renderer showing the owner&#39;s menu and theme exactly as customers will see them, on every edit.</li><li><b>Prerequisites:</b> G1 (edit loop) + G2 (menu/theme model).</li><li><b>Feeds into:</b> M2 G2 editor binds to it; M2 G12 reuses the renderer for the customer site.</li></ul></details>
 </li>
-<li><strong>#9 Media Processing Service</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Dish-photo resize and optimization with stb_image + libjpeg-turbo on background worker threads.</li><li><b>Prerequisites:</b> G1 (shell and worker threads).</li><li><b>Feeds into:</b> M1 #4 preview thumbnails; optimized images for M2 #12 published pages.</li></ul></details>
+<li><strong>G9 Media Processing Service</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Dish-photo resize and optimization with stb_image + libjpeg-turbo on background worker threads.</li><li><b>Prerequisites:</b> G1 (shell and worker threads).</li><li><b>Feeds into:</b> M1 G4 preview thumbnails; optimized images for M2 G12 published pages.</li></ul></details>
 </li>
-<li><strong>#14 Form / Interactive Blocks (ordering)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> JSON-schema-defined order forms and cart blocks with validation rules, rendered as HTML/JS on the customer site.</li><li><b>Prerequisites:</b> G2 (data-driven block definitions).</li><li><b>Feeds into:</b> The ordering flow in M2 #12; order events consumed by M2 #13.</li></ul></details>
+<li><strong>G14 Form / Interactive Blocks (ordering)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> JSON-schema-defined order forms and cart blocks with validation rules, rendered as HTML/JS on the customer site.</li><li><b>Prerequisites:</b> G2 (data-driven block definitions).</li><li><b>Feeds into:</b> The ordering flow in M2 G12; order events consumed by M2 G13.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
 <li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over the preview and media pipeline, threaded media queue tuning; customer site validated in mobile browsers via Emscripten.</li><li><b>Prerequisites:</b> All M1 goals (hardens preview, media and ordering code).</li><li><b>Feeds into:</b> M2 #12 page-load speed; M2 #13 aggregation performance.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over the preview and media pipeline, threaded media queue tuning; customer site validated in mobile browsers via Emscripten.</li><li><b>Prerequisites:</b> All M1 goals (hardens preview, media and ordering code).</li><li><b>Feeds into:</b> M2 G12 page-load speed; M2 G13 aggregation performance.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Menu/theme editor core — web UI with live WASM preview, JSON serialization, undo/redo command stack for menu edits.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 (menu model) + M1 #4 (preview binding).</li><li><b>Feeds into:</b> M2 #7 captures its edits as revisions; owner publishing workflow.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Menu/theme editor core — web UI with live WASM preview, JSON serialization, undo/redo command stack for menu edits.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 (menu model) + M1 G4 (preview binding).</li><li><b>Feeds into:</b> M2 G7 captures its edits as revisions; owner publishing workflow.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the owner tool and CI deploy of the customer site to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; M2 #12 deploy path.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the owner tool and CI deploy of the customer site to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; M2 G12 deploy path.</li></ul></details>
 </li>
-<li><strong>#7 Content Versioning</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Menu snapshots, Myers diff and revision metadata — &quot;restore last week&#39;s menu&quot; in one click.</li><li><b>Prerequisites:</b> M1 G2 (menu data model to snapshot).</li><li><b>Feeds into:</b> Rollback UI in M2 G2; staged menu publishing through M2 #12.</li></ul></details>
+<li><strong>G7 Content Versioning</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Menu snapshots, Myers diff and revision metadata — &quot;restore last week&#39;s menu&quot; in one click.</li><li><b>Prerequisites:</b> M1 G2 (menu data model to snapshot).</li><li><b>Feeds into:</b> Rollback UI in M2 G2; staged menu publishing through M2 G12.</li></ul></details>
 </li>
-<li><strong>#12 Published-Site Runtime</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static customer site with ordering blocks, reusing the WASM renderer and M1 #9 optimized images, served from Firebase Hosting for mobile.</li><li><b>Prerequisites:</b> M1 #4 + #9 + #14, M2 G1 (optimization).</li><li><b>Feeds into:</b> The customer-facing deliverable; generates the order events M2 #13 charts.</li></ul></details>
+<li><strong>G12 Published-Site Runtime</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static customer site with ordering blocks, reusing the WASM renderer and M1 G9 optimized images, served from Firebase Hosting for mobile.</li><li><b>Prerequisites:</b> M1 G4 + G9 + G14, M2 G1 (optimization).</li><li><b>Feeds into:</b> The customer-facing deliverable; generates the order events M2 G13 charts.</li></ul></details>
 </li>
-<li><strong>#13 Analytics Dashboards (orders)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Order events piped to Firebase Analytics/Firestore, aggregation queries, custom-rendered best-seller and revenue charts (no chart libs).</li><li><b>Prerequisites:</b> M1 #14 (order events) + Firebase integration.</li><li><b>Feeds into:</b> Owner reporting and the showcase demo story.</li></ul></details>
+<li><strong>G13 Analytics Dashboards (orders)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Order events piped to Firebase Analytics/Firestore, aggregation queries, custom-rendered best-seller and revenue charts (no chart libs).</li><li><b>Prerequisites:</b> M1 G14 (order events) + Firebase integration.</li><li><b>Feeds into:</b> Owner reporting and the showcase demo story.</li></ul></details>
 </li>
 </ul>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (owner + customer personas)</li><li>#2 Prototype (edit menu → preview → order)</li><li>#7 Publishing Workflow design (draft/publish states, roles)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>#6 Journey polished (edit → publish → a customer orders)</li><li>#8 Editor feel pass</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — theme art + food iconography (M1 #3)</li><li><b>TEAM M1:</b><ul><li>TA ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design #4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU ⭐ Functional UI &amp; Usability — CMS screens + the customer ordering flow</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (owner + customer personas)</li><li>D2 Prototype (edit menu → preview → order)</li><li>D7 Publishing Workflow design (draft/publish states, roles)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Journey polished (edit → publish → a customer orders)</li><li>D8 Editor feel pass</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — theme art + food iconography (M1 A3)</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU1 ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design D4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU1 ⭐ Functional UI &amp; Usability — CMS screens + the customer ordering flow</li></ul></li></ul></div>
 
 </details>
 
@@ -360,46 +360,46 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ shell whose real-time loop is adapted to drive incremental search-index updates and the article editor&#39;s live WASM preview; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #13 (index service runs on this loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ shell whose real-time loop is adapted to drive incremental search-index updates and the article editor&#39;s live WASM preview; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 G13 (index service runs on this loop); every other goal.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Articles, authors, tags and workflow states as JSON-driven entities with hot-reload (nlohmann/json).</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #7 formalizes storage; M2 #9 reads workflow states from this model.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Articles, authors, tags and workflow states as JSON-driven entities with hot-reload (nlohmann/json).</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 G7 formalizes storage; M2 G9 reads workflow states from this model.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of indexing throughput, Catch2 tests, stress tests over thousands of articles, GitHub Actions Windows + Linux matrix.</li><li><b>Prerequisites:</b> G1 (loop and index service to instrument).</li><li><b>Feeds into:</b> M2 G3; performance baseline for M2 #10.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of indexing throughput, Catch2 tests, stress tests over thousands of articles, GitHub Actions Windows + Linux matrix.</li><li><b>Prerequisites:</b> G1 (loop and index service to instrument).</li><li><b>Feeds into:</b> M2 G3; performance baseline for M2 G10.</li></ul></details>
 </li>
-<li><strong>#7 Content Data Model &amp; Storage</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Versioned JSON schemas for articles, authors and tags with validation, local storage plus Firestore mapping.</li><li><b>Prerequisites:</b> G2 (data-driven architecture).</li><li><b>Feeds into:</b> M1 #11 publishes it, #13 indexes it; M2 #7 snapshots it.</li></ul></details>
+<li><strong>G7 Content Data Model &amp; Storage</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Versioned JSON schemas for articles, authors and tags with validation, local storage plus Firestore mapping.</li><li><b>Prerequisites:</b> G2 (data-driven architecture).</li><li><b>Feeds into:</b> M1 G11 publishes it, G13 indexes it; M2 G7 snapshots it.</li></ul></details>
 </li>
-<li><strong>#11 Publishing Pipeline — Foundation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Draft → publish static generation of the reader site with sitemap/meta output and Firebase Hosting deploy.</li><li><b>Prerequisites:</b> M1 #7 (content model) + G1 (preview rendering).</li><li><b>Feeds into:</b> M2 #9 gates it with review states; the reader-facing deliverable.</li></ul></details>
+<li><strong>G11 Publishing Pipeline — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Draft → publish static generation of the reader site with sitemap/meta output and Firebase Hosting deploy.</li><li><b>Prerequisites:</b> M1 G7 (content model) + G1 (preview rendering).</li><li><b>Feeds into:</b> M2 G9 gates it with review states; the reader-facing deliverable.</li></ul></details>
 </li>
-<li><strong>#13 Search / Indexing — Foundation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom C++ inverted index and tokenizer over the article corpus, std::unordered_map storage.</li><li><b>Prerequisites:</b> M1 #7 (articles to index) + G1 (service loop).</li><li><b>Feeds into:</b> M2 #10 adds incremental updates and ranking on top.</li></ul></details>
+<li><strong>G13 Search / Indexing — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom C++ inverted index and tokenizer over the article corpus, std::unordered_map storage.</li><li><b>Prerequisites:</b> M1 G7 (articles to index) + G1 (service loop).</li><li><b>Feeds into:</b> M2 G10 adds incremental updates and ranking on top.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
 <li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over index updates and publish times, threaded index workers with memory pools; reader site validated in mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens editor, pipeline and index).</li><li><b>Feeds into:</b> M2 #10 scale targets; fast publishes through M1 #11.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over index updates and publish times, threaded index workers with memory pools; reader site validated in mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens editor, pipeline and index).</li><li><b>Feeds into:</b> M2 G10 scale targets; fast publishes through M1 G11.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Article editor core — rich text editing with live WASM preview, JSON serialization, undo/redo command stack.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 + #7 (article model).</li><li><b>Feeds into:</b> M2 #7 captures drafts as revisions; M2 #9 surfaces workflow actions in this UI.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Article editor core — rich text editing with live WASM preview, JSON serialization, undo/redo command stack.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 + G7 (article model).</li><li><b>Feeds into:</b> M2 G7 captures drafts as revisions; M2 G9 surfaces workflow actions in this UI.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging plus CI publish of the reader site to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; automated deploys of M1 #11 output.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging plus CI publish of the reader site to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; automated deploys of M1 G11 output.</li></ul></details>
 </li>
-<li><strong>#7 Content Versioning</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Draft history with Myers diffs for reviewers and one-click publish rollback — the editorial backbone of the platform.</li><li><b>Prerequisites:</b> M1 #7 (article data model).</li><li><b>Feeds into:</b> M2 #9 review steps compare revisions; safe re-publish via M1 #11.</li></ul></details>
+<li><strong>G7 Content Versioning</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Draft history with Myers diffs for reviewers and one-click publish rollback — the editorial backbone of the platform.</li><li><b>Prerequisites:</b> M1 G7 (article data model).</li><li><b>Feeds into:</b> M2 G9 review steps compare revisions; safe re-publish via M1 G11.</li></ul></details>
 </li>
-<li><strong>#9 Editorial Workflow Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ finite-state machine for draft → review → publish with JSON-defined transitions and Firebase Auth roles (writer/editor/admin).</li><li><b>Prerequisites:</b> M1 G2 (workflow states as data) + M2 #7 (revisions to review).</li><li><b>Feeds into:</b> Gates M1 #11 publishing; the showcase&#39;s editorial demo.</li></ul></details>
+<li><strong>G9 Editorial Workflow Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ finite-state machine for draft → review → publish with JSON-defined transitions and Firebase Auth roles (writer/editor/admin).</li><li><b>Prerequisites:</b> M1 G2 (workflow states as data) + M2 G7 (revisions to review).</li><li><b>Feeds into:</b> Gates M1 G11 publishing; the showcase&#39;s editorial demo.</li></ul></details>
 </li>
-<li><strong>#10 Search / Indexing II</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Incremental index updates on publish, TF-IDF ranking and a custom query parser in C++.</li><li><b>Prerequisites:</b> M1 #13 (index foundation) + M2 G1 (optimization).</li><li><b>Feeds into:</b> Reader-facing search UX on the published site.</li></ul></details>
+<li><strong>G10 Search / Indexing II</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Incremental index updates on publish, TF-IDF ranking and a custom query parser in C++.</li><li><b>Prerequisites:</b> M1 G13 (index foundation) + M2 G1 (optimization).</li><li><b>Feeds into:</b> Reader-facing search UX on the published site.</li></ul></details>
 </li>
 </ul>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (editorial roles)</li><li>#7 Publishing Workflow design (draft → review → publish UX)</li><li>#6 Template &amp; Structure (article archetypes)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>#6 Journey polished (write → review → publish → read)</li><li>#5 Playtesting with real authors</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — typography-forward theme direction (A1 ⭐)</li><li><b>TEAM M1:</b><ul><li>TA ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design #4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU ⭐ Functional UI &amp; Usability — CMS screens (editor + reader sides)</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (editorial roles)</li><li>D7 Publishing Workflow design (draft → review → publish UX)</li><li>D6 Template &amp; Structure (article archetypes)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Journey polished (write → review → publish → read)</li><li>D5 Playtesting with real authors</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — typography-forward theme direction (A1 ⭐)</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU1 ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design D4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU1 ⭐ Functional UI &amp; Usability — CMS screens (editor + reader sides)</li></ul></li></ul></div>
 
 </details>
 
@@ -408,46 +408,46 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ core compiled to WASM (Emscripten) whose edit loop re-renders the block-based event page preview on every change; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #4 (preview engine); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ core compiled to WASM (Emscripten) whose edit loop re-renders the block-based event page preview on every change; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 G4 (preview engine); every other goal.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event pages composed of schedule, speaker and registration blocks as pure JSON data with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #6 formalizes the block schemas; #4 renders them; #14 extends them.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event pages composed of schedule, speaker and registration blocks as pure JSON data with hot-reload.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 G6 formalizes the block schemas; G4 renders them; G14 extends them.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of block-heavy page re-renders, Catch2 tests, stress tests with dense schedules and bulk registrations, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3; keeps M1 #4 responsive as pages grow.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of block-heavy page re-renders, Catch2 tests, stress tests with dense schedules and bulk registrations, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (loop to instrument).</li><li><b>Feeds into:</b> M2 G3; keeps M1 G4 responsive as pages grow.</li></ul></details>
 </li>
-<li><strong>#4 Live Preview Rendering Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Block-based C++/WASM dirty-region renderer — organizers see the microsite assemble as they add blocks.</li><li><b>Prerequisites:</b> G1 (edit loop) + G2 (block model).</li><li><b>Feeds into:</b> M2 G2 editor binds to it; M2 #12 reuses the renderer for published microsites.</li></ul></details>
+<li><strong>G4 Live Preview Rendering Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Block-based C++/WASM dirty-region renderer — organizers see the microsite assemble as they add blocks.</li><li><b>Prerequisites:</b> G1 (edit loop) + G2 (block model).</li><li><b>Feeds into:</b> M2 G2 editor binds to it; M2 G12 reuses the renderer for published microsites.</li></ul></details>
 </li>
-<li><strong>#6 Template / Block System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Schema-validated, versioned JSON definitions for schedule/speakers/registration blocks and whole-event templates with hot-reload.</li><li><b>Prerequisites:</b> G2 (data-driven architecture).</li><li><b>Feeds into:</b> M1 #4 renders these blocks, #14 builds on the registration block, M2 G2 edits them.</li></ul></details>
+<li><strong>G6 Template / Block System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Schema-validated, versioned JSON definitions for schedule/speakers/registration blocks and whole-event templates with hot-reload.</li><li><b>Prerequisites:</b> G2 (data-driven architecture).</li><li><b>Feeds into:</b> M1 G4 renders these blocks, G14 builds on the registration block, M2 G2 edits them.</li></ul></details>
 </li>
-<li><strong>#14 Form / Interactive Blocks (registration)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Registration forms defined as JSON schemas with validation rules, rendered in HTML/JS and writing attendees to Firestore.</li><li><b>Prerequisites:</b> G2 + M1 #6 (block definitions).</li><li><b>Feeds into:</b> The registration flow on M2 #12 microsites; attendance events for M2 #13.</li></ul></details>
+<li><strong>G14 Form / Interactive Blocks (registration)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Registration forms defined as JSON schemas with validation rules, rendered in HTML/JS and writing attendees to Firestore.</li><li><b>Prerequisites:</b> G2 + M1 G6 (block definitions).</li><li><b>Feeds into:</b> The registration flow on M2 G12 microsites; attendance events for M2 G13.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
 <li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over preview and publish paths, memory pools for block trees; microsites validated in mobile browsers via Emscripten.</li><li><b>Prerequisites:</b> All M1 goals (hardens renderer, blocks and forms).</li><li><b>Feeds into:</b> M2 #12 mobile page-speed targets; #13 aggregation performance.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over preview and publish paths, memory pools for block trees; microsites validated in mobile browsers via Emscripten.</li><li><b>Prerequisites:</b> All M1 goals (hardens renderer, blocks and forms).</li><li><b>Feeds into:</b> M2 G12 mobile page-speed targets; G13 aggregation performance.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Block-based event page editor core — add/arrange schedule, speaker and registration blocks with live WASM preview, JSON serialization, undo/redo.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 + #6 (block system) + #4 (preview binding).</li><li><b>Feeds into:</b> M2 #7 snapshots its edits; organizer workflow for #12 publishing.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Block-based event page editor core — add/arrange schedule, speaker and registration blocks with live WASM preview, JSON serialization, undo/redo.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 + G6 (block system) + G4 (preview binding).</li><li><b>Feeds into:</b> M2 G7 snapshots its edits; organizer workflow for G12 publishing.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the generator and CI deploy of microsites to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; M2 #12 deploy path.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the generator and CI deploy of microsites to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; M2 G12 deploy path.</li></ul></details>
 </li>
-<li><strong>#7 Content Versioning</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Staged site versions with snapshots, Myers diff and revision metadata — edit next year&#39;s page while this year&#39;s stays live.</li><li><b>Prerequisites:</b> M1 G2 (block/page data model).</li><li><b>Feeds into:</b> Staged publishing through M2 #12; rollback in the M2 G2 editor.</li></ul></details>
+<li><strong>G7 Content Versioning</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Staged site versions with snapshots, Myers diff and revision metadata — edit next year&#39;s page while this year&#39;s stays live.</li><li><b>Prerequisites:</b> M1 G2 (block/page data model).</li><li><b>Feeds into:</b> Staged publishing through M2 G12; rollback in the M2 G2 editor.</li></ul></details>
 </li>
-<li><strong>#12 Published-Site Runtime</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static microsite generation reusing the WASM block renderer, sitemap/meta output, Firebase Hosting — fast attendee pages on mobile.</li><li><b>Prerequisites:</b> M1 #4 + #6 + #14, M2 G1 (optimization).</li><li><b>Feeds into:</b> The attendee-facing deliverable; hosts the registration flow feeding M2 #13.</li></ul></details>
+<li><strong>G12 Published-Site Runtime</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static microsite generation reusing the WASM block renderer, sitemap/meta output, Firebase Hosting — fast attendee pages on mobile.</li><li><b>Prerequisites:</b> M1 G4 + G6 + G14, M2 G1 (optimization).</li><li><b>Feeds into:</b> The attendee-facing deliverable; hosts the registration flow feeding M2 G13.</li></ul></details>
 </li>
-<li><strong>#13 Analytics Dashboards (attendance)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Registration and attendance events via Firebase Analytics/Firestore, aggregation queries, custom-rendered signup/attendance charts for organizers.</li><li><b>Prerequisites:</b> M1 #14 (registration events) + Firebase integration.</li><li><b>Feeds into:</b> Organizer reporting and the showcase demo story.</li></ul></details>
+<li><strong>G13 Analytics Dashboards (attendance)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Registration and attendance events via Firebase Analytics/Firestore, aggregation queries, custom-rendered signup/attendance charts for organizers.</li><li><b>Prerequisites:</b> M1 G14 (registration events) + Firebase integration.</li><li><b>Feeds into:</b> Organizer reporting and the showcase demo story.</li></ul></details>
 </li>
 </ul>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐</li><li>#2 Prototype (assemble blocks → preview → register)</li><li>#6 Template &amp; block taxonomy</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>#6 Journey polished (build → publish → an attendee registers)</li><li>#8 Editor feel pass</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — template illustration set (M1 #2)</li><li><b>TEAM M1:</b><ul><li>TA ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design #4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU ⭐ Functional UI &amp; Usability — CMS screens + registration confirmation</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐</li><li>D2 Prototype (assemble blocks → preview → register)</li><li>D6 Template &amp; block taxonomy</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Journey polished (build → publish → an attendee registers)</li><li>D8 Editor feel pass</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — template illustration set (M1 A2)</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU1 ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design D4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU1 ⭐ Functional UI &amp; Usability — CMS screens + registration confirmation</li></ul></li></ul></div>
 
 </details>
 
@@ -456,46 +456,46 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ markdown parser and preview renderer compiled to WASM (Emscripten), re-rendering the page as you type; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 #8 wraps this preview in the editor UI; every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ markdown parser and preview renderer compiled to WASM (Emscripten), re-rendering the page as you type; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 G8 wraps this preview in the editor UI; every other goal.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pages, document-tree nodes and metadata as JSON-driven entities with hot-reload — the wiki&#39;s structure is pure data.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 #16 navigation and #15 round-trip both operate on this model; M2 G2 edits it.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pages, document-tree nodes and metadata as JSON-driven entities with hot-reload — the wiki&#39;s structure is pure data.</li><li><b>Prerequisites:</b> G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1 G16 navigation and G15 round-trip both operate on this model; M2 G2 edits it.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of parse/re-render on long pages, Catch2 parser test suites, stress tests with deep document trees, GitHub Actions matrix.</li><li><b>Prerequisites:</b> G1 (parser and loop to instrument).</li><li><b>Feeds into:</b> M2 G3; keeps typing-latency of the G1 preview honest.</li></ul></details>
 </li>
-<li><strong>#8 Editor UI — Foundation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Three-pane editing surface (document tree, markdown editor, live preview) with input routing and layout rules in the web front-end.</li><li><b>Prerequisites:</b> G1 (preview renderer) + G2 (page model).</li><li><b>Feeds into:</b> M2 G2 grows it into the full editor core; M2 #14 makes it multi-user.</li></ul></details>
+<li><strong>G8 Editor UI — Foundation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Three-pane editing surface (document tree, markdown editor, live preview) with input routing and layout rules in the web front-end.</li><li><b>Prerequisites:</b> G1 (preview renderer) + G2 (page model).</li><li><b>Feeds into:</b> M2 G2 grows it into the full editor core; M2 G14 makes it multi-user.</li></ul></details>
 </li>
-<li><strong>#15 Import / Export Tools (markdown)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Markdown round-trip parser/serializer plus JSON export of whole document trees, with schema mapping for imported repos.</li><li><b>Prerequisites:</b> G2 (page/tree data model).</li><li><b>Feeds into:</b> Real-content demos; source material for M2 #16 published output.</li></ul></details>
+<li><strong>G15 Import / Export Tools (markdown)</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Markdown round-trip parser/serializer plus JSON export of whole document trees, with schema mapping for imported repos.</li><li><b>Prerequisites:</b> G2 (page/tree data model).</li><li><b>Feeds into:</b> Real-content demos; source material for M2 G16 published output.</li></ul></details>
 </li>
-<li><strong>#16 Site Structure &amp; Navigation System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Document tree, multi-page routing, breadcrumbs and sidebar navigation defined as schema-validated data.</li><li><b>Prerequisites:</b> G2 (tree model).</li><li><b>Feeds into:</b> The reader view and M1 #8 tree pane; M2 #16 publishes this structure.</li></ul></details>
+<li><strong>G16 Site Structure &amp; Navigation System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Document tree, multi-page routing, breadcrumbs and sidebar navigation defined as schema-validated data.</li><li><b>Prerequisites:</b> G2 (tree model).</li><li><b>Feeds into:</b> The reader view and M1 G8 tree pane; M2 G16 publishes this structure.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
 <li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over parse/diff on large documents, threaded search/sync workers, memory pools; reader view validated in mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens parser, editor and tree).</li><li><b>Feeds into:</b> M2 #14 sync responsiveness; #16 published-output speed.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy + ASan (MSVC) over parse/diff on large documents, threaded search/sync workers, memory pools; reader view validated in mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens parser, editor and tree).</li><li><b>Feeds into:</b> M2 G14 sync responsiveness; G16 published-output speed.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Markdown editor plus document-tree editing as the product&#39;s core — undo/redo command stack, JSON serialization, live WASM preview binding.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 (page model) + M1 #8 (editor UI foundation).</li><li><b>Feeds into:</b> M2 #14 shares its edit operations; #15 presets plug into its new-page flow.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Markdown editor plus document-tree editing as the product&#39;s core — undo/redo command stack, JSON serialization, live WASM preview binding.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (editor UI), Emscripten (WASM live preview of the C++ renderer), nlohmann/json (C++-side serialization)</li><li><b>Prerequisites:</b> M1 G2 (page model) + M1 G8 (editor UI foundation).</li><li><b>Feeds into:</b> M2 G14 shares its edit operations; G15 presets plug into its new-page flow.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging plus CI deploy of the published wiki to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; automated deploys for M2 #16.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging plus CI deploy of the published wiki to Firebase Hosting.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal; automated deploys for M2 G16.</li></ul></details>
 </li>
-<li><strong>#14 Collaboration Features</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> WebSocket sync service in C++ with operational transforms or last-writer-wins CRDT basics for concurrent page edits, plus inline comments.</li><li><b>Prerequisites:</b> M2 G2 (editor operations to sync) + M1 #8 (editing surface).</li><li><b>Feeds into:</b> The multi-editor showcase — the wiki&#39;s headline networking feature.</li></ul></details>
+<li><strong>G14 Collaboration Features</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> WebSocket sync service in C++ with operational transforms or last-writer-wins CRDT basics for concurrent page edits, plus inline comments.</li><li><b>Prerequisites:</b> M2 G2 (editor operations to sync) + M1 G8 (editing surface).</li><li><b>Feeds into:</b> The multi-editor showcase — the wiki&#39;s headline networking feature.</li></ul></details>
 </li>
-<li><strong>#15 Template / Preset System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Page templates (meeting notes, specs, how-tos) as shareable, schema-validated JSON presets with hot-reload.</li><li><b>Prerequisites:</b> M1 G2 (data-driven page model).</li><li><b>Feeds into:</b> M2 G2 new-page flow; consistent structure for M2 #16 published docs.</li></ul></details>
+<li><strong>G15 Template / Preset System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Page templates (meeting notes, specs, how-tos) as shareable, schema-validated JSON presets with hot-reload.</li><li><b>Prerequisites:</b> M1 G2 (data-driven page model).</li><li><b>Feeds into:</b> M2 G2 new-page flow; consistent structure for M2 G16 published docs.</li></ul></details>
 </li>
-<li><strong>#16 SEO &amp; Deploy Tools</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static published output of the doc tree with sitemaps and meta tags, deployed to Firebase Hosting for fast mobile reading.</li><li><b>Prerequisites:</b> M1 #16 (site structure) + G1 (preview renderer for generation).</li><li><b>Feeds into:</b> The reader-facing deliverable consumed on mobile web.</li></ul></details>
+<li><strong>G16 SEO &amp; Deploy Tools</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Static published output of the doc tree with sitemaps and meta tags, deployed to Firebase Hosting for fast mobile reading.</li><li><b>Prerequisites:</b> M1 G16 (site structure) + G1 (preview renderer for generation).</li><li><b>Feeds into:</b> The reader-facing deliverable consumed on mobile web.</li></ul></details>
 </li>
 </ul>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (team-knowledge personas)</li><li>#2 Prototype (create → link → preview)</li><li>#7 Publishing Workflow (draft/review states, versioning UX)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>#6 Journey polished (author → review → published page)</li><li>#5 Playtesting with authors</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — typography-forward theme (A1 ⭐)</li><li><b>TEAM M1:</b><ul><li>TA ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design #4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU ⭐ Functional UI &amp; Usability — CMS screens (doc-tree navigation unaided)</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (team-knowledge personas)</li><li>D2 Prototype (create → link → preview)</li><li>D7 Publishing Workflow (draft/review states, versioning UX)</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Journey polished (author → review → published page)</li><li>D5 Playtesting with authors</li></ul></li><li><b>Art:</b> 0–1 artists; if 1 — typography-forward theme (A1 ⭐)</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li><li>TU1 ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design D4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Audio Integration &amp; Quality — CMS floor</li><li>TU1 ⭐ Functional UI &amp; Usability — CMS screens (doc-tree navigation unaided)</li></ul></li></ul></div>
 
 </details>
 </body>
