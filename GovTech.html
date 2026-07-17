@@ -13,7 +13,19 @@
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
   </style>
-  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }th { background: #f6f8fa; font-weight: 600; }tr:nth-child(even) td { background: #f6f8fa; }code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }li { margin: 3px 0; }</style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
 </head>
 <body>
 <header id="title-block-header">
@@ -30,10 +42,10 @@
 <li><a href="https://www.qminder.com/industries/healthcare/">Qminder for healthcare</a></li>
 <li><a href="https://www.youtube.com/watch?v=ESRXkPKaItY">Qmatic queue system demo (YouTube)</a></li>
 </ul></li>
-<li><p><strong>City resource dashboard</strong> — real-time simulated feeds (water, power, waste) processed in C++; map-based 2D visualization; sensor/zone configuration tool. <em>References:</em></p>
+<li><p><strong>Facility booking &amp; occupancy management</strong> — members book rooms/labs/desks; live occupancy from presence signals; staff ops side with floor-plan view; booking rules engine in C++. <em>(Replaced &quot;City resource dashboard&quot;, which moved to Visualization &amp; Analytics, July 2026.)</em> <em>References:</em></p>
 <ul>
-<li><a href="https://www.snap4city.org/drupal/node/525">Snap4City control room dashboards</a></li>
-<li><a href="https://www.youtube.com/watch?v=axxkLU6wyko">Snap4City dashboard demo (YouTube)</a></li>
+<li><a href="https://www.skedda.com/">Skedda — space booking &amp; occupancy (official)</a></li>
+<li><a href="https://robinpowered.com/">Robin — workplace management (official)</a></li>
 </ul></li>
 <li><p><strong>Digital form &amp; permit workflow</strong> — citizens submit applications, officers process them; data-driven form builder as the custom tool; Firebase auth for roles. <em>References:</em></p>
 <ul>
@@ -59,7 +71,7 @@
 <tr class="header">
 <th>Core Tech Requirement</th>
 <th>1. Queue Management</th>
-<th>2. City Dashboard</th>
+<th>2. Facility Booking</th>
 <th>3. Permit Workflow</th>
 <th>4. Transport Tracker</th>
 <th>5. Issue Reporting</th>
@@ -195,18 +207,18 @@
 <li><em>External DB / Analytics ⏭️:</em> tickets, wait-time statistics; auth for staff vs. citizen roles.</li>
 <li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> counter staff vs. supervisor permissions; every ticket action logged.</li>
 </ul>
-<p><strong>2. City resource dashboard</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (control-room ops)</b> — citizens and officials view the live dashboard on phones; the control-room display stays on the PC side.</div>
+<p><strong>2. Facility booking &amp; occupancy management</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Native PC (staff ops)</b> — members book and check in from their phones (reference device); the floor-plan ops view stays on the PC side.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Map layers, live dashboard panels, alert displays. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Member booking app, live floor-plan occupancy view, staff dashboard. <b>Languages:</b> C++, GLSL.</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Sensor feed engine, aggregation &amp; statistics, zone configuration, Firebase history. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Booking rules engine, occupancy/presence event processing, schedule import, Firebase sync &amp; notifications. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> C++ engine generates and processes simulated sensor feeds (water, power, waste).</li>
-<li><em>2D (adapted):</em> map-based visualization with live layers. <em>Custom tool (adapted):</em> sensor/zone configuration tool.</li>
-<li><em>External DB / Analytics ⏭️:</em> historical feed data, alert statistics.</li>
-<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> operator vs. admin zones; configuration changes audited.</li>
+<li><em>Simulation loop (adapted):</em> live occupancy state — presence events and booking transitions processed continuously; a usage simulator drives development.</li>
+<li><em>2D (adapted):</em> floor-plan rendering with live occupancy coloring. <em>Custom tool (adapted):</em> room/rules/schedule configuration editor.</li>
+<li><em>External DB:</em> bookings, occupancy history. <em>Auth:</em> member vs staff vs admin roles. <em>Analytics ⏭️:</em> utilization statistics.</li>
+<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> every booking, override and no-show release is attributable — disputes resolve from the audit trail.</li>
 </ul>
 <p><strong>3. Digital form &amp; permit workflow</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> (citizens apply) + <b>Native PC (officer ops)</b> (officers review) — a natural two-front-end split.</div>
@@ -300,53 +312,53 @@
 
 </details>
 
-<details><summary><b style="color:#0969DA">2. City resource dashboard</b></summary>
+<details><summary><b style="color:#0969DA">2. Facility booking &amp; occupancy management</b></summary>
 
 <p><em>M1:</em></p>
 <ul>
 <li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL control-room shell with a fixed-timestep loop driving simulated water/power/waste sensor ticks; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1 G4 (feed engine runs on its tick); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving occupancy state, booking transitions and floor-plan animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 G4 events and G17 detection feed this loop.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensors, zones, utility types, and alert thresholds as JSON entities with hot-reload for live reconfiguration.</li><li><b>Prerequisites:</b> G1 (shell and loop).</li><li><b>Feeds into:</b> M1 G4 (sensor definitions), M1 G5 (zone/layer data), M2 G2 (zone configuration editor).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rooms, floor-plan geometry, booking rules, schedules and roles as JSON (nlohmann/json) with hot-reload; a new building is a data change.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G4 (booking schema), M2 G2 (editor), M2 G15 (imports fill it).</li></ul></details>
 </li>
 <li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui feed-inspector overlays, Tracy, Catch2 stress tests pushing thousands of sensor updates per second, GitHub Actions Windows/Linux matrix.</li><li><b>Prerequisites:</b> G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2 G3 (CI hardening); baseline profiles for M2 G9 scaling work.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays (event rates, occupancy counts), Tracy, Catch2 over simulated usage fixtures (deterministic), Actions Windows+Linux matrix + APK job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; booking-rule correctness guarded by fixtures.</li></ul></details>
 </li>
-<li><strong>G4 Real-time Feed Engine (sensors)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ producer/consumer threads generating simulated water, power, and waste readings through a lock-free ring buffer, with CSV replay of historical feed data.</li><li><b>Prerequisites:</b> G1 (simulation tick); G2 (sensor/zone definitions).</li><li><b>Feeds into:</b> M1 G5 (live map layers), M1 G11 (aggregation), M2 G4 and M2 G9.</li></ul></details>
+<li><strong>G4 Real-time Feed / Queue Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Ordered, idempotent processing of booking requests and occupancy events — double-booking impossible by construction; running room states match a full recount.</li><li><b>Prerequisites:</b> G1, G2 (schemas).</li><li><b>Feeds into:</b> The live floor plan, M2 G7 (every event audited), M2 G10 (demand data).</li></ul></details>
 </li>
 <li><strong>G5 2D Map / Dashboard Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL city-map renderer with pan/zoom, per-utility live layers, FreeType labels, and alert badges on zones.</li><li><b>Prerequisites:</b> G1 (render loop); G2 (zone geometry as data).</li><li><b>Feeds into:</b> M2 G4 (heatmaps and scrubbing build on it); M2 G2 (editor draws on the same map).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Floor-plan renderer — room polygons colored by live occupancy/booking state, pan/zoom, FreeType labels, status badges.</li><li><b>Prerequisites:</b> G1, G2 (geometry).</li><li><b>Feeds into:</b> Member and staff views alike; the face of the product.</li></ul></details>
 </li>
-<li><strong>G11 Statistics Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-zone/per-utility aggregation (rolling averages, peaks, threshold breaches) in C++, custom chart rendering, feed history persisted to Firestore.</li><li><b>Prerequisites:</b> M1 G4 (sensor stream); G2 (zone model).</li><li><b>Feeds into:</b> M2 G4 (history scrubbing and heatmap data); operator alert statistics.</li></ul></details>
+<li><strong>G17 Presence &amp; Signal Detection Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Occupancy sensing via the pool&#39;s detection goal — ultrasonic chirp or BLE RSSI processing in custom C++ producing room-level presence events with confidence.</li><li><b>Prerequisites:</b> G1 (capture loop), G2 (room codes/thresholds).</li><li><b>Feeds into:</b> M1 G4 (its events), auto-release of no-show bookings, utilization truth.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
 <li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling under city-scale feed volume, ASan/UBSan, threading and memory pools, Emscripten validation of the optional web companion view.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 feed/map codebase).</li><li><b>Feeds into:</b> M2 G9 (scale work starts from these profiles); M2 G4 frame budget.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on event/render paths, ASan on MSVC; a full building day validated on the reference phone, battery-safe background presence.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> An app that survives a real campus day.</li></ul></details>
 </li>
 <li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensor/zone configuration tool in C++/ImGui — place sensors on the map, define zones and thresholds, JSON round-trip with undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (map/zone view)</li><li><b>Prerequisites:</b> M1 G2 (sensor/zone data model); M1 G5 (map to edit on).</li><li><b>Feeds into:</b> M1 G4 and G5 consume edited configs live; M2 G7 audits its configuration changes.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Facility configuration editor — floor plans, rooms, booking rules, schedules — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s floor-plan renderer (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G5.</li><li><b>Feeds into:</b> Every configured facility; M2 G15 imports reviewed here.</li></ul></details>
 </li>
 <li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy, CPack packaging of the control-room build plus web companion in the Actions matrix.</li><li><b>Prerequisites:</b> M1 G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
-</li>
-<li><strong>G4 Dashboard — Advanced</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Live utility layers with heatmaps (OpenGL shaders), time scrubbing through recorded feed history, and alert timelines for the control room.</li><li><b>Prerequisites:</b> M1 G5 (map renderer) and M1 G11 (aggregates/history); M2 G1 (performance headroom).</li><li><b>Feeds into:</b> Control-room showcase; M2 G7 gates its admin panels.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, lint gates, APK + PC artifacts, usage-replay regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release builds; rules correctness under refactor.</li></ul></details>
 </li>
 <li><strong>G7 RBAC &amp; Audit Logging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth custom claims for operator vs. admin (per zone), permission checks in the C++ service, append-only audit log of threshold and zone changes.</li><li><b>Prerequisites:</b> M1 G11 (Firebase records in place); M2 G2 (config actions to audit).</li><li><b>Feeds into:</b> M2 G2 (role-gated editing) and M2 G4 (admin-only views).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Member/staff/admin roles enforced across app and editor; append-only audit of bookings, overrides, releases with actor + timestamp; audit viewer.</li><li><b>Prerequisites:</b> M1 G4 (events), Firebase Auth.</li><li><b>Feeds into:</b> The trust story — who booked, who overrode, who never showed.</li></ul></details>
 </li>
-<li><strong>G9 Engine II — City-Scale Data</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SIMD, std::thread pools, and cache-friendly layouts to process city-wide sensor counts while the map holds 60 fps.</li><li><b>Prerequisites:</b> M1 G4 (feed engine to scale); M2 G1 and M1 G3 (profiling data).</li><li><b>Feeds into:</b> The city-scale showcase demo; keeps M2 G4 smooth under full load.</li></ul></details>
+<li><strong>G10 Prediction Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Demand forecasting per room/timeslot from booking + occupancy history (rolling baselines, custom C++), suggested alternatives at booking time.</li><li><b>Prerequisites:</b> M1 G4 (history), M2 G1.</li><li><b>Feeds into:</b> &quot;Try room B at 14:00&quot; — the smart moment of the demo.</li></ul></details>
+</li>
+<li><strong>G15 Data Import / Export &amp; Interop</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Timetable/calendar import (CSV/iCal) with validation, utilization CSV export for administration.</li><li><b>Prerequisites:</b> M1 G2, M2 G2 (review).</li><li><b>Feeds into:</b> Real-world fit — semester schedules load, reports flow out.</li></ul></details>
 </li>
 </ul>
 <p><strong>Track Goals &amp; Team Composition</strong></p>
-<p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — dashboard/data-viz surface; conditionals apply.</p>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (operators and decisions served)</li><li>D5 Status &amp; alert conventions spec</li><li>D8 Civic Identity &amp; plain language</li><li>TU1 ⭐ UI Standards &amp; Wireframe Baseline — screen-flow map and readability standards; where Design D4 is picked, the TU review assesses those wireframes.</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Service polished (sensor alert → operator response)</li><li>D8 Status pass (clarity at every state change)</li><li>TU1 ⭐ Functional UI &amp; Usability — GovTech screens (ops dashboard + companion view)</li></ul></li><li><b>Art:</b><ul><li>0–1 artists (map styling surface); if 1 — A1 ⭐</li><li>M1 A3 map styling &amp; icon sets</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Audio Direction &amp; Plan — sound identity, BGM/SFX needs list, references and a sourcing/integration plan for this project.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Audio Integration &amp; Quality — GovTech floor</li><li>TP1 ⭐ Final Presentation — 7 min in front of class + instructors: live custom-tools showcase, prototype demo, team post-mortem (wk14)</li></ul></li></ul></div>
+<p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — two-role service design surface; Design conditionals cover the art minimum.</p>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (member + staff personas; the find → book → check-in loop)</li><li>D2 Prototype</li><li>D6 reading: Service Journey Design (booking edge cases: conflicts, no-shows, walk-ins)</li><li>TU1 ⭐</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Vertical Slice (one facility, one full day, both roles)</li><li>D8 reading: status clarity pass (free/busy/held/released at a glance)</li><li>TU1 ⭐</li></ul></li><li><b>Art M1/M2:</b><ul><li>0 artists — D11 conditionals (floor-plan styling, iconography)</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ (cue direction: confirm, reminder, release)</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ (GovTech floor: ≥5 cues, visual equivalents)</li><li>TP1 ⭐ Final Presentation</li></ul></li></ul></div>
 
 </details>
 

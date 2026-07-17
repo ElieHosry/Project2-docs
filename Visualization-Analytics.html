@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang xml:lang>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Visualization-Analytics</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <style type="text/css">body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+max-width: 900px; margin: 0 auto; padding: 24px 32px; color: #1f2328; line-height: 1.55; }
+h1, h2 { border-bottom: 1px solid #d1d9e0; padding-bottom: 6px; }
+h2 { margin-top: 28px; } h3 { margin-top: 24px; color: #1f2328; }
+table { border-collapse: collapse; width: 100%; margin: 14px 0; display: block; overflow-x: auto; }
+th, td { border: 1px solid #d1d9e0; padding: 6px 12px; text-align: left; }
+th { background: #f6f8fa; font-weight: 600; }
+tr:nth-child(even) td { background: #f6f8fa; }
+code { background: #f0f1f3; padding: 1px 5px; border-radius: 4px; font-size: 0.9em; }
+a { color: #0969da; text-decoration: none; } a:hover { text-decoration: underline; }
+img { max-width: 100%; border: 1px solid #d1d9e0; border-radius: 6px; }
+li { margin: 3px 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Visualization-Analytics</h1>
+</header>
+<p><a href="project-examples-per-category.html">← Back to overview</a></p>
+<h2 id="visualization--analytics">Visualization &amp; Analytics</h2>
+<h3 id="scope">Scope</h3>
+<p>Products whose deliverable IS the visualization: ingesting real data and rendering it live with the team&#39;s own chart, map and plot engines — dashboards, explorers, analytics tools. Two guard-rails define the boundary: <strong>the data must move</strong> (streaming, animated playback or interactive re-aggregation — a static chart is a CRUD app), and <strong>the domain must not be claimed by another category</strong> (financial charting → Fintech; civic service dashboards with staff workflows → GovTech; simulation result views → Simulator; chart <em>authoring</em> tools → Creative Tools). What lives here: the uncovered slice — city/IoT metrics, logs and telemetry, personal/fitness data, scientific datasets, sports analytics.</p>
+<h3 id="examples">Examples</h3>
+<ol>
+<li><strong>Live city metrics dashboard</strong> — real-time simulated utility feeds (water, power, waste) processed in C++; map-based live visualization with zone drill-down; dashboard composer as the custom tool. <em>(Moved from GovTech, July 2026 — the visualization is the product; the staff-workflow side lives in GovTech.)</em> <em>References:</em>
+<ul>
+<li><a href="https://www.snap4city.org/drupal/node/525">Snap4City control room dashboards</a></li>
+<li><a href="https://www.youtube.com/watch?v=axxkLU6wyko">Snap4City dashboard demo (YouTube)</a></li>
+</ul></li>
+<li><strong>Log &amp; telemetry explorer</strong> — high-volume application/server log ingestion, time-series charts, live tailing, query &amp; filter engine; the Grafana/Kibana product shape built on the team&#39;s own renderer. <em>References:</em>
+<ul>
+<li><a href="https://grafana.com/oss/grafana/">Grafana OSS (official)</a></li>
+<li><a href="https://www.elastic.co/kibana">Kibana (Elastic, official)</a></li>
+</ul></li>
+<li><strong>Personal fitness data explorer</strong> — import workout files (GPX/CSV), explore pace/heart-rate/elevation with linked charts and route maps, animated activity playback, trends over months of history. <em>References:</em>
+<ul>
+<li><a href="https://www.strava.com/">Strava (official)</a></li>
+<li><a href="https://www.strava.com/features">Strava features</a></li>
+</ul></li>
+<li><strong>Scientific dataset plotter</strong> — load large numeric datasets (sensor arrays, experiment outputs), scatter/line/heat plots at 1M+ points via LOD, brushing &amp; linked views, publication-quality export. <em>References:</em>
+<ul>
+<li><a href="https://www.paraview.org/">ParaView (Kitware, official)</a></li>
+<li><a href="https://www.paraview.org/features/">ParaView features</a></li>
+</ul></li>
+<li><strong>Sports match analytics visualizer</strong> — event-stream match data (passes, shots, positions) rendered as pitch maps, heatmaps and timelines with animated replay and coach annotations. <em>References:</em>
+<ul>
+<li><a href="https://statsbomb.com/">Hudl Statsbomb (official)</a></li>
+<li><a href="https://www.hudl.com/en_gb/products/sportscode">Hudl Sportscode</a></li>
+</ul></li>
+</ol>
+<h3 id="core-tech-requirements-per-visualization--analytics-example">Core Tech Requirements per Visualization &amp; Analytics Example</h3>
+<p>Legend: ✅ Applies directly | 🔶 Applies with domain adaptation | 🔵 Optional | ❌ Not needed | ⏭️ Second trimester</p>
+<table>
+<thead>
+<tr class="header">
+<th>Core Tech Requirement</th>
+<th>1. City Dashboard</th>
+<th>2. Log Explorer</th>
+<th>3. Fitness Explorer</th>
+<th>4. Scientific Plotter</th>
+<th>5. Sports Analytics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>External Database (Firebase)</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Authentication ⏭️</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>✅</td>
+<td>🔵</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Analytics ⏭️</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>C++ Performant Service</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Real-time C++ Simulation Loop</td>
+<td>✅</td>
+<td>✅</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+</tr>
+<tr class="even">
+<td>Application Communication</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Continuous Integration</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Data-Driven Architecture</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="odd">
+<td>Front-end + Local Backend</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>Custom Tools Development</td>
+<td>✅</td>
+<td>✅</td>
+<td>🔶</td>
+<td>🔶</td>
+<td>🔶</td>
+</tr>
+<tr class="odd">
+<td>2D Graphical Output</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr class="even">
+<td>3D (strong students only)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+<td>🔵</td>
+<td>❌</td>
+</tr>
+<tr class="odd">
+<td>Networking System</td>
+<td>🔵</td>
+<td>🔵</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr class="even">
+<td><span style="color:#8E44AD"><strong>Large-Dataset Rendering &amp; LOD Engine</strong> — 1M+ points at 60 fps via level-of-detail (new)</span></td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<h3 id="how-each-requirement-applies">How each requirement applies</h3>
+<p><em>Common to all five:</em> 2D ✅ (custom chart/map/plot rendering IS the product — no chart libraries) · C++ Performant Service (ingestion + aggregation engines) · Data-Driven Architecture ✅ (data sources, chart configs, dashboards as data) · Application Communication · Continuous Integration · Front-end + Local Backend.</p>
+<p><strong>1. Live city metrics dashboard</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (control-room ops)</b> — citizens and officials view the live dashboard on phones; the control-room display stays on the PC side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Map layers, live dashboard panels, alert displays. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Sensor feed engine, aggregation &amp; statistics, dashboard configuration, Firebase history. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> C++ engine generates and processes simulated sensor feeds (water, power, waste) — high-frequency by construction.</li>
+<li><em>2D:</em> map-based visualization with live utility layers and alert badges. <em>Custom tool:</em> dashboard composer — panels, layers and thresholds arranged without recompiling.</li>
+<li><em>External DB / Analytics ⏭️:</em> historical feed data, alert statistics. <em>Auth ⏭️:</em> 🔵 operator accounts. <em>Networking:</em> 🔵 live push to viewers.</li>
+<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> a year of per-zone readings scrubbed on a timeline without dropping frames.</li>
+</ul>
+<p><strong>2. Log &amp; telemetry explorer</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (analyst ops)</b> — on-call engineers check dashboards and alerts on phones; the deep-dive desk stays on the PC side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Time-series charts, live log tail, query bar, dashboard grid. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Log ingestion &amp; parsing engine, time-series store, query/filter engine, Firebase saved views. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop:</em> continuous ingestion — thousands of log lines/second parsed, indexed and aggregated live (a bundled generator replays real log fixtures).</li>
+<li><em>2D:</em> time-series rendering with smooth zoom from weeks to milliseconds. <em>Custom tool:</em> dashboard/query composer with saved views.</li>
+<li><em>External DB / Analytics ⏭️:</em> saved dashboards, usage stats. <em>Auth ⏭️:</em> 🔵. <em>Networking:</em> 🔵 remote log sources.</li>
+<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> a million-line log rendered as density strips and percentile bands, interactive throughout.</li>
+</ul>
+<p><strong>3. Personal fitness data explorer</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — your data on your phone (reference device); web build for the big-screen review. PC is the development vehicle.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Linked pace/HR/elevation charts, route map, activity playback, trends. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> GPX/CSV import pipeline, aggregation engine (splits, zones, trends), Firebase sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> animated activity playback (the run replayed on the map with synced chart cursors) and live re-aggregation while brushing.</li>
+<li><em>2D:</em> multi-series linked charts + route rendering from raw GPS points. <em>Custom tool (adapted):</em> personal dashboard/layout configurator.</li>
+<li><em>External DB:</em> activity sync across devices. <em>Auth:</em> ✅ personal data. <em>Analytics ⏭️:</em> feature usage.</li>
+<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> years of workouts — hundreds of thousands of trackpoints — in one zoomable timeline.</li>
+</ul>
+<p><strong>4. Scientific dataset plotter</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — results explored and shared from the phone; heavy datasets prepared on the PC side.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Scatter/line/heat plots, brushing &amp; linked views, export preview. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Columnar dataset store, decimation/LOD engine, statistics, publication export. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> interactive render loop — re-decimation and re-binning at every pan/zoom/brush, animated dataset sweeps.</li>
+<li><em>2D:</em> the plot engine IS the product — axes, ticks, millions of points, FreeType labels. <em>Custom tool (adapted):</em> plot/figure composer with styles.</li>
+<li><em>External DB / Analytics ⏭️:</em> shared figure library. <em>Auth ⏭️:</em> 🔵. <em>3D:</em> 🔵 surface plots for strong students.</li>
+<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> the flagship — 1M+ points at 60 fps on the dev machine, LOD-decimated gracefully on the reference phone.</li>
+</ul>
+<p><strong>5. Sports match analytics visualizer</strong></p>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — match review on the phone or tablet-free touchline; web build for shared session links. PC is the development vehicle.</div>
+
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Pitch map, heatmaps, event timelines, animated replay, annotation layer. <b>Languages:</b> C++, GLSL.</div>
+
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Match event-stream engine, per-player aggregation, annotation store, Firebase team library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+
+<ul>
+<li><em>Simulation loop (adapted):</em> animated match replay — event streams played back with live-updating heatmaps and stats.</li>
+<li><em>2D:</em> pitch rendering, density heatmaps, timelines. <em>Custom tool (adapted):</em> annotation &amp; report composer for coaches.</li>
+<li><em>External DB:</em> team match library. <em>Auth:</em> ✅ team roles (coach/player). <em>Analytics ⏭️:</em> usage per view.</li>
+<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> a full season of event data explorable in one linked view.</li>
+</ul>
+<h3 id="goals-per-example">Goals per Example</h3>
+<p>G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the Visualization &amp; Analytics pool in <code>milestone-goals-pool-per-category.md</code> (G-numbers = pool IDs).</p>
+<details><summary><b style="color:#0969DA">1. Live city metrics dashboard</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (PC) and Emscripten/WASM shell (web) over one C++ core; fixed-timestep loop driving simulated sensor ticks, aggregation and map animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 G4 feeds and M1 G8 map view run inside this loop.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensors, zones, utility types, thresholds and dashboard layouts as JSON entities (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1 G4 (feed schema), M2 G2 (composer edits this data), M2 G14 (alert rules as data).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui feed-inspector overlays, Tracy, Catch2 stress tests pushing thousands of sensor updates/second, GitHub Actions Windows+Linux matrix plus a WASM build job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the throughput baselines M2 G7 optimizes against.</li></ul></details>
+</li>
+<li><strong>G4 Data Ingestion &amp; Feed Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Producer/consumer threads generating simulated water/power/waste readings through a lock-free ring buffer; ordered, drop-safe ingestion.</li><li><b>Prerequisites:</b> G1 (loop), G2 (sensor schema).</li><li><b>Feeds into:</b> M1 G6 (aggregates), M2 G14 (alerts), everything the dashboard shows.</li></ul></details>
+</li>
+<li><strong>G6 Aggregation &amp; Statistics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-zone/per-utility rolling aggregates (averages, peaks, threshold breaches) computed incrementally in C++, verified against offline recomputation.</li><li><b>Prerequisites:</b> M1 G4 (feed).</li><li><b>Feeds into:</b> M2 G13 (choropleth values), M2 G14 (alert conditions), the panel numbers.</li></ul></details>
+</li>
+<li><strong>G8 Map / Geo Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL city-map renderer — zone polygons, per-utility live layers, pan/zoom, FreeType labels and alert badges.</li><li><b>Prerequisites:</b> G1 (render loop), G2 (zone geometry).</li><li><b>Feeds into:</b> M2 G13 (heat layers); the face of the product.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy under city-scale feed volume, ASan on MSVC, threading and memory pools; WASM build validated on the reference phone at full feed rate.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G7 headroom; a phone dashboard that never stutters.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The dashboard composer — arrange panels, map layers, thresholds and zones with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s OpenGL map/chart renderers (live preview)</li><li><b>Prerequisites:</b> M1 G2 (layout model), M1 G8 (map view).</li><li><b>Feeds into:</b> Every configured dashboard of the showcase.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, Actions matrix producing the PC build and the deployable WASM bundle, feed-replay regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> The shareable dashboard URL.</li></ul></details>
+</li>
+<li><strong>G7 Large-Dataset Rendering &amp; LOD Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Level-of-detail aggregation of a year of readings — min/max/percentile decimation per pixel column, timeline scrubbing without frame drops.</li><li><b>Prerequisites:</b> M1 G6 (aggregates), M2 G1 (budget).</li><li><b>Feeds into:</b> The category&#39;s signature demo — history at every scale, instantly.</li></ul></details>
+</li>
+<li><strong>G13 Geo II — Choropleth &amp; Heatmaps</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL heat layers and choropleth coloring over the map with animated transitions and time scrubbing through recorded history.</li><li><b>Prerequisites:</b> M1 G8 (map), M2 G7 (decimated history).</li><li><b>Feeds into:</b> Showcase visuals; the &quot;watch the city breathe&quot; moment.</li></ul></details>
+</li>
+<li><strong>G14 Alerting &amp; Thresholds</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Data-defined alert rules evaluated in the C++ engine, visual alert timelines, Firebase notifications to subscribed viewers.</li><li><b>Prerequisites:</b> M1 G4 + G6 (conditions), G2 (rules as data).</li><li><b>Feeds into:</b> The operational story: see it, get pinged by it, audit it.</li></ul></details>
+</li>
+</ul>
+<p><strong>Track Goals &amp; Team Composition</strong></p>
+<p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — dashboard/data-viz design surface; Design conditionals cover the art minimum.</p>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (product design doc around the observe → drill-down → act loop)</li><li>D2 Prototype (clickable dashboard flow)</li><li>D5 reading: Interaction &amp; Data-Density Spec (panel grid, drill-down conventions)</li><li>TU1 ⭐ UI Standards &amp; Wireframe Baseline</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Vertical Slice (one polished city view end to end)</li><li>D8 reading: clarity pass — alert moments legible, no chart junk</li><li>TU1 ⭐ Functional UI &amp; Usability</li></ul></li><li><b>Art M1/M2:</b><ul><li>0 artists typical — Design conditionals D11 apply (iconography, map styling)</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Audio Direction &amp; Plan (restrained alert-cue set)</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Audio Integration (V&amp;A floor: ≥5 event cues, no BGM)</li><li>TP1 ⭐ Final Presentation</li></ul></li></ul></div>
+
+</details>
+
+<details><summary><b style="color:#0969DA">2. Log &amp; telemetry explorer</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one C++ core; continuous ingestion loop parsing and indexing log lines while charts redraw; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 G4 parsing and G7 storage run inside it.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Log source definitions, parse patterns, dashboards and saved queries as JSON (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G4 (patterns), M1 G14 (query definitions), M2 G2 (composer).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Ingestion-rate overlays, Tracy on parse/index paths, Catch2 tests over recorded log fixtures (deterministic), Actions matrix + WASM job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; regression suite guards query correctness.</li></ul></details>
+</li>
+<li><strong>G4 Data Ingestion &amp; Feed Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Streaming parser (thousands of lines/second) with a replay generator over bundled real-log fixtures; back-pressure safe.</li><li><b>Prerequisites:</b> G1, G2 (patterns).</li><li><b>Feeds into:</b> M1 G7 (store), the live tail view.</li></ul></details>
+</li>
+<li><strong>G7 Time-Series Store &amp; Windowing</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Columnar in-memory store with time-bucketed indexes and windowed aggregation — the engine behind every chart.</li><li><b>Prerequisites:</b> M1 G4.</li><li><b>Feeds into:</b> M1 G14 (queries run against it), M2 G7 (LOD reads it).</li></ul></details>
+</li>
+<li><strong>G14 Query &amp; Filter Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Field/text/severity filters with a small query grammar, incremental results while typing, saved queries as data.</li><li><b>Prerequisites:</b> M1 G7 (indexes).</li><li><b>Feeds into:</b> M2 G10 (insights refine queries); the analyst workflow.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on ingest/query hot paths, SIMD scanning, ASan on MSVC; WASM build validated on the reference phone.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G9 throughput; queries that feel instant.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Dashboard/query composer — panels, saved queries, layouts — with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s chart renderer (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G14.</li><li><b>Feeds into:</b> Analyst-authored dashboards in the showcase.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, lint gates, PC + WASM artifacts, fixture-replay regression tests in the matrix.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release builds; correctness under refactor.</li></ul></details>
+</li>
+<li><strong>G7 Large-Dataset Rendering &amp; LOD Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Density strips and percentile bands over millions of lines — per-pixel min/max/percentile decimation, zoom from weeks to milliseconds.</li><li><b>Prerequisites:</b> M1 G7, M2 G1.</li><li><b>Feeds into:</b> The signature demo: a million-line log, interactive throughout.</li></ul></details>
+</li>
+<li><strong>G9 Streaming II — Live at Scale</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Live tailing under sustained high ingest with bounded memory, pause/catch-up semantics, drop-free windowed charts.</li><li><b>Prerequisites:</b> M1 G4, M2 G1.</li><li><b>Feeds into:</b> The live-ops story of the showcase.</li></ul></details>
+</li>
+<li><strong>G10 Insight Engine — Trends &amp; Anomalies</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rolling baselines, spike/outlier detection (z-scores, EWMA — custom C++, no ML libraries), surfaced as chart annotations.</li><li><b>Prerequisites:</b> M1 G7 (history), M1 G14.</li><li><b>Feeds into:</b> &quot;The tool found it before I did&quot; demo moment.</li></ul></details>
+</li>
+</ul>
+<p><strong>Track Goals &amp; Team Composition</strong></p>
+<p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — analyst-workflow design surface; conditionals apply.</p>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (analyst personas and the search → narrow → diagnose loop)</li><li>D2 Prototype</li><li>D3 User Research (real on-call workflows)</li><li>TU1 ⭐</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Vertical Slice (one incident investigated end to end)</li><li>D8 reading: clarity pass (density without noise)</li><li>TU1 ⭐</li></ul></li><li><b>Art M1/M2:</b><ul><li>0 artists — D11 conditionals (iconography, severity palette)</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ (alert-cue direction)</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ (V&amp;A floor: ≥5 event cues, no BGM)</li><li>TP1 ⭐ Final Presentation</li></ul></li></ul></div>
+
+</details>
+
+<details><summary><b style="color:#0969DA">3. Personal fitness data explorer</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving activity playback and live re-aggregation while brushing; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; playback animation and M1 G5 charts run inside it.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Activities, trackpoints, zones, dashboard layouts as data (nlohmann/json); units and sport types fully configurable.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G13 (import fills it), M2 G2 (layout editing).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Redraw/aggregation overlays, Tracy, Catch2 over fixture GPX files (deterministic aggregates), Actions matrix + APK job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; aggregate correctness under refactor.</li></ul></details>
+</li>
+<li><strong>G5 2D Chart Rendering Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-series linked charts (pace/HR/elevation) with shared cursors, smooth zoom, FreeType axes — plus route rendering from raw GPS points.</li><li><b>Prerequisites:</b> G1, G2.</li><li><b>Feeds into:</b> M2 G4 (advanced charting); every screen of the product.</li></ul></details>
+</li>
+<li><strong>G6 Aggregation &amp; Statistics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Splits, HR zones, personal records and weekly/monthly trends computed incrementally; verified against offline recomputation.</li><li><b>Prerequisites:</b> M1 G13 (data in).</li><li><b>Feeds into:</b> Trend views; M2 G8 sharing.</li></ul></details>
+</li>
+<li><strong>G13 Import / Export Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GPX/TCX/CSV importers with malformed-file resilience, dedup, and CSV export; batch import of years of history.</li><li><b>Prerequisites:</b> G2 (model).</li><li><b>Feeds into:</b> Everything — real user data is the demo.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on chart/aggregation paths, memory-lean trackpoint storage, ASan on MSVC; full validation on the reference phone (Pixel 8a/9a).</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G7-quality scrolling on-device.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Personal dashboard configurator — chart panels, metrics, goals — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s chart renderer (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G5.</li><li><b>Feeds into:</b> A dashboard that&#39;s yours; showcase variety.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, lint gates, APK packaging in CI, import-fixture regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> The installable deliverable.</li></ul></details>
+</li>
+<li><strong>G4 Charting — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Overlay comparisons (this run vs PB), multi-pane sync, crosshair readouts, animated playback cursor across all panes.</li><li><b>Prerequisites:</b> M1 G5, M2 G1.</li><li><b>Feeds into:</b> The review experience that sells the demo.</li></ul></details>
+</li>
+<li><strong>G8 Firebase — Accounts, Sharing &amp; Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Personal accounts, cross-device activity sync, share-a-run links rendering in the web build.</li><li><b>Prerequisites:</b> M1 G2.</li><li><b>Feeds into:</b> Auth ✅ requirement; the social share moment.</li></ul></details>
+</li>
+<li><strong>G15 Mobile Platform Port</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Touch-first interactions (pinch-zoom charts, swipe between activities), on-device frame/memory budgets on the reference phone, APK in CI.</li><li><b>Prerequisites:</b> M2 G1.</li><li><b>Feeds into:</b> The primary shipping target.</li></ul></details>
+</li>
+</ul>
+<p><strong>Track Goals &amp; Team Composition</strong></p>
+<p><strong>Recommended composition:</strong> 6 CS + 1–2 Design + 0–1 Art (7–9) — personal-product design surface; 1 artist justified for a brand/illustration-led product.</p>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (athlete personas; the record → review → improve loop)</li><li>D2 Prototype</li><li>D10 Accessibility &amp; readability (glanceable outdoors)</li><li>TU1 ⭐</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D2 Branding &amp; style guide</li><li>D10 Mobile UX ergonomics</li><li>TU1 ⭐</li></ul></li><li><b>Art M1:</b><ul><li>A1 ⭐ (visual language; mockups: activity view + trends)</li><li>A4 UI art &amp; iconography (sport icons, badges)</li></ul></li><li><b>Art M2:</b><ul><li>A1 ⭐</li><li>A4 UI art states + achievement celebration visuals</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ (cue direction: PR, split, goal-met)</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ (V&amp;A floor: ≥5 event cues)</li><li>TP1 ⭐ Final Presentation</li></ul></li></ul></div>
+
+</details>
+
+<details><summary><b style="color:#0969DA">4. Scientific dataset plotter</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one core; interactive render loop re-decimating and re-binning on every pan/zoom/brush; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 G5 plots and G9 interactions live in this loop.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Datasets, column schemas, plot specs and figure styles as data (nlohmann/json); a figure is fully described by its spec.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G13 (import), M2 G2 (composer edits specs), M2 G11 (headless renders specs).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Point-count/frame overlays, Tracy, Catch2 stress tests at 1M+ synthetic points, Actions matrix + WASM job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the perf baselines the purple goal beats.</li></ul></details>
+</li>
+<li><strong>G5 2D Chart Rendering Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Scatter/line/heat plot engine — instanced point rendering, axes/ticks/grids, FreeType labels, GPU batching from day one.</li><li><b>Prerequisites:</b> G1, G2.</li><li><b>Feeds into:</b> M2 G7 (LOD extends it); the product IS this renderer.</li></ul></details>
+</li>
+<li><strong>G9 Interaction Layer</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pan/zoom with inertia, box/lasso brushing, linked views (brush one plot, highlight all), crosshair readouts.</li><li><b>Prerequisites:</b> M1 G5.</li><li><b>Feeds into:</b> The exploration workflow; M2 G4 sync.</li></ul></details>
+</li>
+<li><strong>G13 Import / Export Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CSV/TSV/binary column importers with type inference and progress reporting; PNG/SVG publication export with styles.</li><li><b>Prerequisites:</b> G2.</li><li><b>Feeds into:</b> Real datasets in, papers-ready figures out.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy-guided SIMD decimation, columnar memory layout, ASan on MSVC; WASM validated on the reference phone with graceful LOD.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G7&#39;s budget.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Figure composer — plot specs, styles, layouts — JSON round-trip, undo/redo, live preview.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s plot engine (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G5.</li><li><b>Feeds into:</b> M2 G11 (headless consumes its specs).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Presets, lint gates, PC + WASM artifacts, image-diff regression tests on rendered reference figures.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Pixel-stable releases.</li></ul></details>
+</li>
+<li><strong>G4 Charting — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-pane figures with shared axes, log scales, error bars, annotations; synced crosshairs across panes.</li><li><b>Prerequisites:</b> M1 G5/G9, M2 G1.</li><li><b>Feeds into:</b> Publication-grade output.</li></ul></details>
+</li>
+<li><strong>G7 Large-Dataset Rendering &amp; LOD Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The flagship — hierarchical decimation (min/max/density tiles), progressive refinement, 1M+ points at 60 fps on the dev machine, graceful LOD on the phone.</li><li><b>Prerequisites:</b> M1 G5, M2 G1.</li><li><b>Feeds into:</b> The demo everyone remembers.</li></ul></details>
+</li>
+<li><strong>G11 Headless Report Generation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI batch rendering of figure specs to PNG/SVG (offscreen GL), deterministic outputs, runs in CI.</li><li><b>Prerequisites:</b> M2 G2 (specs), M1 G13 (export).</li><li><b>Feeds into:</b> Reproducible-figures story for scientific users.</li></ul></details>
+</li>
+</ul>
+<p><strong>Track Goals &amp; Team Composition</strong></p>
+<p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — tool-UX surface; conditionals cover figure styling.</p>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (researcher personas; the load → explore → publish loop)</li><li>D2 Prototype</li><li>D5 reading: Tool Interaction Spec (brushing, linked-view conventions)</li><li>TU1 ⭐</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Vertical Slice (one dataset explored → exported figure)</li><li>D7 reading: defaults &amp; style presets that make good figures easy</li><li>TU1 ⭐</li></ul></li><li><b>Art M1/M2:</b><ul><li>0 artists — D11 conditionals (palettes, figure styles)</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ (minimal cue set direction)</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ (V&amp;A floor)</li><li>TP1 ⭐ Final Presentation</li></ul></li></ul></div>
+
+</details>
+
+<details><summary><b style="color:#0969DA">5. Sports match analytics visualizer</b></summary>
+
+<p><em>M1:</em></p>
+<ul>
+<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving animated match replay and live stat updates; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; replay and heatmaps tick inside it.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Matches, events, players, pitch geometry and view configs as data (nlohmann/json); event schema designed by the team.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G11 (generator emits this schema), M2 G12 (annotations attach to it).</li></ul></details>
+</li>
+<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event-rate/redraw overlays, Tracy, Catch2 over fixture match files (deterministic stats), Actions matrix + APK job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; stat correctness guarded.</li></ul></details>
+</li>
+<li><strong>G5 2D Chart Rendering Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pitch renderer + chart engine — event dots/arrows, density heatmaps, timelines — instanced OpenGL, FreeType.</li><li><b>Prerequisites:</b> G1, G2.</li><li><b>Feeds into:</b> M2 G4; every view of the product.</li></ul></details>
+</li>
+<li><strong>G6 Aggregation &amp; Statistics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-player/per-zone aggregates (touches, passes, xG-style simple models — custom C++), recomputed live while scrubbing.</li><li><b>Prerequisites:</b> G2.</li><li><b>Feeds into:</b> M2 G10 insights; the numbers under every view.</li></ul></details>
+</li>
+<li><strong>G11 Data Simulator / Generator Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Seeded match-event generator (realistic pass/shot sequences, player movement) — the team&#39;s data supply and ground truth for stats tests.</li><li><b>Prerequisites:</b> G1 (clock), G2 (schema).</li><li><b>Feeds into:</b> All development and demos; deterministic fixtures for CI.</li></ul></details>
+</li>
+</ul>
+<p><em>M2:</em></p>
+<ul>
+<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on replay/heatmap paths, pooling, ASan on MSVC; full-season data validated on the reference phone.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> Season-scale interactivity.</li></ul></details>
+</li>
+<li><strong>G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> View/report composer — pitch views, panels, replay clips — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s pitch/chart renderers (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G5.</li><li><b>Feeds into:</b> Coach-authored match reports.</li></ul></details>
+</li>
+<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Presets, lint gates, APK + PC artifacts, fixture-replay stat regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release builds.</li></ul></details>
+</li>
+<li><strong>G4 Charting — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Linked pitch + timeline + stat panes with synced cursors, comparison overlays (player A vs B, half vs half).</li><li><b>Prerequisites:</b> M1 G5/G6, M2 G1.</li><li><b>Feeds into:</b> The analysis workflow.</li></ul></details>
+</li>
+<li><strong>G10 Insight Engine — Trends &amp; Anomalies</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Momentum curves, hot-zone shifts, outlier performances — rolling baselines in custom C++, surfaced as annotations.</li><li><b>Prerequisites:</b> M1 G6 (aggregates).</li><li><b>Feeds into:</b> The &quot;what changed after halftime?&quot; demo.</li></ul></details>
+</li>
+<li><strong>G12 Annotations &amp; Collaborative Views</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Coach markup (arrows, zones, notes) anchored to events/timestamps, saved and shared via Firebase with team roles.</li><li><b>Prerequisites:</b> M1 G2, M2 G2.</li><li><b>Feeds into:</b> Auth ✅ (coach/player roles); the team-review story.</li></ul></details>
+</li>
+</ul>
+<p><strong>Track Goals &amp; Team Composition</strong></p>
+<p><strong>Recommended composition:</strong> 6 CS + 1–2 Design + 0–1 Art (7–9) — analysis-UX surface; 1 artist justified for pitch/brand visual identity.</p>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b><ul><li>D1 ⭐ (coach personas; the replay → spot → mark loop)</li><li>D2 Prototype</li><li>D3 User Research (real coach review sessions)</li><li>TU1 ⭐</li></ul></li><li><b>Design M2:</b><ul><li>D1 ⭐</li><li>D6 Vertical Slice (one match reviewed end to end)</li><li>D8 reading: replay feel — scrubbing, markers, moments</li><li>TU1 ⭐</li></ul></li><li><b>Art M1:</b><ul><li>A1 ⭐ (pitch/brand visual language; mockups: match view + report)</li><li>A4 UI art &amp; iconography</li></ul></li><li><b>Art M2:</b><ul><li>A1 ⭐</li><li>A5 reading: replay/transition VFX</li></ul></li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ (cue direction: whistle/goal/highlight)</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ (V&amp;A floor: ≥5 event cues)</li><li>TP1 ⭐ Final Presentation</li></ul></li></ul></div>
+
+</details>
+</body>
+</html>

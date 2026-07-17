@@ -981,5 +981,109 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Publish/browse/download of presets, palettes, instruments or songs via Firebase (Firestore + Storage), ratings/play counts, in-app preview</li><li><b>Prerequisites:</b> Firebase goal + M2 G2 (content to publish)</li><li><b>Depended on by:</b> Community showcase story; T2 analytics</li></ul></details>
 </li>
 </ul>
+<div style="background:#E0F2F1;border-left:6px solid #00838F;padding:8px 14px;border-radius:4px;margin-top:32px"><h2 style="margin:0;border:none">Visualization &amp; Analytics</h2></div>
+
+<h3 id="milestone-1-core-technology-base-phase-9">Milestone 1 (Core technology base phase)</h3>
+<ol>
+<li>⭐ <strong>Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++17/20, SDL2 (window, input, timing), fixed-timestep loop driving ingestion/aggregation/animation, CMake, Git</li><li><b>Prerequisites:</b> None — this is the foundation goal</li><li><b>Depended on by:</b> All other goals build on the shell and loop</li></ul></details>
+</li>
+<li>⭐ <strong>Data-Driven Architecture of Core Objects / Entity System</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ (templates, reflection patterns), JSON (nlohmann/json), hot-reload; data sources, chart specs and dashboards ARE the data model</li><li><b>Prerequisites:</b> G1 (application shell &amp; loop)</li><li><b>Depended on by:</b> All ingestion, rendering, and editor goals consume this model</li></ul></details>
+</li>
+<li>⭐ <strong>Debugging, Profiling, Stress Test &amp; CI</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlays (ingest rate, point counts, frame ms), Tracy, Catch2 over recorded data fixtures, GitHub Actions Windows + Linux matrix</li><li><b>Prerequisites:</b> G1</li><li><b>Depended on by:</b> M2 G3; deterministic fixtures guard every aggregate and render</li></ul></details>
+</li>
+<li><strong>Data Ingestion &amp; Feed Engine</strong> — streaming parse, ordered drop-safe intake
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Producer/consumer threads, lock-free ring buffers, streaming parsers, replay generators over fixtures</li><li><b>Prerequisites:</b> G1, G2 (schemas)</li><li><b>Depended on by:</b> Stores, aggregates, live views — everything downstream</li></ul></details>
+</li>
+<li><strong>2D Chart Rendering Core</strong> — axes, series, batching; no chart libraries
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL instanced rendering, GLSL, FreeType axes/labels, stb_image; line/scatter/bar/heat primitives</li><li><b>Prerequisites:</b> G1</li><li><b>Depended on by:</b> Every visible pixel; M2 G4/G7 extend it</li></ul></details>
+</li>
+<li><strong>Aggregation &amp; Statistics Engine</strong> — incremental rollups, verified correctness
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rolling averages/peaks/percentiles computed incrementally in C++, verified against offline recomputation</li><li><b>Prerequisites:</b> M1 G4 or G13 (data in)</li><li><b>Depended on by:</b> Charts, alerts, insights</li></ul></details>
+</li>
+<li><strong>Time-Series Store &amp; Windowing</strong> — columnar buckets, windowed queries
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Columnar in-memory store, time-bucketed indexes, windowed aggregation API</li><li><b>Prerequisites:</b> M1 G4</li><li><b>Depended on by:</b> Query engine, LOD engine, history views</li></ul></details>
+</li>
+<li><strong>Map / Geo Rendering</strong> — polygons, layers, pan/zoom
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Polygon tessellation (GeoJSON import), OpenGL layers, FreeType labels, camera</li><li><b>Prerequisites:</b> G1, G2 (geometry data)</li><li><b>Depended on by:</b> Geo products; M2 G13 heat layers</li></ul></details>
+</li>
+<li><strong>Interaction Layer</strong> — pan/zoom/brush/crosshair/linked views
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Inertial pan/zoom, box/lasso brushing, linked-view highlighting, crosshair readouts</li><li><b>Prerequisites:</b> M1 G5</li><li><b>Depended on by:</b> The exploration workflow; M2 G4</li></ul></details>
+</li>
+<li><strong>UI / Panel &amp; Layout System</strong> — dashboards as arrangeable panels
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom widget/panel system or Dear ImGui, FreeType, layout rules, input routing</li><li><b>Prerequisites:</b> 2D rendering</li><li><b>Depended on by:</b> Every screen; the M2 composer</li></ul></details>
+</li>
+<li><strong>Data Simulator / Generator Core</strong> — seeded synthetic data supply
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Seeded generators (sensor feeds, log streams, event sequences) with realistic patterns and ground truth for tests</li><li><b>Prerequisites:</b> G1 (clock), G2 (schemas)</li><li><b>Depended on by:</b> Development, demos, CI determinism</li></ul></details>
+</li>
+<li><strong>Save / Persistence &amp; Firebase Integration</strong> — configs, views, history
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth, Firestore/Storage — REST from C++, JS SDK on web; autosave of dashboards/views</li><li><b>Prerequisites:</b> M1 G2</li><li><b>Depended on by:</b> Sharing, accounts, alert subscriptions</li></ul></details>
+</li>
+<li><strong>Import / Export Pipeline</strong> — CSV/GPX/binary in, images/CSV out
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Robust format importers (type inference, malformed-file resilience), PNG/SVG/CSV export, batch CLI mode</li><li><b>Prerequisites:</b> G2</li><li><b>Depended on by:</b> Real-data demos; M2 G11</li></ul></details>
+</li>
+<li><strong>Query &amp; Filter Engine</strong> — incremental filtering over indexed data
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Small query grammar, field/text/range filters, incremental results while typing, saved queries as data</li><li><b>Prerequisites:</b> M1 G7 (indexes)</li><li><b>Depended on by:</b> Explorer workflows; M2 G10</li></ul></details>
+</li>
+<li><strong>Streaming Networking Foundation</strong> — remote sources, live push
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> WebSockets (web) / sockets or ENet (PC), serialized feed protocol, reconnect &amp; catch-up</li><li><b>Prerequisites:</b> G1, G2</li><li><b>Depended on by:</b> Live multi-viewer products; M2 G9</li></ul></details>
+</li>
+<li><strong>Color Scales, Legends &amp; Theming</strong> — perceptual scales, accessible palettes
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sequential/diverging color scale math, legend rendering, theme system as data, color-blind-safe defaults</li><li><b>Prerequisites:</b> M1 G5</li><li><b>Depended on by:</b> Heatmaps, choropleths, publication output</li></ul></details>
+</li>
+</ol>
+<h3 id="milestone-2-core-technology-showcase-phase-9">Milestone 2 (Core technology showcase phase)</h3>
+<ol>
+<li>⭐ <strong>Architecture — Optimization &amp; Platform Validation</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy, sanitizers (ASan on MSVC), SIMD scanning/decimation, threading, memory pools; WASM/Android validation on the reference phone</li><li><b>Prerequisites:</b> All M1 goals</li><li><b>Depended on by:</b> Scale goals; on-device smoothness</li></ul></details>
+</li>
+<li>⭐ <strong>Content Editor — Core</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The dashboard/figure/view composer — C++ + Dear ImGui (or web UI), JSON round-trip, undo/redo command stack; in this category the composer IS the custom tool</li><li><b>Prerequisites:</b> M1 G2</li><li><b>Depended on by:</b> Authored content of the showcase; M2 G6/G11</li></ul></details>
+</li>
+<li>⭐ <strong>CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, PC + WASM/APK artifacts, fixture-replay and image-diff regression tests</li><li><b>Prerequisites:</b> M1 G3</li><li><b>Depended on by:</b> Release/showcase builds of every goal</li></ul></details>
+</li>
+<li><strong>Charting — Advanced</strong> — multi-pane, overlays, synced cursors
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-pane layouts with shared axes, comparison overlays, log scales, error bars, annotations</li><li><b>Prerequisites:</b> M1 G5/G9; M2 G1</li><li><b>Depended on by:</b> The analysis showcase</li></ul></details>
+</li>
+<li><strong>Custom In-Product GUI System</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom skinned widget system, FreeType, theming, input routing — beyond stock ImGui</li><li><b>Prerequisites:</b> M1 G10</li><li><b>Depended on by:</b> Every user-facing screen</li></ul></details>
+</li>
+<li><strong>Dashboard Composer — Advanced Tool Features</strong> — drag-drop, multi-view, templates
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Drag-drop panel arrangement, multi-dashboard tabs, templates, live preview binding</li><li><b>Prerequisites:</b> M2 G2</li><li><b>Depended on by:</b> Content-creation showcase</li></ul></details>
+</li>
+<li><strong>Large-Dataset Rendering &amp; LOD Engine</strong> — 1M+ points at 60 fps <em>(category purple requirement)</em>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Hierarchical decimation (min/max/percentile/density tiles), progressive refinement, per-pixel aggregation; graceful LOD on the reference phone</li><li><b>Prerequisites:</b> M1 G5 + G7; M2 G1</li><li><b>Depended on by:</b> The category&#39;s signature showcase feature</li></ul></details>
+</li>
+<li><strong>Firebase — Accounts, Sharing &amp; Analytics</strong>
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Auth, shared views/links, cross-device sync, usage analytics — REST from C++, JS SDK on web</li><li><b>Prerequisites:</b> M1 G12</li><li><b>Depended on by:</b> Sharing and roles stories</li></ul></details>
+</li>
+<li><strong>Streaming II — Live at Scale</strong> — sustained ingest, bounded memory
+ <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> High-rate live tailing with back-pressure, pause/catch-up semantics, drop-free windowed charts</li><li><b>Prerequisites:</b> M1 G4/G15; M2 G1</li><li><b>Depended on by:</b> Live-ops demos</li></ul></details>
+</li>
+<li><strong>Insight Engine — Trends &amp; Anomalies</strong> — baselines, outliers, no ML libraries
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rolling baselines, z-score/EWMA spike detection, trend fitting — custom C++, surfaced as chart annotations</li><li><b>Prerequisites:</b> M1 G6/G7</li><li><b>Depended on by:</b> &quot;The tool found it&quot; showcase moment</li></ul></details>
+</li>
+<li><strong>Headless Report Generation</strong> — CLI batch rendering, deterministic
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Offscreen GL rendering of view/figure specs to PNG/SVG, job runner, deterministic re-runs in CI</li><li><b>Prerequisites:</b> M2 G2 (specs), M1 G13</li><li><b>Depended on by:</b> Reproducible reports; T2 server jobs</li></ul></details>
+</li>
+<li><strong>Annotations &amp; Collaborative Views</strong> — markup anchored to data
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Annotations (arrows, zones, notes) anchored to timestamps/events, saved and shared via Firebase with roles</li><li><b>Prerequisites:</b> M1 G2; M2 G8</li><li><b>Depended on by:</b> Team-review workflows</li></ul></details>
+</li>
+<li><strong>Geo II — Choropleth &amp; Heatmaps</strong> — animated heat layers, time scrubbing
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL heat/choropleth layers, animated transitions, scrubbing through recorded history</li><li><b>Prerequisites:</b> M1 G8; M2 G7</li><li><b>Depended on by:</b> Geo showcase visuals</li></ul></details>
+</li>
+<li><strong>Alerting &amp; Thresholds</strong> — data-defined rules, visual + push alerts
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rule evaluation in the C++ engine, alert timelines, Firebase notifications to subscribers</li><li><b>Prerequisites:</b> M1 G4/G6; G2 (rules as data)</li><li><b>Depended on by:</b> Operational products&#39; core promise</li></ul></details>
+</li>
+<li><strong>Mobile Platform Port</strong> — touch interactions, on-device budgets
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Android NDK or Emscripten → WASM; pinch-zoom charts, touch brushing; frame/memory budgets on the reference phone; packaged in CI</li><li><b>Prerequisites:</b> M2 G1</li><li><b>Depended on by:</b> The shipping target</li></ul></details>
+</li>
+<li><strong>Embedding &amp; Data Interop</strong> — live views elsewhere, standard formats
+<details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Embeddable read-only view (WASM snippet/share link), CSV/JSON export APIs, import from common tool formats</li><li><b>Prerequisites:</b> M1 G13; M2 G8</li><li><b>Depended on by:</b> Integration stories; T2 interop</li></ul></details>
+</li>
+</ol>
 </body>
 </html>
