@@ -69,42 +69,105 @@ li { margin: 3px 0; }
 </li>
 </ul>
 <h2 id="category-calibrations">Category calibrations</h2>
-<p>Per-category required screens for U1 ⭐ (M2); the Games base list lives in the goal above.</p>
+<p>A per-goal reading for every U-goal each milestone (M1 U1/U2/U3, M2 U1/U2/U3/U4/U5) — category-specific where the UI wording shifts, de-Gamed where the discipline is universal (read &quot;menus/HUD/health-bar&quot; as the product&#39;s screens and status indicators). The <strong>M2 U1 required-screens list</strong> is the category-specific core of that goal; the Games base list lives in the goal above.</p>
 <h3 id="education--training">Education + Training</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: home / lesson select · in-exercise with pause · <strong>Resume</strong> and <strong>Quit</strong> (exact labels, quit with confirmation) · results/progress screen · settings · how-to-play/help · separate teacher and learner entry points where the product has both roles.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map for the learning product, control mapping to industry standards (touch-first), readability rules (type, contrast, touch-target sizes); UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (home → lesson → exercise → results), wireframes for all critical screens, learner (and teacher) journeys per persona.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast ratios, colorblind-safe palette, touch-target minimums and input alternatives applied to the M1 wireframes — extra weight for young/assisted learners.</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: home / lesson select · in-exercise with pause · <strong>Resume</strong> and <strong>Quit</strong> (exact labels, quit with confirmation) · results/progress · settings · how-to-play/help · separate teacher and learner entry points where both roles exist; all function on the mobile target, first-time users navigate unaided.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with target learners; polished, animated, branded UI in-engine on the mobile target; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: screen transitions, press/hover states, progress/streak and feedback-state animations (the product&#39;s status indicators, not a game HUD).</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-time-learner experience: contextual teaching, how-to-play/help content, safe first attempts; validated with new learners.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling (calls/backgrounding); device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="simulator">Simulator</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: home/scenario select · run view with pause &amp; speed controls · results/report · settings · help. <strong>Resume</strong>/<strong>Quit</strong> labels apply to run sessions.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map for the simulator, control mapping to industry standards (touch-first), readability rules for dense live views; UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (home → scenario select → run view → results/report), wireframes for all critical screens, user journeys per persona.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe palette (critical for data), touch-target minimums, input alternatives applied to the M1 wireframes.</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: home/scenario select · run view with pause &amp; speed controls · results/report · settings · help (<strong>Resume</strong>/<strong>Quit</strong> apply to run sessions); all function on the mobile target, users navigate unaided.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with target users; polished, animated, branded UI in-engine on mobile; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: transitions, control states, live-view status/alert animations (the sim&#39;s state indicators, not a game HUD).</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-run experience: contextual teaching, help content, guided first run; validated with new users.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="fintech">Fintech</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: home/dashboard · action flow (e.g. place order / add expense) with confirmation on anything money-like · history/reports · settings · help.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map for the finance product, control mapping to industry standards (touch-first), readability/trust rules (numeric legibility, contrast); UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (dashboard → action flow → history/reports), wireframes for all critical screens, user journeys per persona.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe palette, touch-target minimums, input alternatives applied to the M1 wireframes.</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: home/dashboard · action flow (place order / add expense) with confirmation on anything money-like · history/reports · settings · help; all function on the mobile target, first-time users navigate unaided.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with target users; polished, animated, branded UI in-engine on mobile; complies with the M1 accessibility guidelines; no dark patterns.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: transitions, control states, balance/alert status animations (product status indicators, not a game HUD).</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-use experience: contextual teaching, help content, safe first actions; validated with new users.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="govtech">GovTech</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: citizen home · submit flow · status tracking · staff queue/dashboard view · settings · help — <strong>both roles navigable unaided</strong>.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map across citizen and staff sides, control mapping to industry standards (touch-first), accessibility-first readability rules; UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (citizen submit → track; staff queue → resolve), wireframes for all critical screens, journeys for both roles.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe palette, touch-target minimums, input alternatives applied to the M1 wireframes — accessibility is a civic mandate here.</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: citizen home · submit flow · status tracking · staff queue/dashboard · settings · help — <strong>both roles navigable unaided</strong>; all function on the mobile target.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with citizens and staff; polished, accessible, branded UI in-engine on mobile; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: transitions, control states, status-change animations (submission accepted/in-progress/resolved), restrained and accessible.</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-use experience for both roles: contextual teaching, help content, guided first submission; validated with new users.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="social-media">Social Media</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: feed/home · composer · notifications · profile · settings · help — with designed <strong>empty states</strong> for a fresh account.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map for the product, control mapping to industry standards (touch-first), readability rules; UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (feed → composer → notifications → profile), wireframes for all critical screens including <strong>empty states</strong>, journeys per persona.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe palette, touch-target minimums, input alternatives applied to the M1 wireframes.</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: feed/home · composer · notifications · profile · settings · help — with designed <strong>empty states</strong> for a fresh account; all function on the mobile target, first-time users navigate unaided.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with target users; polished, animated, branded UI in-engine on mobile; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: transitions, press/hover states, reaction/notification/presence animations.</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-use experience: contextual teaching, help content, safe first post; validated with new users.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="cms">CMS</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: document list/home · editing canvas · preview toggle · publish flow with confirmation · settings · help.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map for the authoring product, control mapping to industry standards (touch-first + desktop authoring), readability rules; UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (document list → editor → preview → publish), wireframes for all critical screens, author and viewer journeys.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe palette, touch-target minimums, input alternatives applied to the M1 wireframes (editor and published output).</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: document list/home · editing canvas · preview toggle · publish flow with confirmation · settings · help; all function on the mobile target, first-time users navigate unaided.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with target authors; polished, animated, branded UI in-engine on mobile; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: transitions, drag/hover states, save/publish status animations.</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-use experience for authors: contextual teaching, help content, guided first publish; validated with new authors.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="immersive-experience">Immersive Experience</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: minimal, diegetic-first UI: entry/attract screen · pause/exit · settings (volume, accessibility) · instructions — UI must not break immersion.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → minimal, diegetic-first UI baseline: entry/settings flow map, control mapping (touch/motion), readability rules that don&#39;t break immersion; UI-instructor review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → screen/overlay inventory &amp; flow (entry → experience → pause/exit), wireframes for the few critical screens, visitor journey.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe palette, touch-target minimums, input alternatives applied to the M1 UI (volume/accessibility settings).</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: minimal, diegetic-first — entry/attract · pause/exit · settings (volume, accessibility) · instructions; all function on the mobile target, UI must not break immersion.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with visitors; polished, animated UI in-engine on mobile that stays in-world; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: diegetic transitions and overlay states that reinforce immersion.</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-visitor experience: contextual/diegetic teaching, minimal instructions; validated with new visitors.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="creative-tools--media-production">Creative Tools &amp; Media Production</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: home/document manager · main editing workspace · export flow · settings incl. shortcuts · help/tutorial; the Quit-with-confirmation rule becomes an <strong>unsaved-changes guard</strong>.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map for the tool, control mapping to industry standards (shortcuts, modes, touch adaptation), readability rules; UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (document manager → workspace → export), wireframes for all critical screens, novice→power-user journeys.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe palette, touch-target minimums, input alternatives applied to the M1 wireframes.</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: home/document manager · main editing workspace · export flow · settings incl. shortcuts · help/tutorial; the Quit-with-confirmation rule becomes an <strong>unsaved-changes guard</strong>; all function on the mobile target.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with target creators; polished, animated, branded UI in-engine on mobile; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: panel/mode transitions, manipulation feedback states (snapping, ghosting), tool status animations.</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-use experience: contextual teaching, help/tutorial content, guided first artifact; validated with new creators.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h3 id="visualization--analytics">Visualization &amp; Analytics</h3>
 <ul>
-<li><strong>U1 ⭐ (M2) required screens</strong>: home / board (dashboard) list · main data view with time-range &amp; filter controls · view/dashboard composer · alerts &amp; thresholds · settings · help. <strong>Resume</strong>/<strong>Quit</strong> labels apply to live/streaming sessions.</li>
+<li><strong>M1 U1 UI Standards &amp; Wireframe Baseline</strong> → screen-flow map for the data product, control mapping to industry standards (touch-first), readability rules for dense views; UI-instructor wireframe review.</li>
+<li><strong>M1 U2 UX Flows &amp; Wireframes</strong> → complete screen inventory &amp; navigation map (board list → data view → composer → alerts), wireframes for all critical screens, data-consumer journeys per persona.</li>
+<li><strong>M1 U3 Accessibility &amp; Readability Foundations</strong> → type sizes, contrast, colorblind-safe perceptual palette (critical for charts), touch-target minimums, input alternatives applied to the M1 wireframes.</li>
+<li><strong>M2 U1 Functional UI &amp; Usability</strong> → required screens: home / board (dashboard) list · main data view with time-range &amp; filter controls · view/dashboard composer · alerts &amp; thresholds · settings · help (<strong>Resume</strong>/<strong>Quit</strong> apply to live/streaming sessions); all function on the mobile target.</li>
+<li><strong>M2 U2 UX Validation &amp; Final Polished UI</strong> → iterative UX testing with target users; polished, animated, branded UI in-engine on mobile; complies with the M1 accessibility guidelines.</li>
+<li><strong>M2 U3 Menu &amp; HUD Motion Design</strong> → motion spec + implementation: transitions, control states, alert/highlight status animations (data indicators, not a game HUD).</li>
+<li><strong>M2 U4 Onboarding &amp; Tutorial Design</strong> → first-use experience: contextual teaching, help content, guided first exploration; validated with new users.</li>
+<li><strong>M2 U5 Mobile UX Adaptation &amp; Ergonomics</strong> → thumb-zone layout, safe areas, session-length fit, interruption handling; device testing on Pixel 8a/9a and/or mobile web.</li>
 </ul>
 <h2 id="old--new-mapping">Old → new mapping</h2>
 <table>
