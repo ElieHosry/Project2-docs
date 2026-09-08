@@ -264,49 +264,49 @@ li { margin: 3px 0; }
 
 <p><em>M1:</em></p>
 <ul>
-<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (PC) and Emscripten/WASM shell (web) over one C++ core; fixed-timestep loop driving simulated sensor ticks, aggregation and map animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 G4 feeds and M1 G8 map view run inside this loop.</li></ul></details>
+<li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (PC) and Emscripten/WASM shell (web) over one C++ core; fixed-timestep loop driving simulated sensor ticks, aggregation and map animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 feeds and M1G8 map view run inside this loop.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensors, zones, utility types, thresholds and dashboard layouts as JSON entities (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1 G4 (feed schema), M2 G2 (composer edits this data), M2 G14 (alert rules as data).</li></ul></details>
+<li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensors, zones, utility types, thresholds and dashboard layouts as JSON entities (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1G4 (feed schema), M2G2 (composer edits this data), M2G14 (alert rules as data).</li></ul></details>
 </li>
-<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui feed-inspector overlays, Tracy, Catch2 stress tests pushing thousands of sensor updates/second, GitHub Actions Windows+Linux matrix plus a WASM build job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the throughput baselines M2 G7 optimizes against.</li></ul></details>
+<li><strong>M1G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui feed-inspector overlays, Tracy, Catch2 stress tests pushing thousands of sensor updates/second, GitHub Actions Windows+Linux matrix plus a WASM build job.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M2G3; the throughput baselines M2G7 optimizes against.</li></ul></details>
 </li>
-<li><strong>G4 Data Ingestion &amp; Feed Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Producer/consumer threads generating simulated water/power/waste readings through a lock-free ring buffer; ordered, drop-safe ingestion.</li><li><b>Prerequisites:</b> G1 (loop), G2 (sensor schema).</li><li><b>Feeds into:</b> M1 G6 (aggregates), M2 G14 (alerts), everything the dashboard shows.</li></ul></details>
+<li><strong>M1G4 Data Ingestion &amp; Feed Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Producer/consumer threads generating simulated water/power/waste readings through a lock-free ring buffer; ordered, drop-safe ingestion.</li><li><b>Prerequisites:</b> M1G1 (loop), M1G2 (sensor schema).</li><li><b>Feeds into:</b> M1G6 (aggregates), M2G14 (alerts), everything the dashboard shows.</li></ul></details>
 </li>
-<li><strong>G6 Aggregation &amp; Statistics Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-zone/per-utility rolling aggregates (averages, peaks, threshold breaches) computed incrementally in C++, verified against offline recomputation.</li><li><b>Prerequisites:</b> M1 G4 (feed).</li><li><b>Feeds into:</b> M2 G13 (choropleth values), M2 G14 (alert conditions), the panel numbers.</li></ul></details>
+<li><strong>M1G6 Aggregation &amp; Statistics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-zone/per-utility rolling aggregates (averages, peaks, threshold breaches) computed incrementally in C++, verified against offline recomputation.</li><li><b>Prerequisites:</b> M1G4 (feed).</li><li><b>Feeds into:</b> M2G13 (choropleth values), M2G14 (alert conditions), the panel numbers.</li></ul></details>
 </li>
-<li><strong>G8 Map / Geo Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL city-map renderer — zone polygons, per-utility live layers, pan/zoom, FreeType labels and alert badges.</li><li><b>Prerequisites:</b> G1 (render loop), G2 (zone geometry).</li><li><b>Feeds into:</b> M2 G13 (heat layers); the face of the product.</li></ul></details>
+<li><strong>M1G8 Map / Geo Rendering</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL city-map renderer — zone polygons, per-utility live layers, pan/zoom, FreeType labels and alert badges.</li><li><b>Prerequisites:</b> M1G1 (render loop), M1G2 (zone geometry).</li><li><b>Feeds into:</b> M2G13 (heat layers); the face of the product.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
-<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy under city-scale feed volume, ASan on MSVC, threading and memory pools; WASM build validated on the reference phone at full feed rate.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G7 headroom; a phone dashboard that never stutters.</li></ul></details>
+<li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy under city-scale feed volume, ASan on MSVC, threading and memory pools; WASM build validated on the reference phone at full feed rate.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2G7 headroom; a phone dashboard that never stutters.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The dashboard composer — arrange panels, map layers, thresholds and zones with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s OpenGL map/chart renderers (live preview)</li><li><b>Prerequisites:</b> M1 G2 (layout model), M1 G8 (map view).</li><li><b>Feeds into:</b> Every configured dashboard of the showcase.</li></ul></details>
+<li><strong>M2G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The dashboard composer — arrange panels, map layers, thresholds and zones with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s OpenGL map/chart renderers (live preview)</li><li><b>Prerequisites:</b> M1G2 (layout model), M1G8 (map view).</li><li><b>Feeds into:</b> Every configured dashboard of the showcase.</li></ul></details>
 </li>
-<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, Actions matrix producing the PC build and the deployable WASM bundle, feed-replay regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> The shareable dashboard URL.</li></ul></details>
+<li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy gates, Actions matrix producing the PC build and the deployable WASM bundle, feed-replay regression tests.</li><li><b>Prerequisites:</b> M1G3.</li><li><b>Feeds into:</b> The shareable dashboard URL.</li></ul></details>
 </li>
-<li><strong>G7 Large-Dataset Rendering &amp; LOD Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Level-of-detail aggregation of a year of readings — min/max/percentile decimation per pixel column, timeline scrubbing without frame drops.</li><li><b>Prerequisites:</b> M1 G6 (aggregates), M2 G1 (budget).</li><li><b>Feeds into:</b> The category&#39;s signature demo — history at every scale, instantly.</li></ul></details>
+<li><strong>M2G7 Large-Dataset Rendering &amp; LOD Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Level-of-detail aggregation of a year of readings — min/max/percentile decimation per pixel column, timeline scrubbing without frame drops.</li><li><b>Prerequisites:</b> M1G6 (aggregates), M2G1 (budget).</li><li><b>Feeds into:</b> The category&#39;s signature demo — history at every scale, instantly.</li></ul></details>
 </li>
-<li><strong>G13 Geo II — Choropleth &amp; Heatmaps</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL heat layers and choropleth coloring over the map with animated transitions and time scrubbing through recorded history.</li><li><b>Prerequisites:</b> M1 G8 (map), M2 G7 (decimated history).</li><li><b>Feeds into:</b> Showcase visuals; the &quot;watch the city breathe&quot; moment.</li></ul></details>
+<li><strong>M2G13 Geo II — Choropleth &amp; Heatmaps</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GLSL heat layers and choropleth coloring over the map with animated transitions and time scrubbing through recorded history.</li><li><b>Prerequisites:</b> M1G8 (map), M2G7 (decimated history).</li><li><b>Feeds into:</b> Showcase visuals; the &quot;watch the city breathe&quot; moment.</li></ul></details>
 </li>
-<li><strong>G14 Alerting &amp; Thresholds</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Data-defined alert rules evaluated in the C++ engine, visual alert timelines, Firebase notifications to subscribed viewers.</li><li><b>Prerequisites:</b> M1 G4 + G6 (conditions), G2 (rules as data).</li><li><b>Feeds into:</b> The operational story: see it, get pinged by it, audit it.</li></ul></details>
+<li><strong>M2G14 Alerting &amp; Thresholds</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Data-defined alert rules evaluated in the C++ engine, visual alert timelines, Firebase notifications to subscribed viewers.</li><li><b>Prerequisites:</b> M1G4 + M2G6 (conditions), M2G2 (rules as data).</li><li><b>Feeds into:</b> The operational story: see it, get pinged by it, audit it.</li></ul></details>
 </li>
 </ul>
 <p><strong>Track Goals &amp; Team Composition</strong></p>
 <p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — dashboard/data-viz design surface; Design conditionals cover the art minimum.</p>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>D1 ⭐ (Features DD around the observe → drill-down → act loop)</li><li>D2 Prototype (clickable dashboard flow) · prototype in Figma</li><li>D5 reading: Interaction &amp; Data-Density Spec (panel grid, drill-down conventions)</li><li>D3 User Research, Personas &amp; Competitive Analysis</li><li>D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>D6 Vertical Slice (one polished city view end to end)</li><li>D8 reading: clarity pass — alert moments legible, no chart junk</li><li>D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>U1 ⭐ UI Standards &amp; Wireframe Baseline</li><li>U2 UX Flows &amp; Wireframes</li><li>U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>U1 ⭐ Functional UI &amp; Usability</li><li>U2 ⭐ UX Validation &amp; Final Polished UI</li><li>U3 Menu &amp; HUD Motion Design</li><li>U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example; deliverables &amp; quality ladders live in the Design, Art and TEAM pool documents.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>M1D1 ⭐ (Features DD around the observe → drill-down → act loop)</li><li>M1D2 Prototype (clickable dashboard flow) · prototype in Figma</li><li>M1D5 reading: Interaction &amp; Data-Density Spec (panel grid, drill-down conventions)</li><li>M1D3 User Research, Personas &amp; Competitive Analysis</li><li>M1D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>M2D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>M2D6 Vertical Slice (one polished city view end to end)</li><li>M2D8 reading: clarity pass — alert moments legible, no chart junk</li><li>M2D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>M1U1 ⭐ UI Standards &amp; Wireframe Baseline</li><li>M1U2 UX Flows &amp; Wireframes</li><li>M1U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>M2U1 ⭐ Functional UI &amp; Usability</li><li>M2U2 ⭐ UX Validation &amp; Final Polished UI</li><li>M2U3 Menu &amp; HUD Motion Design</li><li>M2U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the M2D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>M1TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>M1TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>M2TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>M2TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
 
 </details>
 
@@ -314,49 +314,49 @@ li { margin: 3px 0; }
 
 <p><em>M1:</em></p>
 <ul>
-<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one C++ core; continuous ingestion loop parsing and indexing log lines while charts redraw; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 G4 parsing and G7 storage run inside it.</li></ul></details>
+<li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one C++ core; continuous ingestion loop parsing and indexing log lines while charts redraw; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 parsing and M1G7 storage run inside it.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Log source definitions, parse patterns, dashboards and saved queries as JSON (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G4 (patterns), M1 G14 (query definitions), M2 G2 (composer).</li></ul></details>
+<li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Log source definitions, parse patterns, dashboards and saved queries as JSON (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G4 (patterns), M1G14 (query definitions), M2G2 (composer).</li></ul></details>
 </li>
-<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Ingestion-rate overlays, Tracy on parse/index paths, Catch2 tests over recorded log fixtures (deterministic), Actions matrix + WASM job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; regression suite guards query correctness.</li></ul></details>
+<li><strong>M1G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Ingestion-rate overlays, Tracy on parse/index paths, Catch2 tests over recorded log fixtures (deterministic), Actions matrix + WASM job.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M2G3; regression suite guards query correctness.</li></ul></details>
 </li>
-<li><strong>G4 Data Ingestion &amp; Feed Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Streaming parser (thousands of lines/second) with a replay generator over bundled real-log fixtures; back-pressure safe.</li><li><b>Prerequisites:</b> G1, G2 (patterns).</li><li><b>Feeds into:</b> M1 G7 (store), the live tail view.</li></ul></details>
+<li><strong>M1G4 Data Ingestion &amp; Feed Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Streaming parser (thousands of lines/second) with a replay generator over bundled real-log fixtures; back-pressure safe.</li><li><b>Prerequisites:</b> M1G1, M1G2 (patterns).</li><li><b>Feeds into:</b> M1G7 (store), the live tail view.</li></ul></details>
 </li>
-<li><strong>G7 Time-Series Store &amp; Windowing</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Columnar in-memory store with time-bucketed indexes and windowed aggregation — the engine behind every chart.</li><li><b>Prerequisites:</b> M1 G4.</li><li><b>Feeds into:</b> M1 G14 (queries run against it), M2 G7 (LOD reads it).</li></ul></details>
+<li><strong>M1G7 Time-Series Store &amp; Windowing</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Columnar in-memory store with time-bucketed indexes and windowed aggregation — the engine behind every chart.</li><li><b>Prerequisites:</b> M1G4.</li><li><b>Feeds into:</b> M1G14 (queries run against it), M2G7 (LOD reads it).</li></ul></details>
 </li>
-<li><strong>G14 Query &amp; Filter Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Field/text/severity filters with a small query grammar, incremental results while typing, saved queries as data.</li><li><b>Prerequisites:</b> M1 G7 (indexes).</li><li><b>Feeds into:</b> M2 G10 (insights refine queries); the analyst workflow.</li></ul></details>
+<li><strong>M1G14 Query &amp; Filter Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Field/text/severity filters with a small query grammar, incremental results while typing, saved queries as data.</li><li><b>Prerequisites:</b> M1G7 (indexes).</li><li><b>Feeds into:</b> M2G10 (insights refine queries); the analyst workflow.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
-<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on ingest/query hot paths, SIMD scanning, ASan on MSVC; WASM build validated on the reference phone.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G9 throughput; queries that feel instant.</li></ul></details>
+<li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on ingest/query hot paths, SIMD scanning, ASan on MSVC; WASM build validated on the reference phone.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2G9 throughput; queries that feel instant.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Dashboard/query composer — panels, saved queries, layouts — with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s chart renderer (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G14.</li><li><b>Feeds into:</b> Analyst-authored dashboards in the showcase.</li></ul></details>
+<li><strong>M2G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Dashboard/query composer — panels, saved queries, layouts — with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s chart renderer (live preview)</li><li><b>Prerequisites:</b> M1G2, M1G14.</li><li><b>Feeds into:</b> Analyst-authored dashboards in the showcase.</li></ul></details>
 </li>
-<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, lint gates, PC + WASM artifacts, fixture-replay regression tests in the matrix.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release builds; correctness under refactor.</li></ul></details>
+<li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, lint gates, PC + WASM artifacts, fixture-replay regression tests in the matrix.</li><li><b>Prerequisites:</b> M1G3.</li><li><b>Feeds into:</b> Release builds; correctness under refactor.</li></ul></details>
 </li>
-<li><strong>G7 Large-Dataset Rendering &amp; LOD Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Density strips and percentile bands over millions of lines — per-pixel min/max/percentile decimation, zoom from weeks to milliseconds.</li><li><b>Prerequisites:</b> M1 G7, M2 G1.</li><li><b>Feeds into:</b> The signature demo: a million-line log, interactive throughout.</li></ul></details>
+<li><strong>M2G7 Large-Dataset Rendering &amp; LOD Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Density strips and percentile bands over millions of lines — per-pixel min/max/percentile decimation, zoom from weeks to milliseconds.</li><li><b>Prerequisites:</b> M1G7, M2G1.</li><li><b>Feeds into:</b> The signature demo: a million-line log, interactive throughout.</li></ul></details>
 </li>
-<li><strong>G9 Streaming II — Live at Scale</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Live tailing under sustained high ingest with bounded memory, pause/catch-up semantics, drop-free windowed charts.</li><li><b>Prerequisites:</b> M1 G4, M2 G1.</li><li><b>Feeds into:</b> The live-ops story of the showcase.</li></ul></details>
+<li><strong>M2G9 Streaming II — Live at Scale</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Live tailing under sustained high ingest with bounded memory, pause/catch-up semantics, drop-free windowed charts.</li><li><b>Prerequisites:</b> M1G4, M2G1.</li><li><b>Feeds into:</b> The live-ops story of the showcase.</li></ul></details>
 </li>
-<li><strong>G10 Insight Engine — Trends &amp; Anomalies</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rolling baselines, spike/outlier detection (z-scores, EWMA — custom C++, no ML libraries), surfaced as chart annotations.</li><li><b>Prerequisites:</b> M1 G7 (history), M1 G14.</li><li><b>Feeds into:</b> &quot;The tool found it before I did&quot; demo moment.</li></ul></details>
+<li><strong>M2G10 Insight Engine — Trends &amp; Anomalies</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rolling baselines, spike/outlier detection (z-scores, EWMA — custom C++, no ML libraries), surfaced as chart annotations.</li><li><b>Prerequisites:</b> M1G7 (history), M1G14.</li><li><b>Feeds into:</b> &quot;The tool found it before I did&quot; demo moment.</li></ul></details>
 </li>
 </ul>
 <p><strong>Track Goals &amp; Team Composition</strong></p>
 <p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — analyst-workflow design surface; conditionals apply.</p>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>D1 ⭐ (analyst personas and the search → narrow → diagnose loop)</li><li>D2 Prototype · prototype in Figma</li><li>D3 User Research (real on-call workflows)</li><li>D5 Interaction &amp; Control Mapping</li><li>D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>D6 Vertical Slice (one incident investigated end to end)</li><li>D8 reading: clarity pass (density without noise)</li><li>D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>U1 ⭐</li><li>U2 UX Flows &amp; Wireframes</li><li>U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>U1 ⭐</li><li>U2 ⭐ UX Validation &amp; Final Polished UI</li><li>U3 Menu &amp; HUD Motion Design</li><li>U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>M1D1 ⭐ (analyst personas and the search → narrow → diagnose loop)</li><li>M1D2 Prototype · prototype in Figma</li><li>M1D3 User Research (real on-call workflows)</li><li>M1D5 Interaction &amp; Control Mapping</li><li>M1D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>M2D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>M2D6 Vertical Slice (one incident investigated end to end)</li><li>M2D8 reading: clarity pass (density without noise)</li><li>M2D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>M1U1 ⭐</li><li>M1U2 UX Flows &amp; Wireframes</li><li>M1U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>M2U1 ⭐</li><li>M2U2 ⭐ UX Validation &amp; Final Polished UI</li><li>M2U3 Menu &amp; HUD Motion Design</li><li>M2U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the M2D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>M1TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>M1TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>M2TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>M2TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
 
 </details>
 
@@ -364,49 +364,49 @@ li { margin: 3px 0; }
 
 <p><em>M1:</em></p>
 <ul>
-<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving activity playback and live re-aggregation while brushing; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; playback animation and M1 G5 charts run inside it.</li></ul></details>
+<li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving activity playback and live re-aggregation while brushing; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; playback animation and M1G5 charts run inside it.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Activities, trackpoints, zones, dashboard layouts as data (nlohmann/json); units and sport types fully configurable.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G13 (import fills it), M2 G2 (layout editing).</li></ul></details>
+<li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Activities, trackpoints, zones, dashboard layouts as data (nlohmann/json); units and sport types fully configurable.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G13 (import fills it), M2G2 (layout editing).</li></ul></details>
 </li>
-<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Redraw/aggregation overlays, Tracy, Catch2 over fixture GPX files (deterministic aggregates), Actions matrix + APK job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; aggregate correctness under refactor.</li></ul></details>
+<li><strong>M1G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Redraw/aggregation overlays, Tracy, Catch2 over fixture GPX files (deterministic aggregates), Actions matrix + APK job.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M2G3; aggregate correctness under refactor.</li></ul></details>
 </li>
-<li><strong>G5 2D Chart Rendering Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-series linked charts (pace/HR/elevation) with shared cursors, smooth zoom, FreeType axes — plus route rendering from raw GPS points.</li><li><b>Prerequisites:</b> G1, G2.</li><li><b>Feeds into:</b> M2 G4 (advanced charting); every screen of the product.</li></ul></details>
+<li><strong>M1G5 2D Chart Rendering Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-series linked charts (pace/HR/elevation) with shared cursors, smooth zoom, FreeType axes — plus route rendering from raw GPS points.</li><li><b>Prerequisites:</b> M1G1, M1G2.</li><li><b>Feeds into:</b> M2G4 (advanced charting); every screen of the product.</li></ul></details>
 </li>
-<li><strong>G6 Aggregation &amp; Statistics Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Splits, HR zones, personal records and weekly/monthly trends computed incrementally; verified against offline recomputation.</li><li><b>Prerequisites:</b> M1 G13 (data in).</li><li><b>Feeds into:</b> Trend views; M2 G8 sharing.</li></ul></details>
+<li><strong>M1G6 Aggregation &amp; Statistics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Splits, HR zones, personal records and weekly/monthly trends computed incrementally; verified against offline recomputation.</li><li><b>Prerequisites:</b> M1G13 (data in).</li><li><b>Feeds into:</b> Trend views; M2G8 sharing.</li></ul></details>
 </li>
-<li><strong>G13 Import / Export Pipeline</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GPX/TCX/CSV importers with malformed-file resilience, dedup, and CSV export; batch import of years of history.</li><li><b>Prerequisites:</b> G2 (model).</li><li><b>Feeds into:</b> Everything — real user data is the demo.</li></ul></details>
+<li><strong>M1G13 Import / Export Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GPX/TCX/CSV importers with malformed-file resilience, dedup, and CSV export; batch import of years of history.</li><li><b>Prerequisites:</b> M1G2 (model).</li><li><b>Feeds into:</b> Everything — real user data is the demo.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
-<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on chart/aggregation paths, memory-lean trackpoint storage, ASan on MSVC; full validation on the reference phone (Pixel 8a/9a).</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G7-quality scrolling on-device.</li></ul></details>
+<li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on chart/aggregation paths, memory-lean trackpoint storage, ASan on MSVC; full validation on the reference phone (Pixel 8a/9a).</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2G7-quality scrolling on-device.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Personal dashboard configurator — chart panels, metrics, goals — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s chart renderer (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G5.</li><li><b>Feeds into:</b> A dashboard that&#39;s yours; showcase variety.</li></ul></details>
+<li><strong>M2G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Personal dashboard configurator — chart panels, metrics, goals — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s chart renderer (live preview)</li><li><b>Prerequisites:</b> M1G2, M1G5.</li><li><b>Feeds into:</b> A dashboard that&#39;s yours; showcase variety.</li></ul></details>
 </li>
-<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, lint gates, APK packaging in CI, import-fixture regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> The installable deliverable.</li></ul></details>
+<li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, lint gates, APK packaging in CI, import-fixture regression tests.</li><li><b>Prerequisites:</b> M1G3.</li><li><b>Feeds into:</b> The installable deliverable.</li></ul></details>
 </li>
-<li><strong>G4 Charting — Advanced</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Overlay comparisons (this run vs PB), multi-pane sync, crosshair readouts, animated playback cursor across all panes.</li><li><b>Prerequisites:</b> M1 G5, M2 G1.</li><li><b>Feeds into:</b> The review experience that sells the demo.</li></ul></details>
+<li><strong>M2G4 Charting — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Overlay comparisons (this run vs PB), multi-pane sync, crosshair readouts, animated playback cursor across all panes.</li><li><b>Prerequisites:</b> M1G5, M2G1.</li><li><b>Feeds into:</b> The review experience that sells the demo.</li></ul></details>
 </li>
-<li><strong>G8 Firebase — Accounts, Sharing &amp; Analytics</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Personal accounts, cross-device activity sync, share-a-run links rendering in the web build.</li><li><b>Prerequisites:</b> M1 G2.</li><li><b>Feeds into:</b> Auth ✅ requirement; the social share moment.</li></ul></details>
+<li><strong>M2G8 Firebase — Accounts, Sharing &amp; Analytics</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Personal accounts, cross-device activity sync, share-a-run links rendering in the web build.</li><li><b>Prerequisites:</b> M1G2.</li><li><b>Feeds into:</b> Auth ✅ requirement; the social share moment.</li></ul></details>
 </li>
-<li><strong>G15 Mobile Platform Port</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Touch-first interactions (pinch-zoom charts, swipe between activities), on-device frame/memory budgets on the reference phone, APK in CI.</li><li><b>Prerequisites:</b> M2 G1.</li><li><b>Feeds into:</b> The primary shipping target.</li></ul></details>
+<li><strong>M2G15 Mobile Platform Port</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Touch-first interactions (pinch-zoom charts, swipe between activities), on-device frame/memory budgets on the reference phone, APK in CI.</li><li><b>Prerequisites:</b> M2G1.</li><li><b>Feeds into:</b> The primary shipping target.</li></ul></details>
 </li>
 </ul>
 <p><strong>Track Goals &amp; Team Composition</strong></p>
 <p><strong>Recommended composition:</strong> 6 CS + 1–2 Design + 0–1 Art (7–9) — personal-product design surface; 1 artist justified for a brand/illustration-led product.</p>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>D1 ⭐ (athlete personas; the record → review → improve loop)</li><li>D2 Prototype · prototype in Figma</li><li>D10 Accessibility &amp; readability (glanceable outdoors)</li><li>D3 User Research, Personas &amp; Competitive Analysis</li><li>D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>D2 Branding &amp; style guide</li><li>D10 Mobile UX ergonomics</li><li>D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>U1 ⭐</li><li>U2 UX Flows &amp; Wireframes</li><li>U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>U1 ⭐</li><li>U2 ⭐ UX Validation &amp; Final Polished UI</li><li>U3 Menu &amp; HUD Motion Design</li><li>U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>M1D1 ⭐ (athlete personas; the record → review → improve loop)</li><li>M1D2 Prototype · prototype in Figma</li><li>M1D10 Accessibility &amp; readability (glanceable outdoors)</li><li>M1D3 User Research, Personas &amp; Competitive Analysis</li><li>M1D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>M2D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>M2D2 Branding &amp; style guide</li><li>M2D10 Mobile UX ergonomics</li><li>M2D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>M1U1 ⭐</li><li>M1U2 UX Flows &amp; Wireframes</li><li>M1U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>M2U1 ⭐</li><li>M2U2 ⭐ UX Validation &amp; Final Polished UI</li><li>M2U3 Menu &amp; HUD Motion Design</li><li>M2U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the M2D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>M1TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>M1TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>M2TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>M2TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
 
 </details>
 
@@ -414,49 +414,49 @@ li { margin: 3px 0; }
 
 <p><em>M1:</em></p>
 <ul>
-<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one core; interactive render loop re-decimating and re-binning on every pan/zoom/brush; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1 G5 plots and G9 interactions live in this loop.</li></ul></details>
+<li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one core; interactive render loop re-decimating and re-binning on every pan/zoom/brush; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G5 plots and M1G9 interactions live in this loop.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Datasets, column schemas, plot specs and figure styles as data (nlohmann/json); a figure is fully described by its spec.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G13 (import), M2 G2 (composer edits specs), M2 G11 (headless renders specs).</li></ul></details>
+<li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Datasets, column schemas, plot specs and figure styles as data (nlohmann/json); a figure is fully described by its spec.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G13 (import), M2G2 (composer edits specs), M2G11 (headless renders specs).</li></ul></details>
 </li>
-<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Point-count/frame overlays, Tracy, Catch2 stress tests at 1M+ synthetic points, Actions matrix + WASM job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; the perf baselines the purple goal beats.</li></ul></details>
+<li><strong>M1G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Point-count/frame overlays, Tracy, Catch2 stress tests at 1M+ synthetic points, Actions matrix + WASM job.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M2G3; the perf baselines the purple goal beats.</li></ul></details>
 </li>
-<li><strong>G5 2D Chart Rendering Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Scatter/line/heat plot engine — instanced point rendering, axes/ticks/grids, FreeType labels, GPU batching from day one.</li><li><b>Prerequisites:</b> G1, G2.</li><li><b>Feeds into:</b> M2 G7 (LOD extends it); the product IS this renderer.</li></ul></details>
+<li><strong>M1G5 2D Chart Rendering Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Scatter/line/heat plot engine — instanced point rendering, axes/ticks/grids, FreeType labels, GPU batching from day one.</li><li><b>Prerequisites:</b> M1G1, M1G2.</li><li><b>Feeds into:</b> M2G7 (LOD extends it); the product IS this renderer.</li></ul></details>
 </li>
-<li><strong>G9 Interaction Layer</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pan/zoom with inertia, box/lasso brushing, linked views (brush one plot, highlight all), crosshair readouts.</li><li><b>Prerequisites:</b> M1 G5.</li><li><b>Feeds into:</b> The exploration workflow; M2 G4 sync.</li></ul></details>
+<li><strong>M1G9 Interaction Layer</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pan/zoom with inertia, box/lasso brushing, linked views (brush one plot, highlight all), crosshair readouts.</li><li><b>Prerequisites:</b> M1G5.</li><li><b>Feeds into:</b> The exploration workflow; M2G4 sync.</li></ul></details>
 </li>
-<li><strong>G13 Import / Export Pipeline</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CSV/TSV/binary column importers with type inference and progress reporting; PNG/SVG publication export with styles.</li><li><b>Prerequisites:</b> G2.</li><li><b>Feeds into:</b> Real datasets in, papers-ready figures out.</li></ul></details>
+<li><strong>M1G13 Import / Export Pipeline</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CSV/TSV/binary column importers with type inference and progress reporting; PNG/SVG publication export with styles.</li><li><b>Prerequisites:</b> M1G2.</li><li><b>Feeds into:</b> Real datasets in, papers-ready figures out.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
-<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy-guided SIMD decimation, columnar memory layout, ASan on MSVC; WASM validated on the reference phone with graceful LOD.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2 G7&#39;s budget.</li></ul></details>
+<li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy-guided SIMD decimation, columnar memory layout, ASan on MSVC; WASM validated on the reference phone with graceful LOD.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2G7&#39;s budget.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Figure composer — plot specs, styles, layouts — JSON round-trip, undo/redo, live preview.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s plot engine (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G5.</li><li><b>Feeds into:</b> M2 G11 (headless consumes its specs).</li></ul></details>
+<li><strong>M2G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Figure composer — plot specs, styles, layouts — JSON round-trip, undo/redo, live preview.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s plot engine (live preview)</li><li><b>Prerequisites:</b> M1G2, M1G5.</li><li><b>Feeds into:</b> M2G11 (headless consumes its specs).</li></ul></details>
 </li>
-<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Presets, lint gates, PC + WASM artifacts, image-diff regression tests on rendered reference figures.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Pixel-stable releases.</li></ul></details>
+<li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Presets, lint gates, PC + WASM artifacts, image-diff regression tests on rendered reference figures.</li><li><b>Prerequisites:</b> M1G3.</li><li><b>Feeds into:</b> Pixel-stable releases.</li></ul></details>
 </li>
-<li><strong>G4 Charting — Advanced</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-pane figures with shared axes, log scales, error bars, annotations; synced crosshairs across panes.</li><li><b>Prerequisites:</b> M1 G5/G9, M2 G1.</li><li><b>Feeds into:</b> Publication-grade output.</li></ul></details>
+<li><strong>M2G4 Charting — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-pane figures with shared axes, log scales, error bars, annotations; synced crosshairs across panes.</li><li><b>Prerequisites:</b> M1G5/M2G9, M2G1.</li><li><b>Feeds into:</b> Publication-grade output.</li></ul></details>
 </li>
-<li><strong>G7 Large-Dataset Rendering &amp; LOD Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The flagship — hierarchical decimation (min/max/density tiles), progressive refinement, 1M+ points at 60 fps on the dev machine, graceful LOD on the phone.</li><li><b>Prerequisites:</b> M1 G5, M2 G1.</li><li><b>Feeds into:</b> The demo everyone remembers.</li></ul></details>
+<li><strong>M2G7 Large-Dataset Rendering &amp; LOD Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The flagship — hierarchical decimation (min/max/density tiles), progressive refinement, 1M+ points at 60 fps on the dev machine, graceful LOD on the phone.</li><li><b>Prerequisites:</b> M1G5, M2G1.</li><li><b>Feeds into:</b> The demo everyone remembers.</li></ul></details>
 </li>
-<li><strong>G11 Headless Report Generation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI batch rendering of figure specs to PNG/SVG (offscreen GL), deterministic outputs, runs in CI.</li><li><b>Prerequisites:</b> M2 G2 (specs), M1 G13 (export).</li><li><b>Feeds into:</b> Reproducible-figures story for scientific users.</li></ul></details>
+<li><strong>M2G11 Headless Report Generation</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CLI batch rendering of figure specs to PNG/SVG (offscreen GL), deterministic outputs, runs in CI.</li><li><b>Prerequisites:</b> M2G2 (specs), M1G13 (export).</li><li><b>Feeds into:</b> Reproducible-figures story for scientific users.</li></ul></details>
 </li>
 </ul>
 <p><strong>Track Goals &amp; Team Composition</strong></p>
 <p><strong>Recommended composition:</strong> 6 CS + 2 Design + 0 Art (8) — tool-UX surface; conditionals cover figure styling.</p>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>D1 ⭐ (researcher personas; the load → explore → publish loop)</li><li>D2 Prototype · prototype in Figma</li><li>D5 reading: Tool Interaction Spec (brushing, linked-view conventions)</li><li>D3 User Research, Personas &amp; Competitive Analysis</li><li>D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>D6 Vertical Slice (one dataset explored → exported figure)</li><li>D7 reading: defaults &amp; style presets that make good figures easy</li><li>D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>U1 ⭐</li><li>U2 UX Flows &amp; Wireframes</li><li>U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>U1 ⭐</li><li>U2 ⭐ UX Validation &amp; Final Polished UI</li><li>U3 Menu &amp; HUD Motion Design</li><li>U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>M1D1 ⭐ (researcher personas; the load → explore → publish loop)</li><li>M1D2 Prototype · prototype in Figma</li><li>M1D5 reading: Tool Interaction Spec (brushing, linked-view conventions)</li><li>M1D3 User Research, Personas &amp; Competitive Analysis</li><li>M1D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>M2D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>M2D6 Vertical Slice (one dataset explored → exported figure)</li><li>M2D7 reading: defaults &amp; style presets that make good figures easy</li><li>M2D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>M1U1 ⭐</li><li>M1U2 UX Flows &amp; Wireframes</li><li>M1U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>M2U1 ⭐</li><li>M2U2 ⭐ UX Validation &amp; Final Polished UI</li><li>M2U3 Menu &amp; HUD Motion Design</li><li>M2U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the M2D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>M1TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>M1TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>M2TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>M2TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
 
 </details>
 
@@ -464,49 +464,49 @@ li { margin: 3px 0; }
 
 <p><em>M1:</em></p>
 <ul>
-<li><strong>G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
+<li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving animated match replay and live stat updates; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; replay and heatmaps tick inside it.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Matches, events, players, pitch geometry and view configs as data (nlohmann/json); event schema designed by the team.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M1 G11 (generator emits this schema), M2 G12 (annotations attach to it).</li></ul></details>
+<li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Matches, events, players, pitch geometry and view configs as data (nlohmann/json); event schema designed by the team.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G11 (generator emits this schema), M2G12 (annotations attach to it).</li></ul></details>
 </li>
-<li><strong>G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event-rate/redraw overlays, Tracy, Catch2 over fixture match files (deterministic stats), Actions matrix + APK job.</li><li><b>Prerequisites:</b> G1.</li><li><b>Feeds into:</b> M2 G3; stat correctness guarded.</li></ul></details>
+<li><strong>M1G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event-rate/redraw overlays, Tracy, Catch2 over fixture match files (deterministic stats), Actions matrix + APK job.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M2G3; stat correctness guarded.</li></ul></details>
 </li>
-<li><strong>G5 2D Chart Rendering Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pitch renderer + chart engine — event dots/arrows, density heatmaps, timelines — instanced OpenGL, FreeType.</li><li><b>Prerequisites:</b> G1, G2.</li><li><b>Feeds into:</b> M2 G4; every view of the product.</li></ul></details>
+<li><strong>M1G5 2D Chart Rendering Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Pitch renderer + chart engine — event dots/arrows, density heatmaps, timelines — instanced OpenGL, FreeType.</li><li><b>Prerequisites:</b> M1G1, M1G2.</li><li><b>Feeds into:</b> M2G4; every view of the product.</li></ul></details>
 </li>
-<li><strong>G6 Aggregation &amp; Statistics Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-player/per-zone aggregates (touches, passes, xG-style simple models — custom C++), recomputed live while scrubbing.</li><li><b>Prerequisites:</b> G2.</li><li><b>Feeds into:</b> M2 G10 insights; the numbers under every view.</li></ul></details>
+<li><strong>M1G6 Aggregation &amp; Statistics Engine</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-player/per-zone aggregates (touches, passes, xG-style simple models — custom C++), recomputed live while scrubbing.</li><li><b>Prerequisites:</b> M1G2.</li><li><b>Feeds into:</b> M2G10 insights; the numbers under every view.</li></ul></details>
 </li>
-<li><strong>G11 Data Simulator / Generator Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Seeded match-event generator (realistic pass/shot sequences, player movement) — the team&#39;s data supply and ground truth for stats tests.</li><li><b>Prerequisites:</b> G1 (clock), G2 (schema).</li><li><b>Feeds into:</b> All development and demos; deterministic fixtures for CI.</li></ul></details>
+<li><strong>M1G11 Data Simulator / Generator Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Seeded match-event generator (realistic pass/shot sequences, player movement) — the team&#39;s data supply and ground truth for stats tests.</li><li><b>Prerequisites:</b> M1G1 (clock), M1G2 (schema).</li><li><b>Feeds into:</b> All development and demos; deterministic fixtures for CI.</li></ul></details>
 </li>
 </ul>
 <p><em>M2:</em></p>
 <ul>
-<li><strong>G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
+<li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on replay/heatmap paths, pooling, ASan on MSVC; full-season data validated on the reference phone.</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> Season-scale interactivity.</li></ul></details>
 </li>
-<li><strong>G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> View/report composer — pitch views, panels, replay clips — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s pitch/chart renderers (live preview)</li><li><b>Prerequisites:</b> M1 G2, M1 G5.</li><li><b>Feeds into:</b> Coach-authored match reports.</li></ul></details>
+<li><strong>M2G2 ⭐ Content Editor — Core</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> View/report composer — pitch views, panels, replay clips — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s pitch/chart renderers (live preview)</li><li><b>Prerequisites:</b> M1G2, M1G5.</li><li><b>Feeds into:</b> Coach-authored match reports.</li></ul></details>
 </li>
-<li><strong>G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Presets, lint gates, APK + PC artifacts, fixture-replay stat regression tests.</li><li><b>Prerequisites:</b> M1 G3.</li><li><b>Feeds into:</b> Release builds.</li></ul></details>
+<li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Presets, lint gates, APK + PC artifacts, fixture-replay stat regression tests.</li><li><b>Prerequisites:</b> M1G3.</li><li><b>Feeds into:</b> Release builds.</li></ul></details>
 </li>
-<li><strong>G4 Charting — Advanced</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Linked pitch + timeline + stat panes with synced cursors, comparison overlays (player A vs B, half vs half).</li><li><b>Prerequisites:</b> M1 G5/G6, M2 G1.</li><li><b>Feeds into:</b> The analysis workflow.</li></ul></details>
+<li><strong>M2G4 Charting — Advanced</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Linked pitch + timeline + stat panes with synced cursors, comparison overlays (player A vs B, half vs half).</li><li><b>Prerequisites:</b> M1G5/M2G6, M2G1.</li><li><b>Feeds into:</b> The analysis workflow.</li></ul></details>
 </li>
-<li><strong>G10 Insight Engine — Trends &amp; Anomalies</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Momentum curves, hot-zone shifts, outlier performances — rolling baselines in custom C++, surfaced as annotations.</li><li><b>Prerequisites:</b> M1 G6 (aggregates).</li><li><b>Feeds into:</b> The &quot;what changed after halftime?&quot; demo.</li></ul></details>
+<li><strong>M2G10 Insight Engine — Trends &amp; Anomalies</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Momentum curves, hot-zone shifts, outlier performances — rolling baselines in custom C++, surfaced as annotations.</li><li><b>Prerequisites:</b> M1G6 (aggregates).</li><li><b>Feeds into:</b> The &quot;what changed after halftime?&quot; demo.</li></ul></details>
 </li>
-<li><strong>G12 Annotations &amp; Collaborative Views</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Coach markup (arrows, zones, notes) anchored to events/timestamps, saved and shared via Firebase with team roles.</li><li><b>Prerequisites:</b> M1 G2, M2 G2.</li><li><b>Feeds into:</b> Auth ✅ (coach/player roles); the team-review story.</li></ul></details>
+<li><strong>M2G12 Annotations &amp; Collaborative Views</strong>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Coach markup (arrows, zones, notes) anchored to events/timestamps, saved and shared via Firebase with team roles.</li><li><b>Prerequisites:</b> M1G2, M2G2.</li><li><b>Feeds into:</b> Auth ✅ (coach/player roles); the team-review story.</li></ul></details>
 </li>
 </ul>
 <p><strong>Track Goals &amp; Team Composition</strong></p>
 <p><strong>Recommended composition:</strong> 6 CS + 1–2 Design + 0–1 Art (7–9) — analysis-UX surface; 1 artist justified for pitch/brand visual identity.</p>
-<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>D1 ⭐ (coach personas; the replay → spot → mark loop)</li><li>D2 Prototype · prototype in Figma</li><li>D3 User Research (real coach review sessions)</li><li>D5 Interaction &amp; Control Mapping</li><li>D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>D6 Vertical Slice (one match reviewed end to end)</li><li>D8 reading: replay feel — scrubbing, markers, moments</li><li>D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>U1 ⭐</li><li>U2 UX Flows &amp; Wireframes</li><li>U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>U1 ⭐</li><li>U2 ⭐ UX Validation &amp; Final Polished UI</li><li>U3 Menu &amp; HUD Motion Design</li><li>U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
+<div style="background:#F5F0FA;border-left:4px solid #7E57C2;padding:6px 12px;margin:10px 0 4px;border-radius:4px"><b>Track goals</b> — suggested Design/Art picks and TEAM notes for this example.<ul style="margin:4px 0 0"><li><b>Design M1:</b>:</b><ul><li>M1D1 ⭐ (coach personas; the replay → spot → mark loop)</li><li>M1D2 Prototype · prototype in Figma</li><li>M1D3 User Research (real coach review sessions)</li><li>M1D5 Interaction &amp; Control Mapping</li><li>M1D11 Art POC (conditional — no artist) — the design-owned art surface (style guide, iconography, UI)</li></ul></li><li><b>Design M2:</b>:</b><ul><li>M2D1 ⭐ Features Design Iteration &amp; Showcase Readiness</li><li>M2D6 Vertical Slice (one match reviewed end to end)</li><li>M2D8 reading: replay feel — scrubbing, markers, moments</li><li>M2D11 Art Implementation Quality (conditional — no artist) — implemented art aligned with the POC, no placeholders</li></ul></li><li><b>UI/UX M1:</b>:</b><ul><li>M1U1 ⭐</li><li>M1U2 UX Flows &amp; Wireframes</li><li>M1U3 Accessibility &amp; Readability Foundations</li></ul></li><li><b>UI/UX M2:</b>:</b><ul><li>M2U1 ⭐</li><li>M2U2 ⭐ UX Validation &amp; Final Polished UI</li><li>M2U3 Menu &amp; HUD Motion Design</li><li>M2U4 Onboarding &amp; Tutorial Design</li></ul></li><li><b>Art:</b> 0 artists — the art surface is covered by the M2D11 conditionals, taken as Design goals (see Design M1/M2).</li><li><b>TEAM M1:</b><ul><li>M1TA1 ⭐ Overall Audio Experience — initial BGM/SFX from the week-5 needs list present and working in the prototype, suitable and correctly triggered for this project.</li><li>M1TA2 ⭐ Audio Engine Functionality — data-driven audio pipeline (add or replace audio without recompiling) and reliable multi-channel playback.</li></ul></li><li><b>TEAM M2:</b><ul><li>M2TA1 ⭐ Overall Audio Experience — suitable BGM + SFX integrated in the showcase build, clean and well-edited, triggered correctly</li><li>M2TA2 ⭐ Audio Engine Functionality — audio properties de/serialised and the full playback functionality the build needs (multi-channel; advanced where the project calls for it).</li></ul></li></ul></div>
 
 </details>
 </body>
