@@ -181,7 +181,7 @@ li { margin: 3px 0; }
 <p><strong>1. Campus micro-blogging</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile — feed apps live on the phone. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Feed UI, post composer, profile screens. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Feed UI, post composer, profile screens. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Feed-ranking service, social graph, moderation queue, Firebase identity &amp; data. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
@@ -194,7 +194,7 @@ li { margin: 3px 0; }
 <p><strong>2. Event meetup</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — event links must open in the browser. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Event pages, per-event chat UI, discovery screens. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Event pages, per-event chat UI, discovery screens. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Recommendation engine, chat backend (WebSockets), moderation, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
@@ -207,7 +207,7 @@ li { margin: 3px 0; }
 <p><strong>3. Collaborative pixel canvas</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native mobile — the shared canvas should be reachable from any phone; web-first. The PC build is used for development. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Shared canvas renderer, palette &amp; zoom UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Shared canvas renderer, palette &amp; zoom UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Canvas state engine (high-frequency ticks), rate limiter, sync server, history storage. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
@@ -220,7 +220,7 @@ li { margin: 3px 0; }
 <p><strong>4. Study-group matching &amp; rooms</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile — join and run study sessions from the phone; the PC build is used for development. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Study room UI, shared timers, presence indicators. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Study room UI, shared timers, presence indicators. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Matching engine, room/timer synchronization, chat backend, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
@@ -233,7 +233,7 @@ li { margin: 3px 0; }
 <p><strong>5. Campus photo sharing app</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile — a camera-first experience. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Camera capture flow, gallery/feed rendering. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Camera capture flow, gallery/feed rendering. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Media pipeline (resize, filters, thumbnails), feed assembly, moderation queue, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
@@ -250,7 +250,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop driving feed refresh, presence updates and the post composer&#39;s input handling; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (networking runs on its tick) and M1G9 (ranking passes scheduled by the loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop driving feed refresh, presence updates and the post composer&#39;s input handling; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (networking runs on its tick) and M1G9 (ranking passes scheduled by the loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Posts, users and feed-ranking rules as hot-reloadable JSON models (nlohmann/json), so ranking weights and post types are tunable data.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G9 and M1G14 consume the post/user model; M2G2 and M1G6 edit and moderate it.</li></ul></details>
@@ -271,7 +271,7 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy/ASan pass over the ranking service and socket layer, feed scoring moved to worker threads, validation of the native-mobile target (Android emulator / Emscripten check).</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G8 (performance headroom for recommendations); packaged builds via M2G3.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy/ASan pass over the ranking service and socket layer, feed scoring moved to worker threads, validation of the native-mobile target (Android emulator / Emscripten check). <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G8 (performance headroom for recommendations); packaged builds via M2G3.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Admin tooling core in Dear ImGui — browse, edit and remove posts and users with JSON round-trip and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 (data-driven post/user model).</li><li><b>Feeds into:</b> M2G6 — the moderation dashboard is built directly on this core.</li></ul></details>
@@ -300,7 +300,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop hosting the recommendation engine and chat backend that the HTML/JS front end talks to; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G10 (chat backend runs on its tick); M2G8 (the recommendation loop matures here); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop hosting the recommendation engine and chat backend that the HTML/JS front end talks to; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G10 (chat backend runs on its tick); M2G8 (the recommendation loop matures here); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Users, interests, events and RSVPs as hot-reloadable JSON entity models (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G7 (event schemas extend it) and M1G8 (data to sync); M2G2 editing.</li></ul></details>
@@ -321,13 +321,13 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Profiling and hardening of the recommendation and chat backends (Tracy, sanitizers, threading), plus Emscripten validation of the mobile-web build.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G8 (headroom for scoring many events); packaged builds via M2G3.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Profiling and hardening of the recommendation and chat backends (Tracy, sanitizers, threading), plus Emscripten validation of the mobile-web build. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G8 (headroom for scoring many events); packaged builds via M2G3.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Event-creation and management tooling core (web UI or Dear ImGui) with JSON round-trip and undo/redo over the M1G7 schemas.</li><li><b>Libraries/Software:</b> HTML/JS/CSS (web UI) or Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 and M2G7 (event content models).</li><li><b>Feeds into:</b> M2G6 — moderation actions live in the same tool.</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the native app plus the WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of the native app plus the WASM web bundle, GitHub Actions matrix builds. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
 </li>
 <li><strong>M2G6 Moderation Dashboard &amp; Pipeline</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Review queue for reported events and chat messages, C++ word filters, and a promotion gate before events go public — dashboard built on the M2G2 core.</li><li><b>Prerequisites:</b> M2G2 (tool core); M1G8 (identity) and M2G10 (chat to filter).</li><li><b>Feeds into:</b> Safe public event listings at showcase.</li></ul></details>
@@ -350,7 +350,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a genuinely high-frequency fixed-timestep loop processing pixel placements — the raw requirement, unadapted — building natively and via Emscripten; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G5 (the state engine ticks inside it); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a genuinely high-frequency fixed-timestep loop processing pixel placements — the raw requirement, unadapted — building natively and via Emscripten; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G5 (the state engine ticks inside it); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong> &lt;parameter <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Canvas dimensions, palettes, cooldown rules and region metadata as hot-reloadable JSON data.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G5 and M1G15 read their configuration from it; M2G2 edits it.</li></ul></details></li>
 <li><strong>M1G3 ⭐ Debugging, Profiling, Stress Test &amp; CI</strong>
@@ -360,7 +360,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The shared C++ pixel grid — dirty-region tracking, high-frequency tick processing and an append-only placement history.</li><li><b>Prerequisites:</b> M1G1 (loop) and M1G2 (canvas configuration).</li><li><b>Feeds into:</b> M1G6 (render source) and M1G15 (write guard); M2G4 (sync) and M1G10 (replay).</li></ul></details>
 </li>
 <li><strong>M1G6 Custom 2D Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL ES/GLSL canvas renderer with zoom/pan and palette UI, compiled to WASM so the web front end shares the C++ renderer.</li><li><b>Prerequisites:</b> M1G1 (shell); renders M1G5 state.</li><li><b>Feeds into:</b> M2G10 (replay view) and every user-facing screen.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL ES/GLSL canvas renderer with zoom/pan and palette UI, compiled to WASM so the web front end shares the C++ renderer. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G1 (shell); renders M1G5 state.</li><li><b>Feeds into:</b> M2G10 (replay view) and every user-facing screen.</li></ul></details>
 </li>
 <li><strong>M1G15 Rate Limiting &amp; Anti-Abuse</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Token-bucket cooldowns per user/IP in C++ guarding placement writes, backed by Firebase security rules.</li><li><b>Prerequisites:</b> M1G5 (the writes it guards).</li><li><b>Feeds into:</b> M2G6 (abuse signals feed pattern detection); a stable shared canvas.</li></ul></details>
@@ -369,13 +369,13 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Optimization of tick and renderer at swarm scale (memory pools, threading, Tracy, sanitizers), validating native desktop, mobile and Emscripten/WASM targets — all three platforms.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G4 (scale work needs this headroom); M2G3 builds.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Optimization of tick and renderer at swarm scale (memory pools, threading, Tracy, sanitizers), validating native desktop, mobile and Emscripten/WASM targets — all three platforms. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G4 (scale work needs this headroom); M2G3 builds.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Admin tool core in Dear ImGui — inspect canvas regions, edit palettes and cooldown configuration, JSON round-trip with undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/3/OpenGL renderer (canvas region view)</li><li><b>Prerequisites:</b> M1G2 (canvas configuration model).</li><li><b>Feeds into:</b> M2G10 (replay tool) and M2G6 (rollback actions) are built on it.</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of native builds and the WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Showcase deployment on every platform.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaging of native builds and the WASM web bundle, GitHub Actions matrix builds. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Showcase deployment on every platform.</li></ul></details>
 </li>
 <li><strong>M2G4 Networking II — Scale</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Delta-compressed canvas snapshots with client prediction — ENet/UDP for native clients, WebSockets for the browser — serving many simultaneous placers.</li><li><b>Prerequisites:</b> M1G5 (state and dirty regions to sync); M2G1 (optimization).</li><li><b>Feeds into:</b> The live multi-user showcase; M2G10 can replay from the sync stream.</li></ul></details>
@@ -398,7 +398,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell (native PC client) with a fixed-timestep loop driving the matching engine and keeping shared room timers in sync; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G9 (matching runs on the loop) and M1G10 (presence/timer ticks); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell (native PC client) with a fixed-timestep loop driving the matching engine and keeping shared room timers in sync; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G9 (matching runs on the loop) and M1G10 (presence/timer ticks); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Courses, schedules, availability and room configurations as hot-reloadable JSON entity models.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G9 (match inputs) and M1G12 (event model); M2G2 room templates.</li></ul></details>
@@ -419,13 +419,13 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Hardening of matching and timer synchronization (threading, Tracy, sanitizers), validating both targets — native PC build and the Emscripten web build for mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G9 room scale; M2G3 packaging.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Hardening of matching and timer synchronization (threading, Tracy, sanitizers), validating both targets — native PC build and the Emscripten web build for mobile browsers. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G9 room scale; M2G3 packaging.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Room-management and moderation tooling core — configure rooms, timers and course lists in Dear ImGui with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 (room/course data model).</li><li><b>Feeds into:</b> M2G16 — block and report actions live in this tool.</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaged native PC build plus WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaged native PC build plus WASM web bundle, GitHub Actions matrix builds. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
 </li>
 <li><strong>M2G7 Firebase — Auth, Push &amp; Analytics</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth for student identity, FCM push completing the M1G12 pipeline, Analytics capturing session and focus statistics.</li><li><b>Prerequisites:</b> M1G2 (model to sync) and M2G12 (notification groundwork).</li><li><b>Feeds into:</b> M2G16 (identity-based blocking); focus-stats reporting at showcase.</li></ul></details>
@@ -448,7 +448,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep loop driving feed assembly, the camera-capture flow&#39;s input handling and scheduling of image-pipeline jobs; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G11 (pipeline jobs scheduled on the loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep loop driving feed assembly, the camera-capture flow&#39;s input handling and scheduling of image-pipeline jobs; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G11 (pipeline jobs scheduled on the loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Posts, galleries and media metadata (captions, capture time, moderation state) as hot-reloadable JSON models.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G11, M1G13 and M1G16 all consume this model; M2G2 tooling edits it.</li></ul></details>
@@ -469,7 +469,7 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Optimization of the media pipeline and gallery rendering — memory pools for image buffers, threading, Tracy, sanitizers — with native-mobile validation (Android emulator / Emscripten check).</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G14 throughput; packaged builds via M2G3.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Optimization of the media pipeline and gallery rendering — memory pools for image buffers, threading, Tracy, sanitizers — with native-mobile validation (Android emulator / Emscripten check). <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G14 throughput; packaged builds via M2G3.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Moderation dashboard core — a Dear ImGui reviewer queue over the M1G13 report flow with approve/remove/ban actions and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 (content model) and M2G13 (report flow).</li><li><b>Feeds into:</b> Safe operation of the daily feed; reviewer actions are logged for M2G13.</li></ul></details>
@@ -481,7 +481,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> FCM push for the daily &quot;post now&quot; prompt (BeReal-style), mention/reaction alerts and digest scheduling with subscription preferences.</li><li><b>Prerequisites:</b> M1G16 (the events that trigger it) and M2G2 (user model in Firebase).</li><li><b>Feeds into:</b> The daily engagement loop at showcase; M2G13 measures its effect.</li></ul></details>
 </li>
 <li><strong>M2G13 Engagement Analytics Dashboards</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom-rendered charts (SDL2/3/OpenGL + FreeType, no chart libraries) over M1G16 aggregates — posting streaks, reaction rates, moderation load.</li><li><b>Prerequisites:</b> M1G16 (analytics engine).</li><li><b>Feeds into:</b> Showcase reporting; prioritizing the M2G2 review queue.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Custom-rendered charts (SDL2/3/OpenGL + FreeType, no chart libraries) over M1G16 aggregates — posting streaks, reaction rates, moderation load. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G16 (analytics engine).</li><li><b>Feeds into:</b> Showcase reporting; prioritizing the M2G2 review queue.</li></ul></details>
 </li>
 <li><strong>M2G14 Media II</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Extended pipeline — worker-thread job queue building galleries, GLSL filter effects and progressive thumbnail sets.</li><li><b>Prerequisites:</b> M1G11 (media pipeline); M2G1 (performance headroom).</li><li><b>Feeds into:</b> The gallery showcase; M2G3 packages the results.</li></ul></details>

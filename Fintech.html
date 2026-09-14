@@ -181,7 +181,7 @@ li { margin: 3px 0; }
 <p><strong>1. Stock-trading simulator</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — traders check positions on the go (device: Pixel 9a). <b>Extended:</b> Firebase (accounts) + Linux server seam set up by M2, full use in T2.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Custom real-time charts (OpenGL ES), order entry &amp; portfolio UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Custom real-time charts (OpenGL ES), order entry &amp; portfolio UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Market feed engine, pricing/portfolio engine, transaction ledger, Firebase accounts. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
@@ -195,7 +195,7 @@ li { margin: 3px 0; }
 <p><strong>2. Personal budget tracker with forecasting</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile — expense entry happens in the moment. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Expense entry forms, projection charts, category UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Expense entry forms, projection charts, category UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Forecast simulation engine, budget ledger, cross-device sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
@@ -208,7 +208,7 @@ li { margin: 3px 0; }
 <p><strong>3. Crypto/currency arbitrage sandbox</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile — WASM dashboard with panels adapted to the phone layout; the PC build is the development vehicle. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Multi-panel dashboard, depth charts, strategy config UI (ImGui). <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Multi-panel dashboard, depth charts, strategy config UI (ImGui). <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> High-frequency feed engine, order-book maintenance, strategy engine, trade log. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
@@ -221,7 +221,7 @@ li { margin: 3px 0; }
 <p><strong>4. Group expense splitter with settlement engine</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — group members join via a link. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Group/balance UI, debt-graph visualization, receipts. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Group/balance UI, debt-graph visualization, receipts. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Settlement optimization engine, expense ledger, Firebase groups &amp; auth. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
@@ -234,7 +234,7 @@ li { margin: 3px 0; }
 <p><strong>5. Fraud detection &amp; monitoring sandbox</strong></p>
 <div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (analyst ops) — monitoring and alerts on the phone; the dense analyst review desk stays on the PC side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Analyst dashboard, alert queue, anomaly timelines (ImGui). <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Analyst dashboard, alert queue, anomaly timelines (ImGui). <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin Native Android UI + C++ via JNI (Android Studio); OpenGL ES in a GLSurfaceView where realtime 2D is needed (no SDL on native).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Transaction stream scoring engine, rules engine, immutable case log. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
@@ -251,7 +251,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop that consumes market ticks and routes order-entry input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feed engine runs on its tick), M1G11 (orders processed in the loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop that consumes market ticks and routes order-entry input; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feed engine runs on its tick), M1G11 (orders processed in the loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Instruments, orders and portfolios defined as JSON data (nlohmann/json) with hot-reloadable instrument lists and market parameters.</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G11 (order/portfolio model), M2G2 (replay/config editor edits this data), M2G7 (ledger records these objects).</li></ul></details>
@@ -263,7 +263,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Producer/consumer threads pushing live or CSV-replayed market ticks through a lock-free ring buffer into the simulation loop.</li><li><b>Prerequisites:</b> M1G1 (fixed-timestep loop as consumer).</li><li><b>Feeds into:</b> M1G5 (charts draw its ticks), M1G11 (orders fill against its prices), M2G4.</li></ul></details>
 </li>
 <li><strong>M1G5 Custom 2D Chart Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Candlestick/line charts rendered from scratch with OpenGL/SDL2/3 and FreeType axis labels — no chart libraries; compiled to WASM via Emscripten for the mobile-web front-end.</li><li><b>Prerequisites:</b> M1G1 (render loop); consumes M1G4 ticks.</li><li><b>Feeds into:</b> M2G4 (advanced charting builds on this renderer).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Candlestick/line charts rendered from scratch with OpenGL/SDL2/3 and FreeType axis labels — no chart libraries; compiled to WASM via Emscripten for the mobile-web front-end. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G1 (render loop); consumes M1G4 ticks.</li><li><b>Feeds into:</b> M2G4 (advanced charting builds on this renderer).</li></ul></details>
 </li>
 <li><strong>M1G11 Order Processing Engine</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Order validation and matching against the simulated market with fills priced in fixed-point money math, plus a per-order event log.</li><li><b>Prerequisites:</b> M1G4 (prices) + M1G2 (order/portfolio data model).</li><li><b>Feeds into:</b> M2G7 (every fill becomes a ledger entry), M2G8 (portfolio results for leaderboards).</li></ul></details>
@@ -272,16 +272,16 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of tick-to-chart latency, ASan on MSVC, feed/render threading (std::thread); Emscripten web build validated in a mobile browser.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 feed→order→chart pipeline).</li><li><b>Feeds into:</b> M2G4 (GPU charting headroom), M2G8 (stable client for sync).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of tick-to-chart latency, ASan on MSVC, feed/render threading (std::thread); Emscripten web build validated in a mobile browser. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 feed→order→chart pipeline).</li><li><b>Feeds into:</b> M2G4 (GPU charting headroom), M2G8 (stable client for sync).</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Market data replay/configuration tool — ImGui editor to pick historical datasets, set replay speed and volatility, and save scenarios as JSON with an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 (data model) + M1G4 (replay source it configures).</li><li><b>Feeds into:</b> Demo market scenarios for M2G4 and the showcase.</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, GitHub Actions matrix, packaged Windows build plus Emscripten web bundle.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every M2 goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, GitHub Actions matrix, packaged Windows build plus Emscripten web bundle. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every M2 goal.</li></ul></details>
 </li>
 <li><strong>M2G4 Charting — Advanced</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GPU-accelerated OpenGL chart rendering with indicators (SMA/EMA, volume), zoom/pan interaction and multi-timeframe views.</li><li><b>Prerequisites:</b> M1G5 (chart renderer) + M2G1 (optimization).</li><li><b>Feeds into:</b> Trader-facing showcase UI on desktop and mobile web.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> GPU-accelerated OpenGL chart rendering with indicators (SMA/EMA, volume), zoom/pan interaction and multi-timeframe views. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G5 (chart renderer) + M2G1 (optimization).</li><li><b>Feeds into:</b> Trader-facing showcase UI on desktop and mobile web.</li></ul></details>
 </li>
 <li><strong>M2G7 Ledger &amp; Audit Trail — Complete</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Every simulated order/fill recorded double-entry in fixed-point math in an append-only SHA-256-chained log, with portfolio reconciliation reports.</li><li><b>Prerequisites:</b> M1G11 (order events) + M1G2 (data model).</li><li><b>Feeds into:</b> M2G8 (verifiable leaderboard results), P&amp;L reporting.</li></ul></details>
@@ -301,7 +301,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop driving forecast simulation steps and in-the-moment expense-entry input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G15 (forecast steps run on its tick), M1G9 (input routing); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop driving forecast simulation steps and in-the-moment expense-entry input; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G15 (forecast steps run on its tick), M1G9 (input routing); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Accounts, categories, transactions and budget rules as hot-reloadable JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G12 (aggregates this data), M1G15 (spending patterns as input), M2G2 (rules/scenario editor), M2G7.</li></ul></details>
@@ -322,7 +322,7 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling and threading of Monte-Carlo batches, memory pools, ASan on MSVC; native-mobile target validated via Android emulator/Emscripten.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G10 (bigger simulation batches), mobile deliverable.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling and threading of Monte-Carlo batches, memory pools, ASan on MSVC; native-mobile target validated via Android emulator/Emscripten. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G10 (bigger simulation batches), mobile deliverable.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Category rules &amp; scenario editor — ImGui tool to define category rules, recurring items and what-if scenarios, saved as JSON with an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 (rules/data model it edits).</li><li><b>Feeds into:</b> M2G10 (scenarios it authors are simulated there).</li></ul></details>
@@ -351,7 +351,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop ticking simulated exchange feeds at 100+ Hz and routing dashboard input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feeds run on its tick), opportunity detection; every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop ticking simulated exchange feeds at 100+ Hz and routing dashboard input; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feeds run on its tick), opportunity detection; every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Venues, trading pairs, fee schedules and strategy parameters as hot-reloadable JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G7 (ledger records these entities), M2G2 (strategy/fees editor edits this data).</li></ul></details>
@@ -363,7 +363,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-venue simulated exchange feeds at 100+ Hz via producer/consumer threads and lock-free ring buffers, maintaining a live order book per venue.</li><li><b>Prerequisites:</b> M1G1 (high-frequency loop).</li><li><b>Feeds into:</b> M1G5 (depth charts), opportunity detection, M2G9 (the hot path to scale).</li></ul></details>
 </li>
 <li><strong>M1G5 Custom 2D Chart Rendering (depth)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Order-book depth charts and spread visualization rendered from scratch with OpenGL/GLSL and FreeType labels, redrawn incrementally at feed rate for the ImGui multi-panel dashboard.</li><li><b>Prerequisites:</b> M1G1 (render loop) + M1G4 (order-book data).</li><li><b>Feeds into:</b> M2G6 (live preview in the strategy editor), showcase dashboard.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Order-book depth charts and spread visualization rendered from scratch with OpenGL/GLSL and FreeType labels, redrawn incrementally at feed rate for the ImGui multi-panel dashboard. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G1 (render loop) + M1G4 (order-book data).</li><li><b>Feeds into:</b> M2G6 (live preview in the strategy editor), showcase dashboard.</li></ul></details>
 </li>
 <li><strong>M1G7 Transaction Ledger — Foundation</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Double-entry trade log in fixed-point money math with per-venue fees, stored append-only (SQLite or JSON log).</li><li><b>Prerequisites:</b> M1G2 (venue/trade data model).</li><li><b>Feeds into:</b> M2G7 (complete audit trail), honest P&amp;L verification per strategy.</li></ul></details>
@@ -401,7 +401,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop that recomputes the optimal settlement graph in real time as expenses change; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (settlement math runs in its loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop that recomputes the optimal settlement graph in real time as expenses change; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (settlement math runs in its loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Groups, members, expenses, receipts and currencies as hot-reloadable JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G6 (entities the math operates on), M1G8 and M1G10, M2G7 (ledger of these objects).</li></ul></details>
@@ -422,13 +422,13 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of settlement recomputation, ASan on MSVC, memory pools; Emscripten WASM build validated in a mobile browser.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G14 (the port depends on this validation).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of settlement recomputation, ASan on MSVC, memory pools; Emscripten WASM build validated in a mobile browser. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G14 (the port depends on this validation).</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rules &amp; currency configuration tool — editor (ImGui or web front-end) for split rules, currencies and exchange rates as JSON with an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui or HTML/JS/CSS (web variant), nlohmann/json</li><li><b>Prerequisites:</b> M1G8 (rules format) + M1G2 (data model).</li><li><b>Feeds into:</b> M2G13 (currency/fee models it authors).</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, GitHub Actions matrix, packaged Windows build plus Emscripten web bundle.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every M2 goal, including the M2G14 port.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, GitHub Actions matrix, packaged Windows build plus Emscripten web bundle. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every M2 goal, including the M2G14 port.</li></ul></details>
 </li>
 <li><strong>M2G7 Ledger &amp; Audit Trail — Complete</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Append-only expense ledger with SHA-256 chaining in fixed-point math — the settlement graph derives from it, recording who changed what, when.</li><li><b>Prerequisites:</b> M1G6 (settlement math) + M1G2 (expense model).</li><li><b>Feeds into:</b> M2G13 (currency conversions recorded on-ledger), group-trust showcase via M1G10 sync.</li></ul></details>
@@ -437,7 +437,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-currency balances with exchange-rate, fee and tax models applied inside the settlement math, all defined as data.</li><li><b>Prerequisites:</b> M1G8 (rules system) + M2G2 (editor to author them).</li><li><b>Feeds into:</b> International-group showcase demo, M2G7 (converted amounts stay auditable).</li></ul></details>
 </li>
 <li><strong>M2G14 Mobile Platform Port</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Emscripten → WASM web-on-mobile build (or Android NDK), touch input mapping for expense entry, frame-budget profiling.</li><li><b>Prerequisites:</b> M2G1 (optimization &amp; platform validation).</li><li><b>Feeds into:</b> Final deliverable — group members join and settle from their phones.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Emscripten → WASM web-on-mobile build (or Android NDK), touch input mapping for expense entry, frame-budget profiling. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> M2G1 (optimization &amp; platform validation).</li><li><b>Feeds into:</b> Final deliverable — group members join and settle from their phones.</li></ul></details>
 </li>
 </ul>
 <p><strong>Track Goals &amp; Team Composition</strong></p>
@@ -451,7 +451,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop scoring the simulated transaction stream rule-by-rule in real time; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G13 (replay drives this loop), M1G14 (scores trigger alerts); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop scoring the simulated transaction stream rule-by-rule in real time; CMake, Git. <b>Native build:</b> Android Studio (Kotlin Native Android UI + the C++ engine via JNI); OpenGL ES drawn in a GLSurfaceView where realtime 2D is needed — no SDL on native, some screens are pure Native UI.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G13 (replay drives this loop), M1G14 (scores trigger alerts); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Fraud rules, thresholds, transactions and cases as hot-reloadable, schema-validated JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> Scoring in M1G1&#39;s loop, M1G14 (thresholds), M2G2 (rule editor edits this data).</li></ul></details>
