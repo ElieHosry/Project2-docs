@@ -79,7 +79,7 @@ li { margin: 3px 0; }
 </thead>
 <tbody>
 <tr class="odd">
-<td>External Database (Firebase)</td>
+<td>External Database</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -103,7 +103,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="even">
-<td>C++ Performant Service</td>
+<td>Real-time C++ Simulation Loop and/or C++ Performant Service</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -111,14 +111,6 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="odd">
-<td>Real-time C++ Simulation Loop</td>
-<td>✅</td>
-<td>🔶</td>
-<td>🔶</td>
-<td>✅</td>
-<td>🔶</td>
-</tr>
-<tr class="even">
 <td>Application Communication</td>
 <td>✅</td>
 <td>✅</td>
@@ -126,7 +118,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Continuous Integration</td>
 <td>✅</td>
 <td>✅</td>
@@ -134,7 +126,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data-Driven Architecture</td>
 <td>✅</td>
 <td>✅</td>
@@ -142,15 +134,15 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
-<td>Front-end + Local Backend</td>
+<tr class="even">
+<td>Front-end + Back-end</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Custom Tools Development</td>
 <td>🔶</td>
 <td>🔶</td>
@@ -158,7 +150,7 @@ li { margin: 3px 0; }
 <td>🔶</td>
 <td>🔶</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>2D Graphical Output</td>
 <td>🔶</td>
 <td>🔶</td>
@@ -166,7 +158,7 @@ li { margin: 3px 0; }
 <td>🔶</td>
 <td>🔶</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>3D (strong students only)</td>
 <td>❌</td>
 <td>❌</td>
@@ -174,7 +166,7 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>❌</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Networking System</td>
 <td>❌</td>
 <td>❌</td>
@@ -182,83 +174,74 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>❌</td>
 </tr>
-<tr class="even">
-<td><span style="color:#8E44AD"><strong>Role-Based Access Control &amp; Audit Logging</strong> (new)</span></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
 </tbody>
 </table>
 <h3 id="how-each-requirement-applies">How each requirement applies</h3>
-<p><em>Common to all five:</em> C++ Performant Service (feed/queue/workflow engine) · Application Communication (UI ↔︎ engine) · Continuous Integration · Front-end + Local Backend · Data-Driven Architecture (services, forms, routes as data) · Authentication ✅ (citizen/staff roles are central).</p>
+<p><em>Common to all five:</em> C++ Performant Service (feed/queue/workflow engine) · Application Communication (UI ↔︎ engine) · Continuous Integration · Front-end + Back-end · Data-Driven Architecture (services, forms, routes as data) · Authentication ✅ (citizen/staff roles are central).</p>
 <p><strong>1. Queue management</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (staff ops)</b> — web browser on mobile for citizens (take a ticket), PC dashboard on the staff side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (staff ops) — web browser on mobile for citizens (take a ticket), PC dashboard on the staff side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen ticket page (web), staff queue dashboard. <b>Languages:</b> HTML/JS/CSS (citizen); C++ + ImGui (staff).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen ticket page (web), staff queue dashboard. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Queue dynamics simulation, wait-time statistics, notifications, Firebase records. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Queue dynamics simulation, wait-time statistics, notifications, Firebase records. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop:</em> simulates citizen arrivals, service times, and queue dynamics in real time — a true simulation.</li>
+<li><em>Loop and/or service:</em> simulates citizen arrivals, service times, and queue dynamics in real time — a true simulation.</li>
+<li><em>Data-driven:</em> forms, workflows, rules and thresholds defined as hot-reloadable data.</li>
 <li><em>Custom tool (adapted):</em> service-flow editor (counters, services, priorities). <em>2D (adapted):</em> live queue dashboard rendering.</li>
 <li><em>External DB / Analytics ⏭️:</em> tickets, wait-time statistics; auth for staff vs. citizen roles.</li>
-<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> counter staff vs. supervisor permissions; every ticket action logged.</li>
 </ul>
 <p><strong>2. Facility booking &amp; occupancy management</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Native PC (staff ops)</b> — members book and check in from their phones (reference device); the floor-plan ops view stays on the PC side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Native PC (staff ops) — members book and check in from their phones (reference device); the floor-plan ops view stays on the PC side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Member booking app, live floor-plan occupancy view, staff dashboard. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Member booking app, live floor-plan occupancy view, staff dashboard. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Booking rules engine, occupancy/presence event processing, schedule import, Firebase sync &amp; notifications. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Booking rules engine, occupancy/presence event processing, schedule import, Firebase sync &amp; notifications. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> live occupancy state — presence events and booking transitions processed continuously; a usage simulator drives development.</li>
-<li><em>2D (adapted):</em> floor-plan rendering with live occupancy coloring. <em>Custom tool (adapted):</em> room/rules/schedule configuration editor.</li>
+<li><em>Loop and/or service:</em> live occupancy state — presence events and booking transitions processed continuously; a usage simulator drives development.</li>
+<li><em>Data-driven:</em> forms, workflows, rules and thresholds defined as hot-reloadable data.</li>
+<li><em>2D:</em> floor-plan rendering with live occupancy coloring. <em>Custom tool (adapted):</em> room/rules/schedule configuration editor.</li>
 <li><em>External DB:</em> bookings, occupancy history. <em>Auth:</em> member vs staff vs admin roles. <em>Analytics ⏭️:</em> utilization statistics.</li>
-<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> every booking, override and no-show release is attributable — disputes resolve from the audit trail.</li>
 </ul>
 <p><strong>3. Digital form &amp; permit workflow</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> (citizens apply) + <b>Native PC (officer ops)</b> (officers review) — a natural two-front-end split.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile (citizens apply) + <b>Native PC (officer ops)</b> (officers review) — a natural two-front-end split. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen forms rendered from JSON schemas, officer review UI. <b>Languages:</b> HTML/JS/CSS (citizen); C++ + ImGui or web (officer).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen forms rendered from JSON schemas, officer review UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Workflow/state machine engine, validation engine, RBAC &amp; audit, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Workflow/state machine engine, validation engine, RBAC &amp; audit, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> weakest fit — real-time workflow/validation engine; teams should scope this consciously.</li>
+<li><em>Loop and/or service:</em> weakest fit — real-time workflow/validation engine; teams should scope this consciously.</li>
+<li><em>Data-driven:</em> forms, workflows, rules and thresholds defined as hot-reloadable data.</li>
 <li><em>Custom tool:</em> the data-driven form builder applies directly and is the strongest deliverable here.</li>
 <li><em>External DB / Analytics ⏭️:</em> applications, statuses, processing-time metrics; auth central (citizen/officer roles).</li>
-<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> the defining requirement here — who approved which permit, full decision trail.</li>
 </ul>
 <p><strong>4. Public transport tracker</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — commuters check arrivals on the phone.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — commuters check arrivals on the phone. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Live transit map, arrival boards, route views. <b>Languages:</b> HTML/JS/CSS + WASM map renderer (or native C++).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Live transit map, arrival boards, route views. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Vehicle movement simulation, arrival prediction, timetable services, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Vehicle movement simulation, arrival prediction, timetable services, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop:</em> simulates vehicle movement along routes and computes arrival predictions — a true simulation.</li>
-<li><em>2D (adapted):</em> live map rendering with vehicle positions. <em>Custom tool (adapted):</em> route/timetable editor.</li>
+<li><em>Loop and/or service:</em> simulates vehicle movement along routes and computes arrival predictions — a true simulation.</li>
+<li><em>Data-driven:</em> forms, workflows, rules and thresholds defined as hot-reloadable data.</li>
+<li><em>2D:</em> live map rendering with vehicle positions. <em>Custom tool (adapted):</em> route/timetable editor.</li>
 <li><em>External DB / Analytics ⏭️:</em> routes, timetables, ridership stats.</li>
-<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> operators edit routes/timetables under role permissions with change history.</li>
 </ul>
 <p><strong>5. Citizen issue reporting (311-style)</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Native PC (staff ops)</b> — <b>Native mobile</b> for citizens (photo + location), PC on the staff-triage side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Native PC (staff ops) — <b>Native mobile</b> for citizens (photo + location), PC on the staff-triage side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen report flow (camera, map pin), staff triage board. <b>Languages:</b> C++ (native mobile) or HTML/JS/CSS; C++ + ImGui (staff).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Citizen report flow (camera, map pin), staff triage board. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Report feed processing, deduplication &amp; priority scoring, RBAC &amp; audit log, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Report feed processing, deduplication &amp; priority scoring, RBAC &amp; audit log, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> real-time report feed processing, deduplication, priority scoring.</li>
+<li><em>Loop and/or service:</em> real-time report feed processing, deduplication, priority scoring.</li>
 <li><em>Data-driven:</em> issue categories and triage workflows as data. <em>Custom tool (adapted):</em> staff dashboard + category editor.</li>
-<li><em>2D (adapted):</em> map rendering with issue pins and heat layers.</li>
+<li><em>2D:</em> map rendering with issue pins and heat layers.</li>
 <li><em>Validation / notifications:</em> photo and location validation; status-change notifications to reporters.</li>
-<li><span style="color:#8E44AD"><em>RBAC &amp; audit logging:</em></span> citizen vs. staff vs. supervisor roles; every triage decision logged.</li>
 </ul>
 <h3 id="goals-per-example">Goals per Example</h3>
 <p>The detailed goals below are the <strong>CS track</strong>: G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the GovTech pool in the CS Goals Pool (<code>milestone-goals-pool-per-category.md</code>; G1–G3 ⭐ common, G4+ picks). At the end of each example, the violet <strong>Track goals</strong> box suggests the Design and Art picks and the TEAM notes for that project — deliverables and quality ladders live in the Design, Art and TEAM pool documents.</p>
@@ -267,7 +250,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/ImGui shell, fixed-timestep loop simulating citizen arrivals and service times; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (queue engine runs on its tick); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/ImGui shell, fixed-timestep loop simulating citizen arrivals and service times; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (queue engine runs on its tick); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Counters, services, priorities, and ticket types defined as JSON entities (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (shell and loop to host the entity system).</li><li><b>Feeds into:</b> M1G4 (engine consumes service definitions); M2G2 (service-flow editor edits this data).</li></ul></details>
@@ -279,7 +262,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ producer/consumer threads generating ticket events (issue, call, serve, no-show) through a lock-free ring buffer, with CSV replay of past office days.</li><li><b>Prerequisites:</b> M1G1 (simulation tick); M1G2 (service and counter definitions).</li><li><b>Feeds into:</b> M1G11 (event stream for statistics), M1G12 (ticket-called triggers), M2G4 and M2G10.</li></ul></details>
 </li>
 <li><strong>M1G11 Statistics &amp; Wait-Time Analytics</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-service/per-counter wait and service-time aggregation in C++, custom SDL2/OpenGL charts (no chart libs), history persisted to Firestore.</li><li><b>Prerequisites:</b> M1G4 (ticket event stream); M1G2 (event data model).</li><li><b>Feeds into:</b> M2G10 (historical calibration for predictions); M2G4 (dashboard heatmaps and history).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-service/per-counter wait and service-time aggregation in C++, custom SDL2/3/OpenGL charts (no chart libs), history persisted to Firestore.</li><li><b>Prerequisites:</b> M1G4 (ticket event stream); M1G2 (event data model).</li><li><b>Feeds into:</b> M2G10 (historical calibration for predictions); M2G4 (dashboard heatmaps and history).</li></ul></details>
 </li>
 <li><strong>M1G12 Notification System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Cloud Messaging push for &quot;your ticket is called&quot;, in-app event bus for the staff dashboard, service worker on the citizen web ticket page.</li><li><b>Prerequisites:</b> M1G4 (queue events to notify on); Firebase project with citizen/staff Auth.</li><li><b>Feeds into:</b> Citizen ticket experience at showcase; M2G10 (pushing predicted wait times).</li></ul></details>
@@ -297,7 +280,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy gates, CPack packaging of the staff dashboard plus Emscripten citizen web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
 </li>
 <li><strong>M2G4 Dashboard — Advanced</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Supervisor dashboard with live queue layers per counter, wait-time heatmaps, and scrubbing through the day&#39;s queue history (SDL2/OpenGL + ImGui).</li><li><b>Prerequisites:</b> M1G4 (live events) and M1G11 (aggregates/history); M2G1 (rendering budget).</li><li><b>Feeds into:</b> Staff-side showcase; M2G7 gates its supervisor-only views.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Supervisor dashboard with live queue layers per counter, wait-time heatmaps, and scrubbing through the day&#39;s queue history (SDL2/3/OpenGL + ImGui).</li><li><b>Prerequisites:</b> M1G4 (live events) and M1G11 (aggregates/history); M2G1 (rendering budget).</li><li><b>Feeds into:</b> Staff-side showcase; M2G7 gates its supervisor-only views.</li></ul></details>
 </li>
 <li><strong>M2G7 RBAC &amp; Audit Logging</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth custom claims for counter staff vs. supervisor, permission checks in the C++ service, append-only audit log of every ticket action (call, skip, transfer, close).</li><li><b>Prerequisites:</b> M1G4 (ticket actions to log); M1G11/M2G12 (Firebase records and identity in place).</li><li><b>Feeds into:</b> M2G4 (role-gated dashboard panels); trust story of the whole product.</li></ul></details>
@@ -317,7 +300,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving occupancy state, booking transitions and floor-plan animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 events and M1G17 detection feed this loop.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell (Android + PC dev) with a fixed-timestep loop driving occupancy state, booking transitions and floor-plan animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 events and M1G17 detection feed this loop.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Rooms, floor-plan geometry, booking rules, schedules and roles as JSON (nlohmann/json) with hot-reload; a new building is a data change.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G4 (booking schema), M2G2 (editor), M2G15 (imports fill it).</li></ul></details>
@@ -367,7 +350,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/ImGui officer-app shell with a real-time loop ticking application queues, deadline timers, and validation passes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (workflow engine runs on its tick); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/ImGui officer-app shell with a real-time loop ticking application queues, deadline timers, and validation passes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (workflow engine runs on its tick); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Permit types, form schemas, workflow states, and role definitions as JSON entities with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G6 (state definitions), M1G7 (form schemas), M1G13 (builder edits this data).</li></ul></details>
@@ -417,7 +400,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL shell with a fixed-timestep loop advancing simulated bus/train positions along routes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G14 (vehicle simulation runs on its tick); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/OpenGL shell with a fixed-timestep loop advancing simulated bus/train positions along routes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G14 (vehicle simulation runs on its tick); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Routes, stops, timetables, and vehicle types as JSON entities with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G14 (simulates over this data), M1G5 (map draws it), M2G2 (editor edits it), M2G15 (import/export round-trips it).</li></ul></details>
@@ -426,7 +409,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui vehicle-state overlays, Tracy, Catch2 stress tests running a full network of simultaneous vehicles, GitHub Actions Windows/Linux matrix.</li><li><b>Prerequisites:</b> M1G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2G3 (CI hardening); frame budget baselines for M2G14.</li></ul></details>
 </li>
 <li><strong>M1G5 2D Map Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/OpenGL live transit map — route polylines, stops, moving vehicle markers, pan/zoom camera, FreeType labels.</li><li><b>Prerequisites:</b> M1G1 (render loop); M1G2 (route/stop geometry as data).</li><li><b>Feeds into:</b> Arrival boards and route views; M2G14 ports this renderer to the citizen app.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/OpenGL live transit map — route polylines, stops, moving vehicle markers, pan/zoom camera, FreeType labels.</li><li><b>Prerequisites:</b> M1G1 (render loop); M1G2 (route/stop geometry as data).</li><li><b>Feeds into:</b> Arrival boards and route views; M2G14 ports this renderer to the citizen app.</li></ul></details>
 </li>
 <li><strong>M1G10 Firebase — Records &amp; Roles</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth (commuter vs. operator roles), Firestore for routes, timetables, and ridership stats — REST from C++, JS SDK on the web front-end.</li><li><b>Prerequisites:</b> M1G2 (route/timetable data model to sync).</li><li><b>Feeds into:</b> M2G10 (historical data for calibration); role-permissioned route edits with change history.</li></ul></details>
@@ -441,7 +424,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the network-wide simulation, ASan/UBSan, threading and memory pools, early Emscripten/mobile validation ahead of the citizen port.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 simulation codebase).</li><li><b>Feeds into:</b> M2G14 (the port depends on this validation); M2G10 throughput.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Route/timetable editor in C++/ImGui — draw routes on the map, place stops, edit departure times, JSON round-trip with undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (route map view)</li><li><b>Prerequisites:</b> M1G2 (route data model); M1G5 (map to edit on).</li><li><b>Feeds into:</b> M1G14 (simulation runs edited routes live); M2G15 (edited data imports/exports).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Route/timetable editor in C++/ImGui — draw routes on the map, place stops, edit departure times, JSON round-trip with undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/3/OpenGL renderer (route map view)</li><li><b>Prerequisites:</b> M1G2 (route data model); M1G5 (map to edit on).</li><li><b>Feeds into:</b> M1G14 (simulation runs edited routes live); M2G15 (edited data imports/exports).</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy, CPack packaging of the native build plus the Emscripten citizen web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release builds of every goal, including the M2G14 app deliverable.</li></ul></details>
@@ -467,7 +450,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/ImGui shell with a real-time loop processing a simulated incoming report feed — deduplication and priority scoring each tick; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G9 (triage board consumes the processed feed); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/ImGui shell with a real-time loop processing a simulated incoming report feed — deduplication and priority scoring each tick; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G9 (triage board consumes the processed feed); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Issue categories, triage workflows, priority weights, and status definitions as JSON entities with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G8 (category picker), M1G9 (routing rules), M2G2 (category/triage editor edits this data).</li></ul></details>

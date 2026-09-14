@@ -78,7 +78,7 @@ li { margin: 3px 0; }
 </thead>
 <tbody>
 <tr class="odd">
-<td>External Database (Firebase)</td>
+<td>External Database</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -102,7 +102,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="even">
-<td>C++ Performant Service</td>
+<td>Real-time C++ Simulation Loop and/or C++ Performant Service</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -110,14 +110,6 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="odd">
-<td>Real-time C++ Simulation Loop</td>
-<td>✅</td>
-<td>✅</td>
-<td>🔶</td>
-<td>🔶</td>
-<td>🔶</td>
-</tr>
-<tr class="even">
 <td>Application Communication</td>
 <td>✅</td>
 <td>✅</td>
@@ -125,7 +117,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Continuous Integration</td>
 <td>✅</td>
 <td>✅</td>
@@ -133,7 +125,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data-Driven Architecture</td>
 <td>✅</td>
 <td>✅</td>
@@ -141,15 +133,15 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
-<td>Front-end + Local Backend</td>
+<tr class="even">
+<td>Front-end + Back-end</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Custom Tools Development</td>
 <td>✅</td>
 <td>✅</td>
@@ -157,7 +149,7 @@ li { margin: 3px 0; }
 <td>🔶</td>
 <td>🔶</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>2D Graphical Output</td>
 <td>✅</td>
 <td>✅</td>
@@ -165,7 +157,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>3D (strong students only)</td>
 <td>❌</td>
 <td>❌</td>
@@ -173,7 +165,7 @@ li { margin: 3px 0; }
 <td>🔵</td>
 <td>❌</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Networking System</td>
 <td>🔵</td>
 <td>🔵</td>
@@ -181,82 +173,74 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>❌</td>
 </tr>
-<tr class="even">
-<td><span style="color:#8E44AD"><strong>Large-Dataset Rendering &amp; LOD Engine</strong> — 1M+ points at 60 fps via level-of-detail (new)</span></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
 </tbody>
 </table>
 <h3 id="how-each-requirement-applies">How each requirement applies</h3>
-<p><em>Common to all five:</em> 2D ✅ (custom chart/map/plot rendering IS the product — no chart libraries) · C++ Performant Service (ingestion + aggregation engines) · Data-Driven Architecture ✅ (data sources, chart configs, dashboards as data) · Application Communication · Continuous Integration · Front-end + Local Backend.</p>
+<p><em>Common to all five:</em> 2D ✅ (custom chart/map/plot rendering IS the product — no chart libraries) · C++ Performant Service (ingestion + aggregation engines) · Data-Driven Architecture ✅ (data sources, chart configs, dashboards as data) · Application Communication · Continuous Integration · Front-end + Back-end.</p>
 <p><strong>1. Live city metrics dashboard</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (control-room ops)</b> — citizens and officials view the live dashboard on phones; the control-room display stays on the PC side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (control-room ops) — citizens and officials view the live dashboard on phones; the control-room display stays on the PC side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Map layers, live dashboard panels, alert displays. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Map layers, live dashboard panels, alert displays. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Sensor feed engine, aggregation &amp; statistics, dashboard configuration, Firebase history. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Sensor feed engine, aggregation &amp; statistics, dashboard configuration, Firebase history. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop:</em> C++ engine generates and processes simulated sensor feeds (water, power, waste) — high-frequency by construction.</li>
+<li><em>Loop and/or service:</em> C++ engine generates and processes simulated sensor feeds (water, power, waste) — high-frequency by construction.</li>
+<li><em>Data-driven:</em> data sources, metrics and view/dashboard definitions defined as data.</li>
 <li><em>2D:</em> map-based visualization with live utility layers and alert badges. <em>Custom tool:</em> dashboard composer — panels, layers and thresholds arranged without recompiling.</li>
 <li><em>External DB / Analytics ⏭️:</em> historical feed data, alert statistics. <em>Auth ⏭️:</em> 🔵 operator accounts. <em>Networking:</em> 🔵 live push to viewers.</li>
-<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> a year of per-zone readings scrubbed on a timeline without dropping frames.</li>
 </ul>
 <p><strong>2. Log &amp; telemetry explorer</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (analyst ops)</b> — on-call engineers check dashboards and alerts on phones; the deep-dive desk stays on the PC side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (analyst ops) — on-call engineers check dashboards and alerts on phones; the deep-dive desk stays on the PC side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Time-series charts, live log tail, query bar, dashboard grid. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Time-series charts, live log tail, query bar, dashboard grid. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Log ingestion &amp; parsing engine, time-series store, query/filter engine, Firebase saved views. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Log ingestion &amp; parsing engine, time-series store, query/filter engine, Firebase saved views. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop:</em> continuous ingestion — thousands of log lines/second parsed, indexed and aggregated live (a bundled generator replays real log fixtures).</li>
+<li><em>Loop and/or service:</em> continuous ingestion — thousands of log lines/second parsed, indexed and aggregated live (a bundled generator replays real log fixtures).</li>
+<li><em>Data-driven:</em> data sources, metrics and view/dashboard definitions defined as data.</li>
 <li><em>2D:</em> time-series rendering with smooth zoom from weeks to milliseconds. <em>Custom tool:</em> dashboard/query composer with saved views.</li>
 <li><em>External DB / Analytics ⏭️:</em> saved dashboards, usage stats. <em>Auth ⏭️:</em> 🔵. <em>Networking:</em> 🔵 remote log sources.</li>
-<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> a million-line log rendered as density strips and percentile bands, interactive throughout.</li>
 </ul>
 <p><strong>3. Personal fitness data explorer</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — your data on your phone (reference device); web build for the big-screen review. PC is the development vehicle.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — your data on your phone (reference device); web build for the big-screen review. PC is the development vehicle. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Linked pace/HR/elevation charts, route map, activity playback, trends. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Linked pace/HR/elevation charts, route map, activity playback, trends. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> GPX/CSV import pipeline, aggregation engine (splits, zones, trends), Firebase sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> animated activity playback (the run replayed on the map with synced chart cursors) and live re-aggregation while brushing.</li>
+<li><em>Loop and/or service:</em> animated activity playback (the run replayed on the map with synced chart cursors) and live re-aggregation while brushing.</li>
+<li><em>Data-driven:</em> data sources, metrics and view/dashboard definitions defined as data.</li>
 <li><em>2D:</em> multi-series linked charts + route rendering from raw GPS points. <em>Custom tool (adapted):</em> personal dashboard/layout configurator.</li>
 <li><em>External DB:</em> activity sync across devices. <em>Auth:</em> ✅ personal data. <em>Analytics ⏭️:</em> feature usage.</li>
-<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> years of workouts — hundreds of thousands of trackpoints — in one zoomable timeline.</li>
 </ul>
 <p><strong>4. Scientific dataset plotter</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — results explored and shared from the phone; heavy datasets prepared on the PC side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (authoring) — results explored and shared from the phone; heavy datasets prepared on the PC side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Scatter/line/heat plots, brushing &amp; linked views, export preview. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Scatter/line/heat plots, brushing &amp; linked views, export preview. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Columnar dataset store, decimation/LOD engine, statistics, publication export. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> interactive render loop — re-decimation and re-binning at every pan/zoom/brush, animated dataset sweeps.</li>
+<li><em>Loop and/or service:</em> interactive render loop — re-decimation and re-binning at every pan/zoom/brush, animated dataset sweeps.</li>
+<li><em>Data-driven:</em> data sources, metrics and view/dashboard definitions defined as data.</li>
 <li><em>2D:</em> the plot engine IS the product — axes, ticks, millions of points, FreeType labels. <em>Custom tool (adapted):</em> plot/figure composer with styles.</li>
 <li><em>External DB / Analytics ⏭️:</em> shared figure library. <em>Auth ⏭️:</em> 🔵. <em>3D:</em> 🔵 surface plots for strong students.</li>
-<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> the flagship — 1M+ points at 60 fps on the dev machine, LOD-decimated gracefully on the reference phone.</li>
 </ul>
 <p><strong>5. Sports match analytics visualizer</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — match review on the phone or tablet-free touchline; web build for shared session links. PC is the development vehicle.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — match review on the phone or tablet-free touchline; web build for shared session links. PC is the development vehicle. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Pitch map, heatmaps, event timelines, animated replay, annotation layer. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Pitch map, heatmaps, event timelines, animated replay, annotation layer. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Match event-stream engine, per-player aggregation, annotation store, Firebase team library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Match event-stream engine, per-player aggregation, annotation store, Firebase team library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> animated match replay — event streams played back with live-updating heatmaps and stats.</li>
+<li><em>Loop and/or service:</em> animated match replay — event streams played back with live-updating heatmaps and stats.</li>
+<li><em>Data-driven:</em> data sources, metrics and view/dashboard definitions defined as data.</li>
 <li><em>2D:</em> pitch rendering, density heatmaps, timelines. <em>Custom tool (adapted):</em> annotation &amp; report composer for coaches.</li>
 <li><em>External DB:</em> team match library. <em>Auth:</em> ✅ team roles (coach/player). <em>Analytics ⏭️:</em> usage per view.</li>
-<li><span style="color:#8E44AD"><em>Large-dataset rendering:</em></span> a full season of event data explorable in one linked view.</li>
 </ul>
 <h3 id="goals-per-example">Goals per Example</h3>
 <p>G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the Visualization &amp; Analytics pool in <code>milestone-goals-pool-per-category.md</code> (G-numbers = pool IDs).</p>
@@ -265,7 +249,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (PC) and Emscripten/WASM shell (web) over one C++ core; fixed-timestep loop driving simulated sensor ticks, aggregation and map animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 feeds and M1G8 map view run inside this loop.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell (PC) and Emscripten/WASM shell (web) over one C++ core; fixed-timestep loop driving simulated sensor ticks, aggregation and map animation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 feeds and M1G8 map view run inside this loop.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Sensors, zones, utility types, thresholds and dashboard layouts as JSON entities (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1G4 (feed schema), M2G2 (composer edits this data), M2G14 (alert rules as data).</li></ul></details>
@@ -315,7 +299,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one C++ core; continuous ingestion loop parsing and indexing log lines while charts redraw; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 parsing and M1G7 storage run inside it.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/WASM shells over one C++ core; continuous ingestion loop parsing and indexing log lines while charts redraw; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 parsing and M1G7 storage run inside it.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Log source definitions, parse patterns, dashboards and saved queries as JSON (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G4 (patterns), M1G14 (query definitions), M2G2 (composer).</li></ul></details>
@@ -365,7 +349,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving activity playback and live re-aggregation while brushing; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; playback animation and M1G5 charts run inside it.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell (Android + PC dev) with a fixed-timestep loop driving activity playback and live re-aggregation while brushing; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; playback animation and M1G5 charts run inside it.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Activities, trackpoints, zones, dashboard layouts as data (nlohmann/json); units and sport types fully configurable.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G13 (import fills it), M2G2 (layout editing).</li></ul></details>
@@ -386,7 +370,7 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on chart/aggregation paths, memory-lean trackpoint storage, ASan on MSVC; full validation on the reference phone (Pixel 8a/9a).</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2G7-quality scrolling on-device.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy on chart/aggregation paths, memory-lean trackpoint storage, ASan on MSVC; full validation on the reference phone (Pixel 9a).</li><li><b>Prerequisites:</b> All M1 goals.</li><li><b>Feeds into:</b> M2G7-quality scrolling on-device.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Personal dashboard configurator — chart panels, metrics, goals — JSON round-trip, undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s chart renderer (live preview)</li><li><b>Prerequisites:</b> M1G2, M1G5.</li><li><b>Feeds into:</b> A dashboard that&#39;s yours; showcase variety.</li></ul></details>
@@ -415,7 +399,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/WASM shells over one core; interactive render loop re-decimating and re-binning on every pan/zoom/brush; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G5 plots and M1G9 interactions live in this loop.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/WASM shells over one core; interactive render loop re-decimating and re-binning on every pan/zoom/brush; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G5 plots and M1G9 interactions live in this loop.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Datasets, column schemas, plot specs and figure styles as data (nlohmann/json); a figure is fully described by its spec.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G13 (import), M2G2 (composer edits specs), M2G11 (headless renders specs).</li></ul></details>
@@ -465,7 +449,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell (Android + PC dev) with a fixed-timestep loop driving animated match replay and live stat updates; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; replay and heatmaps tick inside it.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell (Android + PC dev) with a fixed-timestep loop driving animated match replay and live stat updates; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; replay and heatmaps tick inside it.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Matches, events, players, pitch geometry and view configs as data (nlohmann/json); event schema designed by the team.</li><li><b>Prerequisites:</b> M1G1.</li><li><b>Feeds into:</b> M1G11 (generator emits this schema), M2G12 (annotations attach to it).</li></ul></details>

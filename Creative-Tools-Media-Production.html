@@ -78,7 +78,7 @@ li { margin: 3px 0; }
 </thead>
 <tbody>
 <tr class="odd">
-<td>External Database (Firebase)</td>
+<td>External Database</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -102,7 +102,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="even">
-<td>C++ Performant Service</td>
+<td>Real-time C++ Simulation Loop and/or C++ Performant Service</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -110,14 +110,6 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="odd">
-<td>Real-time C++ Simulation Loop</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>🔶</td>
-<td>✅</td>
-</tr>
-<tr class="even">
 <td>Application Communication</td>
 <td>✅</td>
 <td>✅</td>
@@ -125,7 +117,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Continuous Integration</td>
 <td>✅</td>
 <td>✅</td>
@@ -133,7 +125,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data-Driven Architecture</td>
 <td>✅</td>
 <td>✅</td>
@@ -141,15 +133,15 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
-<td>Front-end + Local Backend</td>
+<tr class="even">
+<td>Front-end + Back-end</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Custom Tools Development</td>
 <td>✅</td>
 <td>✅</td>
@@ -157,7 +149,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>2D Graphical Output</td>
 <td>✅</td>
 <td>✅</td>
@@ -165,7 +157,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>3D (strong students only)</td>
 <td>❌</td>
 <td>❌</td>
@@ -173,7 +165,7 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>🔵</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Networking System</td>
 <td>❌</td>
 <td>❌</td>
@@ -181,92 +173,79 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>❌</td>
 </tr>
-<tr class="even">
-<td><span style="color:#8E44AD"><strong>Non-destructive Edit History</strong> — command graph, branching history, autosave &amp; crash recovery (new)</span></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
 </tbody>
 </table>
 <h3 id="how-each-requirement-applies">How each requirement applies</h3>
-<p><em>Common to all five:</em> Custom Tools ✅ (the tool IS the product, satisfying the &quot;tools already full-stack&quot; clause) · C++ Performant Service (the editing/preview engine itself) · Data-Driven Architecture ✅ (documents, brushes, instruments, emitters as data) · Application Communication (UI ↔︎ C++ engine messaging) · Continuous Integration · Front-end + Local Backend.</p>
+<p><em>Common to all five:</em> Custom Tools ✅ (the tool IS the product, satisfying the &quot;tools already full-stack&quot; clause) · C++ Performant Service (the editing/preview engine itself) · Data-Driven Architecture ✅ (documents, brushes, instruments, emitters as data) · Application Communication (UI ↔︎ C++ engine messaging) · Continuous Integration · Front-end + Back-end.</p>
 <p><strong>1. Pixel-art &amp; animation editor</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — touch pixel-art painting on the reference phone (Pixel 8a/9a) (zoomed-grid workflow); the PC build is the development/iteration vehicle.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile — touch pixel-art painting on the reference phone (Pixel 9a) (zoomed-grid workflow); the PC build is the development/iteration vehicle. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Canvas renderer (OpenGL), layer &amp; frame timeline UI, palette and tool panels. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Canvas renderer (OpenGL), layer &amp; frame timeline UI, palette and tool panels. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Document engine (layers, blend modes, command graph), exporters (PNG/GIF/sprite sheet), Firebase palette/asset sharing. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop:</em> real-time canvas compositing and animation preview — layers, blend modes and onion skin re-composited every frame.</li>
+<li><em>Loop and/or service:</em> real-time canvas compositing and animation preview — layers, blend modes and onion skin re-composited every frame.</li>
 <li><em>Data-driven:</em> documents, palettes, brushes and export presets fully described as data.</li>
 <li><em>Custom tool:</em> the editor IS the product. <em>2D:</em> pixel-perfect canvas rendering, blend modes, grid/tiled preview.</li>
 <li><em>External DB:</em> shared palette/asset library. <em>Auth ⏭️:</em> optional accounts. <em>Analytics ⏭️:</em> feature-usage stats.</li>
 <li><em>Networking / 3D:</em> not needed — effort goes into tool quality.</li>
-<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> command graph with unlimited undo, history panel and crash recovery (Aseprite-style data recovery).</li>
 </ul>
 <p><strong>2. Audio editor / mini-DAW</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — simplified touch UI (waveform, transport, mixer) on the reference phone (Pixel 8a/9a); AAudio provides the low-latency path. PC build for development and heavy-file tests.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile — simplified touch UI (waveform, transport, mixer) on the reference phone (Pixel 9a); AAudio provides the low-latency path. PC build for development and heavy-file tests. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Waveform/spectrogram renderer, multitrack timeline, mixer &amp; effect-rack UI. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Waveform/spectrogram renderer, multitrack timeline, mixer &amp; effect-rack UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> DSP engine (mixing, effects, resampling), codec import/export, project persistence, Firebase project sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop:</em> the real-time audio callback — mixing and effect chains processed at audio rate, the tightest timing budget in the catalog.</li>
+<li><em>Loop and/or service:</em> the real-time audio callback — mixing and effect chains processed at audio rate, the tightest timing budget in the catalog.</li>
 <li><em>2D:</em> waveform and spectrogram rendering with smooth zoom from hours down to single samples.</li>
 <li><em>Data-driven:</em> projects, tracks, effect chains and presets as data. <em>Custom tool:</em> the editor IS the product.</li>
 <li><em>External DB:</em> cloud project/preset sync. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> effect-usage stats.</li>
 <li><em>Networking / 3D:</em> not needed.</li>
-<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> edits stored as a command list over immutable source audio — the professional editing pattern; full session recovery.</li>
 </ul>
 <p><strong>3. Music tracker / chiptune studio</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Native PC (authoring)</b> — playback and live performance on the phone; keyboard-driven pattern authoring on the PC side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Native PC (authoring) — playback and live performance on the phone; keyboard-driven pattern authoring on the PC side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Pattern-grid editor (custom widgets), instrument editor, oscilloscope/VU views. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Pattern-grid editor (custom widgets), instrument editor, oscilloscope/VU views. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Synthesizer engine (channels, envelopes, arpeggios), sample-accurate sequencer clock, module serialization, Firebase song library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop:</em> sample-accurate sequencer driving a real-time synth engine — audio-rate DSP with musical timing precision.</li>
+<li><em>Loop and/or service:</em> sample-accurate sequencer driving a real-time synth engine — audio-rate DSP with musical timing precision.</li>
 <li><em>Data-driven:</em> instruments, patterns and songs as pure data; module format designed by the team.</li>
 <li><em>Custom tool:</em> the tracker IS the product. <em>2D:</em> pattern grid, oscilloscopes and spectrum views.</li>
 <li><em>External DB:</em> shared song/instrument library. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> most-used instruments/effects.</li>
 <li><em>Networking / 3D:</em> not needed.</li>
-<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> per-pattern edit history with named checkpoints and autosave/session recovery.</li>
 </ul>
 <p><strong>4. Collaborative diagram &amp; vector editor</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — collaboration is web-first (WASM build); the PC build is used for development and precision-editing tests.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile — collaboration is web-first (WASM build); the PC build is used for development and precision-editing tests. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Vector canvas renderer (bézier tessellation, snapping, selection), shape/connector tools. <b>Languages:</b> C++, GLSL (via WASM); HTML/JS/CSS shell.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Vector canvas renderer (bézier tessellation, snapping, selection), shape/connector tools. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Document/scene-graph model, operation-log sync service for live collaboration, SVG import/export, Firebase documents &amp; sharing. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Document/scene-graph model, operation-log sync service for live collaboration, SVG import/export, Firebase documents &amp; sharing. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> interactive render loop — tessellation, snapping and live remote cursors updated every frame.</li>
+<li><em>Loop and/or service:</em> interactive render loop — tessellation, snapping and live remote cursors updated every frame.</li>
 <li><em>Networking:</em> core requirement — real-time collaborative editing over WebSockets with operation sync and conflict resolution.</li>
 <li><em>Auth:</em> applies directly — documents, owners and share links. <em>External DB:</em> document storage. <em>Analytics ⏭️:</em> collaboration stats.</li>
 <li><em>Data-driven:</em> the document is a pure operation log / scene graph. <em>Custom tool:</em> the editor IS the product.</li>
 <li><em>2D:</em> bézier rasterization, hit-testing, snapping guides. <em>3D:</em> not needed.</li>
-<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> the history doubles as the collaboration operation log — undo/redo that works correctly with multiple simultaneous editors.</li>
 </ul>
 <p><strong>5. Particle &amp; VFX editor</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — authoring with simplified panels and live GPU preview on the reference phone (Pixel 8a/9a); PC build for development and heavy bakes.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile — authoring with simplified panels and live GPU preview on the reference phone (Pixel 9a); PC build for development and heavy bakes. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Live preview viewport (OpenGL instancing), emitter/curve editors, preset browser. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Live preview viewport (OpenGL instancing), emitter/curve editors, preset browser. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Particle simulation core, flipbook/sprite-sheet baker, JSON asset exporter, Firebase preset library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Particle simulation core, flipbook/sprite-sheet baker, JSON asset exporter, Firebase preset library. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop:</em> the particle simulation IS the loop — thousands of particles with forces, collisions and emission curves per frame.</li>
+<li><em>Loop and/or service:</em> the particle simulation IS the loop — thousands of particles with forces, collisions and emission curves per frame.</li>
 <li><em>Data-driven:</em> emitters, forces and curves as JSON — the exported assets are consumable by other teams&#39; projects (a natural cross-team showcase).</li>
 <li><em>Custom tool:</em> the editor IS the product. <em>2D:</em> instanced rendering, additive blending, flipbook baking. <em>3D:</em> optional 2.5D particles for strong students.</li>
 <li><em>External DB:</em> shared preset library. <em>Auth ⏭️:</em> optional. <em>Analytics ⏭️:</em> preset popularity.</li>
 <li><em>Networking:</em> not needed.</li>
-<li><span style="color:#8E44AD"><em>Non-destructive edit history:</em></span> preset history with branching — author variants of an effect and compare them side by side.</li>
 </ul>
 <h3 id="goals-per-example">Goals per Example</h3>
 <p>The detailed goals below are the <strong>CS track</strong>: G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the Creative Tools &amp; Media Production pool in the CS Goals Pool (<code>milestone-goals-pool-per-category.md</code>; G1–G3 ⭐ common, G4+ picks). At the end of each example, the violet <strong>Track goals</strong> box suggests the Design and Art picks and the TEAM notes for that project — deliverables and quality ladders live in the Design, Art and TEAM pool documents.</p>
@@ -275,7 +254,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with mouse/touch/keyboard input and a fixed-timestep loop driving canvas compositing and animation preview; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 rendering and M1G5 tools run inside its frame loop.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 window with mouse/touch/keyboard input and a fixed-timestep loop driving canvas compositing and animation preview; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G4 rendering and M1G5 tools run inside its frame loop.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Document model — layers, cels, frames, palettes, brushes — fully described in JSON (nlohmann/json) with hot-reload of palettes/brush packs.</li><li><b>Prerequisites:</b> M1G1 (loop &amp; update hooks).</li><li><b>Feeds into:</b> M1G5 (brushes as data), M1G8 (frame/timeline data), M2G2 and M2G10 (history operates on this model).</li></ul></details>
@@ -325,7 +304,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window/input plus a real-time audio callback (FMOD/OpenAL device I/O) with a lock-free command queue between UI and DSP threads; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G6 DSP runs inside the callback this goal establishes.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 window/input plus a real-time audio callback (FMOD/OpenAL device I/O) with a lock-free command queue between UI and DSP threads; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G6 DSP runs inside the callback this goal establishes.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Project model — tracks, clips, effect chains, presets — as JSON (nlohmann/json); effect parameters hot-reloadable for rapid tuning.</li><li><b>Prerequisites:</b> M1G1 (threads &amp; queue).</li><li><b>Feeds into:</b> M1G13 (codec import fills this model), M2G2 (timeline edits it), M2G10 (edit list refers to it).</li></ul></details>
@@ -375,7 +354,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with keyboard-first input and a real-time audio callback driving a sample-accurate sequencer clock; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G14 synth renders inside this callback.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 window with keyboard-first input and a real-time audio callback driving a sample-accurate sequencer clock; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G14 synth renders inside this callback.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Song model — patterns, rows, instruments, envelopes, arpeggios — as a team-designed JSON module format (nlohmann/json) with hot-reload of instruments.</li><li><b>Prerequisites:</b> M1G1 (clock &amp; hooks).</li><li><b>Feeds into:</b> M1G14 (synth reads instruments), M2G2 (pattern editor edits it), M2G16 (shared songs use this format).</li></ul></details>
@@ -425,7 +404,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window (PC) and Emscripten/WASM shell (web) sharing one C++ core; interactive render loop with mouse/touch input; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G7 geometry and M1G11 networking hook into its frame and event loop.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 window (PC) and Emscripten/WASM shell (web) sharing one C++ core; interactive render loop with mouse/touch input; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G7 geometry and M1G11 networking hook into its frame and event loop.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Scene graph of shapes/connectors/text plus a document format designed as an operation log (JSON, nlohmann/json) — the data model that later makes collaboration and undo natural.</li><li><b>Prerequisites:</b> M1G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1G7 (geometry of the shapes), M1G11 → M2G7 (ops are what gets synced), M2G10 (history = the op log).</li></ul></details>
@@ -475,7 +454,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with a fixed-timestep loop stepping the particle simulation and a free-running render loop for the preview; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G9 simulation and M1G4 viewport run inside it.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 window with a fixed-timestep loop stepping the particle simulation and a free-running render loop for the preview; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> Every other goal; M1G9 simulation and M1G4 viewport run inside it.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Emitters, forces, curves and presets fully described in JSON (nlohmann/json) with hot-reload — the same JSON schema that gets exported for other teams&#39; engines.</li><li><b>Prerequisites:</b> M1G1 (loop &amp; hooks).</li><li><b>Feeds into:</b> M1G13 (export of this schema), M2G2 (preset editor), M2G12 (curves).</li></ul></details>

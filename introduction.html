@@ -36,26 +36,29 @@ li { margin: 3px 0; }
 <h2 id="overview">Overview</h2>
 <p>A project module for second-year Computer Science students. Students form teams and build a project in a category of their choice. The project spans <strong>two trimesters</strong>; current planning focuses on the <strong>first trimester</strong>.</p>
 <h2 id="target-platforms">Target Platforms</h2>
+<p><strong>Main targets (a project ships on at least one):</strong></p>
 <ul>
-<li>Web browser on mobile (Android and iPhone devices)</li>
-<li>Native mobile (Android — reference device: <strong>Google Pixel 8a / 9a</strong>; emulator available during development)</li>
-<li>Web front-end (HTML, JS, CSS, WASM)</li>
-<li>Server platform (Linux OS) — <em>maybe in second trimester</em></li>
-<li>Database, Authentication, Analytics (Firebase)</li>
+<li>Web browser on mobile — Web front-end (HTML, JS, CSS, WASM; Emscripten, OpenGL ES)</li>
+<li>Native mobile (Android — Android Studio, Kotlin + C++, OpenGL ES; reference device: <strong>Google Pixel 9a</strong>; emulator during development)</li>
+</ul>
+<p><strong>Extended targets:</strong></p>
+<ul>
+<li>Server platform (Linux OS) — the team <strong>sets it up by M2</strong> (account, required software, basic testing); full use in the second trimester</li>
+<li>Database (Firebase) — the external database (with Authentication / Analytics ⏭️ in the second trimester)</li>
 </ul>
 <p><strong>Native PC (Windows) is the development, debugging and first-testing platform</strong> for every team — it is not a shipping target. Each project&#39;s final output runs on Native mobile and/or Web browser on mobile; PC may ship only as the operator/authoring side of a role split (see Appendix F in the linked doc set).</p>
 <h2 id="core-tech-requirements">Core Tech Requirements</h2>
 <ul>
-<li>External database (Firebase encouraged)</li>
+<li>External database (Firebase)</li>
 <li>Authentication — <em>maybe in second trimester</em></li>
 <li>Analytics — <em>maybe in second trimester</em></li>
-<li>C++ performant service</li>
-<li>Real-time high-frequency application: C++ simulation loop</li>
+<li>Real-time C++ simulation loop and/or C++ performant service</li>
 <li>Application communication</li>
 <li>Continuous Integration</li>
 <li>Data-driven architecture</li>
-<li>Front-end + local backend (server backend maybe in second trimester)</li>
-<li>Custom tools development for the product (e.g., scene editor if the project needs it)</li>
+<li>Front-end + back-end (<strong>Extended target:</strong> a Linux server the team sets up by M2 — account, required software, basic testing — for full use in the second trimester)</li>
+<li>Custom tools development for the product (e.g., scene editor if the project needs it) — runs PC-side (authoring)</li>
+<li>2D graphical output · 3D (strong students only) · networking (if needed)</li>
 <li>Product does not need to be full-stack if tools are already full-stack (practicing full-stack is the point)</li>
 <li>Graphical output mostly 2D; 3D optional and limited to strong students</li>
 <li>Networking system allowed if the project needs it (e.g., multiplayer games)</li>

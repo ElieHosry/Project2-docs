@@ -79,7 +79,7 @@ li { margin: 3px 0; }
 </thead>
 <tbody>
 <tr class="odd">
-<td>External Database (Firebase)</td>
+<td>External Database</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -103,7 +103,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="even">
-<td>C++ Performant Service</td>
+<td>Real-time C++ Simulation Loop and/or C++ Performant Service</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -111,14 +111,6 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="odd">
-<td>Real-time C++ Simulation Loop</td>
-<td>🔶</td>
-<td>✅</td>
-<td>🔶</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
-<tr class="even">
 <td>Application Communication</td>
 <td>✅</td>
 <td>✅</td>
@@ -126,7 +118,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Continuous Integration</td>
 <td>✅</td>
 <td>✅</td>
@@ -134,7 +126,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data-Driven Architecture</td>
 <td>✅</td>
 <td>✅</td>
@@ -142,15 +134,15 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
-<td>Front-end + Local Backend</td>
+<tr class="even">
+<td>Front-end + Back-end</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Custom Tools Development</td>
 <td>✅</td>
 <td>✅</td>
@@ -158,7 +150,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>2D Graphical Output</td>
 <td>✅</td>
 <td>✅</td>
@@ -166,7 +158,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>3D (strong students only)</td>
 <td>❌</td>
 <td>❌</td>
@@ -174,7 +166,7 @@ li { margin: 3px 0; }
 <td>🔵</td>
 <td>❌</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Networking System</td>
 <td>❌</td>
 <td>❌</td>
@@ -182,87 +174,74 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>❌</td>
 </tr>
-<tr class="even">
-<td><span style="color:#8E44AD"><strong>Localization &amp; Content Pipeline</strong> — multi-language content with hot-reload (new)</span></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
 </tbody>
 </table>
 <h3 id="how-each-requirement-applies">How each requirement applies</h3>
-<p><em>Common to all five:</em> C++ Performant Service (the learning/simulation engine) · Application Communication (UI ↔︎ engine) · Continuous Integration (CMake, tests, packaging) · Front-end + Local Backend · Authentication ✅ (learner accounts and progress are central to the category).</p>
+<p><em>Common to all five:</em> C++ Performant Service (the learning/simulation engine) · Application Communication (UI ↔︎ engine) · Continuous Integration (CMake, tests, packaging) · Front-end + Back-end · Authentication ✅ (learner accounts and progress are central to the category).</p>
 <p><strong>1. Typing / coding trainer</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — WASM build; a Bluetooth keyboard pairs with the phone for serious typing drills (on-screen keyboard for casual practice). The PC build is the development vehicle.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile — WASM build; a Bluetooth keyboard pairs with the phone for serious typing drills (on-screen keyboard for casual practice). The PC build is the development vehicle. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Text &amp; feedback rendering (FreeType), per-key heat map UI. <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Text &amp; feedback rendering (FreeType), per-key heat map UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Keystroke capture engine, adaptive difficulty model, Firebase progress sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> real-time keystroke capture, latency measurement, adaptive difficulty engine.</li>
+<li><em>Loop and/or service:</em> real-time keystroke capture, latency measurement, adaptive difficulty engine.</li>
 <li><em>Data-driven:</em> lessons, drills, and difficulty curves defined in data. <em>Custom tool:</em> lesson editor.</li>
 <li><em>External DB / Analytics ⏭️:</em> per-user progress, streaks, class-level analytics.</li>
 <li><em>2D:</em> custom text/feedback rendering (per-key accuracy heat colors).</li>
-<li><span style="color:#8E44AD"><em>Localization pipeline:</em></span> keyboard layouts (QWERTY/AZERTY) and language lesson packs swappable as content.</li>
 </ul>
 <p><strong>2. Interactive circuit-building lab</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native mobile</b> — touch drag-and-drop wiring on the phone; the PC build is used for development.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native mobile — touch drag-and-drop wiring on the phone; the PC build is used for development. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Schematic canvas, drag-and-drop component UI; web build shell. <b>Languages:</b> C++, GLSL; HTML/JS/CSS (web shell via WASM).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Schematic canvas, drag-and-drop component UI; web build shell. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Current-flow solver, exercise engine, saved circuits. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop:</em> continuous current-flow simulation with live component state — closest to a true physics loop.</li>
+<li><em>Loop and/or service:</em> continuous current-flow simulation with live component state — closest to a true physics loop.</li>
 <li><em>Data-driven:</em> components and exercises as data assets. <em>Custom tool:</em> component/exercise editor.</li>
 <li><em>External DB / Analytics ⏭️:</em> saved circuits, exercise completion stats for teachers.</li>
 <li><em>2D:</em> animated schematic rendering (wires, current flow, meters).</li>
-<li><span style="color:#8E44AD"><em>Localization pipeline:</em></span> exercise text and component labels translated as data, no code changes.</li>
 </ul>
 <p><strong>3. Language-learning mini-game platform</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — short daily sessions on the phone.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — short daily sessions on the phone. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Mini-game screens, feedback animation, lesson navigation. <b>Languages:</b> C++, GLSL; HTML/JS/CSS (web shell via WASM).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Mini-game screens, feedback animation, lesson navigation. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Spaced-repetition scheduler, drill logic, content engine, Firebase sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Spaced-repetition scheduler, drill logic, content engine, Firebase sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> spaced-repetition scheduler + real-time mini-game logic in C++.</li>
+<li><em>Loop and/or service:</em> spaced-repetition scheduler + real-time mini-game logic in C++.</li>
 <li><em>Data-driven:</em> word packs, drills, and game rules authored as content. <em>Custom tool:</em> teacher content editor.</li>
 <li><em>External DB / Analytics ⏭️:</em> progress sync, streaks, teacher dashboards.</li>
 <li><em>2D:</em> mini-game rendering and feedback animation.</li>
-<li><span style="color:#8E44AD"><em>Localization pipeline:</em></span> inherently core — course content, UI, and audio all flow through it.</li>
 </ul>
 <p><strong>4. Driving theory trainer</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — tap-to-react hazard drills suit touch.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — tap-to-react hazard drills suit touch. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Traffic scene rendering, tap/reaction capture UI. <b>Languages:</b> C++, GLSL; HTML/JS/CSS (web shell via WASM).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Traffic scene rendering, tap/reaction capture UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Traffic scenario simulation, reaction scoring, Firebase results. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop:</em> traffic scenarios (vehicles, pedestrians, hazards) simulated in real time; reaction timing scored against it.</li>
+<li><em>Loop and/or service:</em> traffic scenarios (vehicles, pedestrians, hazards) simulated in real time; reaction timing scored against it.</li>
 <li><em>Data-driven:</em> scenarios as data. <em>Custom tool:</em> instructor scenario editor.</li>
 <li><em>External DB / Analytics ⏭️:</em> scores, per-scenario failure rates for instructors.</li>
 <li><em>2D:</em> road/traffic scene rendering. <em>3D:</em> optional pseudo-3D road view.</li>
-<li><span style="color:#8E44AD"><em>Localization pipeline:</em></span> country-specific traffic rules and signage as swappable content packs.</li>
 </ul>
 <p><strong>5. Music ear-training app</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — short practice sessions anywhere, headphones on.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — short practice sessions anywhere, headphones on. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Staff/keyboard rendering, answer UI, feedback animation. <b>Languages:</b> C++, GLSL; HTML/JS/CSS (web shell via WASM).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Staff/keyboard rendering, answer UI, feedback animation. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Audio synthesis/playback engine, assessment engine, progress sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop:</em> real-time audio synthesis/playback with precise timing; answer scoring against it.</li>
+<li><em>Loop and/or service:</em> real-time audio synthesis/playback with precise timing; answer scoring against it.</li>
 <li><em>Data-driven:</em> exercises and progressions as data. <em>Custom tool:</em> teacher exercise editor.</li>
 <li><em>External DB / Analytics ⏭️:</em> progress, per-interval accuracy stats for teachers. <em>Auth:</em> learner accounts.</li>
 <li><em>2D:</em> staff/keyboard rendering, animated feedback.</li>
-<li><span style="color:#8E44AD"><em>Localization pipeline:</em></span> solfège vs. letter naming, translated exercise content as packs.</li>
 </ul>
 <h3 id="goals-per-example">Goals per Example</h3>
 <p>The detailed goals below are the <strong>CS track</strong>: G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the Education + Training pool in the CS Goals Pool (<code>milestone-goals-pool-per-category.md</code>; G1–G3 ⭐ common, G4+ picks). At the end of each example, the violet <strong>Track goals</strong> box suggests the Design and Art picks and the TEAM notes for that project — deliverables and quality ladders live in the Design, Art and TEAM pool documents.</p>
@@ -271,7 +250,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window and raw keyboard scancode capture, fixed-timestep loop timestamping every keystroke at millisecond precision; C++17/20, CMake, Git on Windows (MSVC).</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G5 (interaction engine consumes the timed input stream); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 window and raw keyboard scancode capture, fixed-timestep loop timestamping every keystroke at millisecond precision; C++17/20, CMake, Git on Windows (MSVC).</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G5 (interaction engine consumes the timed input stream); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Lessons, drills, word lists, and difficulty curves defined as hot-reloadable JSON so lesson content changes without recompiling; C++ serialization and reflection patterns.</li><li><b>Prerequisites:</b> M1G1 (shell and loop to load content into).</li><li><b>Feeds into:</b> M1G7 (difficulty model reads lesson data), M1G10 (progress schema), M2G2 (lesson editor edits this format).</li></ul></details>
@@ -280,7 +259,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlay showing live WPM, latency, and error stats; Tracy profiling of input-to-feedback latency; Catch2 tests replaying synthetic keystroke streams; GitHub Actions Windows and Linux builds.</li><li><b>Prerequisites:</b> M1G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2G3 (CI and packaging); validates M1G5 timing accuracy under stress.</li></ul></details>
 </li>
 <li><strong>M1G5 Real-time Interaction Engine</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Keystroke event pipeline mapping SDL2 scancodes to expected characters, per-key latency measurement and error classification, streak and combo detection in C++.</li><li><b>Prerequisites:</b> M1G1 (raw input and loop timing).</li><li><b>Feeds into:</b> M1G7 (per-key stats drive the difficulty model) and M1G10 (results persisted to Firebase).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Keystroke event pipeline mapping SDL2/3 scancodes to expected characters, per-key latency measurement and error classification, streak and combo detection in C++.</li><li><b>Prerequisites:</b> M1G1 (raw input and loop timing).</li><li><b>Feeds into:</b> M1G7 (per-key stats drive the difficulty model) and M1G10 (results persisted to Firebase).</li></ul></details>
 </li>
 <li><strong>M1G7 Adaptive Difficulty Engine</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-key confidence model (keybr-style) with decay curves selecting which characters and words the next drill emphasizes, custom C++.</li><li><b>Prerequisites:</b> M1G2 (lesson data) and M1G5 (accuracy and latency measurements).</li><li><b>Feeds into:</b> M2G8 (Adaptive Engine II extends the model) and M2G10 (its decisions get analyzed).</li></ul></details>
@@ -321,7 +300,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 window with mouse and touch input for wiring components, fixed-timestep loop continuously stepping the current-flow simulation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G11 (solver runs inside the loop) and M1G4 (canvas input); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 window with mouse and touch input for wiring components, fixed-timestep loop continuously stepping the current-flow simulation; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G11 (solver runs inside the loop) and M1G4 (canvas input); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Components (resistors, bulbs, batteries, switches) and exercises defined as hot-reloadable JSON assets, with an entity system representing the circuit as a node graph.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G11 (solver operates on the component graph) and M1G14 / M2G2 (editors author this data).</li></ul></details>
@@ -330,7 +309,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlay inspecting node voltages and branch currents, Catch2 tests validating known Ohm/Kirchhoff reference circuits, Tracy profiling and stress tests on large circuits, GitHub Actions Windows and Linux builds.</li><li><b>Prerequisites:</b> M1G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2G3 (CI and packaging); guards M1G11 solver correctness.</li></ul></details>
 </li>
 <li><strong>M1G4 2D Interactive Content Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL/SDL2 schematic canvas with drag-and-drop component placement, wire routing, animated current-flow and meter rendering, FreeType component labels.</li><li><b>Prerequisites:</b> M1G1 (input and loop).</li><li><b>Feeds into:</b> Live visualization of M1G11; the canvas is reused by M1G14 and M2G6 editor previews.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL/SDL2/3 schematic canvas with drag-and-drop component placement, wire routing, animated current-flow and meter rendering, FreeType component labels.</li><li><b>Prerequisites:</b> M1G1 (input and loop).</li><li><b>Feeds into:</b> Live visualization of M1G11; the canvas is reused by M1G14 and M2G6 editor previews.</li></ul></details>
 </li>
 <li><strong>M1G11 Domain Simulation Core (current flow)</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Modified nodal analysis / Kirchhoff current-flow solver in C++ with GLM math, run at fixed timestep and validated against hand-computed reference circuits.</li><li><b>Prerequisites:</b> M1G1 (loop) and M1G2 (circuit graph as data).</li><li><b>Feeds into:</b> M1G4 (renders live currents), M2G11 (richer component models), M2G6 (live editor preview).</li></ul></details>
@@ -345,7 +324,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the solver on large circuits, memory pools for circuit graph nodes, ASan on MSVC, and validation of the Emscripten WASM build with touch drag-and-drop.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G11 (performance headroom for richer models) and the web showcase build via M2G3.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Component/exercise editor with a component palette, property inspector, JSON serialization, and an undo/redo command stack, grown from the M1 authoring foundation.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (exercise preview)</li><li><b>Prerequisites:</b> M1G2 (data model) and M1G14 (authoring foundation).</li><li><b>Feeds into:</b> M2G6 (advanced editor features layer on top).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Component/exercise editor with a component palette, property inspector, JSON serialization, and an undo/redo command stack, grown from the M1 authoring foundation.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/3/OpenGL renderer (exercise preview)</li><li><b>Prerequisites:</b> M1G2 (data model) and M1G14 (authoring foundation).</li><li><b>Feeds into:</b> M2G6 (advanced editor features layer on top).</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format and clang-tidy, GitHub Actions matrix builds packaging the Windows lab, the editor, and the Emscripten web bundle.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Showcase releases of the lab and the M2G2/M2G6 editor.</li></ul></details>
@@ -371,7 +350,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with touch and mouse input for drills, fixed-timestep loop driving mini-game timers and answer windows; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G16 (session engine runs on the loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with touch and mouse input for drills, fixed-timestep loop driving mini-game timers and answer windows; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G16 (session engine runs on the loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Word packs, drills, and mini-game rules authored as hot-reloadable JSON content, with an entity model for cards, questions, and answers.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G7 (scheduler tracks these items), M1G8 (formalizes the format), M2G2 (teacher editor).</li></ul></details>
@@ -421,7 +400,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell capturing tap/click reactions timestamped against the fixed-timestep traffic simulation clock; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G11 (scenario simulation runs on the loop) and M1G13 (reaction timing scored against it); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell capturing tap/click reactions timestamped against the fixed-timestep traffic simulation clock; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G11 (scenario simulation runs on the loop) and M1G13 (reaction timing scored against it); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Traffic scenarios — vehicles, pedestrians, hazard triggers, road layouts, theory questions — as hot-reloadable JSON data with an entity system for scene actors.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G11 (simulation spawns from scenario data) and M2G2/M1G6 (scenario editor edits it).</li></ul></details>
@@ -430,7 +409,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> ImGui overlay of actor states and hazard timing windows, seeded deterministic scenario replays in Catch2 tests, Tracy profiling of crowded scenes, GitHub Actions Windows and Linux builds.</li><li><b>Prerequisites:</b> M1G1 (running loop to instrument).</li><li><b>Feeds into:</b> M2G3 (CI and packaging); makes M1G13 scoring reproducible for grading disputes.</li></ul></details>
 </li>
 <li><strong>M1G4 2D Content Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL/SDL2 rendering of road, vehicles, pedestrians, and signage with animated hazard cues and FreeType HUD text.</li><li><b>Prerequisites:</b> M1G1 (loop and input).</li><li><b>Feeds into:</b> Visualizes M1G11 scenarios; reused by the M2G6 editor preview and the M2G14 mobile build.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> OpenGL/SDL2/3 rendering of road, vehicles, pedestrians, and signage with animated hazard cues and FreeType HUD text.</li><li><b>Prerequisites:</b> M1G1 (loop and input).</li><li><b>Feeds into:</b> Visualizes M1G11 scenarios; reused by the M2G6 editor preview and the M2G14 mobile build.</li></ul></details>
 </li>
 <li><strong>M1G11 Domain Simulation Core (traffic scenarios)</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Fixed-timestep simulation of scripted vehicles and pedestrians with waypoints, timed hazard events, and deterministic seeding, using GLM math.</li><li><b>Prerequisites:</b> M1G1 (loop) and M1G2 (scenario data).</li><li><b>Feeds into:</b> M1G13 (reactions are scored against simulation time) and M2G6 (editor previews scenarios live).</li></ul></details>
@@ -445,7 +424,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling under a mobile frame budget, memory pools for scene actors, ASan on MSVC, and early Emscripten validation of the touch build.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G14 (mobile port builds on this platform validation) and M2G3.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Instructor scenario editor for placing vehicles and pedestrians and defining hazard windows and scoring, with JSON round-trip and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/OpenGL renderer (scene placement view)</li><li><b>Prerequisites:</b> M1G2 (scenario format it edits).</li><li><b>Feeds into:</b> M2G6 (advanced scenario-editor features layer on top).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Instructor scenario editor for placing vehicles and pedestrians and defining hazard windows and scoring, with JSON round-trip and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, project&#39;s SDL2/3/OpenGL renderer (scene placement view)</li><li><b>Prerequisites:</b> M1G2 (scenario format it edits).</li><li><b>Feeds into:</b> M2G6 (advanced scenario-editor features layer on top).</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format and clang-tidy, GitHub Actions matrix builds packaging the Windows trainer, the editor, and the mobile-web bundle.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Showcase releases, including the M2G14 mobile deliverable.</li></ul></details>
@@ -471,7 +450,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep loop driving sample-accurate audio scheduling and answer timing, plus touch/mouse answer input; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (audio playback is timed by the loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep loop driving sample-accurate audio scheduling and answer timing, plus touch/mouse answer input; C++17/20, CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (audio playback is timed by the loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Interval, chord, and rhythm exercises plus progressions defined as hot-reloadable JSON, with an entity model for questions, answers, and note sequences.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G6 (playback reads exercise note data), M2G13 (assessment consumes this model), M2G2 (editor edits it).</li></ul></details>

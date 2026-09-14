@@ -79,7 +79,7 @@ li { margin: 3px 0; }
 </thead>
 <tbody>
 <tr class="odd">
-<td>External Database (Firebase)</td>
+<td>External Database</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -103,7 +103,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="even">
-<td>C++ Performant Service</td>
+<td>Real-time C++ Simulation Loop and/or C++ Performant Service</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -111,14 +111,6 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="odd">
-<td>Real-time C++ Simulation Loop</td>
-<td>🔶</td>
-<td>🔶</td>
-<td>✅</td>
-<td>🔶</td>
-<td>✅</td>
-</tr>
-<tr class="even">
 <td>Application Communication</td>
 <td>✅</td>
 <td>✅</td>
@@ -126,7 +118,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Continuous Integration</td>
 <td>✅</td>
 <td>✅</td>
@@ -134,7 +126,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data-Driven Architecture</td>
 <td>✅</td>
 <td>✅</td>
@@ -142,15 +134,15 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
-<td>Front-end + Local Backend</td>
+<tr class="even">
+<td>Front-end + Back-end</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Custom Tools Development</td>
 <td>🔶</td>
 <td>🔶</td>
@@ -158,7 +150,7 @@ li { margin: 3px 0; }
 <td>🔶</td>
 <td>🔶</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>2D Graphical Output</td>
 <td>🔶</td>
 <td>🔶</td>
@@ -166,7 +158,7 @@ li { margin: 3px 0; }
 <td>🔶</td>
 <td>🔶</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>3D (strong students only)</td>
 <td>❌</td>
 <td>❌</td>
@@ -174,7 +166,7 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>❌</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Networking System</td>
 <td>❌</td>
 <td>❌</td>
@@ -182,84 +174,75 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>❌</td>
 </tr>
-<tr class="even">
-<td><span style="color:#8E44AD"><strong>Transaction Ledger &amp; Audit Trail</strong> — double-entry records, immutable history (new)</span></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
 </tbody>
 </table>
 <h3 id="how-each-requirement-applies">How each requirement applies</h3>
-<p><em>Common to all five:</em> C++ Performant Service (the financial computation engine) · Application Communication (UI ↔︎ engine) · Continuous Integration · Front-end + Local Backend · Data-Driven Architecture (products, rules, and fees as data) · Authentication ✅ (accounts are central to the category).</p>
+<p><em>Common to all five:</em> the C++ performant service (the financial computation engine — the live-feed examples also drive a real-time loop) · Application Communication (UI ↔︎ engine) · Continuous Integration · Front-end + Back-end · Data-Driven Architecture (products, rules, and fees as data) · Authentication ✅ (accounts are central to the category). Extended target: Firebase + a Linux-server seam set up by M2 (full use T2). Deploy/test device: Pixel 9a.</p>
 <p><strong>1. Stock-trading simulator</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — traders check positions on the go.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — traders check positions on the go (device: Pixel 9a). <b>Extended:</b> Firebase (accounts) + Linux server seam set up by M2, full use in T2.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Custom real-time charts, order entry &amp; portfolio UI. <b>Languages:</b> HTML/JS/CSS + C++ chart renderer via WASM (or native C++).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Custom real-time charts (OpenGL ES), order entry &amp; portfolio UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Market feed engine, pricing/portfolio engine, transaction ledger, Firebase accounts. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Market feed engine, pricing/portfolio engine, transaction ledger, Firebase accounts. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> live/replayed market feed processed tick-by-tick; C++ pricing and portfolio engine.</li>
-<li><em>2D (adapted):</em> custom-rendered real-time candlestick/line charts (no chart libraries).</li>
-<li><em>Custom tool (adapted):</em> market data replay/configuration tool.</li>
-<li><em>External DB / Analytics ⏭️:</em> portfolios, leaderboards, trading-behavior stats.</li>
-<li><span style="color:#8E44AD"><em>Ledger &amp; audit trail:</em></span> every simulated order/fill recorded double-entry — portfolio always reconciles.</li>
+<li><em>Loop and/or service:</em> the C++ performant service (pricing + portfolio engine) processes a live/replayed market feed tick-by-tick — a real-time loop here too.</li>
+<li><em>Data-driven:</em> instruments, order rules and fee schedules defined as hot-reloadable data — no hard-coded products.</li>
+<li><em>2D:</em> custom-rendered real-time candlestick/line charts (OpenGL ES; no chart libraries).</li>
+<li><em>Custom tool (adapted):</em> market data replay/configuration tool (PC-side authoring).</li>
+<li><em>External DB / Analytics ⏭️:</em> portfolios, leaderboards, trading-behaviour stats.</li>
 </ul>
 <p><strong>2. Personal budget tracker with forecasting</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile</b> — expense entry happens in the moment.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile — expense entry happens in the moment. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Expense entry forms, projection charts, category UI. <b>Languages:</b> C++ (native mobile UI), GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Expense entry forms, projection charts, category UI. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Forecast simulation engine, budget ledger, cross-device sync. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> Monte-Carlo-style forward simulation of balances from spending patterns.</li>
-<li><em>2D (adapted):</em> custom chart renderer for projections. <em>Custom tool (adapted):</em> category rules and scenario editor.</li>
+<li><em>Loop and/or service:</em> Monte-Carlo-style forward simulation of balances from spending patterns.</li>
+<li><em>Data-driven:</em> instruments, rules and fee schedules defined as hot-reloadable data.</li>
+<li><em>2D:</em> custom chart renderer for projections. <em>Custom tool (adapted):</em> category rules and scenario editor.</li>
 <li><em>External DB / Analytics ⏭️:</em> transactions, budgets, cross-device sync.</li>
-<li><span style="color:#8E44AD"><em>Ledger &amp; audit trail:</em></span> transactions stored as an immutable double-entry ledger; edits are corrections, not overwrites.</li>
 </ul>
 <p><strong>3. Crypto/currency arbitrage sandbox</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile</b> — WASM dashboard with panels adapted to the phone layout; the PC build is the development vehicle.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile — WASM dashboard with panels adapted to the phone layout; the PC build is the development vehicle. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Multi-panel dashboard, depth charts, strategy config UI (ImGui). <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Multi-panel dashboard, depth charts, strategy config UI (ImGui). <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> High-frequency feed engine, order-book maintenance, strategy engine, trade log. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> High-frequency feed engine, order-book maintenance, strategy engine, trade log. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop:</em> genuinely high-frequency — simulated exchange feeds at 100+ Hz, order-book maintenance, opportunity detection. Closest fintech match to the raw requirement.</li>
-<li><em>2D (adapted):</em> order-book depth charts and spread visualization. <em>Custom tool (adapted):</em> strategy/fees configuration tool.</li>
+<li><em>Loop and/or service:</em> genuinely high-frequency — simulated exchange feeds at 100+ Hz, order-book maintenance, opportunity detection. Closest fintech match to the raw requirement.</li>
+<li><em>Data-driven:</em> instruments, rules and fee schedules defined as hot-reloadable data.</li>
+<li><em>2D:</em> order-book depth charts and spread visualization. <em>Custom tool (adapted):</em> strategy/fees configuration tool.</li>
 <li><em>External DB / Analytics ⏭️:</em> session results, strategy performance history.</li>
-<li><span style="color:#8E44AD"><em>Ledger &amp; audit trail:</em></span> full trade log with fees per venue — enables honest P&amp;L verification.</li>
 </ul>
 <p><strong>4. Group expense splitter with settlement engine</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Native mobile + Web browser on mobile</b> — group members join via a link.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Native mobile + Web browser on mobile — group members join via a link. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Group/balance UI, debt-graph visualization, receipts. <b>Languages:</b> HTML/JS/CSS + WASM (or native C++).</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Group/balance UI, debt-graph visualization, receipts. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
 <div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Settlement optimization engine, expense ledger, Firebase groups &amp; auth. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local only.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> real-time recomputation of optimal debt settlement graph as expenses change.</li>
-<li><em>2D (adapted):</em> balance/debt-graph visualization. <em>Custom tool (adapted):</em> rules and currency configuration.</li>
+<li><em>Loop and/or service:</em> real-time recomputation of optimal debt settlement graph as expenses change.</li>
+<li><em>Data-driven:</em> instruments, rules and fee schedules defined as hot-reloadable data.</li>
+<li><em>2D:</em> balance/debt-graph visualization. <em>Custom tool (adapted):</em> rules and currency configuration.</li>
 <li><em>External DB / Analytics ⏭️:</em> groups, receipts, balances; auth central for membership.</li>
-<li><span style="color:#8E44AD"><em>Ledger &amp; audit trail:</em></span> the settlement graph derives from an append-only expense ledger — who changed what, when.</li>
 </ul>
 <p><strong>5. Fraud detection &amp; monitoring sandbox</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (analyst ops)</b> — monitoring and alerts on the phone; the dense analyst review desk stays on the PC side.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (analyst ops) — monitoring and alerts on the phone; the dense analyst review desk stays on the PC side. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Analyst dashboard, alert queue, anomaly timelines (ImGui). <b>Languages:</b> C++, GLSL.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Analyst dashboard, alert queue, anomaly timelines (ImGui). <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Transaction stream scoring engine, rules engine, immutable case log. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Transaction stream scoring engine, rules engine, immutable case log. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop:</em> high-frequency transaction stream scored rule-by-rule in real time — a direct fit.</li>
+<li><em>Loop and/or service:</em> high-frequency transaction stream scored rule-by-rule in real time — a direct fit.</li>
 <li><em>Data-driven:</em> fraud rules and thresholds as data. <em>Custom tool (adapted):</em> rule editor + case dashboard.</li>
-<li><em>2D (adapted):</em> anomaly timelines and live metric rendering.</li>
+<li><em>2D:</em> anomaly timelines and live metric rendering.</li>
 <li><em>Import / alerts / security:</em> CSV replay of historical data; alert queue; input validation and data protection.</li>
-<li><span style="color:#8E44AD"><em>Ledger &amp; audit trail:</em></span> flagged transactions and analyst decisions form an immutable case log.</li>
 </ul>
 <h3 id="goals-per-example">Goals per Example</h3>
 <p>The detailed goals below are the <strong>CS track</strong>: G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the Fintech pool in the CS Goals Pool (<code>milestone-goals-pool-per-category.md</code>; G1–G3 ⭐ common, G4+ picks). At the end of each example, the violet <strong>Track goals</strong> box suggests the Design and Art picks and the TEAM notes for that project — deliverables and quality ladders live in the Design, Art and TEAM pool documents.</p>
@@ -268,7 +251,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep C++17/20 loop that consumes market ticks and routes order-entry input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feed engine runs on its tick), M1G11 (orders processed in the loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop that consumes market ticks and routes order-entry input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feed engine runs on its tick), M1G11 (orders processed in the loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Instruments, orders and portfolios defined as JSON data (nlohmann/json) with hot-reloadable instrument lists and market parameters.</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G11 (order/portfolio model), M2G2 (replay/config editor edits this data), M2G7 (ledger records these objects).</li></ul></details>
@@ -280,7 +263,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Producer/consumer threads pushing live or CSV-replayed market ticks through a lock-free ring buffer into the simulation loop.</li><li><b>Prerequisites:</b> M1G1 (fixed-timestep loop as consumer).</li><li><b>Feeds into:</b> M1G5 (charts draw its ticks), M1G11 (orders fill against its prices), M2G4.</li></ul></details>
 </li>
 <li><strong>M1G5 Custom 2D Chart Rendering</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Candlestick/line charts rendered from scratch with OpenGL/SDL2 and FreeType axis labels — no chart libraries; compiled to WASM via Emscripten for the mobile-web front-end.</li><li><b>Prerequisites:</b> M1G1 (render loop); consumes M1G4 ticks.</li><li><b>Feeds into:</b> M2G4 (advanced charting builds on this renderer).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Candlestick/line charts rendered from scratch with OpenGL/SDL2/3 and FreeType axis labels — no chart libraries; compiled to WASM via Emscripten for the mobile-web front-end.</li><li><b>Prerequisites:</b> M1G1 (render loop); consumes M1G4 ticks.</li><li><b>Feeds into:</b> M2G4 (advanced charting builds on this renderer).</li></ul></details>
 </li>
 <li><strong>M1G11 Order Processing Engine</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Order validation and matching against the simulated market with fills priced in fixed-point money math, plus a per-order event log.</li><li><b>Prerequisites:</b> M1G4 (prices) + M1G2 (order/portfolio data model).</li><li><b>Feeds into:</b> M2G7 (every fill becomes a ledger entry), M2G8 (portfolio results for leaderboards).</li></ul></details>
@@ -318,7 +301,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep C++17/20 loop driving forecast simulation steps and in-the-moment expense-entry input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G15 (forecast steps run on its tick), M1G9 (input routing); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop driving forecast simulation steps and in-the-moment expense-entry input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G15 (forecast steps run on its tick), M1G9 (input routing); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Accounts, categories, transactions and budget rules as hot-reloadable JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G12 (aggregates this data), M1G15 (spending patterns as input), M2G2 (rules/scenario editor), M2G7.</li></ul></details>
@@ -368,7 +351,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep C++17/20 loop ticking simulated exchange feeds at 100+ Hz and routing dashboard input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feeds run on its tick), opportunity detection; every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop ticking simulated exchange feeds at 100+ Hz and routing dashboard input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feeds run on its tick), opportunity detection; every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Venues, trading pairs, fee schedules and strategy parameters as hot-reloadable JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G7 (ledger records these entities), M2G2 (strategy/fees editor edits this data).</li></ul></details>
@@ -418,7 +401,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep C++17/20 loop that recomputes the optimal settlement graph in real time as expenses change; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (settlement math runs in its loop); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop that recomputes the optimal settlement graph in real time as expenses change; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (settlement math runs in its loop); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Groups, members, expenses, receipts and currencies as hot-reloadable JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G6 (entities the math operates on), M1G8 and M1G10, M2G7 (ledger of these objects).</li></ul></details>
@@ -468,7 +451,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2 shell with a fixed-timestep C++17/20 loop scoring the simulated transaction stream rule-by-rule in real time; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G13 (replay drives this loop), M1G14 (scores trigger alerts); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop scoring the simulated transaction stream rule-by-rule in real time; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G13 (replay drives this loop), M1G14 (scores trigger alerts); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Fraud rules, thresholds, transactions and cases as hot-reloadable, schema-validated JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> Scoring in M1G1&#39;s loop, M1G14 (thresholds), M2G2 (rule editor edits this data).</li></ul></details>

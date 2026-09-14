@@ -80,7 +80,7 @@ li { margin: 3px 0; }
 </thead>
 <tbody>
 <tr class="odd">
-<td>External Database (Firebase)</td>
+<td>External Database</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -104,7 +104,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="even">
-<td>C++ Performant Service</td>
+<td>Real-time C++ Simulation Loop and/or C++ Performant Service</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
@@ -112,14 +112,6 @@ li { margin: 3px 0; }
 <td>✅</td>
 </tr>
 <tr class="odd">
-<td>Real-time C++ Simulation Loop</td>
-<td>🔶</td>
-<td>🔶</td>
-<td>🔶</td>
-<td>🔶</td>
-<td>🔶</td>
-</tr>
-<tr class="even">
 <td>Application Communication</td>
 <td>✅</td>
 <td>✅</td>
@@ -127,7 +119,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Continuous Integration</td>
 <td>✅</td>
 <td>✅</td>
@@ -135,7 +127,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Data-Driven Architecture</td>
 <td>✅</td>
 <td>✅</td>
@@ -143,15 +135,15 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
-<td>Front-end + Local Backend</td>
+<tr class="even">
+<td>Front-end + Back-end</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>Custom Tools Development</td>
 <td>✅</td>
 <td>✅</td>
@@ -159,7 +151,7 @@ li { margin: 3px 0; }
 <td>✅</td>
 <td>✅</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>2D Graphical Output</td>
 <td>🔶</td>
 <td>🔶</td>
@@ -167,7 +159,7 @@ li { margin: 3px 0; }
 <td>🔶</td>
 <td>🔶</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td>3D (strong students only)</td>
 <td>❌</td>
 <td>❌</td>
@@ -175,7 +167,7 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>❌</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td>Networking System</td>
 <td>❌</td>
 <td>❌</td>
@@ -183,79 +175,70 @@ li { margin: 3px 0; }
 <td>❌</td>
 <td>✅</td>
 </tr>
-<tr class="even">
-<td><span style="color:#8E44AD"><strong>Content Versioning</strong> — history, diff &amp; rollback (new)</span></td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-<td>✅</td>
-</tr>
 </tbody>
 </table>
 <h3 id="how-each-requirement-applies">How each requirement applies</h3>
-<p><em>Common to all five:</em> Custom Tools ✅ (the editor/builder IS the product, satisfying the &quot;tools already full-stack&quot; clause) · Data-Driven Architecture ✅ (templates and content models as data) · C++ Performant Service (preview/indexing/media engine) · Application Communication · Continuous Integration · Front-end + Local Backend · Authentication ✅ (author/owner accounts).</p>
+<p><em>Common to all five:</em> Custom Tools ✅ (the editor/builder IS the product, satisfying the &quot;tools already full-stack&quot; clause) · Data-Driven Architecture ✅ (templates and content models as data) · C++ Performant Service (preview/indexing/media engine) · Application Communication · Continuous Integration · Front-end + Back-end · Authentication ✅ (author/owner accounts).</p>
 <p><strong>1. Portfolio builder</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — editing on <b>Native PC</b> (or desktop web), published portfolios viewed via <b>Web browser on mobile</b>.</div>
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> WYSIWYG editor UI, published portfolio site. <b>Languages:</b> HTML/JS/CSS + C++ preview renderer via WASM.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (authoring) — editing on <b>Native PC</b> (or desktop web), published portfolios viewed via <b>Web browser on mobile</b>. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> WYSIWYG editor UI, published portfolio site. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Layout/preview engine, content storage &amp; templates, versioning, Firebase accounts. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Layout/preview engine, content storage &amp; templates, versioning, Firebase accounts. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> real-time WYSIWYG preview renderer in C++/WASM re-rendering on every edit.</li>
-<li><em>2D (adapted):</em> custom layout/typography rendering.</li>
+<li><em>Loop and/or service:</em> real-time WYSIWYG preview renderer in C++/WASM re-rendering on every edit.</li>
+<li><em>Data-driven:</em> content models, templates and blocks defined as data.</li>
+<li><em>2D:</em> custom layout/typography rendering.</li>
 <li><em>External DB / Analytics ⏭️:</em> sites, templates, visitor stats per portfolio.</li>
-<li><span style="color:#8E44AD"><em>Content versioning:</em></span> undo history and named revisions of a site; visual diff between versions.</li>
 </ul>
 <p><strong>2. Restaurant menu &amp; ordering CMS</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — menu/theme editing on <b>Native PC</b> (or desktop web), customer browsing &amp; ordering via <b>Web browser on mobile</b>.</div>
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Menu/theme editor, customer ordering site. <b>Languages:</b> HTML/JS/CSS + WASM preview.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (authoring) — menu/theme editing on <b>Native PC</b> (or desktop web), customer browsing &amp; ordering via <b>Web browser on mobile</b>. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Menu/theme editor, customer ordering site. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Media processing service, order handling, menu versioning, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Media processing service, order handling, menu versioning, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> live theme/menu preview. <em>C++ service:</em> media processing (image resize, optimization).</li>
-<li><em>2D (adapted):</em> theme preview rendering.</li>
+<li><em>Loop and/or service:</em> live theme/menu preview. <em>C++ service:</em> media processing (image resize, optimization).</li>
+<li><em>Data-driven:</em> content models, templates and blocks defined as data.</li>
+<li><em>2D:</em> theme preview rendering.</li>
 <li><em>External DB / Analytics ⏭️:</em> menus, orders, best-seller stats; auth for owner/customer roles.</li>
-<li><span style="color:#8E44AD"><em>Content versioning:</em></span> menu revisions with rollback — &quot;restore last week&#39;s menu&quot; in one click.</li>
 </ul>
 <p><strong>3. News/blog platform</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — article editing &amp; editorial workflow on <b>Native PC</b> (or desktop web), readers via <b>Web browser on mobile</b>.</div>
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Article editor with live preview, reader site. <b>Languages:</b> HTML/JS/CSS + WASM preview.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (authoring) — article editing &amp; editorial workflow on <b>Native PC</b> (or desktop web), readers via <b>Web browser on mobile</b>. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Article editor with live preview, reader site. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Search/indexing service, editorial workflow engine, versioning, Firebase roles. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Search/indexing service, editorial workflow engine, versioning, Firebase roles. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> C++ search/indexing service with incremental updates.</li>
+<li><em>Loop and/or service:</em> C++ search/indexing service with incremental updates.</li>
+<li><em>Data-driven:</em> content models, templates and blocks defined as data.</li>
 <li><em>Custom tool:</em> article editor with live preview + editorial workflow (draft → review → publish).</li>
 <li><em>Networking:</em> optional collaborative editing. <em>External DB / Analytics ⏭️:</em> articles, roles, readership stats.</li>
-<li><span style="color:#8E44AD"><em>Content versioning:</em></span> the editorial backbone — draft history, reviewer diffs, publish rollback.</li>
 </ul>
 <p><strong>4. Event microsite generator</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — page building on <b>Native PC</b> (or desktop web), published microsites viewed via <b>Web browser on mobile</b>.</div>
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Block-based event page editor, published microsites. <b>Languages:</b> HTML/JS/CSS + WASM preview.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (authoring) — page building on <b>Native PC</b> (or desktop web), published microsites viewed via <b>Web browser on mobile</b>. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Block-based event page editor, published microsites. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Block preview renderer, registration handling, analytics, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now, server-ready (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Block preview renderer, registration handling, analytics, Firebase. <b>Languages:</b> C++.<br><b>Backend scope:</b> Local now; Linux server seam set up &amp; basic-tested by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> block-based live preview renderer.</li>
+<li><em>Loop and/or service:</em> block-based live preview renderer.</li>
 <li><em>Data-driven:</em> schedule/speakers/registration blocks as pure data.</li>
 <li><em>External DB / Analytics ⏭️:</em> registrations, attendance analytics.</li>
-<li><span style="color:#8E44AD"><em>Content versioning:</em></span> staged site versions — edit next year&#39;s page while this year&#39;s stays live.</li>
 </ul>
 <p><strong>5. Documentation / wiki knowledge base</strong></p>
-<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Web browser on mobile + Native PC (authoring)</b> — editing on <b>Native PC</b> (or desktop web), reading via <b>web browser on mobile</b>.</div>
+<div style="background:#EAF3FF;border-left:4px solid #0969DA;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><i>Platform fit:</i> <b>Main:</b> Web browser on mobile + Native PC (authoring) — editing on <b>Native PC</b> (or desktop web), reading via <b>web browser on mobile</b>. <b>Extended:</b> Firebase + Linux server set up by M2 (full use in T2). <b>Device:</b> Pixel 9a.</div>
 
-<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Markdown editor, document tree, reader view. <b>Languages:</b> HTML/JS/CSS + C++ preview renderer via WASM.</div>
+<div style="background:#E8F5E9;border-left:4px solid #2E7D32;padding:6px 12px;margin:4px 0 4px;border-radius:4px"><b>Front end:</b> Markdown editor, document tree, reader view. <b>Languages:</b> Web — HTML/JS/CSS + C++→WASM (Emscripten, SDL2/3, OpenGL ES); Native — Kotlin + C++ (Android Studio, OpenGL ES).</div>
 
-<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Versioning/diff engine, collaboration sync, search index, Firebase roles. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated (T2).</div>
+<div style="background:#FFF3E0;border-left:4px solid #E65100;padding:6px 12px;margin:4px 0 8px;border-radius:4px"><b>Back end:</b> Versioning/diff engine, collaboration sync, search index, Firebase roles. <b>Languages:</b> C++.<br><b>Backend scope:</b> Server-indicated — server set up by M2, full use in T2.</div>
 
 <ul>
-<li><em>Simulation loop (adapted):</em> live markdown preview renderer (C++/WASM) re-rendering as you type.</li>
+<li><em>Loop and/or service:</em> live markdown preview renderer (C++/WASM) re-rendering as you type.</li>
+<li><em>Data-driven:</em> content models, templates and blocks defined as data.</li>
 <li><em>Custom tools:</em> the editor and document tree ARE the product. <em>Data-driven:</em> pages and site structure as data.</li>
 <li><em>Import / export:</em> markdown round-trip. <em>Networking:</em> collaborative editing (CRDT/OT basics).</li>
 <li><em>External DB / Analytics ⏭️:</em> documents, roles, readership stats.</li>
-<li><span style="color:#8E44AD"><em>Content versioning:</em></span> page history and diffs — the most natural versioning showcase of all five examples.</li>
 </ul>
 <h3 id="goals-per-example">Goals per Example</h3>
 <p>The detailed goals below are the <strong>CS track</strong>: G1–G3 ⭐ are the common goals (fixed for all categories); the other 3 are picked from the CMS pool in the CS Goals Pool (<code>milestone-goals-pool-per-category.md</code>; G1–G3 ⭐ common, G4+ picks). At the end of each example, the violet <strong>Track goals</strong> box suggests the Design and Art picks and the TEAM notes for that project — deliverables and quality ladders live in the Design, Art and TEAM pool documents.</p>
