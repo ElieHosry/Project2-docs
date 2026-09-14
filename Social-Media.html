@@ -398,7 +398,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell (native PC client) with a fixed-timestep loop driving the matching engine and keeping shared room timers in sync; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G9 (matching runs on the loop) and M1G10 (presence/timer ticks); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> SDL2/3 shell (native PC client) with a fixed-timestep loop driving the matching engine and keeping shared room timers in sync; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G9 (matching runs on the loop) and M1G10 (presence/timer ticks); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Courses, schedules, availability and room configurations as hot-reloadable JSON entity models.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G9 (match inputs) and M1G12 (event model); M2G2 room templates.</li></ul></details>
@@ -419,13 +419,13 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Hardening of matching and timer synchronization (threading, Tracy, sanitizers), validating both targets — native PC build and the Emscripten web build for mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G9 room scale; M2G3 packaging.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> Hardening of matching and timer synchronization (threading, Tracy, sanitizers), validating both targets — native PC build and the Emscripten web build for mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 codebase).</li><li><b>Feeds into:</b> M2G9 room scale; M2G3 packaging.</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Room-management and moderation tooling core — configure rooms, timers and course lists in Dear ImGui with JSON round-trip and undo/redo.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 (room/course data model).</li><li><b>Feeds into:</b> M2G16 — block and report actions live in this tool.</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format + clang-tidy, packaged native PC build plus WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> CMake presets, clang-format + clang-tidy, packaged native PC build plus WASM web bundle, GitHub Actions matrix builds.</li><li><b>Prerequisites:</b> M1G3 (CI foundation).</li><li><b>Feeds into:</b> Release/showcase builds of every goal.</li></ul></details>
 </li>
 <li><strong>M2G7 Firebase — Auth, Push &amp; Analytics</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth for student identity, FCM push completing the M1G12 pipeline, Analytics capturing session and focus statistics.</li><li><b>Prerequisites:</b> M1G2 (model to sync) and M2G12 (notification groundwork).</li><li><b>Feeds into:</b> M2G16 (identity-based blocking); focus-stats reporting at showcase.</li></ul></details>

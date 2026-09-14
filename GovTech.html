@@ -250,7 +250,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/ImGui shell, fixed-timestep loop simulating citizen arrivals and service times; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (queue engine runs on its tick); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> SDL2/3/ImGui shell, fixed-timestep loop simulating citizen arrivals and service times; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (queue engine runs on its tick); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Counters, services, priorities, and ticket types defined as JSON entities (nlohmann/json) with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (shell and loop to host the entity system).</li><li><b>Feeds into:</b> M1G4 (engine consumes service definitions); M2G2 (service-flow editor edits this data).</li></ul></details>
@@ -262,7 +262,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> C++ producer/consumer threads generating ticket events (issue, call, serve, no-show) through a lock-free ring buffer, with CSV replay of past office days.</li><li><b>Prerequisites:</b> M1G1 (simulation tick); M1G2 (service and counter definitions).</li><li><b>Feeds into:</b> M1G11 (event stream for statistics), M1G12 (ticket-called triggers), M2G4 and M2G10.</li></ul></details>
 </li>
 <li><strong>M1G11 Statistics &amp; Wait-Time Analytics</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Per-service/per-counter wait and service-time aggregation in C++, custom SDL2/3/OpenGL charts (no chart libs), history persisted to Firestore.</li><li><b>Prerequisites:</b> M1G4 (ticket event stream); M1G2 (event data model).</li><li><b>Feeds into:</b> M2G10 (historical calibration for predictions); M2G4 (dashboard heatmaps and history).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> Per-service/per-counter wait and service-time aggregation in C++, custom SDL2/3/OpenGL charts (no chart libs), history persisted to Firestore.</li><li><b>Prerequisites:</b> M1G4 (ticket event stream); M1G2 (event data model).</li><li><b>Feeds into:</b> M2G10 (historical calibration for predictions); M2G4 (dashboard heatmaps and history).</li></ul></details>
 </li>
 <li><strong>M1G12 Notification System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Cloud Messaging push for &quot;your ticket is called&quot;, in-app event bus for the staff dashboard, service worker on the citizen web ticket page.</li><li><b>Prerequisites:</b> M1G4 (queue events to notify on); Firebase project with citizen/staff Auth.</li><li><b>Feeds into:</b> Citizen ticket experience at showcase; M2G10 (pushing predicted wait times).</li></ul></details>
@@ -271,16 +271,16 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of the queue engine under thousands of concurrent tickets, ASan/UBSan, memory pools and threading tuning, Emscripten validation of the citizen web page.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 queue codebase).</li><li><b>Feeds into:</b> M2G4 (dashboard frame budget) and M2G10 (prediction throughput).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> Tracy profiling of the queue engine under thousands of concurrent tickets, ASan/UBSan, memory pools and threading tuning, Emscripten validation of the citizen web page.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 queue codebase).</li><li><b>Feeds into:</b> M2G4 (dashboard frame budget) and M2G10 (prediction throughput).</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Service-flow editor in C++/ImGui — configure counters, services, and priority rules with JSON round-trip and an undo/redo command stack.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json</li><li><b>Prerequisites:</b> M1G2 (service/counter data model it edits).</li><li><b>Feeds into:</b> M1G4 (engine runs edited flows live); M2G4 (dashboard reflects reconfigured offices).</li></ul></details>
 </li>
 <li><strong>M2G3 ⭐ CI — CMake, Code Quality, Build Standards &amp; Packaging</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> CMake presets, clang-format/clang-tidy gates, CPack packaging of the staff dashboard plus Emscripten citizen web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> CMake presets, clang-format/clang-tidy gates, CPack packaging of the staff dashboard plus Emscripten citizen web build in the Actions matrix.</li><li><b>Prerequisites:</b> M1G3 (CI and test foundation).</li><li><b>Feeds into:</b> Release builds of every goal for the showcase.</li></ul></details>
 </li>
 <li><strong>M2G4 Dashboard — Advanced</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Supervisor dashboard with live queue layers per counter, wait-time heatmaps, and scrubbing through the day&#39;s queue history (SDL2/3/OpenGL + ImGui).</li><li><b>Prerequisites:</b> M1G4 (live events) and M1G11 (aggregates/history); M2G1 (rendering budget).</li><li><b>Feeds into:</b> Staff-side showcase; M2G7 gates its supervisor-only views.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> Supervisor dashboard with live queue layers per counter, wait-time heatmaps, and scrubbing through the day&#39;s queue history (SDL2/3/OpenGL + ImGui).</li><li><b>Prerequisites:</b> M1G4 (live events) and M1G11 (aggregates/history); M2G1 (rendering budget).</li><li><b>Feeds into:</b> Staff-side showcase; M2G7 gates its supervisor-only views.</li></ul></details>
 </li>
 <li><strong>M2G7 RBAC &amp; Audit Logging</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Firebase Auth custom claims for counter staff vs. supervisor, permission checks in the C++ service, append-only audit log of every ticket action (call, skip, transfer, close).</li><li><b>Prerequisites:</b> M1G4 (ticket actions to log); M1G11/M2G12 (Firebase records and identity in place).</li><li><b>Feeds into:</b> M2G4 (role-gated dashboard panels); trust story of the whole product.</li></ul></details>
@@ -350,7 +350,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3/ImGui officer-app shell with a real-time loop ticking application queues, deadline timers, and validation passes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (workflow engine runs on its tick); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> SDL2/3/ImGui officer-app shell with a real-time loop ticking application queues, deadline timers, and validation passes; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G6 (workflow engine runs on its tick); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Permit types, form schemas, workflow states, and role definitions as JSON entities with hot-reload.</li><li><b>Prerequisites:</b> M1G1 (shell and loop).</li><li><b>Feeds into:</b> M1G6 (state definitions), M1G7 (form schemas), M1G13 (builder edits this data).</li></ul></details>
@@ -371,7 +371,7 @@ li { margin: 3px 0; }
 <p><em>M2:</em></p>
 <ul>
 <li><strong>M2G1 ⭐ Architecture — Optimization &amp; Platform Validation</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Tracy profiling of workflow/validation throughput, ASan/UBSan on the FSM, Emscripten validation of the citizen form front-end on mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 workflow codebase).</li><li><b>Feeds into:</b> M2G6 (responsive builder) and M2G13 (SLA timers at scale).</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> Tracy profiling of workflow/validation throughput, ASan/UBSan on the FSM, Emscripten validation of the citizen form front-end on mobile browsers.</li><li><b>Prerequisites:</b> All M1 goals (hardens the M1 workflow codebase).</li><li><b>Feeds into:</b> M2G6 (responsive builder) and M2G13 (SLA timers at scale).</li></ul></details>
 </li>
 <li><strong>M2G2 ⭐ Content Editor — Core</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> The form builder matured into the project&#39;s core editor — schema editing with undo/redo command stack, JSON round-trip, and live form preview.</li><li><b>Libraries/Software:</b> Dear ImGui, nlohmann/json, FreeType (live form preview)</li><li><b>Prerequisites:</b> M1G13 (builder foundation); M1G2 (data model).</li><li><b>Feeds into:</b> M2G6 (advanced features layer on top); M1G7 (published schemas go live to citizens).</li></ul></details>

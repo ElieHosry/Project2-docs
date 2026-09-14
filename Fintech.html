@@ -351,7 +351,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop ticking simulated exchange feeds at 100+ Hz and routing dashboard input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feeds run on its tick), opportunity detection; every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop ticking simulated exchange feeds at 100+ Hz and routing dashboard input; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G4 (feeds run on its tick), opportunity detection; every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Venues, trading pairs, fee schedules and strategy parameters as hot-reloadable JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> M1G7 (ledger records these entities), M2G2 (strategy/fees editor edits this data).</li></ul></details>
@@ -363,7 +363,7 @@ li { margin: 3px 0; }
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Multi-venue simulated exchange feeds at 100+ Hz via producer/consumer threads and lock-free ring buffers, maintaining a live order book per venue.</li><li><b>Prerequisites:</b> M1G1 (high-frequency loop).</li><li><b>Feeds into:</b> M1G5 (depth charts), opportunity detection, M2G9 (the hot path to scale).</li></ul></details>
 </li>
 <li><strong>M1G5 Custom 2D Chart Rendering (depth)</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Order-book depth charts and spread visualization rendered from scratch with OpenGL/GLSL and FreeType labels, redrawn incrementally at feed rate for the ImGui multi-panel dashboard.</li><li><b>Prerequisites:</b> M1G1 (render loop) + M1G4 (order-book data).</li><li><b>Feeds into:</b> M2G6 (live preview in the strategy editor), showcase dashboard.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> Order-book depth charts and spread visualization rendered from scratch with OpenGL/GLSL and FreeType labels, redrawn incrementally at feed rate for the ImGui multi-panel dashboard.</li><li><b>Prerequisites:</b> M1G1 (render loop) + M1G4 (order-book data).</li><li><b>Feeds into:</b> M2G6 (live preview in the strategy editor), showcase dashboard.</li></ul></details>
 </li>
 <li><strong>M1G7 Transaction Ledger — Foundation</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Double-entry trade log in fixed-point money math with per-venue fees, stored append-only (SQLite or JSON log).</li><li><b>Prerequisites:</b> M1G2 (venue/trade data model).</li><li><b>Feeds into:</b> M2G7 (complete audit trail), honest P&amp;L verification per strategy.</li></ul></details>
@@ -451,7 +451,7 @@ li { margin: 3px 0; }
 <p><em>M1:</em></p>
 <ul>
 <li><strong>M1G1 ⭐ Application Shell, Real-time C++ Simulation Loop, Input &amp; Core Logic</strong>
-  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop scoring the simulated transaction stream rule-by-rule in real time; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G13 (replay drives this loop), M1G14 (scores trigger alerts); every other goal.</li></ul></details>
+  <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> <b>Web build:</b> SDL2/3 shell with a fixed-timestep C++17/20 loop scoring the simulated transaction stream rule-by-rule in real time; CMake, Git.</li><li><b>Prerequisites:</b> None — foundation of this project.</li><li><b>Feeds into:</b> M1G13 (replay drives this loop), M1G14 (scores trigger alerts); every other goal.</li></ul></details>
 </li>
 <li><strong>M1G2 ⭐ Data-Driven Architecture of Core Objects / Entity System</strong>
   <details><summary>Tech &amp; dependencies</summary><ul><li><b>Tech:</b> Fraud rules, thresholds, transactions and cases as hot-reloadable, schema-validated JSON data objects (nlohmann/json).</li><li><b>Prerequisites:</b> M1G1 (shell &amp; loop).</li><li><b>Feeds into:</b> Scoring in M1G1&#39;s loop, M1G14 (thresholds), M2G2 (rule editor edits this data).</li></ul></details>
